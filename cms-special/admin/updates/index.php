@@ -27,7 +27,7 @@ function getData(string $dir, $ignoreUploadDir = false) {
     global $size;
     $dircontent = scandir($dir);
     foreach ($dircontent as $direl) {
-        if ($ignoreUploadDir && ($direl == "/upload" || $dir . "/" . $direl == $_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) {} else {
+        if (($ignoreUploadDir && ($direl == "/upload" || $dir . "/" . $direl == $_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) || $direl == ".git") {} else {
             if ($direl == "." || $direl == "..") {} else {
                 if (is_link($dir . "/" . $direl)) {} else {
                     if (is_dir($dir . "/" . $direl)) {
