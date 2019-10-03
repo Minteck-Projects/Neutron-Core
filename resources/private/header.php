@@ -76,3 +76,18 @@ try {
 
 <div id="snowapi-placeholder"><div snowapi-enable-snowfall></div></div>
 <?= "<script>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/global.js") . "</script>" ?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {
+    echo('<script src="/resources/themes/icons/suru.js"></script>');
+    echo("<style>img[src='/resources/image/suru_menu.png'] {filter:brightness(200%);}img[src='/resources/image/suru_tools.png'] {filter:brightness(200%);}img[src='/resources/image/suru_admin.png'] {filter:brightness(200%) !important;}img[src='/resources/image/suru_contact_address.png'] {filter:brightness(0%);}img[src='/resources/image/suru_contact_email.png'] {filter:brightness(0%);}img[src='/resources/image/suru_contact_phone.png'] {filter:brightness(0%);}img[src='/resources/image/suru_contact_priority.png'] {filter:brightness(0%);}</style>");
+}
+
+?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntufont-enabled")) {
+    echo('<link rel="stylesheet" href="/resources/themes/fonts/ubuntu.css">');
+}
+
+?>

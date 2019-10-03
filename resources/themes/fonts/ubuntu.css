@@ -1,0 +1,31 @@
+@font-face {
+    font-family: Ubuntu;
+    src: url('/resources/fonts/ubuntu-regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url('/resources/fonts/ubuntu-italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url('/resources/fonts/ubuntu-bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url('/resources/fonts/ubuntu-bold-italic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+* {
+    font-family: Ubuntu, CMS, Arial, Calibri, Ubuntu, Roboto, Liberation Sans, Helvetica, sans-serif;
+}
