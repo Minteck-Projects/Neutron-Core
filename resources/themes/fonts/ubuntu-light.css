@@ -1,0 +1,24 @@
+@font-face {
+    font-family: UbuntuL;
+    src: url('/resources/fonts/ubuntu-thin.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: UbuntuL;
+    src: url('/resources/fonts/ubuntu-medium.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: UbuntuL;
+    src: url('/resources/fonts/ubuntu-medium-italic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+* {
+    font-family: UbuntuL, Ubuntu, CMS, Arial, Calibri, Ubuntu, Roboto, Liberation Sans, Helvetica, sans-serif;
+}

@@ -91,3 +91,18 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntufont-enabled
 }
 
 ?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntulfont-enabled")) {
+    echo('<link rel="stylesheet" href="/resources/themes/fonts/ubuntu-light.css">');
+}
+
+?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {
+    echo('<link rel="stylesheet" href="/resources/themes/colors/dark.css">');
+    echo('<script src="/resources/themes/colors/dark.js"></script>');
+}
+
+?>

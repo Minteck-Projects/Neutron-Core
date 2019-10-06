@@ -1,1038 +1,246 @@
-01/10/2019 21:09:44 - SETUP/POST - /api/setup/push.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:00:54 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:09:53 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:00:54 - INTERFACE/GET - /cms-special/admin/home/api.php?command=pushStatus&data= - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:03 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:00:56 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:03 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 17:00:56 - INTERFACE/GET - /cms-special/admin/home/api.php?command=pushStatus&data= - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:03 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:00:56 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:06 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:00:56 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:06 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 17:00:56 - INTERFACE/GET - /cms-special/admin/home/api.php?command=pushStatus&data= - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:06 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:01:19 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:10 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:01:43 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:13 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 17:09:00 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:13 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:09:00 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:17 - INTERFACE/GET - /cms-special/admin/widgets/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:11:13 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:19 - API/POST - /api/admin/widgets.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:11:13 - INTERFACE/GET - /resources/image/setup.jpg - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:21 - API/POST - /api/admin/widgets.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:12:01 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:23 - API/POST - /api/admin/widgets.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:12:01 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:24 - API/POST - /api/admin/widgets.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:25:34 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:26 - API/POST - /api/admin/widgets.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:25:34 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:27 - API/POST - /api/admin/widgets.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:27:13 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:30 - INTERFACE/GET - /cms-special/admin/widgets/widget-notes-configure/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:27:13 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:31 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 17:27:48 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:31 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:27:48 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:37 - API/POST - /api/admin/widget-notes-configure.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:28:43 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:10:37 - INTERFACE/GET - /cms-special/admin/widgets/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:28:43 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:10:40 - INTERFACE/GET - /cms-special/admin/widgets/widget-contact-configure/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:29:08 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:11:03 - API/POST - /api/admin/widget-contact-configure.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:29:08 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:11:03 - INTERFACE/GET - /cms-special/admin/widgets/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:31:18 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:11:06 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:31:18 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:11:07 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/widgets/calendar/source.php:19 - Undefined property: stdClass::$timestamp
+05/10/2019 17:31:56 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:11:07 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/widgets/calendar/source.php:27 - Undefined property: stdClass::$timestamp
+05/10/2019 17:31:56 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:11:07 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/widgets/calendar/source.php:30 - Undefined property: stdClass::$timestamp
+05/10/2019 17:32:31 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:11:07 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/widgets/calendar/source.php:35 - Undefined property: stdClass::$timestamp
+05/10/2019 17:32:31 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:11:16 - INTERFACE/GET - /cms-special/admin/logs/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:49:08 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:12:10 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:49:08 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:12:31 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:51:24 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:12:34 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:51:24 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:12:34 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 17:53:55 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:12:34 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 17:53:55 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:12:47 - INTERFACE/GET - /cms-special/admin/galery/addcategory/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:05:50 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:12:51 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:05:50 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:12:51 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 18:10:41 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:12:51 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:10:41 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:12:53 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:13:05 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:12:53 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:78 - scandir(/var/www/html6/data/webcontent/categories): failed to open dir: No such file or directory
+05/10/2019 18:13:05 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:12:53 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:78 - scandir(): (errno 2): No such file or directory
+05/10/2019 18:13:55 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:12:53 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:79 - Invalid argument supplied for foreach()
+05/10/2019 18:13:55 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:12:58 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:14:24 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:13:01 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:14:24 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:13:01 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:78 - scandir(/var/www/html6/data/webcontent/categories): failed to open dir: No such file or directory
+05/10/2019 18:50:55 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:13:01 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:78 - scandir(): (errno 2): No such file or directory
+05/10/2019 18:50:55 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:13:01 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:79 - Invalid argument supplied for foreach()
+05/10/2019 18:51:56 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:13:01 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 18:51:56 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:13:01 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:55:07 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:13:17 - INTERFACE/GET - /cms-special/admin/logs/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:55:07 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:13:17 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 18:56:11 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:13:17 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:56:11 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:14:25 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:56:32 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:14:25 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:80 - file_get_contents(/var/www/html6/data/webcontent/categories/.): failed to open stream: No such file or directory
+05/10/2019 18:56:32 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:14:25 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/galery/publish/index.php:80 - file_get_contents(/var/www/html6/data/webcontent/categories/animaux): failed to open stream: No such file or directory
+05/10/2019 18:57:32 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:14:25 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 18:57:32 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:14:25 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:58:33 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:14:35 - INTERFACE/GET - /cms-special/admin/logs/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 18:58:33 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:14:50 - INTERFACE/GET - /cms-special/admin/logs/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:01:03 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:14:51 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 19:01:03 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:14:51 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:02:15 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:14:55 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:02:15 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:14:56 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:03:03 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:14:57 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 19:03:03 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:14:57 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:03:38 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:15:18 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:03:38 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:15:18 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 19:04:28 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:15:18 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:04:28 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:15:51 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 19:05:55 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:15:51 - INTERFACE/HTTP-ERROR - 404
+05/10/2019 19:05:55 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:15:51 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 21:16:34 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:16:02 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 21:16:34 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:16:23 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 23:01:01 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:16:26 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+05/10/2019 23:01:01 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:16:29 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 09:03:36 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:16:29 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 09:03:37 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:17:06 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 09:41:08 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:17:06 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 09:41:08 - INTERFACE/GET - /resources/image/setup.jpg - Dalvik/2.1.0 (Linux; U; Android 9; TA-1033 Build/PKQ1.181105.001)
 
-01/10/2019 21:17:18 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 09:41:08 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:17:18 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 09:41:08 - INTERFACE/GET - /resources/image/setup.jpg - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:17:41 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 10:23:22 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:17:45 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 10:23:22 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:18:04 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 10:53:46 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:25:50 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 10:54:06 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:25:54 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 10:54:06 - INTERFACE/GET - /display/display - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:25:54 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 10:54:07 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:25:54 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 10:54:07 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:26:42 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:05:48 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:26:42 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/home/index.php:64 - Undefined variable: banner
+06/10/2019 11:05:48 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:26:42 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/home/index.php:65 - Undefined variable: blackBannerText
+06/10/2019 11:09:04 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:27:08 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 11:09:04 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:27:08 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:32:03 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:27:28 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:32:34 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:28:58 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:33:07 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:28:59 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 11:34:42 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:28:59 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:34:49 - INTERFACE/GET - /cms-special/admin/pages/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:29:27 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:34:54 - INTERFACE/GET - /cms-special/admin/pages/manage/?slug=index - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:29:27 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 11:34:55 - INTERFACE/GET - /cms-special/admin/pages/edit/?slug=index - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:29:27 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:50:12 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:29:43 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:50:12 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:29:44 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 11:50:55 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:29:44 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 11:50:55 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:32:15 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 14:12:38 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:32:16 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 14:12:38 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:32:16 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 14:14:59 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:32:27 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 14:15:03 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:32:27 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 14:15:10 - INTERFACE/GET - /cms-special/display/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:32:27 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 14:46:06 - INTERFACE/HTTP-ERROR - 404
 
-01/10/2019 21:33:15 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 14:46:06 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:33:55 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:37:41 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:33:56 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 15:37:49 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:33:56 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:38:05 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:34:03 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:38:07 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:34:03 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 15:38:13 - INTERFACE/POST - /cms-special/admin/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:34:03 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:39:11 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:34:20 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:39:19 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:35:02 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:39:23 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:35:02 - INTERFACE/HTTP-ERROR - 404
+06/10/2019 15:39:26 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:35:02 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:39:36 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 
-01/10/2019 21:39:47 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:39:55 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:39:55 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 21:39:55 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:39:57 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:41:20 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:51:01 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:51:02 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 21:51:02 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:52:52 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:54:14 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:54:14 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 21:54:14 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:55:59 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:56:00 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 21:56:00 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:56:48 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:56:49 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 21:56:49 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:58:24 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:58:25 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 21:58:25 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:59:55 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 21:59:56 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 21:59:56 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:00:59 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:01:02 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:01:02 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:01:14 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:01:16 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:01:16 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:01:28 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:01:32 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:01:48 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:01:55 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:02:20 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:02:21 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:02:21 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:02:25 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:02:41 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:03:03 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:03:44 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:04:59 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:07:01 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:07:03 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:07:04 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:07:04 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:07:18 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:07:35 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:07:36 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:07:36 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:08:19 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:08:20 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:08:20 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:08:24 - INTERFACE/GET - /cms-special/admin/pages/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:08:27 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:08:27 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:08:29 - INTERFACE/GET - /cms-special/admin/updates/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:09:05 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:11:06 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:11:08 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:11:08 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:11:50 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:11:51 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:11:51 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:12:41 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:12:42 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:12:42 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:13:05 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:13:06 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:13:06 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:13:23 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:13:38 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:14:41 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:14:42 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:14:42 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:14:49 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:15:25 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:15:26 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:15:26 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:15:36 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:15:37 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:15:37 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:15:43 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:15:43 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:15:43 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:16:02 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:16:04 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:16:04 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:16:08 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:18:30 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:18:31 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:18:31 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:18:41 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:19:00 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:19:19 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:20:12 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:20:18 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:24:44 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:24:46 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:24:46 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:27:51 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:27:53 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:27:53 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:28:57 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:29:00 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:29:00 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:29:13 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:29:40 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:30:55 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:30:58 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:30:58 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:32:22 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:33:03 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:33:07 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:33:07 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:33:13 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:34:17 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:34:18 - INTERFACE/HTTP-ERROR - 404
-
-01/10/2019 22:34:18 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:36:49 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:38:29 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:38:55 - INTERFACE/GET - /cms-special/admin/housekeeping/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-01/10/2019 22:38:57 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:41:34 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:41:43 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:41:44 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 12:41:44 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:41:48 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:52:39 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:52:40 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 12:52:40 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:54:54 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:55:10 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:55:20 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:55:47 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 12:55:51 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 13:32:58 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 13:32:59 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 13:32:59 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 13:33:06 - INTERFACE/GET - /?source=siteadmin - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 13:33:27 - INTERFACE/GET - /cms-special/admin/updates/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:21:24 - INTERFACE/HTTP-ERROR - 404
-
-/admin/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:21:25 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:21:32 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:22:10 - INTERFACE/GET - /cms-special/admin/updates/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:24:45 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:24:46 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 20:24:46 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:24:50 - INTERFACE/GET - /cms-special/admin/updates/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 20:24:58 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:20:40 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:20:43 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 21:20:43 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:20:57 - API/POST - /api/admin/appearance.php - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:20:57 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:21:03 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:22:13 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:22:14 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 21:22:14 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:22:22 - INTERFACE/GET - /cms-special/admin/calendar/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:22:26 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:26:35 - INTERFACE/GET - /cms-special/admin/resetted/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:26:38 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:26:42 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:27:14 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:28:09 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:29:11 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:29:58 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:30:30 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:30:41 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:30:48 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:30:53 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:31:33 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:32:48 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:32:52 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:33:43 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:33:53 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:33:55 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:10 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:13 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:14 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:18 - INTERFACE/GET - /cms-special/admin/galery/addcategory/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:22 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:24 - INTERFACE/GET - /cms-special/admin/galery/publish/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:35 - INTERFACE/GET - /cms-special/admin/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:39 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:43 - INTERFACE/GET - /?source=siteadmin - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:34:45 - INTERFACE/GET - /cms-special/galery/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:36:37 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:37:52 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:40:39 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:40:42 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:40:42 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:66 - Undefined variable: banner
-
-02/10/2019 21:40:42 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:67 - Undefined variable: blackBannerText
-
-02/10/2019 21:40:42 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:67 - Undefined variable: blackBannerText
-
-02/10/2019 21:40:42 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:67 - Undefined variable: sizestr
-
-02/10/2019 21:42:47 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:42:50 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:42:50 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:68 - Undefined variable: sizestr
-
-02/10/2019 21:44:12 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:44:14 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:44:14 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:66 - Undefined variable: size
-
-02/10/2019 21:44:14 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:67 - Undefined variable: size
-
-02/10/2019 21:44:14 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/appearance/index.php:67 - Undefined variable: size
-
-02/10/2019 21:44:33 - INTERFACE/GET - /cms-special/admin/logs/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:45:16 - INTERFACE/GET - /cms-special/admin/logs/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:45:18 - INTERFACE/GET - /cms-special/admin/appearance/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:46:33 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:46:38 - INTERFACE/GET - /cms-special/admin/calendar/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:46:40 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:48:16 - INTERFACE/GET - /cms-special/admin/housekeeping/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:48:18 - INTERFACE/GET - /cms-special/admin/housekeeping/reset/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:48:20 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:52:56 - INTERFACE/GET - /cms-special/admin/updates/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:53:01 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 21:54:03 - INTERFACE/GET - /cms-special/admin/widgets/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:02:56 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:02:59 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:04:42 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:04:43 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 22:04:43 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:05:05 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:05:46 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:07:00 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:09:34 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:09:43 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:09:48 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:11:28 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:11:56 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:14:42 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:17:22 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:17:22 - PHP-INTERNAL-ERROR/UNKNOWN - /mnt/windisk/Users/Nathan/Documents/Projets/MPCMS/cms-special/admin/plugins/index.php:94 - filesize(): stat failed for /resources/css/snowapi.css
-
-02/10/2019 22:17:28 - INTERFACE/GET - /cms-special/admin/logs/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:17:48 - INTERFACE/GET - /cms-special/admin/plugins/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:18:08 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:31:43 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:32:09 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-02/10/2019 22:32:10 - INTERFACE/HTTP-ERROR - 404
-
-02/10/2019 22:32:10 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:43:40 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:44:10 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:44:11 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:44:11 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:44:14 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:38 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:38 - INTERFACE/GET - /cms-special/admin/home/) - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:38 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:39 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:39 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:39 - INTERFACE/GET - /inherit - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:40 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:40 - INTERFACE/GET - /radial-gradient - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:40 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:40 - INTERFACE/GET - /repeating-linear-gradient - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:40 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:40 - INTERFACE/GET - /reso - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:40 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:40 - INTERFACE/GET - /resou - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:40 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:40 - INTERFACE/GET - /resour - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:41 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:41 - INTERFACE/GET - /resourc - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:41 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:41 - INTERFACE/GET - /resource - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:41 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:41 - INTERFACE/GET - /resources/inherit - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:41 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:41 - INTERFACE/GET - /resources/inherit - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:41 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:41 - INTERFACE/GET - /resources/im - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:41 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:41 - INTERFACE/GET - /resources/ima - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:42 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:42 - INTERFACE/GET - /resources/imag - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:42 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:42 - INTERFACE/GET - /resources/image/inherit - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:42 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:42 - INTERFACE/GET - /resources/image/a - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:42 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:42 - INTERFACE/GET - /resources/image/ad - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:42 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:42 - INTERFACE/GET - /resources/image/adm - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:42 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:42 - INTERFACE/GET - /resources/image/admi - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:42 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:42 - INTERFACE/GET - /resources/image/admin - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:43 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:43 - INTERFACE/GET - /resources/image/admin_ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_a - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_ap - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_app - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_appe - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_appea - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_appear - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_appeara - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:44 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:44 - INTERFACE/GET - /resources/image/admin_appearan - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:45 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:45 - INTERFACE/GET - /resources/image/admin_appearanc - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:45 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:45 - INTERFACE/GET - /resources/image/admin_appearance - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:45 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:45 - INTERFACE/GET - /resources/image/admin_appearance.inherit - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:45 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:45 - INTERFACE/GET - /resources/image/admin_appearance.p - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:53:45 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:53:45 - INTERFACE/GET - /resources/image/admin_appearance.pn - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:57:20 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:57:21 - INTERFACE/GET - /cms-special/admin/home/someimage.jpg - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:57:25 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:57:25 - INTERFACE/GET - /cms-special/admin/home/someimage.jpg - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:57:26 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:57:26 - INTERFACE/GET - /cms-special/admin/home/someimage.jpg - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 18:57:27 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 18:57:27 - INTERFACE/GET - /cms-special/admin/home/someimage.jpg - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:26:13 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:26:16 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:26:16 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:26:45 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:30:20 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:30:23 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:30:23 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:31:12 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:31:13 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:31:13 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:31:40 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:31:53 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:34:46 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:34:51 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:34:51 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:37:39 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:37:48 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:37:49 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:39:58 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:40:05 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:40:05 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:40:42 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:40:49 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:40:49 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:41:06 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:41:10 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 20:41:10 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 20:41:16 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:05:56 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:05:59 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:05:59 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:06:17 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:08:37 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:09:13 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:09:53 - INTERFACE/GET - / - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:10:54 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:11:02 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:11:02 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:11:02 - INTERFACE/GET - /resources/image/admin_widgets.png - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:11:21 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:12:10 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:13:43 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:21:33 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:21:34 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:21:34 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:21:36 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:21:41 - INTERFACE/GET - /cms-special/admin/home/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:24:54 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:26:07 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:26:07 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:26:07 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:28:07 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:28:07 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:28:07 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:28:11 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:28:12 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:28:12 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:29:09 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:29:19 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:29:19 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:29:19 - INTERFACE/GET - /resources/themes/fonts/ubuntu.css - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:29:20 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:29:20 - INTERFACE/GET - /resources/themes/fonts/ubuntu.css - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:29:26 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:29:26 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:29:26 - INTERFACE/GET - /resources/themes/fonts/ubuntu.css - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:30:27 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:37:53 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:37:54 - INTERFACE/GET - /cms-special/admin/customization/ - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:37:57 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:37:57 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
-
-03/10/2019 21:37:58 - INTERFACE/HTTP-ERROR - 404
-
-03/10/2019 21:37:58 - INTERFACE/GET - /favicon.ico - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0
+06/10/2019 15:39:42 - INTERFACE/GET - /cms-special/admin/ - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
 

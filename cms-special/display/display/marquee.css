@@ -1,0 +1,24 @@
+.marquee {
+    height: 50px;	
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee {
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    transform: translateX(100%);
+    animation: marqueeanim 30s linear infinite;
+}
+
+@keyframes marqueeanim {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}

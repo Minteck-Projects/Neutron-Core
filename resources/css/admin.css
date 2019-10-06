@@ -301,6 +301,15 @@ body {
         width: 36px !important;
         height: 36px !important;
     }
+    #loginnotice {
+        display: none;
+    }
+}
+
+@media (max-height: 380px) {
+    #loginnotice {
+        display: none;
+    }
 }
 
 #banner-name {
@@ -352,4 +361,11 @@ body {
     border-bottom-style: solid;
     border-bottom-color: gray;
     border-bottom-width: 1px;
+}
+
+.step {
+    font-size: 24px;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-right: 7.5px;
 }

@@ -1,0 +1,87 @@
+#navigation {
+    background: #151515;
+    border-bottom-color: #4a4a4a;
+    color: white;
+}
+
+#navigation > .sblink {
+    color: white;
+}
+
+#settings, #settings-home {
+    background: #4a4a4a;
+    color: white;
+    height: 100%;
+}
+
+.ck.ck-content {
+    background: #4a4a4a !important;
+}
+
+.ck.ck-toolbar {
+    background: #2d2c2c;
+}
+
+button:not(.ck-disabled):hover {
+    background: #595959 !important;
+}
+
+#ck-editor__aria-label_e685acd16cec842aa1aac77989d51f892 {
+    color: white;
+}
+
+.ck.ck-icon.ck-dropdown__arrow, .ck.ck-icon.ck-button__icon {
+    filter: invert(100%) brightness(200%);
+}
+
+.sblink, .sblink:hover {
+    color: white;
+    text-decoration-color: white;
+}
+
+.setting {
+    color: white;
+}
+
+.setting:hover {
+    background-color: rgb(42, 42, 42);
+}
+
+#login {
+    background-color: black;
+    color: white;
+}
+
+.pushbar {
+    background: #262626;
+    color: white;
+}
+
+.pushbar > * {
+    color: white;
+}
+
+.menu-link {
+    color: white;
+}
+
+.menu-link:hover {
+    color: rgb(177, 177, 177);
+}
+
+img[src='/resources/image/suru_contact_address.png'], img[src='/resources/image/suru_contact_email.png'], img[src='/resources/image/suru_contact_phone.png'], img[src='/resources/image/suru_contact_priority.png'], img[src='/resources/image/contact_address.svg'], img[src='/resources/image/contact_email.svg'], img[src='/resources/image/contact_phone.svg'], img[src='/resources/image/contact_priority.svg'], img[src='/resources/image/close.svg'] {
+    filter: invert(100%);
+}
+
+div[data-pushbar-id="panel-sidebar"] > img#sidebar-close {
+    filter: invert(100%);
+}
+
+#page-content {
+    background: #4f4f4f;
+    color: white;
+}
+
+#sidebar-separator {
+    border-bottom-color: white;
+}

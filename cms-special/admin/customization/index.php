@@ -74,8 +74,14 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         </select>
         <h3>Police de caractères</h3>
         <select id="font" onchange="updateFont()">
-            <option value="default" <?php if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntufont-enabled")) {echo("selected");} ?>>Google Sans</option>
+            <option value="default" <?php if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntufont-enabled") && !file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntulfont-enabled")) {echo("selected");} ?>>Google Sans</option>
             <option value="ubuntu" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntufont-enabled")) {echo("selected");} ?>>Ubuntu</option>
+            <option value="ubuntul" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntulfont-enabled")) {echo("selected");} ?>>Ubuntu Thin</option>
+        </select>
+        <h3>Couleurs</h3>
+        <select id="colors" onchange="updateColors()">
+            <option value="default" <?php if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {echo("selected");} ?>>Clair</option>
+            <option value="dark" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {echo("selected");} ?>>Sombre</option>
         </select>
     </div>
 </body>
@@ -94,6 +100,34 @@ function updateIcons() {
                 console.log("Sauvegardé avec succès")
                 setTimeout(() => {
                     document.getElementById('icons').disabled = false;
+                }, 500)
+            } else {
+                alert("Erreur : " + data);
+            }
+        },
+        error: function (error) {
+            alert("Erreur de communication");
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
+function updateColors() {
+    document.getElementById('colors').disabled = true;
+    var formData = new FormData();
+    formData.append("theme", document.getElementById('colors').value);
+    $.ajax({
+        type: "POST",
+        dataType: 'html',
+        url: "/api/admin/customization_colors.php",
+        success: function (data) {
+            if (data == "ok") {
+                console.log("Sauvegardé avec succès")
+                setTimeout(() => {
+                    document.getElementById('colors').disabled = false;
                 }, 500)
             } else {
                 alert("Erreur : " + data);

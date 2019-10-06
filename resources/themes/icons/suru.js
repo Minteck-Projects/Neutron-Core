@@ -24,4 +24,5 @@ $('document').ready(() => {
     try {document.querySelector('img[src="/resources/image/menu.svg"]').src = "/resources/image/suru_menu.png";} catch (err) {}
     try {document.querySelector('img[src="/resources/image/tools.svg"]').src = "/resources/image/suru_tools.png";} catch (err) {}
     try {document.querySelector('img[src="/resources/image/stats.png"]').src = "/resources/image/suru_stats.png";} catch (err) {}
+    try {document.querySelector('img[src="/resources/image/display.png"]').src = "/resources/image/suru_display.png";} catch (err) {}
 })
