@@ -293,6 +293,16 @@ body {
     background-size: 100%;
 }
 
+@media (min-width: 500px) {
+    #store-info {
+        display: block;
+        margin: 30px 20%;
+        border-radius: 20px;
+        box-shadow: 1px 1px 12px gray;
+        padding: 20px;
+    }
+}
+
 @media (max-width: 500px) {
     #banner {
         padding: 20px 25px;
@@ -368,4 +378,54 @@ body {
     vertical-align: middle;
     font-weight: bold;
     margin-right: 7.5px;
+}
+
+.storelist {
+    border-width: 1px;
+    border-color: gray;
+    border-style: solid;
+    margin: 0;
+}
+
+.store-info-details-sep {
+    color: lightgray;
+}
+
+.store-info-details-el {
+    border-radius: 999px;
+    padding: 20px 10px;
+    background: rgb(0, 162, 255);
+    color: white;
+}
+
+#store-info-details {
+    margin: 30px 0;
+}
+
+#store-info-summary, #store-info-permissions {
+    text-align: left;
+}
+
+#store-info-summary-title, #store-info-permissions-title {
+    color: rgb(0, 162, 255);
+    vertical-align: middle;
+}
+
+#store-info-summary-icon, #store-info-permissions-icon {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    fill: rgb(0, 162, 255);
+}
+
+#store-info-verified {
+    color: rgb(0, 162, 255);
+}
+
+#store-info-verified-icon {
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    fill: rgb(0, 162, 255);
+    margin-left: 10px;
 }
