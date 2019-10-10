@@ -429,3 +429,11 @@ body {
     fill: rgb(0, 162, 255);
     margin-left: 10px;
 }
+
+.specialperm {
+    color: rgb(180, 117, 0);
+}
+
+.criticalperm {
+    color: rgb(180, 0, 0);
+}

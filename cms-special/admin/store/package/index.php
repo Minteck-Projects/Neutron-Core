@@ -128,6 +128,86 @@ if (isset($_GET['id'])) {
                     $defined = true;
                 }
 
+                if ($permission == "FILES") {
+                    echo("<li>Accéder librement aux fichiers du serveur</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "INTERNET") {
+                    echo("<li>Accéder librement à Internet</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "EDITUI") {
+                    echo("<li>Modifier l'apparence et la position des éléments de votre site</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "ONTOP") {
+                    echo("<li>S'afficher par dessus l'interface du site</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "GETINFO") {
+                    echo("<li class=\"specialperm\">Obtenir des informations concernant les visiteurs de votre site</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "IMAGES") {
+                    echo("<li class=\"specialperm\">Afficher des médias (images, vidéos, musiques, etc...) sur certaines pages de votre site</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "SETTINGS") {
+                    echo("<li class=\"specialperm\">Modifier les paramètres de votre site</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "GETPAGES") {
+                    echo("<li>Obtenir le contenu des pages</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "CHANGEPAGES") {
+                    echo("<li>Modifier et publier le contenu des pages</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "PLUGINS") {
+                    echo("<li>Communiquer et partager des informations avec d'autres extensions</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "UPDATES") {
+                    echo("<li>Se mettre à jour automatiquement en utilisant son propre système de mise à jour</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "CMSSTORE") {
+                    echo("<li>Accéder au CMS Store, modifier les informations, et/ou mettre à jour la base de données</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "PLUGINSMGMT") {
+                    echo("<li>Installer, mettre à jour, et/ou désinstaller d'autres extensions</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "ROOT") {
+                    echo("<li class=\"criticalperm\">Accéder à des fichiers hors de votre site sur votre serveur</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "SHELL") {
+                    echo("<li class=\"criticalperm\">Exécuter des commandes sur votre serveur</li>");
+                    $defined = true;
+                }
+
+                if ($permission == "RESET") {
+                    echo("<li class=\"criticalperm\">Réinitialiser votre site sans avertissement</li>");
+                    $defined = true;
+                }
+
                 if (!$defined) {
                     echo("<li><code>" . $permission . "</code></li>");
                 }
