@@ -26,18 +26,20 @@ function isJson($string) {
         foreach ($eventlist as $event) {
             if ($pos == 4) {} else {
                 foreach ($json->events as $el) {
-                    if ($el->timestamp == $event) {
-                        (int)$currentDate = date("Ymd");
-                        // (int)$currentDate = "20191001";
-                        if ($currentDate < $el->timestamp) {
-                            $shown = $shown + 1;
-                            echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
-                            $pos = $pos + 1;
-                        }
-                        if ($currentDate == $el->timestamp) {
-                            $shown = $shown + 1;
-                            echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
-                            $pos = $pos + 1;
+                    if (isset($el->timestamp)) {
+                        if ($el->timestamp == $event) {
+                            (int)$currentDate = date("Ymd");
+                            // (int)$currentDate = "20191001";
+                            if ($currentDate < $el->timestamp) {
+                                $shown = $shown + 1;
+                                echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
+                                $pos = $pos + 1;
+                            }
+                            if ($currentDate == $el->timestamp) {
+                                $shown = $shown + 1;
+                                echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
+                                $pos = $pos + 1;
+                            }
                         }
                     }
                 }

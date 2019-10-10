@@ -100,16 +100,45 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
     ?>
     <div id="always-on-top">
         <div id="siteadmin"><span class="branding-desktop">fonctionne sur Minteck Projects CMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span><span class="branding-mobile">MPCMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg">Administration du site</a></div>
-        <div id="menubar"><span class="menubar-link" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text">Menu</span></span>
+        <div id="menubar"><span class="menubar-link menubar-mobile" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text">Menu</span></span>
+        <?php
+        
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
+            echo('<span class="menubar-link menubar-desktop" id="menubar-link-navigation" onclick="pushbar.open(\'panel-navigation\')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text">Menu</span></span>');
+        } else {
+            $count = 0;
+            echo('<a href="/" title="/" class="menulink-desktop">Accueil</a>');
+            $count = $count + 1;
+
+            $pages = scandir($_SERVER['DOCUMENT_ROOT']);
+            foreach ($pages as $page) {
+                if ($page != ".." && $page != ".") {
+                    if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
+                        if ($count < 4) {
+                            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
+                                echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
+                                $count = $count + 1;
+                            }
+                        }
+                    }
+                }
+            }
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">Galerie de photos</a>");}
+            $count = $count + 1;
+            if ($count == 6) {
+                echo("<a onclick=\"pushbar.open('panel-navigation')\" title=\"Ouvrir le menu\" class=\"menulink-desktop\">Plus...</a>");
+            }
+        }
+        
+        ?>
         <?php
 
-        $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
-        if (!empty($widgets->list)) {
-            echo("<span class=\"menubar-link\" id=\"menubar-link-tools\" onclick=\"pushbar.open('panel-sidebar')\"><img src=\"/resources/image/tools.svg\" class=\"menubar-img\"><span class=\"menubar-link-text\">Détails</span></span>");
-        }
+$widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
+if (!empty($widgets->list)) {
+    echo("<span class=\"menubar-link\" id=\"menubar-link-tools\" onclick=\"pushbar.open('panel-sidebar')\"><img src=\"/resources/image/tools.svg\" class=\"menubar-img\"><span class=\"menubar-link-text\">Détails</span></span>");
+}
 
-        ?>
-        </div>
+?></div>
     </div>
     <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php

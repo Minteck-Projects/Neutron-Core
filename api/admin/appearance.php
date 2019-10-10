@@ -16,6 +16,22 @@ if (isset($_POST['sitename'])) {
     die("Aucun nom n'a été reçu");
 }
 
+if (isset($_POST['alwaysmenu'])) {
+    (string)$am = $_POST['alwaysmenu'];
+} else {
+    die("Pas d'AlwaysMenu passé");
+}
+
+if ($am == "on") {
+    if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu", "");
+    }
+} else {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
+        unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu");
+    }
+}
+
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - API/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
 } else {

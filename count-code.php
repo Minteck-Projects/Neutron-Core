@@ -15,7 +15,7 @@ function crawl(string $dir) {
             crawl($dir . "/" . $file);
          }
       } else {
-         if (is_link($file)) {} else {
+         if (is_link($dir . "/" . $file)) {} else {
             echo("(DOC) " . $dir . "/" . $file . "\n");
             $size = $size + filesize($dir . "/" . $file);
             $found = $found + count(file($dir . "/" . $file));

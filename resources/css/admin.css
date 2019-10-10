@@ -437,3 +437,34 @@ body {
 .criticalperm {
     color: rgb(180, 0, 0);
 }
+
+#store-install {
+    background-color: rgb(0, 162, 255);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: box-shadow 200ms;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#store-install:hover {
+    box-shadow: rgb(127, 208, 255) 1px 1px 5px;
+}
+
+#store-more {
+    text-decoration: none;
+    background-color: white;
+    color: rgb(0, 162, 255);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(0, 162, 255);
+    transition: box-shadow 200ms;
+    cursor: pointer;
+}
+
+#store-more:hover {
+    box-shadow: rgb(127, 208, 255) 1px 1px 5px;
+}

@@ -264,3 +264,55 @@ body {
     border-color: black;
     width: 90%;
 }
+
+
+@media (max-width: 500px) {
+    .menubar-mobile {
+        display: initial;
+    }
+    .menulink-desktop {
+        display: none;
+    }
+    .menubar-desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 500px) {
+    .menubar-mobile {
+        display: none;
+    }
+    .menulink-desktop {
+        display: initial;
+    }
+    .menubar-desktop {
+        display: initial;
+    }
+}
+
+.menulink-desktop {
+    color: white;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.pushbar_overlay {
+    background: #2f2f2f;
+}
+
+.pushbar.opened {
+    box-shadow: 1px 1px 12px gray;
+}
+
+.menubar-link {
+    margin: -10px;
+    padding: 10px;
+}
+
+.menubar-link:hover {
+    background: #626262;
+}
+
+.menubar-link:active {
+    background: #1d1d1d;
+}

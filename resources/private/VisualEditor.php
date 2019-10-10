@@ -12,8 +12,28 @@
                 },
                 toolbar: [
                     'heading', '|', 'bold', 'italic', 'link', '|', 'mediaembed', 'blockquote', 'inserttable', '|', 'bulletedList', 'numberedList', '|', 'undo', 'redo'
-                ]
+                ],
+                typing: {
+            transformations: {
+                include: [
+                    'quotes',
+                    'typography',
+                    'symbols',
+                    'quotes',
+
+                    'arrowLeft',
+                    'arrowRight',
+
+                    { from: 'CKE', to: 'CKEditor' },
+                    {
+                        from: /(^|\s)(")([^"]*)(")$/,
+                        to: [ null, '« ', null, ' »' ]
+                    },
+                ],
+            }
+        }
             } )
+            
             .then( newEditor => {
                 editor = newEditor;
             } )
