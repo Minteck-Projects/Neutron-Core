@@ -106,3 +106,24 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled"
 }
 
 ?>
+<script src="/resources/js/right-click.js"></script>
+<link rel="stylesheet" href="/resources/css/right-click.css" />
+<div class="hide" id="rmenu">
+  <?php
+  
+  if (isset($name)) {
+      echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink">Gérer cette page</a>');
+      $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
+    if (!empty($widgets->list)) {
+        echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink">Détails</a>');
+    }
+  } else {
+    echo('<a href="/cms-special/admin/logout" class="rmenulink">Terminer la session</a>');
+    echo('<a href="/cms-special/admin/store" class="rmenulink">CMS Store</a>');
+  }
+  
+  ?>
+  <hr class="rmenusep">
+  <a href="/" class="rmenulink">Accueil</a>
+  <a href="/cms-special/admin" class="rmenulink">Administration du site</a>
+</div>
