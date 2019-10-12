@@ -15,6 +15,19 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
 $invalid = false;
 
 if (isset($_POST['password'])) {
+    // var_dump($_GET);
+    // echo("<br>");
+    // var_dump($_POST);
+    // die();
+    if (isset($_GET['pr'])) {
+        if (isset($_GET['pa'])) {
+            $callback = $_GET['pr'] . $_GET['pa'];
+        } else {
+            $callback = $_GET['pr'];
+        }
+    } else {
+        $callback = "/cms-special/admin/home";
+    }
     if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
         $token = str_ireplace("/", "-", password_hash(password_hash(rand(0, 999999) + rand(0, 999999) + rand(0, 999999) + rand(0, 999999) + rand(0, 999999), PASSWORD_BCRYPT, ['cost' => 12,]), PASSWORD_BCRYPT, ['cost' => 12,]));
         if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens")) {
@@ -22,7 +35,7 @@ if (isset($_POST['password'])) {
         }
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
         header("Set-Cookie: ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-        die("<script>location.href = '/cms-special/admin/home';</script>");
+        die("<script>location.href = '" . $callback . "';</script>");
         return;
     } else {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey")) {
@@ -33,7 +46,7 @@ if (isset($_POST['password'])) {
                 }
                 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
                 header("Set-Cookie: ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-                die("<script>location.href = '/cms-special/admin/home';</script>");
+                die("<script>location.href = ''" . $callback . "';</script>");
                 return;
             } else {
                 $invalid = true;
@@ -46,7 +59,16 @@ if (isset($_POST['password'])) {
 
 if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
-        die("<script>location.href = '/cms-special/admin/home';</script>");
+        if (isset($_GET['pr'])) {
+            if (isset($_GET['pa'])) {
+                $callback = $_GET['pr'] . $_GET['pa'];
+            } else {
+                $callback = $_GET['pr'];
+            }
+        } else {
+            $callback = "/cms-special/admin/home";
+        }
+        die("<script>location.href = '" . $callback . "';</script>");
     }
 }
 
@@ -93,7 +115,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <span class="intro"><img src="/resources/image/admin_appearance.png" class="blk1 intro-element"> - <img src="/resources/image/admin_housekeeping.png" class="blk2 intro-element"> - <img src="/resources/image/admin_pages.png" class="blk3 intro-element"> - <img src="/resources/image/admin_updates.png" class="blk4 intro-element"> - <img src="/resources/image/admin_plugins.png" class="blk5 intro-element"></span>
         <h2>Administration du site</h2>
         <?php if ($invalid) {echo('<div id="error">Le mot de passe est incorrect</div>');} ?>
-        <form action="." method="post">
+        <form action="./<?php if (isset($_GET['pr'])) {echo("?pr=" . $_GET['pr']);if (isset($_GET['pa'])) {echo("&pa=" . urlencode($_GET['pa']));}} ?>" method="post">
             <input name="password" type="password" placeholder="Mot de passe"><br><br>
             <input type="submit" class="button" href="/" value="Connexion">
         </form><br>

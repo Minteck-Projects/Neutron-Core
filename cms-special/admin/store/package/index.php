@@ -40,9 +40,15 @@ if (isset($_GET['id'])) {
     $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));
     foreach ($db as $package) {
         if (array_search($package, (array)$db) == $_GET['id']) {
+            $pf = $package;
             $name = $package->name;
             $foundone = true;
         }
+    }
+    if ($foundone) {
+        $package = $pf;
+    } else {
+        $package = null;
     }
     if (!$foundone) {
         die("<script>location.href = '/cms-special/admin/store';</script>");
@@ -176,11 +182,6 @@ if (isset($_GET['id'])) {
 
                 if ($permission == "CHANGEPAGES") {
                     echo("<li>Modifier et publier le contenu des pages</li>");
-                    $defined = true;
-                }
-
-                if ($permission == "PLUGINS") {
-                    echo("<li>Communiquer et partager des informations avec d'autres extensions</li>");
                     $defined = true;
                 }
 

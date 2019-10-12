@@ -25,9 +25,15 @@ if (isset($_GET['id'])) {
     $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));
     foreach ($db as $package) {
         if (array_search($package, (array)$db) == $_GET['id']) {
+            $pf = $package;
             $name = $package->name;
             $foundone = true;
         }
+    }
+    if ($foundone) {
+        $package = $pf;
+    } else {
+        $package = null;
     }
     if (!$foundone) {
         die("Paquet inconnu");
@@ -44,7 +50,12 @@ try {
     unlink($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/description");
     unlink($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/author");
     unlink($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/source.php");
-    unlink($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/cms-store");
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/cms-store")) {
+        unlink($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/cms-store");
+    }
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/config")) {
+        unlink($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/config");
+    }
     try {
         rmdir($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db));
     } catch (Warning $err) {

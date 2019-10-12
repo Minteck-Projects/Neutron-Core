@@ -6,10 +6,10 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin'</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/home&pa='</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin'</script>");
+    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/home&pa='</script>");
 }
 
 function getAvgLuminance($filename, $num_samples=30) {

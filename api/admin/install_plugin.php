@@ -25,9 +25,15 @@ if (isset($_GET['id'])) {
     $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));
     foreach ($db as $package) {
         if (array_search($package, (array)$db) == $_GET['id']) {
+            $pf = $package;
             $name = $package->name;
             $foundone = true;
         }
+    }
+    if ($foundone) {
+        $package = $pf;
+    } else {
+        $package = null;
     }
     if (!$foundone) {
         die("Paquet inconnu");
@@ -53,6 +59,9 @@ try {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/author", $package->author);
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/source.php", $source);
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/cms-store", "0");
+    if (isset($package->config)) {
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db) . "/config", $package->config);
+    }
     die("ok");
 } catch (Warning $err) {
     die("Une erreur s'est produite lors de l'installation sur le disque de l'extension");

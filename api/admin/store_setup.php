@@ -28,7 +28,7 @@ mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store");
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/sources.list", "https gitlab.com/minteck-projects/mpcms/plugins/raw/master");
 try {
     $packages = file_get_contents("https://gitlab.com/minteck-projects/mpcms/plugins/raw/master/LIST.mpd");
-    $packageslist = explode('\n', $packages);
+    $packageslist = explode("\n", $packages);
     $packagesjson = new stdClass();
     foreach ($packageslist as $package) {
         $packagesjson->$package = new stdClass();

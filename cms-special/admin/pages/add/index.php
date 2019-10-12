@@ -6,10 +6,10 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin'</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/add&pa='</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin'</script>");
+    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/add&pa='</script>");
 }
 
 if (isset($_POST['password'])) {

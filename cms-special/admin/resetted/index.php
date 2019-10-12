@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/translations/fr.js"></script>
-    <title>Réinitilisation du site - MPCMS</title>
+    <title>Réinitialisation du site - MPCMS</title>
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
 </head>
 <body>
