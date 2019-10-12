@@ -112,18 +112,18 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled"
   <?php
   
   if (isset($name)) {
-      echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink">Gérer cette page</a>');
+      echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink"><img src="/resources/image/rightclick_page.svg" class="rmenuimg"> &nbsp; Gérer cette page</a>');
       $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
     if (!empty($widgets->list)) {
-        echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink">Détails</a>');
+        echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink"><img src="/resources/image/rightclick_details.svg" class="rmenuimg"> &nbsp; Détails</a>');
     }
   } else {
-    echo('<a href="/cms-special/admin/logout" class="rmenulink">Terminer la session</a>');
-    echo('<a href="/cms-special/admin/store" class="rmenulink">CMS Store</a>');
+    echo('<a href="/cms-special/admin/logout" class="rmenulink"><img src="/resources/image/rightclick_exit.svg" class="rmenuimg"> &nbsp; Terminer la session</a>');
+    echo('<a href="/cms-special/admin/store" class="rmenulink"><img src="/resources/image/rightclick_store.svg" class="rmenuimg"> &nbsp; CMS Store</a>');
   }
   
   ?>
   <hr class="rmenusep">
-  <a href="/" class="rmenulink">Accueil</a>
-  <a href="/cms-special/admin" class="rmenulink">Administration du site</a>
+  <a href="/" class="rmenulink"><img src="/resources/image/rightclick_home.svg" class="rmenuimg"> &nbsp; Accueil</a>
+  <a href="/cms-special/admin" class="rmenulink"><img src="/resources/image/rightclick_admin.svg" class="rmenuimg"> &nbsp; Administration du site</a>
 </div>

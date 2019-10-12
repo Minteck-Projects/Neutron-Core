@@ -39,3 +39,9 @@
     border-width: 1px;
     border-bottom-style: none;
 }
+
+.rmenuimg {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}

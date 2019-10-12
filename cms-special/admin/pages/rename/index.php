@@ -6,15 +6,15 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
-        if (file_exists($_GET['slug'])) {
-            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/rename&pa=?slug=" . $_GET['slug'] . "'</script>");
+        if (isset($_GET['slug'])) {
+            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/rename/&pa=?slug=" . $_GET['slug'] . "'</script>");
         } else {
             die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/rename&pa='</script>");
         }
     }
 } else {
-    if (file_exists($_GET['slug'])) {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/rename&pa=?slug=" . $_GET['slug'] . "'</script>");
+    if (isset($_GET['slug'])) {
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/rename/&pa=?slug=" . $_GET['slug'] . "'</script>");
     } else {
         die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/pages/rename&pa='</script>");
     }

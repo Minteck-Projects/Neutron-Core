@@ -6,10 +6,18 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin'</script>");
+        if (isset($_GET['id'])) {
+            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/install/&pa=?id=" . $_GET['id'] . "'</script>");
+        } else {
+            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/install&pa='</script>");
+        }
     }
 } else {
-    die("<script>location.href = '/cms-special/admin'</script>");
+    if (isset($_GET['id'])) {
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/install/&pa=?id=" . $_GET['id'] . "'</script>");
+    } else {
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/install&pa='</script>");
+    }
 }
 
 if (isset($_POST['password'])) {
