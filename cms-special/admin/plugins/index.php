@@ -73,7 +73,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         $widgets = scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets/");
         $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
         foreach ($widgets as $widget) {
-            if ($widget != "." && $widget != "..") {
+            if ($widget != "." && $widget != ".." && $widget != ".htaccess") {
                 echo("<div class=\"widget\"><div id=\"header-{$widget}\" class=\"widget-header ");
                 if (array_search($widget, $json->list) === false) {
                     echo("disabled");

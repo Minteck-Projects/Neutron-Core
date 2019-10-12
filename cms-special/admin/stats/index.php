@@ -78,6 +78,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <script>
       let chartConfig = {
   type: 'pie',
+  backgroundColor: 'transparent',
   plot: {
     tooltip: {
       text: '%npv%',

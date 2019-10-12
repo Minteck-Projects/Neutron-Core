@@ -96,3 +96,7 @@ body {
 html {
     min-height: 100%;
 }
+
+#visits {
+    z-index: 9999;
+}
