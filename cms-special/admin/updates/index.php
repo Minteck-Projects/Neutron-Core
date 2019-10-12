@@ -27,8 +27,8 @@ function getData(string $dir, $ignoreUploadDir = false) {
     global $size;
     $dircontent = scandir($dir);
     foreach ($dircontent as $direl) {
-        if (($ignoreUploadDir && ($direl == "/upload" || $dir . "/" . $direl == $_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) || $direl == ".git") {} else {
-            if ($direl == "." || $direl == "..") {} else {
+        if ($ignoreUploadDir && ($direl == "/upload" || $dir . "/" . $direl == $_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) {} else {
+            if ($direl == "." || $direl == ".." || $direl == ".git") {} else {
                 if (is_link($dir . "/" . $direl)) {} else {
                     if (is_dir($dir . "/" . $direl)) {
                         getData($dir . "/" . $direl);
@@ -81,7 +81,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 </head>
 <body>
     <div id="settings">
-    <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg")) {$banner = "/resources/upload/banner.jpg";if (getAvgLuminance($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg") > 50) {$blackBannerText = true;} else {$blackBannerText = false;}} else {$banner = "/resources/image/default.jpg";if (getAvgLuminance($_SERVER['DOCUMENT_ROOT'] . "/resources/image/default.jpg") > 50) {$blackBannerText = true;} else {$blackBannerText = false;}}function getAvgLuminance($filename, $num_samples=30) {$img = imagecreatefromjpeg($filename);$width = imagesx($img);$height = imagesy($img);$x_step = intval($width/$num_samples);$y_step = intval($height/$num_samples);$total_lum = 0;$sample_no = 1;for ($x=0; $x<$width; $x+=$x_step) {for ($y=0; $y<$height; $y+=$y_step) {$rgb = imagecolorat($img, $x, $y);$r = ($rgb >> 16) & 0xFF;$g = ($rgb >> 8) & 0xFF;$b = $rgb & 0xFF;$lum = ($r+$r+$b+$g+$g+$g)/6;$total_lum += $lum;$sample_no++;}}$avg_lum  = $total_lum / $sample_no;return ($avg_lum / 255) * 100;}getData($_SERVER['DOCUMENT_ROOT']);$sizestr = $size . " octets";if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " Gio";} else {$sizestr = round($size / 1048576, 2) . " Mio";}} else {$sizestr = round($size / 1024, 2) . " Kio";}} else {$sizestr = $size . " octets";}$sizestr = str_replace(".", ",", $sizestr); ?>
+    <?php $banner = "/resources/image/codename.jpg";if (getAvgLuminance($_SERVER['DOCUMENT_ROOT'] . "/resources/image/codename.jpg") > 50) {$blackBannerText = true;} else {$blackBannerText = false;}function getAvgLuminance($filename, $num_samples=30) {$img = imagecreatefromjpeg($filename);$width = imagesx($img);$height = imagesy($img);$x_step = intval($width/$num_samples);$y_step = intval($height/$num_samples);$total_lum = 0;$sample_no = 1;for ($x=0; $x<$width; $x+=$x_step) {for ($y=0; $y<$height; $y+=$y_step) {$rgb = imagecolorat($img, $x, $y);$r = ($rgb >> 16) & 0xFF;$g = ($rgb >> 8) & 0xFF;$b = $rgb & 0xFF;$lum = ($r+$r+$b+$g+$g+$g)/6;$total_lum += $lum;$sample_no++;}}$avg_lum  = $total_lum / $sample_no;return ($avg_lum / 255) * 100;}getData($_SERVER['DOCUMENT_ROOT']);$sizestr = $size . " octets";if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " Gio";} else {$sizestr = round($size / 1048576, 2) . " Mio";}} else {$sizestr = round($size / 1024, 2) . " Kio";}} else {$sizestr = $size . " octets";}$sizestr = str_replace(".", ",", $sizestr); ?>
     <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
     </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/housekeeping" class="sblink">Mise à jour et sécurité</a></div>
@@ -104,7 +104,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         }
 
         ?>
-    </div>
     <h3>Statistiques</h3>
     <ul><li>
     <?php
@@ -120,6 +119,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     }
     echo("</li>");
 
+    $size = 0;
     getData($_SERVER['DOCUMENT_ROOT']);
     $sizestr = $size . " octets";
     if ($size > 1024) {
@@ -210,7 +210,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <h5><span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#e6d450;position:relative;width:15px;height:15px;display:inline-block;"></span>Pages, configuration et calendrier</h5>
     Fichiers spécifiques à votre site contenant les informations de ce dernier (les widgets activés, le calendrier, les différentes pages, etc...). Ces fichiers ne sont pas critiques pour le bon fonctionnement de Minteck Projects CMS, mais requis pour le bon fonctionnement de votre site. Vous pouvez les supprimer via l'option de <a href="/cms-special/admin/housekeeping/reset" class="sblink" title="Lien vers : Administration > Maintenance > Réinitiliser">Réinitialisation</a> du site.
     <h5><span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#cf82bf;position:relative;width:15px;height:15px;display:inline-block;"></span>Galerie de photos et ressources</h5>
-    Fichiers requis pour l'interface graphique de Minteck Projects CMS et pour la galerie de photos. Ces fichiers incluent notament les différentes polices de caractères, les définitions de l'apparance, les îcones, les librairies utilisées, le code de l'éditeur, la licence, et les définitions de code partagé. Les images utilisateur (dans le dossier <code>/resources/upload</code>) sont des images que vous avez vous-même importé sur votre site (logo du site, bannière, photos de la galerie de photos)
+    Fichiers requis pour l'interface graphique de Minteck Projects CMS et pour la galerie de photos. Ces fichiers incluent notamment les différentes polices de caractères, les définitions de l'apparance, les îcones, les librairies utilisées, le code de l'éditeur, la licence, et les définitions de code partagé. Les images utilisateur (dans le dossier <code>/resources/upload</code>) sont des images que vous avez vous-même importé sur votre site (logo du site, bannière, photos de la galerie de photos)
     <h5><span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:gray;position:relative;width:15px;height:15px;display:inline-block;"></span>Autre</h5>
     Fichiers non classés par Minteck Projects CMS qui peuvent être plus ou moins critiques. Si vous avez l'intention de supprimer l'un d'entre eux, préférez contacter les développeurs avant toute manipulation.
     <h3>Changements</h3>

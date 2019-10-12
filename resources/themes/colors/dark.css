@@ -35,8 +35,8 @@ button:not(.ck-disabled):hover {
 }
 
 .sblink, .sblink:hover {
-    color: white;
-    text-decoration-color: white;
+    color: white !important;
+    text-decoration-color: white !important;
 }
 
 .setting {
