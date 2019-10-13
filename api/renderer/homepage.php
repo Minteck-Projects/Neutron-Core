@@ -119,8 +119,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                     if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
                         if ($count < 4) {
                             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
-                                echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
-                                $count = $count + 1;
+                                if (!in_array($page, $customSettings->PagesMasquées)) {
+                                    echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
+                                    $count = $count + 1;
+                                }
                             }
                         }
                     }
@@ -170,7 +172,9 @@ if (!empty($widgets->list)) {
             if ($page != ".." && $page != ".") {
                 if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
                     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
-                        echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menu-link\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
+                        if (!in_array($page, $customSettings->PagesMasquées)) {
+                            echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menu-link\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
+                        }
                     }
                 }
             }
@@ -184,6 +188,15 @@ if (!empty($widgets->list)) {
         <span id="sidebar-title">Détails du site</span>
         <span id="sidebar-separator"></span>
         <span id="sidebar-widgets">
+            <?php
+
+            if (isset($_COOKIE['ADMIN_TOKEN'])) {
+                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+                    echo('<p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Vous êtes encore connecté à l\'administration de votre site, cliquez <a href="/cms-special/admin/logout" style="color:inherit;text-decoration:none;">ici</a> pour vous déconnecter</p></td></tr></tbody></table></p>');
+                }
+            }
+
+            ?>
             <?php
                 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
                 foreach ($config->list as $widget) {

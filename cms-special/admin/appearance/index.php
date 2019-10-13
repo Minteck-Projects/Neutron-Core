@@ -83,14 +83,14 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <span id="footer-error-box" class="hide"><div id="error"><span id="footer-error">Erreur inconnue</span></div></span>
         <div id="footer-settings"><center>
         <center>Ce pied de page s'affiche sur toutes les pages de votre site</center>
-            <div name="content" id="editor">
+            <div name="content" id="fedit">
                 <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer") ?>
             </div><br>
             <a onclick="updateFooter()" class="button">Publier</a>
             <script>
         let editor;
         BalloonEditor
-            .create( document.querySelector( '#editor' ), {
+            .create( document.querySelector( '#fedit' ), {
                 language: {
                     ui: 'fr',
                     content: 'fr'
@@ -105,8 +105,9 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             .catch( error => {
                 console.error( error );
             } );
-    </script>
-        </center></div>
+    </script></center>
+    <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Ce que vous voyez n'est pas forcément à ce que vous aurez.</p><p>Le pied de page peut apparaître différement sur votre site final, selon votre configuration et votre navigateur. Le formattage de base apparaîtra tout de même exactement comme ci-dessus sur votre site.</p></td></tr></tbody></table></p>
+        </div>
         <center><div id="footer-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></center>
         <h2>Modifier le mot de passe</h2>
         <span id="password-error-box" class="hide"><div id="error"><span id="password-error">Erreur inconnue</span></div></span>

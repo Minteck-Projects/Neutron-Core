@@ -21,6 +21,11 @@ if (isset($_POST['password'])) {
     }
 }
 
+function isJson($string) {
+    json_decode($string);
+    return (json_last_error() == JSON_ERROR_NONE);
+}
+
 ?>
 
 <?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
@@ -70,11 +75,15 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
             echo("<br><br><center><img src=\"/resources/image/storeloader.svg\" width=\"48px\" height=\"48px\" style=\"filter:brightness(50%);\"><br><span id=\"loadmsg\">Construction de la base de données...</span></center><br><br>");
         } else {
-            echo("<p><a href=\"/cms-special/admin/store/dbupdate\" class=\"sblink\">Regénérer la base de données</a></p><p>Cliquez sur le nom d'une extension pour en savoir plus, l'installer/la désinstaller/la mettre à jour, voir les permissions, et plus</p><table cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;border-collapse: separate;border-spacing: 0px;\"><tbody style=\"width:100%;\"><tr><td class=\"storelist\"><center><b>Paquet</b></center></td><td class=\"storelist\"><center><b>Nom</b></center></td><td class=\"storelist\"><center><b>Développeur</b></center></td><td class=\"storelist\"><center><b>Langage de programmation</b></center></td></tr>");
-            $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));
-            foreach ($db as $package) {
-                $packagename = array_search($package, (array)$db);
-                echo("<tr><td class=\"storelist\"><center><code>" . $packagename . "</code></center></td><td class=\"storelist\"><center><a class=\"sblink\" href=\"/cms-special/admin/store/package/?id=" . $packagename . "\">" . $package->name . "</a></center></td><td class=\"storelist\"><center>" . $package->author . "</center></td><td class=\"storelist\"><center>" . $package->language . "</center></td></tr>");
+            if (isJson(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"))) {
+                echo("<p><a href=\"/cms-special/admin/store/dbupdate\" class=\"sblink\">Regénérer la base de données</a></p><p>Cliquez sur le nom d'une extension pour en savoir plus, l'installer/la désinstaller/la mettre à jour, voir les permissions, et plus</p><table cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;border-collapse: separate;border-spacing: 0px;\"><tbody style=\"width:100%;\"><tr><td class=\"storelist\"><center><b>Paquet</b></center></td><td class=\"storelist\"><center><b>Nom</b></center></td><td class=\"storelist\"><center><b>Développeur</b></center></td><td class=\"storelist\"><center><b>Langage de programmation</b></center></td></tr>");
+                $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));
+                foreach ($db as $package) {
+                    $packagename = array_search($package, (array)$db);
+                    echo("<tr><td class=\"storelist\"><center><code>" . $packagename . "</code></center></td><td class=\"storelist\"><center><a class=\"sblink\" href=\"/cms-special/admin/store/package/?id=" . $packagename . "\">" . $package->name . "</a></center></td><td class=\"storelist\"><center>" . $package->author . "</center></td><td class=\"storelist\"><center>" . $package->language . "</center></td></tr>");
+                }
+            } else {
+                echo('<p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>La base de données des paquets du CMS Store est corrompue, vous devez donc <a href="/cms-special/admin/store/dbupdate" class="sblink">la regénérer en cliquant ici</a>, auquel cas elle n\'est pas exploitable par Minteck Projects CMS.</p><p>Cette corruption peut se produire si vous tentez de mettre à jour la base de données lorsque le serveur n\'a pas accès à Internet, ou que vous la modifiez vous-même.</p></td></tr></tbody></table></p>');
             }
             echo("</tbody></table>");
         }

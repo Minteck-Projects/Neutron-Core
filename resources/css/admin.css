@@ -468,3 +468,77 @@ body {
 #store-more:hover {
     box-shadow: rgb(127, 208, 255) 1px 1px 5px;
 }
+
+#editor *, .ace_editor * {
+    font: 11px/normal 'Console' ,'Cousine' ,'Monaco' ,'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace !important;
+    direction: ltr !important;
+    text-align: left !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0px !important;
+}
+
+.ace_editor, .ace_text-input, .ace_editor div {
+    font-size: 11px !important;
+    font: 11px/normal 'Georgia' ,'Console' ,'Cousine' ,'Monaco' ,'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace !important;
+    font-variant-ligatures: none !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0px !important;
+}
+
+#editor {
+    height: 200px;
+    border: #cacaca solid 1px;
+}
+
+html {
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.message_img {
+    width: 36px;
+    height: 36px;
+}
+
+.message_warning {
+    background: rgba(255, 255, 116, 0.31);
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    z-index: -2;
+    color: white;
+}
+
+.message_info {
+    background: rgba(116, 227, 255, 0.31);
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    z-index: -2;
+    color: white;
+}
+
+.message_error {
+    background: rgba(255, 117, 117, 0.31);
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    z-index: -2;
+    color: white;
+}
+
+.message_warning > tbody > tr > td {
+    width: 36px;
+}
+
+.indication {
+    cursor: help;
+    text-decoration-style: dotted;
+    text-decoration-color: inherit;
+    text-decoration-line: underline;
+}

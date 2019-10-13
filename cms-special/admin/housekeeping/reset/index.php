@@ -73,6 +73,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         </div>
         <div id="page-select" class="hide">
             Sélectionnez comment nous devons réinitialiser votre site :
+            <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>Cette action est irréversible et les données supprimées ou modifiées le seront irrémédiablement</p></td></tr></tbody></table></p>
             <div class="reset-option" onclick="resetKeep()">
                 <b>Conserver le contenu</b>
                 <p>Réinitialise la configuration de votre site et conserve le contenu que vous y avez inséré. Utile si vous rencontrez des problèmes avec votre site ou que vous avez besoin d'espace disque suplémentaire.</p>

@@ -41,7 +41,7 @@
     <div class="fullbox hide" id="welcome">
         <div class="fbheader">Associez cet affichage connecté à votre smartphone</div>
         <p>Utilisez l'application Android MPCMS Display pour contrôler à distance cet affichage connecté, et entrez-y ce texte dans le champ "Adresse du serveur" :</p>
-        <h3><center><?= $_SERVER['SERVER_ADDR'] ?>:<?= $_SERVER['SERVER_PORT'] ?></center></h3>
+        <h3><center><?= $_SERVER['HTTP_HOST'] ?></center></h3>
         <p>Si votre site Web est protégé par un mot de passe, entrez vos identifiants dans les champs correspondants. Si il n'est pas protégé par un mot de passe, laissez les vide.</p>
     </div>
     <div class="fullbox hide" id="code">
@@ -60,7 +60,7 @@
             <tbody>
                 <tr>
                     <td><img src="/resources/image/display.svg" id="icon"></td>
-                    <td><span id="info-text"><?= $_SERVER['SERVER_ADDR'] ?>:<?= $_SERVER['SERVER_PORT'] ?><br><small><?= $code ?></small></span></td>
+                    <td><span id="info-text"><?= $_SERVER['HTTP_HOST'] ?><br><small><?= $code ?></small></span></td>
                 </tr>
             </tbody>
         </table>

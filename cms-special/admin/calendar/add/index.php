@@ -144,6 +144,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                 <li>Description :</li>
                 <input type="text" placeholder="Description" id="desc">
             </ul>
+            <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>La description de l'événement s'affichera entièrement sur le widget "Prochains événements", nous vous conseillons donc de ne pas écrire une description trop longue</p></td></tr></tbody></table></p>
             <center><p><a class="button" onclick="createCmsEvent()">Ajouter l'événement</a></p></center><br>
         </div>
     </div>

@@ -26,14 +26,6 @@ button:not(.ck-disabled):hover {
     background: #595959 !important;
 }
 
-#ck-editor__aria-label_e685acd16cec842aa1aac77989d51f892 {
-    color: white;
-}
-
-.ck.ck-icon.ck-dropdown__arrow, .ck.ck-icon.ck-button__icon {
-    filter: invert(100%) brightness(200%);
-}
-
 .sblink, .sblink:hover {
     color: white !important;
     text-decoration-color: white !important;
@@ -99,4 +91,37 @@ html {
 
 #visits {
     z-index: 9999;
+}
+
+.rmenulink:hover {
+    background-color: rgb(42, 42, 42) !important;
+}
+
+.rmenulink:active {
+    background-color: rgb(27, 27, 27) !important;
+}
+
+.rmenulink {
+    color: white !important;
+}
+
+.rmenuimg {
+    filter: invert(100%);
+}
+
+.show {
+    background: #3b3b3b !important;
+}
+
+#logs {
+    background: #131313;
+    border-color: #000;
+}
+
+[id^=ck-editor__aria-label], .ck.ck-button__label, .ck-button__label, .ck.ck-button {
+    color: white;
+}
+
+.message_img {
+    filter: invert(75%) brightness(175%);
 }

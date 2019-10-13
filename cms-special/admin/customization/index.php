@@ -66,11 +66,13 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
     </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/customization" class="sblink">Personnalisation</a></div>
         <h2>Personnalisez l'apparance de votre site</h2>
-        <blockquote>Les modifications apportées ne s'appliqueront qu'après le <a onclick="location.reload()" class="sblink" title="Recharger la page">rechargement de la page</a>.</blockquote>
+        <!-- <blockquote>Les modifications apportées ne s'appliqueront qu'après le <a onclick="location.reload()" class="sblink" title="Recharger la page">rechargement de la page</a>.</blockquote> -->
+        <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Les modifications apportées ne s'appliqueront qu'après le <a onclick="location.reload()" class="sblink" title="Recharger la page">rechargement de la page</a>.</p><p>Si les changements ne s'appliquent pas, essayez de purger le cache (<b><a title="Contrôle" class="indication">⌃</a>+<a title="Majuscule" class="indication">⇧</a>+R</b> sur Windows ou Linux, ou <b><a title="Commande, Super" class="indication">⌘</a>+<a title="Majuscule" class="indication">⇧</a>+R</b> sur Mac)</p></td></tr></tbody></table></p>
         <h3>Pack d'îcones</h3>
         <select id="icons" onchange="updateIcons()">
             <option value="default" <?php if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {echo("selected");} ?>>Minteck Projects CMS</option>
             <option value="suru" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {echo("selected");} ?>>Suru</option>
+            <option value="classic" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled")) {echo("selected");} ?>>Classique</option>
         </select>
         <h3>Police de caractères</h3>
         <select id="font" onchange="updateFont()">

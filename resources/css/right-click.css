@@ -4,12 +4,13 @@
 
 .show {
     z-index: 1000;
-    position: absolute;
+    position: fixed;
     background-color: #C0C0C0;
     border: 1px solid #5b5b5b;
     padding: 5px 0;
     display: block;
     box-shadow: 1px 1px 12px #5b5b5b;
+    border-radius: 10px;
 }
 
 .rmenulink {

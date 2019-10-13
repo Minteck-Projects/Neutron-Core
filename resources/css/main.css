@@ -316,3 +316,27 @@ body {
 .menubar-link:active {
     background: #1d1d1d;
 }
+
+.message_img {
+    width: 36px;
+    height: 36px;
+    z-index: -1;
+}
+
+.message_info {
+    background: rgba(116, 227, 255, 0.31);
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    z-index: -2;
+    color: white;
+}
+
+.message_error {
+    background: rgba(255, 117, 117, 0.31);
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    z-index: -2;
+    color: white;
+}

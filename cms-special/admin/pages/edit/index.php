@@ -104,6 +104,7 @@ if ($currentSlug == "index") {
                     require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/VisualEditor.php";
                 }
                 if ($type == "1") {
+                    echo('<p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>L\'éditeur HTML est réservé à des utilisateurs expérimentés souhaitant plus de libérté de personnalisation</p><p>Pour l\'utiliser correctement, vous devez avoir des compétences en développement Web. Sinon, nous vous conseillons plutôt d\'utiliser l\'éditeur visuel</p></td></tr></tbody></table></p>');
                     require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor.php";
                 }
 
@@ -167,7 +168,7 @@ function updatePageHTML() {
     document.getElementById('editing').classList.add('hide')
     var formData = new FormData();
     formData.append("title", page);
-    formData.append("content", document.getElementById('codeeditor').value);
+    formData.append("content", ace.edit("editor").getValue());
     $.ajax({
         type: "POST",
         dataType: 'html',

@@ -22,7 +22,7 @@ if (isset($_POST['alwaysmenu'])) {
     die("Pas d'AlwaysMenu passé");
 }
 
-if ($am == "on") {
+if ($am == "true") {
     if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu", "");
     }

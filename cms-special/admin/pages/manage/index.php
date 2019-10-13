@@ -93,6 +93,13 @@ if ($currentSlug == "index") {
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
     </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/pages" class="sblink">Pages</a> &gt; <a href="/cms-special/admin/pages/manage/?slug=<?= $currentSlug ?>" class="sblink"><?= $currentName ?></a></div>
         <h2><?= $currentName ?></h2>
+        <?php
+            
+            if ($currentSlug == "index") {
+                echo('<p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Il s\'agit d\'une page fournie avec Minteck Projects CMS, et de la page d\'accueil de votre site. Pour des raisons de logique, vous ne pouvez pas la renommer ni la supprimer.</p><p>Si vous souhaitez la masquer du menu, ajouter <code>"index"</code> à la liste <code>PagesMasquées</code> dans les paramètres avancés de votre site.</p></td></tr></tbody></table></p>');
+            }
+            
+            ?>
         Actions disponibles pour cette page :
         <ul>
             <li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=<?= $currentSlug ?>" title="Modifier le contenu de la page sélectionnée">Modifier</a></li>

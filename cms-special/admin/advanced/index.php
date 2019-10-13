@@ -66,27 +66,58 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <?php $banner = "/resources/image/codename.jpg";if (getAvgLuminance($_SERVER['DOCUMENT_ROOT'] . "/resources/image/codename.jpg") > 50) {$blackBannerText = true;} else {$blackBannerText = false;}function getAvgLuminance($filename, $num_samples=30) {$img = imagecreatefromjpeg($filename);$width = imagesx($img);$height = imagesy($img);$x_step = intval($width/$num_samples);$y_step = intval($height/$num_samples);$total_lum = 0;$sample_no = 1;for ($x=0; $x<$width; $x+=$x_step) {for ($y=0; $y<$height; $y+=$y_step) {$rgb = imagecolorat($img, $x, $y);$r = ($rgb >> 16) & 0xFF;$g = ($rgb >> 8) & 0xFF;$b = $rgb & 0xFF;$lum = ($r+$r+$b+$g+$g+$g)/6;$total_lum += $lum;$sample_no++;}}$avg_lum  = $total_lum / $sample_no;return ($avg_lum / 255) * 100;}function getData(string $dir, $ignoreUploadDir = false) {global $size;$dircontent = scandir($dir);foreach ($dircontent as $direl) {if (($ignoreUploadDir && ($direl == "/upload" || $dir . "/" . $direl == $_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) || $direl == ".git") {} else {if ($direl == "." || $direl == "..") {} else {if (is_link($dir . "/" . $direl)) {} else {if (is_dir($dir . "/" . $direl)) {getData($dir . "/" . $direl);} else {$size = $size + filesize($dir . "/" . $direl);}}}}}}getData($_SERVER['DOCUMENT_ROOT']);$sizestr = $size . " octets";if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " Gio";} else {$sizestr = round($size / 1048576, 2) . " Mio";}} else {$sizestr = round($size / 1024, 2) . " Kio";}} else {$sizestr = $size . " octets";}$sizestr = str_replace(".", ",", $sizestr); ?>
     <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
-    </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/pages" class="sblink">Pages</a> &gt; <a href="/cms-special/admin/pages/add" class="sblink">Créer</a></div>
-        <h2>Créer une page</h2>
-            <p>
-                <form name="settings">
-                    <center><input id="name" type="text" placeholder="Nom de la page"></center><br>
-                    <input type="radio" id="type-visual" value="visual" onchange="switchEditor()" name="type" checked>
-                    <label for="type-visual">Classique</label><br>
-                    <input type="radio" id="type" onchange="switchEditor()" value="html" name="type">
-                    <label for="type-html">HTML <i>(avancé)</i></label>
-                </form>
-            </p>
-            <div id="editing">Ajouter du contenu à votre page :<div id="editor-visual">
-                <?php
-                require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/VisualEditor$2.php";
-                ?></div>
-                <div id="editor-html" class="hide">
-                    <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>L'éditeur HTML est réservé à des utilisateurs expérimentés souhaitant plus de libérté de personnalisation</p><p>Pour l'utiliser correctement, vous devez avoir des compétences en développement Web. Sinon, nous vous conseillons plutôt d'utiliser l'éditeur visuel</p></td></tr></tbody></table></p>
-                    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor$2.php" ?>
-                </div>
-            </div>
+    </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/advanced" class="sblink">Paramètres avancés</a></div>
+    <h2>Modification des paramètres avancés <i>(JSON)</i></h2>
+    <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>Modifiez ces paramètres avec les plus grandes précautions, car toute modification erronée peut empêcher votre site de fonctionner.</p><p>Si votre site ne fonctionne plus après une modification, demandez à votre administrateur système de supprimer le fichier <code>/data/webcontent/customSettings.json</code>. Le logiciel se chargera de regénérer un nouveau fichier de paramètres avancés sans erreurs.</p></td></tr></tbody></table></p>
+    <div id="editing">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor$3.php" ?>
+    </div>
     <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
+    <p><h3>Description des paramètres</h3></p>
+    <p><table style="width:100%;border-collapse: separate;border-spacing: 0px;" cellspacing="0" cellpadding="0"><tbody style="width:100%;">
+        <tr>
+            <td class="storelist"><center><b>Paramètre</b></center></td>
+            <td class="storelist"><center><b>Type de valeur</b></center></td>
+            <td class="storelist"><center><b>Valeur initiale</b></center></td>
+            <td class="storelist"><center><b>Description</b></center></td>
+        </tr>
+        <tr>
+            <td class="storelist"><center><code>RessourcesPersonnalisées</code></center></td>
+            <td class="storelist"><center>Objet (<code>object</code>)</center></td>
+            <td class="storelist"><center><code>{"CSS": "","JS": ""}</code></center></td>
+            <td class="storelist"><center>Ressources externes importées sur toutes les pages de votre site</center></td>
+        </tr>
+        <tr>
+            <td class="storelist"><center><code>RessourcesPersonnalisées/CSS</code></center></td>
+            <td class="storelist"><center>Texte (<code>string</code>)</center></td>
+            <td class="storelist"><center><code>""</code></center></td>
+            <td class="storelist"><center>Feuille de style globale importée sur toutes les pages de votre site</center></td>
+        </tr>
+        <tr>
+            <td class="storelist"><center><code>RessourcesPersonnalisées/JS</code></center></td>
+            <td class="storelist"><center>Texte (<code>string</code>)</center></td>
+            <td class="storelist"><center><code>""</code></center></td>
+            <td class="storelist"><center>Script JavaScript (compatible ECMAScript) importé sur toutes les pages de votre site</center></td>
+        </tr>
+        <tr>
+            <td class="storelist"><center><code>PagesMasquées</code></center></td>
+            <td class="storelist"><center>Liste (<code>array</code>)</center></td>
+            <td class="storelist"><center><code>[]</code></center></td>
+            <td class="storelist"><center>Liste des identifiants des pages à ne pas afficher dans le menu</center></td>
+        </tr>
+        <tr>
+            <td class="storelist"><center><code>AfficherBoutonAdministration</code></center></td>
+            <td class="storelist"><center>Booléenne (<code>boolean</code>)</center></td>
+            <td class="storelist"><center><code>true</code></center></td>
+            <td class="storelist"><center>Afficher le bouton "Administration du site" en haut à droite de votre site</center></td>
+        </tr>
+        <tr>
+            <td class="storelist"><center><code>AdministrationBarreNavigation</code></center></td>
+            <td class="storelist"><center>Booléenne (<code>boolean</code>)</center></td>
+            <td class="storelist"><center><code>true</code></center></td>
+            <td class="storelist"><center>Afficher la barre de navigation dans l'administration du site</center></td>
+        </tr>
+    </tbody></table></p><br>
     </div>
 </body>
 </html>
@@ -107,56 +138,20 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
 <script>
 
-function createPageVisual() {
+function pushSettings() {
     Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = true})
     document.getElementById('loader').classList.remove('hide')
     document.getElementById('editing').classList.add('hide')
     var formData = new FormData();
-    formData.append("title", document.getElementById('name').value);
-    formData.append("type", "0");
-    formData.append("content", editor.getData());
-    $.ajax({
-        type: "POST",
-        dataType: 'html',
-        url: "/api/admin/create_page.php",
-        success: function (data) {
-            if (data == "ok") {
-                location.href = "/cms-special/admin/pages";
-            } else {
-                alert("Erreur : " + data)
-                Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
-                document.getElementById('loader').classList.add('hide')
-                document.getElementById('editing').classList.remove('hide')
-            }
-        },
-        error: function (error) {
-            alert("Erreur de communication")
-            document.getElementById('loader').classList.add('hide')
-            document.getElementById('editing').classList.remove('hide')
-        },
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false
-    });
-}
-
-function createPageHTML() {
-    Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = true})
-    document.getElementById('loader').classList.remove('hide')
-    document.getElementById('editing').classList.add('hide')
-    var formData = new FormData();
-    formData.append("title", document.getElementById('name').value);
-    formData.append("type", "1");
     formData.append("content", ace.edit("editor").getValue());
     $.ajax({
         type: "POST",
         dataType: 'html',
-        url: "/api/admin/create_page.php",
+        url: "/api/admin/save_advanced.php",
         success: function (data) {
             if (data == "ok") {
                 window.onbeforeunload = undefined;
-                location.href = "/cms-special/admin/pages";
+                location.href = "/cms-special/admin/home";
             } else {
                 alert("Erreur : " + data)
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
@@ -175,18 +170,5 @@ function createPageHTML() {
         processData: false
     });
 }
-
-function switchEditor() {
-    if (document.forms['settings'].type.value == "visual") {
-        document.getElementById('editor-visual').classList.remove('hide')
-        document.getElementById('editor-html').classList.add('hide')
-    } else {
-        document.getElementById('editor-visual').classList.add('hide')
-        document.getElementById('editor-html').classList.remove('hide')
-        loadAce()
-    }
-}
-
-document.forms['settings'].type.value = "visual"
 
 </script>

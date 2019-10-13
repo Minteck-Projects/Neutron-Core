@@ -2,6 +2,16 @@
 
 $invalid = false;
 
+function strToHex($string){
+    $hex = '';
+    for ($i=0; $i<strlen($string); $i++){
+        $ord = ord($string[$i]);
+        $hexCode = dechex($ord);
+        $hex .= substr('0'.$hexCode, -2);
+    }
+    return strToUpper($hex);
+}
+
 if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
@@ -79,7 +89,25 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             }
             
             ?>
-        </div>
+            </div>
+        <h3>Mémoire tampon hexadécimale</h3>
+        <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Ces informations peuvent vous servir si vous voulez analyser le contenu de la mémoire à accès séquenciel (RAM) ou au cas où le fichier journal est corrompu.</p></td></tr></tbody></table></p>
+        <div id="logs">
+            <?php
+
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
+                $file = file($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log");
+                for ($i = max(0, count($file)-6); $i < count($file); $i++) {
+                    foreach(str_split($file[$i]) as $letter) {
+                        echo(strToHex($letter) . " ");
+                    }
+                }
+            } else {
+                echo("null");
+            }
+            
+            ?>
+        </div><br><br>
     </div>
 </body>
 </html>
