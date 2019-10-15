@@ -133,7 +133,7 @@ if (isJson($jsonraw)) {
     $json->events[$pos]->name = $name;
     $json->events[$pos]->description = $desc;
     $json->events[$pos]->datestr = $daystr . " " . $monthstr . " " . $year;
-    $newjsonraw = json_encode($json);
+    $newjsonraw = json_encode($json, JSON_PRETTY_PRINT);
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json", $newjsonraw);
     die("ok");
 } else {

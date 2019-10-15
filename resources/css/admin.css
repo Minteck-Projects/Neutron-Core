@@ -223,17 +223,17 @@ body {
 .widget-header {
     margin: -10px;
     padding: 5px;
-    background: rgb(209, 209, 209);
+    background: rgba(209, 209, 209, 0.3);
     transition: background 200ms;
 }
 
 .widget-header.disabled {
-    background: #ff7373;
+    background: rgba(255, 115, 115, 0.3);
     transition: background 200ms;
 }
 
 .widget-header.enabled {
-    background: #9bff73;
+    background: rgba(155, 255, 115, 0.3);
     transition: background 200ms;
 }
 
@@ -511,7 +511,6 @@ html {
     border-radius: 10px;
     padding: 5px 10px;
     z-index: -2;
-    color: white;
 }
 
 .message_info {
@@ -520,7 +519,6 @@ html {
     border-radius: 10px;
     padding: 5px 10px;
     z-index: -2;
-    color: white;
 }
 
 .message_error {
@@ -529,7 +527,6 @@ html {
     border-radius: 10px;
     padding: 5px 10px;
     z-index: -2;
-    color: white;
 }
 
 .message_warning > tbody > tr > td {
@@ -541,4 +538,17 @@ html {
     text-decoration-style: dotted;
     text-decoration-color: inherit;
     text-decoration-line: underline;
+}
+
+#stats {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgba(6, 6, 6, 0.2);
+    padding-bottom: 20px;
+}
+
+.info-sep {
+    opacity: .8;
+    font-size: 10px;
 }

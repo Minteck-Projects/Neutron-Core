@@ -28,9 +28,15 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
                     $ppath = explode("|", $praw)[0];
                     if ($pcat == $category) {
                         $shown = true;
-                        buffer("<div class=\"photo\">");
-                        buffer("<a href=\"/cms-special/galery/preview/?url=" . $ppath . "\"><img class=\"photo_image\" src=\"" . $ppath . "\" /></a>");
-                        buffer("</div>");
+                        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $ppath)) {
+                            buffer("<div class=\"photo\">");
+                            buffer("<a href=\"/cms-special/galery/preview/?url=" . $ppath . "\"><img class=\"photo_image\" src=\"" . $ppath . "\" /></a>");
+                            buffer("</div>");
+                        } else {
+                            buffer("<div class=\"photo\">");
+                            buffer('<p><table class="message_error message_black"><tbody><tr><td><img src="/resources/image/message_error.svg" class="message_img"></td><td style="width:100%;">Photo introuvable ou supprimée incorrectement, merci de contacter l\'administrateur du site</td></tr></tbody></table></p>');
+                            buffer("</div>");
+                        }
                     }
                 }
             }

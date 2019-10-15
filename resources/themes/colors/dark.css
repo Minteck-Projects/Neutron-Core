@@ -125,3 +125,15 @@ html {
 .message_img {
     filter: invert(75%) brightness(175%);
 }
+
+.message_info, .message_error, .message_warning {
+    color: white;
+}
+
+.message_black {
+    color: black;
+}
+
+.message_black > tbody > tr > td > .message_img {
+    filter: none;
+}

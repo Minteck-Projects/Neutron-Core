@@ -131,6 +131,50 @@ function getData(string $dir, $ignoreUploadDir = false) {
     <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
     </div><div id="navigation"><a class="sblink" href="/cms-special/admin">Administration</a></div>
+
+        <?php
+        
+        $pages = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages")) - 2;
+        
+        $pictures = 0;
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery")) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) {
+                $pictures = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) - 2;
+            }   
+        }
+
+        ?>
+        <div id="stats"><center><h3>Vue d'ensemble de votre site</h3><?= $pages ?> page<?php if ($pages > 1) {echo("s");} ?> &nbsp; <span class="info-sep">|</span> &nbsp; <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . date("Y-m-d")) ?> visiteur<?php if(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . date("Y-m-d")) > 1) {echo("s");} ?> aujourd'hui &nbsp; <span class="info-sep">|</span> &nbsp; <?= $pictures ?> photo<?php if ($pictures > 1) {echo("s");} ?> dans la galerie<h3>Dernières actions enregistrées</h3></center><div id="logs">
+        <?php
+
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
+            $file = file($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log");
+            for ($i = max(0, count($file)-4); $i < count($file); $i++) {
+                echo($file[$i] . "<br>");
+            }
+        } else {
+            echo("Aucune action enregistrée pour le moment");
+        }
+
+        ?>
+        </div><center><h3>Extensions</h3><?= count(json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"))->list) ?> extension<?php if (count(json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"))->list) > 1) {echo("s");} ?> activée<?php if (count(json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"))->list) > 1) {echo("s");} ?> &nbsp; <span class="info-sep">|</span> &nbsp; <?= count(scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets")) - 2 ?> extension<?php if (count(scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets")) - 2 > 1) {echo("s");} ?> installée<?php if (count(scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets")) - 2 > 1) {echo("s");} ?><?php
+        
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json")) {
+                echo(" &nbsp; <span class=\"info-sep\">|</span> &nbsp; ");
+                echo(count((array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"))));
+                echo(" extension");
+                if (count((array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"))) > 1) {
+                    echo("s");
+                }
+                echo(" dans les dépôts");
+            }
+        }
+        
+        ?></center></div>
+
+        <hr style="border-width:1px;border-color:lightgray;border-bottom-style:none;">
+
         <a href="/cms-special/admin/logout" title="Terminer l'administration de votre site de manière sécurisée"><div class="setting"><table><tr><td><img src="/resources/image/admin_logout.png" class="setting-img"><td><td><b>Terminer la session</b><br>Terminez l'administration de votre site de manière sécurisée<br><code>/cms-special/admin/logout</code></td></tr></table><span class="setting-info"><p>Terminez de manière sécurisée l'administration de votre site, et vous déconnecte de manière sécurisée afin d'éviter que quelqu'un compromette votre session</p><p>Cela aura aussi pour effet de vous déconnecter de tous les autres sites à partir desquels vous êtes connectés</p></span></div></a>
         <a onclick="window.open('/?source=siteadmin')" title="Visiter votre site pour voir les changements appliqués"><div class="setting"><table><tr><td><img src="/resources/image/admin_tosite.png" class="setting-img"><td><td><b>Visiter le site</b><br>Visiter votre site pour voir les changements appliqués<br><code>/?source=siteadmin</code></td></tr></table><span class="setting-info"><p>Ouvrez votre site en tant que visiteur dans un nouvel onglet ou une nouvelle fenêtre.</p><p>Cela ne termine pas la session en cours</p></span></div></a>
 
