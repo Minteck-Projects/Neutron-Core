@@ -134,21 +134,42 @@ function getData(string $dir, $ignoreUploadDir = false) {
 
         <?php
         
-        $pages = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages")) - 2;
+        $preload = [];
+
+        $preload["pages"] = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages");
+        $preload["pictures"] = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures");
+        $preload["stats"] = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . date("Y-m-d"));
+        $preload["log"] = file($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log");
+
+        $preload["extensions"] = [];
+
+        $preload["extensions"]["enabled"] = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json");
+        $preload["extensions"]["installed"] = scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets");
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json")) {
+                $preload["extensions"]["repos"] = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json");
+            } else {
+                $preload["extensions"]["repos"] = null;
+            }
+        } else {
+            $preload["extensions"]["repos"] = null;
+        }
+
+        $pages = count($preload["pages"]) - 2;
         
         $pictures = 0;
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery")) {
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) {
-                $pictures = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) - 2;
+                $pictures = count($preload["pictures"]) - 2;
             }   
         }
 
         ?>
-        <div id="stats"><center><h3>Vue d'ensemble de votre site</h3><?= $pages ?> page<?php if ($pages > 1) {echo("s");} ?> &nbsp; <span class="info-sep">|</span> &nbsp; <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . date("Y-m-d")) ?> visiteur<?php if(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . date("Y-m-d")) > 1) {echo("s");} ?> aujourd'hui &nbsp; <span class="info-sep">|</span> &nbsp; <?= $pictures ?> photo<?php if ($pictures > 1) {echo("s");} ?> dans la galerie<h3>Dernières actions enregistrées</h3></center><div id="logs">
+        <div id="stats"><center><h3>Vue d'ensemble de votre site</h3><?= $pages ?> page<?php if ($pages > 1) {echo("s");} ?> &nbsp; <span class="info-sep">|</span> &nbsp; <?= $preload["stats"] ?> visiteur<?php if($preload["stats"] > 1) {echo("s");} ?> aujourd'hui &nbsp; <span class="info-sep">|</span> &nbsp; <?= $pictures ?> photo<?php if ($pictures > 1) {echo("s");} ?> dans la galerie<h3>Dernières actions enregistrées</h3></center><div id="logs">
         <?php
 
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
-            $file = file($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log");
+            $file = $preload["log"];
             for ($i = max(0, count($file)-4); $i < count($file); $i++) {
                 echo($file[$i] . "<br>");
             }
@@ -157,14 +178,14 @@ function getData(string $dir, $ignoreUploadDir = false) {
         }
 
         ?>
-        </div><center><h3>Extensions</h3><?= count(json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"))->list) ?> extension<?php if (count(json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"))->list) > 1) {echo("s");} ?> activée<?php if (count(json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"))->list) > 1) {echo("s");} ?> &nbsp; <span class="info-sep">|</span> &nbsp; <?= count(scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets")) - 2 ?> extension<?php if (count(scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets")) - 2 > 1) {echo("s");} ?> installée<?php if (count(scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets")) - 2 > 1) {echo("s");} ?><?php
+        </div><center><h3>Extensions</h3><?= count(json_decode($preload["extensions"]["enabled"])->list) ?> extension<?php if (count(json_decode($preload["extensions"]["enabled"])->list) > 1) {echo("s");} ?> activée<?php if (count(json_decode($preload["extensions"]["enabled"])->list) > 1) {echo("s");} ?> &nbsp; <span class="info-sep">|</span> &nbsp; <?= count($preload["extensions"]["installed"]) - 2 ?> extension<?php if (count(scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets")) - 2 > 1) {echo("s");} ?> installée<?php if (count($preload["extensions"]["installed"]) - 2 > 1) {echo("s");} ?><?php
         
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json")) {
                 echo(" &nbsp; <span class=\"info-sep\">|</span> &nbsp; ");
-                echo(count((array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"))));
+                echo(count((array)json_decode($preload["extensions"]["repos"])));
                 echo(" extension");
-                if (count((array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"))) > 1) {
+                if (count((array)json_decode($preload["extensions"]["repos"])) > 1) {
                     echo("s");
                 }
                 echo(" dans les dépôts");
