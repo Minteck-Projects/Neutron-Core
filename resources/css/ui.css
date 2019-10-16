@@ -90,3 +90,67 @@ code {
     font-family: monospace;
     font-size: 14px;
 }
+
+#errorbox-wrapper {
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#errorbox-frame {
+    margin: 0 25%;
+    padding: 30px;
+    border-radius: 10px;
+    background: #eaeaea;
+    box-shadow: 0px 0px 8px #eaeaea;
+    color: black;
+}
+
+#errorbox-bottom {
+    margin-bottom: -30px;
+    margin-left: -30px;
+    margin-right: -30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: #5487ff;
+    padding: 5px;
+    margin-top: 30px;
+    box-shadow: 1px 5px 8px #5487ff;
+    cursor: pointer;
+    transition: box-shadow 200ms, background 200ms;
+}
+
+#errorbox-bottom:hover {
+    background: #417aff;
+    box-shadow: 1px 5px 8px #417aff;
+}
+
+#errorbox-bottom:active {
+    background: #195eff;
+    box-shadow: 1px 5px 8px #195eff;
+}
+
+@media (max-width: 500px) {
+    #errorbox-frame {
+        padding: 10px;
+    }
+    #errorbox-bottom {
+        margin-bottom: -10px;
+        margin-left: -10px;
+        margin-right: -10px;
+        margin-top: 10px;
+    }
+    #errorbox-logo {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+#errorbox-logo {
+    width: 48px;
+    height: 48px;
+}

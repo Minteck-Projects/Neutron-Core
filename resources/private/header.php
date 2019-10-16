@@ -10,9 +10,11 @@
         return true;
     }
     set_error_handler("initerr");
-    file_get_contents("https://gitlab.com/minteck-projects/mpcms/code-base");
-    file_get_contents("https://cdn.ckeditor.com");
-    file_get_contents("https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/ace.js");
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+        file_get_contents("https://gitlab.com/minteck-projects/mpcms/code-base");
+        file_get_contents("https://cdn.ckeditor.com");
+        file_get_contents("https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/ace.js");
+    }
 
 ?>
 
@@ -23,26 +25,27 @@ function dataValid($string) {
     return (json_last_error() == JSON_ERROR_NONE);
 }
 
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json")) {
-    if (dataValid(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"))) {
-        $customSettings = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"));
-        if (isset($customSettings->AfficherBoutonAdministration) && isset($customSettings->AdministrationBarreNavigation) && isset($customSettings->RessourcesPersonnalisées) && isset($customSettings->RessourcesPersonnalisées->CSS) && isset($customSettings->RessourcesPersonnalisées->JS) && isset($customSettings->PagesMasquées)) {
-            if (!$customSettings->AfficherBoutonAdministration) {
-                echo("<style>#siteadmin-button{display:none;}</style>");
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json")) {
+        if (dataValid(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"))) {
+            $customSettings = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"));
+            if (isset($customSettings->AfficherBoutonAdministration) && isset($customSettings->AdministrationBarreNavigation) && isset($customSettings->RessourcesPersonnalisées) && isset($customSettings->RessourcesPersonnalisées->CSS) && isset($customSettings->RessourcesPersonnalisées->JS) && isset($customSettings->PagesMasquées)) {
+                if (!$customSettings->AfficherBoutonAdministration) {
+                    echo("<style>#siteadmin-button{display:none;}</style>");
+                }
+                if (!$customSettings->AdministrationBarreNavigation) {
+                    echo("<style>#settings #navigation{display:none;}</style>");
+                }
+                echo("<style type=\"text/css\">" . $customSettings->RessourcesPersonnalisées->CSS . "</style>");
+                echo("<script type=\"text/javascript\">" . $customSettings->RessourcesPersonnalisées->JS . "</script>");
+            } else {
+                die("<h1>Erreur interne</h1><p>Le fichier des paramètres avancés nst pas dans une syntaxe reconnue, mais il ne contient pas certains paramètres requis. Le chargement de la page s'est arrêté ici.</p><p>Si vous contactez votre administrateur système, demandez lui de supprimer le fichier <code>/data/webcontent/customSettings.json</code>, Minteck Projects CMS se chargera d'en générer un nouveau pour vous.</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
             }
-            if (!$customSettings->AdministrationBarreNavigation) {
-                echo("<style>#settings #navigation{display:none;}</style>");
-            }
-            echo("<style type=\"text/css\">" . $customSettings->RessourcesPersonnalisées->CSS . "</style>");
-            echo("<script type=\"text/javascript\">" . $customSettings->RessourcesPersonnalisées->JS . "</script>");
         } else {
-            die("<h1>Erreur interne</h1><p>Le fichier des paramètres avancés nst pas dans une syntaxe reconnue, mais il ne contient pas certains paramètres requis. Le chargement de la page s'est arrêté ici.</p><p>Si vous contactez votre administrateur système, demandez lui de supprimer le fichier <code>/data/webcontent/customSettings.json</code>, Minteck Projects CMS se chargera d'en générer un nouveau pour vous.</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
+            die("<h1>Erreur interne</h1><p>Le fichier des paramètres avancés n'est pas dans une syntaxe reconnue, le chargement de la page s'est arrêté ici.</p><p>Si vous contactez votre administrateur réseau, demandez lui de supprimer le fichier <code>/data/webcontent/customSettings.json</code>, Minteck Projects CMS se chargera d'en générer un nouveau pour vous.</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
         }
     } else {
-        die("<h1>Erreur interne</h1><p>Le fichier des paramètres avancés n'est pas dans une syntaxe reconnue, le chargement de la page s'est arrêté ici.</p><p>Si vous contactez votre administrateur réseau, demandez lui de supprimer le fichier <code>/data/webcontent/customSettings.json</code>, Minteck Projects CMS se chargera d'en générer un nouveau pour vous.</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
-    }
-} else {
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", "{
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", "{
     \"RessourcesPersonnalisées\": {
         \"CSS\": \"\",
         \"JS\": \"\"
@@ -51,6 +54,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.jso
     \"AfficherBoutonAdministration\": true,
     \"AdministrationBarreNavigation\": true
 }");
+    }
 }
 
 ?>
@@ -172,26 +176,64 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled"
 <script src="/resources/js/right-click.js"></script>
 <link rel="stylesheet" href="/resources/css/right-click.css" />
 <div class="hide" id="rmenu">
-  <?php
+    <?php
   
-  if (isset($name)) {
-      echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink"><img src="/resources/image/rightclick_page.svg" class="rmenuimg"> &nbsp; Gérer cette page</a>');
-      $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
-    if (!empty($widgets->list)) {
-        echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink"><img src="/resources/image/rightclick_details.svg" class="rmenuimg"> &nbsp; Détails</a>');
+    if (isset($name)) {
+        echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink"><img src="/resources/image/rightclick_page.svg" class="rmenuimg"> &nbsp; Gérer cette page</a>');
+        $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
+        if (!empty($widgets->list)) {
+            echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink"><img src="/resources/image/rightclick_details.svg"     class="rmenuimg"> &nbsp; Détails</a>');
+        }
+    } else {
+        echo('<a href="/cms-special/admin/logout" class="rmenulink"><img src="/resources/image/rightclick_exit.svg" class="rmenuimg"> &nbsp; Terminer la session</a>');
+        echo('<a href="/cms-special/admin/store" class="rmenulink"><img src="/resources/image/rightclick_store.svg" class="rmenuimg"> &nbsp; CMS Store</a>');
     }
-  } else {
-    echo('<a href="/cms-special/admin/logout" class="rmenulink"><img src="/resources/image/rightclick_exit.svg" class="rmenuimg"> &nbsp; Terminer la session</a>');
-    echo('<a href="/cms-special/admin/store" class="rmenulink"><img src="/resources/image/rightclick_store.svg" class="rmenuimg"> &nbsp; CMS Store</a>');
-  }
   
-  ?>
-  <hr class="rmenusep">
-  <a onclick="history.back()" class="rmenulink"><img src="/resources/image/rightclick_back.svg" class="rmenuimg"> &nbsp; Précédent</a>
-  <a onclick="history.forward()" class="rmenulink"><img src="/resources/image/rightclick_forward.svg" class="rmenuimg"> &nbsp; Suivant</a>
-  <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_refresh.svg" class="rmenuimg"> &nbsp; Actualiser</a>
-  <!-- <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_save.svg" class="rmenuimg"> &nbsp; Enregistrer la page</a> -->
-  <hr class="rmenusep">
-  <a href="/" class="rmenulink"><img src="/resources/image/rightclick_home.svg" class="rmenuimg"> &nbsp; Accueil</a>
-  <a href="/cms-special/admin" class="rmenulink"><img src="/resources/image/rightclick_admin.svg" class="rmenuimg"> &nbsp; Administration du site</a>
+    ?>
+    <hr class="rmenusep">
+    <a onclick="history.back()" class="rmenulink"><img src="/resources/image/rightclick_back.svg" class="rmenuimg"> &nbsp; Précédent</a>
+    <a onclick="history.forward()" class="rmenulink"><img src="/resources/image/rightclick_forward.svg" class="rmenuimg"> &nbsp; Suivant</a>
+    <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_refresh.svg" class="rmenuimg"> &nbsp; Actualiser</a>
+    <!-- <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_save.svg" class="rmenuimg"> &nbsp; Enregistrer la     page</a> -->
+    <hr class="rmenusep">
+    <a href="/" class="rmenulink"><img src="/resources/image/rightclick_home.svg" class="rmenuimg"> &nbsp; Accueil</a>
+    <a href="/cms-special/admin" class="rmenulink"><img src="/resources/image/rightclick_admin.svg" class="rmenuimg"> &nbsp; Administration du site</a>
 </div>
+
+<div id="errorbox-wrapper" class="hide" onclick="closeError()">
+    <div id="errorbox-error" class="centered hide" onclick="return;">
+        <div id="errorbox-frame" onclick="return;">
+            <!-- <span id="errorbox-text">Erreur</span><br> -->
+            <table><tbody><tr><td><img src="/resources/image/message_warning.svg" id="errorbox-logo"></td><td style="width:100%;"><span id="errorbox-text">Erreur</span></td></tr></tbody></table><br>
+            <div id="errorbox-bottom" onclick="closeError()"><a id="errorbox-close" onclick="closeError()">OK</a></div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
+function alert(text) {
+    if (typeof text == "string") {
+        document.getElementById('errorbox-text').innerHTML = text.replaceAll("\n", "<br>").replaceAll(">", "&gt;").replaceAll("<", "&lt;")
+    } else {
+        document.getElementById('errorbox-text').innerHTML = "Erreur"
+    }
+    $("#errorbox-wrapper").fadeIn(100)
+    setTimeout(() => {
+        $("#errorbox-error").fadeIn(100)
+    }, 100)
+}
+
+function closeError() {
+    $("#errorbox-wrapper").fadeOut(200)
+    setTimeout(() => {
+        $("#errorbox-error").fadeOut(0)
+    }, 100)
+}
+
+</script>

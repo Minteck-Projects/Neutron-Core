@@ -70,13 +70,19 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     }
 
     ?></title>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
+    <?php
+    
+    if ($ready) {
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php";
+    }
+    
+    ?>
 </head>
 <body>
     <?php
 
     if (!$ready) {
-        die('<div class="centered discover"><h2>MPCMS à bien été installé</h2><p>Tous les fichiers de Minteck Projects CMS ont été installés correctement sur le serveur, et est prêt à démarrer.</p><p>Vous pouvez maintenant le configurer et commencer à écrire votre site sans connaissances quelconques en développement.</p><a class="button" href="/cms-special/setup">Configurer MPCMS</a></div></body></html>');
+        die('<div class="centered discover"><h1>Minteck Projects CMS</h1><h3>La nouvelle génération de sites Web</h3><p>Tous les fichiers ont été copiés correctement, vous devez maintenant configurer le logiciel Minteck Projects CMS.</p><p>Pour cela, nous vous conseillons d\'utiliser un ordinateur, ou tout autre appareil avec un écran plus grand.</p><a href="/cms-special/setup"><img src="/resources/image/config_explore.svg">Configurer</a><br><br><hr><small>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . '</small></div>');
     }
     
     if ($ready) {

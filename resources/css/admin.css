@@ -67,13 +67,14 @@ body {
 }
 
 .setting {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     cursor: pointer;
     background-color: transparent;
     transition: background-color 200ms;
     left: 0;
     position: relative;
+    border-radius: 10px;
 }
 
 .setting:hover {
@@ -304,6 +305,14 @@ body {
 }
 
 @media (max-width: 500px) {
+    .home-wrapper {
+        grid-template-columns: 1fr !important;
+        grid-column-gap: 0 !important;
+        grid-row-gap: 0 !important;
+    }
+    .setting {
+        border-radius: 0 !important;
+    }
     #banner {
         padding: 20px 25px;
     }
@@ -551,4 +560,15 @@ html {
 .info-sep {
     opacity: .8;
     font-size: 10px;
+}
+
+.home-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.home-wrapper a {
+    text-decoration: none;
 }

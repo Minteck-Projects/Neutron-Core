@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <title>Réinitialisation du site - MPCMS</title>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
 </head>
 <body>
     <div id="settings" class="centered">
