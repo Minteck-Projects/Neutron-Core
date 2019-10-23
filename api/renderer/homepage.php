@@ -215,7 +215,7 @@ if (!empty($widgets->list)) {
 	</div>
     <div id="page-placeholder">
         <div id="page-content">
-            <?php
+            <!-- <?php
             
             $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index");
             preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
@@ -238,7 +238,7 @@ if (!empty($widgets->list)) {
         
             echo($toc);
             
-            ?>
+            ?>-->
             <?php echo($html_string); ?>
         </div>
         <div id="page-footer">

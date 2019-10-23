@@ -102,12 +102,14 @@ if ($currentSlug == "index") {
             ?>
         Actions disponibles pour cette page :
         <ul>
-            <li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=<?= $currentSlug ?>" title="Modifier le contenu de la page sélectionnée">Modifier</a></li>
+            <li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=<?= $currentSlug ?>" title="Modifier le contenu de la page sélectionnée">Modifier <?php if ($currentSlug == "index") {echo("en utilisant l'éditeur visuel");} ?></a></li>
             <?php
             
             if ($currentSlug != "index") {
                 echo('<li><a class="sblink" href="/cms-special/admin/pages/rename/?slug=' . $currentSlug . '" title="Renommer et modifier l\'URL de cette page">Renommer</a></li>');
                 echo('<li><a class="sblink" href="/cms-special/admin/pages/delete/?slug=' . $currentSlug . '" title="Supprimer définitivement la page sélectionnée">Supprimer</a></li>');
+            } else {
+                echo('<li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=' . $currentSlug . '&forcehtml" title="Modifier le contenu de la page sélectionnée">Modifier en utilisant l\'éditeur HTML</a></li>');
             }
             
             ?>

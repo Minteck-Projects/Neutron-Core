@@ -100,6 +100,9 @@ if ($currentSlug == "index") {
                 <?php
 
                 $type = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $currentSlug);
+                if (isset($_GET['forcehtml'])) {
+                    $type = "1";
+                }
                 if ($type == "0") {
                     require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/VisualEditor.php";
                 }
