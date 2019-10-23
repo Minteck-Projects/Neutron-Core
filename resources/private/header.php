@@ -219,7 +219,7 @@ String.prototype.replaceAll = function(search, replacement) {
 
 function alert(text) {
     if (typeof text == "string") {
-        document.getElementById('errorbox-text').innerHTML = text.replaceAll("\n", "<br>").replaceAll(">", "&gt;").replaceAll("<", "&lt;")
+        document.getElementById('errorbox-text').innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>")
     } else {
         document.getElementById('errorbox-text').innerHTML = "Erreur"
     }

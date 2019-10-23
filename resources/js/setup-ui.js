@@ -1,6 +1,8 @@
 setTimeout(() => {
-    document.getElementById('02-check').classList.remove('hide')
-    document.getElementById('01-loader').classList.add('hide')
+    // document.getElementById('02-check').classList.remove('hide')
+    // document.getElementById('01-loader').classList.add('hide')
+    switchPage("01-loader", "02-check")
+    document.title = 'Vérification - Configuration - Minteck Projects CMS';
     $.ajax({
         url: "/api/setup/check.php",
         dataType: 'html',
@@ -13,17 +15,21 @@ setTimeout(() => {
                 if (data != "ok") {
                     document.getElementById('00-error-title').innerHTML = "Environnement incorrect"
                     document.getElementById('00-error-message').innerHTML = data
-                    document.getElementById('02-check').classList.add("hide")
-                    document.getElementById('00-error').classList.remove("hide")
+                    // document.getElementById('02-check').classList.add("hide")
+                    // document.getElementById('00-error').classList.remove("hide")
+                    switchPage("02-check", "00-error")
+                    document.title = "Erreur - Configuration - Minteck Projects CMS";
                     window.onbeforeunload = undefined;
                 } else {
-                    document.getElementById('02-check').classList.add("hide")
-                    document.getElementById('03-welcome').classList.remove("hide")
+                    // document.getElementById('02-check').classList.add("hide")
+                    // document.getElementById('03-welcome').classList.remove("hide")
+                    switchPage("02-check", "03-welcome")
+                    document.title = "Bienvenue - Configuration - Minteck Projects CMS";
                 }
             }, 1000)
         }
     })
-}, 5000)
+}, 1000)
 
 function validateName() {
     document.getElementById('04-name-tip').classList.remove('tip-orange')
@@ -66,8 +72,10 @@ function validateName() {
 function Name_ChangeIfOk() {
     name = document.getElementById('04-name-field').value
     if (name.trim() == "" || name.includes("<") || name.includes(">") || name.includes("#") || name.includes("@") || name.includes("}") || name.includes("{") || name.includes("|") || name.length > 75) {return;}
-    document.getElementById('04-name').classList.add('hide');
-    document.getElementById('05-icon').classList.remove('hide');
+    // document.getElementById('04-name').classList.add('hide');
+    // document.getElementById('05-icon').classList.remove('hide');
+    switchPage("04-name", "05-icon")
+    document.title = 'Identité graphique - Configuration - Minteck Projects CMS';
 }
 
 function Icon_UploadFile() {
@@ -98,11 +106,14 @@ document.getElementById('05-icon-file').value = ""
 setInterval(Icon_Validate, 100)
 
 function upload() {
-    document.getElementById('07-finish').classList.add('hide');
-    document.getElementById('08-checking').classList.remove('hide');
+    document.title = "Sauvegarde - Configuration - Minteck Projects CMS";
+    // document.getElementById('07-finish').classList.add('hide');
+    // document.getElementById('08-checking').classList.remove('hide');
+    switchPage("07-finish", "08-checking")
     setTimeout(() => {
-        document.getElementById('08-checking').classList.add('hide');
-        document.getElementById('09-uploading').classList.remove('hide');
+        // document.getElementById('08-checking').classList.add('hide');
+        // document.getElementById('09-uploading').classList.remove('hide');
+        switchPage("08-checking", "09-uploading")
         var formData = new FormData();
         if (document.getElementById('05-icon-file').value.trim() != "") {
             formData.append("file", document.getElementById('05-icon-file').files[0], document.getElementById('05-icon-file').files[0].name);
@@ -116,14 +127,18 @@ function upload() {
             success: function (data) {
                 if (data == "ok") {
                     setTimeout(() => {
-                        document.getElementById('09-uploading').classList.add('hide');
-                        document.getElementById('10-summing').classList.remove('hide');
+                        // document.getElementById('09-uploading').classList.add('hide');
+                        // document.getElementById('10-summing').classList.remove('hide');
+                        switchPage("09-uploading", "10-summing")
                         setTimeout(() => {
-                            document.getElementById('10-summing').classList.add('hide');
-                            document.getElementById('11-performance').classList.remove('hide');
+                            // document.getElementById('10-summing').classList.add('hide');
+                            // document.getElementById('11-performance').classList.remove('hide');
+                            switchPage("10-summing", "11-performances")
                             setTimeout(() => {
-                                document.getElementById('11-performance').classList.add('hide');
-                                document.getElementById('12-done').classList.remove('hide');
+                                // document.getElementById('11-performance').classList.add('hide');
+                                // document.getElementById('12-done').classList.remove('hide');
+                                switchPage("11-performance", "12-done")
+                                document.title = "Terminé - Configuration - Minteck Projects CMS";
                                 window.onbeforeunload = undefined;
                             }, 3000)
                         }, 2000)
@@ -131,16 +146,20 @@ function upload() {
                 } else {
                     document.getElementById('00-error-title').innerHTML = "Impossible de terminer la configuration"
                     document.getElementById('00-error-message').innerHTML = data
-                    document.getElementById('09-uploading').classList.add("hide")
-                    document.getElementById('00-error').classList.remove("hide")
+                    document.title = "Erreur - Configuration - Minteck Projects CMS";
+                    // document.getElementById('09-uploading').classList.add("hide")
+                    // document.getElementById('00-error').classList.remove("hide")
+                    switchPage("09-uploading", "00-error")
                     window.onbeforeunload = undefined;
                 }
             },
             error: function (error) {
+                document.title = "Erreur - Configuration - Minteck Projects CMS";
                 document.getElementById('00-error-title').innerHTML = "Erreur de communication"
                 document.getElementById('00-error-message').innerHTML = "La connexion avec le serveur distant à été intérrompue pendant la transmition des données"
-                document.getElementById('02-check').classList.add("hide")
-                document.getElementById('00-error').classList.remove("hide")
+                // document.getElementById('02-check').classList.add("hide")
+                // document.getElementById('00-error').classList.remove("hide")
+                switchPage("02-check", "00-error")
                 window.onbeforeunload = undefined;
             },
             data: formData,
@@ -149,4 +168,13 @@ function upload() {
             processData: false
         });
     }, 1000)
+}
+
+document.title = "Chargement - Configuration - Minteck Projects CMS";
+
+function switchPage(from, to) {
+    $("#" + from).fadeOut(200);
+    setTimeout(() => {
+        $("#" + to).fadeIn(200);
+    }, 200)
 }

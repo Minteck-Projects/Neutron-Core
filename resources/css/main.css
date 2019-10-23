@@ -292,8 +292,19 @@ body {
 
 .menulink-desktop {
     color: white;
-    margin: 0 20px;
+    padding: 10px 20px;
     cursor: pointer;
+    margin: -10px 0;
+    transition: background 200ms;
+    text-decoration: none;
+}
+
+.menulink-desktop:hover {
+    background: #626262;
+}
+
+.menulink-desktop:active {
+    background: #1d1d1d;
 }
 
 .pushbar_overlay {
@@ -307,6 +318,8 @@ body {
 .menubar-link {
     margin: -10px;
     padding: 10px;
+    padding-bottom: 8px;
+    transition: background 200ms;
 }
 
 .menubar-link:hover {
@@ -329,7 +342,6 @@ body {
     border-radius: 10px;
     padding: 5px 10px;
     z-index: -2;
-    color: white;
 }
 
 .message_error {

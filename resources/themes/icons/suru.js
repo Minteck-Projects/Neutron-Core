@@ -15,6 +15,7 @@ $('document').ready(() => {
     try {document.querySelector('img[src="/resources/image/admin_ui.png"]').src = "/resources/image/suru_admin_ui.png";} catch (err) {}
     try {document.querySelector('img[src="/resources/image/admin_updates.png"]').src = "/resources/image/suru_admin_updates.png";} catch (err) {}
     try {document.querySelector('img[src="/resources/image/admin_store.png"]').src = "/resources/image/suru_admin_store.png";} catch (err) {}
+    try {document.querySelector('img[src="/resources/image/admin_semantic.png"]').src = "/resources/image/suru_admin_semantic.png";} catch (err) {}
     try {document.querySelector('img[src="/resources/image/admin.svg"]').src = "/resources/image/suru_admin.png";} catch (err) {}
     try {document.querySelector('img[src="/resources/image/contact_address.svg"]').src = "/resources/image/suru_contact_address.png";} catch (err) {}
     try {document.querySelector('img[src="/resources/image/contact_email.svg"]').src = "/resources/image/suru_contact_email.png";} catch (err) {}

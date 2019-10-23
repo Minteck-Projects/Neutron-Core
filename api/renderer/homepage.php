@@ -215,7 +215,31 @@ if (!empty($widgets->list)) {
 	</div>
     <div id="page-placeholder">
         <div id="page-content">
-            <?php echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index")); ?>
+            <?php
+            
+            $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index");
+            preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
+
+            //reformat the results to be more usable
+            $toc = implode("\n",$results[0]);
+            $toc = str_replace('<a name="','<a href="#',$toc);
+            $toc = str_replace('</a>','',$toc);
+            $toc = preg_replace('#<h([1-6])>#','<li class="toc$1">',$toc);
+            $toc = preg_replace('#<\/h[1-6]>#','</a></li>',$toc);
+        
+            //plug the results into appropriate HTML tags
+            $toc = '<div id="toc"> 
+            <p id="toc-header">Table des matières</p>
+            <hr />
+            <ul>
+            '.$toc.'
+            </ul>
+            </div><br /><br />';
+        
+            echo($toc);
+            
+            ?>
+            <?php echo($html_string); ?>
         </div>
         <div id="page-footer">
         <?php echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer")); ?>

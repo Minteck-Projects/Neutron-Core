@@ -6,10 +6,10 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/plugins&pa='</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/housekeeping&pa='</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/plugins&pa='</script>");
+    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/housekeeping&pa='</script>");
 }
 
 if (isset($_POST['password'])) {
@@ -64,75 +64,35 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <?php $banner = "/resources/image/codename.jpg";if (getAvgLuminance($_SERVER['DOCUMENT_ROOT'] . "/resources/image/codename.jpg") > 50) {$blackBannerText = true;} else {$blackBannerText = false;}function getAvgLuminance($filename, $num_samples=30) {$img = imagecreatefromjpeg($filename);$width = imagesx($img);$height = imagesy($img);$x_step = intval($width/$num_samples);$y_step = intval($height/$num_samples);$total_lum = 0;$sample_no = 1;for ($x=0; $x<$width; $x+=$x_step) {for ($y=0; $y<$height; $y+=$y_step) {$rgb = imagecolorat($img, $x, $y);$r = ($rgb >> 16) & 0xFF;$g = ($rgb >> 8) & 0xFF;$b = $rgb & 0xFF;$lum = ($r+$r+$b+$g+$g+$g)/6;$total_lum += $lum;$sample_no++;}}$avg_lum  = $total_lum / $sample_no;return ($avg_lum / 255) * 100;}function getData(string $dir, $ignoreUploadDir = false) {global $size;$dircontent = scandir($dir);foreach ($dircontent as $direl) {if (($ignoreUploadDir && ($direl == "/upload" || $dir . "/" . $direl == $_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) || $direl == ".git") {} else {if ($direl == "." || $direl == "..") {} else {if (is_link($dir . "/" . $direl)) {} else {if (is_dir($dir . "/" . $direl)) {getData($dir . "/" . $direl);} else {$size = $size + filesize($dir . "/" . $direl);}}}}}}getData($_SERVER['DOCUMENT_ROOT']);$sizestr = $size . " octets";if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " Gio";} else {$sizestr = round($size / 1048576, 2) . " Mio";}} else {$sizestr = round($size / 1024, 2) . " Kio";}} else {$sizestr = $size . " octets";}$sizestr = str_replace(".", ",", $sizestr); ?>
     <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
-    </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/plugins" class="sblink">Extensions</a></div>
-        <h2>Extensions installés</h2>
-        <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Minteck Projects CMS dispose du support d'extensions, qui vous permettent de modifier les fonctionnalités et/ou le comportement du logiciel, ou d'afficher des widgets supplémentaires dans la barre des widgets (sortes d'informations enrichies qui sont affichés à la suite)</p></td></tr></tbody></table></p>
-        <?php
-
-        $widgets = scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets/");
-        $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
-        foreach ($widgets as $widget) {
-            if ($widget != "." && $widget != ".." && $widget != ".htaccess") {
-                echo("<div class=\"widget\"><div id=\"header-{$widget}\" class=\"widget-header ");
-                if (array_search($widget, $json->list) === false) {
-                    echo("disabled");
-                } else {
-                    echo("enabled");
-                }
-                echo("\"><table><tbody><tr><td><input type=\"checkbox\" onclick=\"updateWidgetStatus('" . $widget . "')\" name=\"" . $widget . "\"");
-                if (array_search($widget, $json->list) === false) {} else {
-                    echo("checked");
-                }
-                $size = filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/name") + filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/description") + filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/author") + filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php");
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config")) {
-                    $size = $size + filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config");
-                }
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/dependancies")) {
-                    $deps = explode(':', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/dependancies"));
-                    foreach ($deps as $dep) {
-                        $size = $size + filesize($_SERVER['DOCUMENT_ROOT'] . $dep);
-                    }
-                }
-                $sizestr = $size . " octets";if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " Gio";} else {$sizestr = round($size / 1048576, 2) . " Mio";}} else {$sizestr = round($size / 1024, 2) . " Kio";}} else {$sizestr = $size . " octets";}$sizestr = str_replace(".", ",", $sizestr);
-                echo("></td><td><label for=\"" . $widget . "\"><b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/name") . "</b></label><br>par <b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/author") . "</b>");
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/cms-store")) {
-                    echo(", installé via le CMS Store");
-                }
-                echo("<i> (" . $sizestr . ")</i></td></tr></tbody></table></div><p>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/description") . "</p>");
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config")) {
-                    echo("<p><a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config") . "\" title=\"Modifier les paramètres de cette extension\" class=\"sblink\">Configurer...</a></p>");
-                }
-                echo("</div>");
-            }
-        }
-        
-        ?>
-        
+    </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/semantic" class="sblink">CMS Sémantique</a></div>
+        <h2>CMS Sémantique</h2>
+        <h3>Apparance</h3>
+        <input type="checkbox" name="001" onchange="updateKey('001', 'toc')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {echo("selected");} ?>><label for="001">Utiliser une table des matières pour les pages contenant plusieurs titres</label><br>
+        <input type="checkbox" name="002" onchange="updateKey('002', 'betterHome')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_betterHome")) {echo("selected");} ?>><label for="002">Générer automatiquement une page d'accueil améliorée</label><br>
+        <h3>Sécurité</h3>
+        <input type="checkbox" name="003" onchange="updateKey('003', 'antiDdos')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {echo("selected");} ?>><label for="003">Bloquer les attaques par requêtes massives (DDOS) automatiquement</label><br>
+        <input type="checkbox" name="004" onchange="updateKey('004', 'antiBruteforce')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiBruteforce")) {echo("selected");} ?>><label for="004">Bloquer les tentatives infructueuses de connexion à l'administration</label><br>
+        <input type="checkbox" name="005" onchange="updateKey('005', 'autoLogout')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_autoLogout")) {echo("selected");} ?>><label for="005">Terminer la session d'administration automatiquement en cas d'innactivité</label><br>
+        <h3>Optimisations</h3>
+        <input type="checkbox" name="006" onchange="updateKey('006', 'resourcesPreload')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_resourcesPreload")) {echo("selected");} ?>><label for="006">Précharger les ressources pour les prochaines visites</label><br>
     </div>
 </body>
 </html>
 
 <script>
 
-function updateWidgetStatus(widget) {
-    checkbox = document.getElementsByName(widget)[0]
+function updateKey(name, title) {
+    checkbox = document.getElementsByName(name)[0]
     if (typeof checkbox == "undefined") {} else {
-        if (checkbox.checked) {
-            document.getElementById('header-' + widget).classList.remove('disabled');
-            document.getElementById('header-' + widget).classList.add('enabled');
-        } else {
-            document.getElementById('header-' + widget).classList.remove('enabled');
-            document.getElementById('header-' + widget).classList.add('disabled');
-        }
         Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = true})
 
         var formData = new FormData();
-        formData.append("element", widget);
+        formData.append("setting", title);
         formData.append("value", checkbox.checked.toString());
         $.ajax({
             type: "POST",
             dataType: 'html',
-            url: "/api/admin/widgets.php",
+            url: "/api/admin/semantic_update.php",
             success: function (data) {
                 if (data == "ok") {
                     console.log("Sauvegardé avec succès")

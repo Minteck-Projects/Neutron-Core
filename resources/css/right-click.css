@@ -4,7 +4,7 @@
 
 .show {
     z-index: 1000;
-    position: fixed;
+    position: absolute;
     background-color: #C0C0C0;
     border: 1px solid #5b5b5b;
     padding: 5px 0;

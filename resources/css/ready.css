@@ -46,3 +46,7 @@ hr {
     border-width: 1px;
     border-bottom: none;
 }
+
+a:hover > img {
+    filter: opacity(75%);
+}

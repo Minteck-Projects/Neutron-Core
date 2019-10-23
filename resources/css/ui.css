@@ -37,6 +37,7 @@
     border-radius: 999px;
     box-shadow: none;
     transition: box-shadow 200ms;
+    background: whitesmoke;
 }
 
 .icon_button:hover {

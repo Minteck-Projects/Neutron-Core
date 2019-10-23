@@ -137,3 +137,8 @@ html {
 .message_black > tbody > tr > td > .message_img {
     filter: none;
 }
+
+.pushbar.opened {
+    box-shadow: 1px 1px 12px 
+    #262626;
+}
