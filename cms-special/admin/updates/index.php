@@ -89,7 +89,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <?php
 
         $currentVersion = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version");
-        $latestVersion = file_get_contents("https://mpcms-cdn.000webhostapp.com/latest_version");
+        $latestVersion = file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version");
 
         if (version_compare($currentVersion, $latestVersion) >= 1) {
             echo("<div id=\"protect\" class=\"s1\"><b>Votre site est potentiellement vulnérable</b><br>Vous utilisez une préversion de Minteck Projects CMS</div>");
@@ -218,7 +218,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <?php
     
     try {
-        echo(file_get_contents("https://mpcms-cdn.000webhostapp.com/changelog/" . $currentVersion));
+        echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . $currentVersion));
     } catch (Notice $err) {
         echo("<i>Aucune information concernant votre version de Minteck Projects CMS</i>");
     }
@@ -234,7 +234,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             echo("<h4>Version stable en circulation (" . $latestVersion . ")</h4>");
         }
         try {
-            echo(file_get_contents("https://mpcms-cdn.000webhostapp.com/changelog/" . $latestVersion));
+            echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . $latestVersion));
         } catch (Notice $err) {
             echo("<i>Aucune information concernant la dernière version de Minteck Projects CMS</i>");
         }
