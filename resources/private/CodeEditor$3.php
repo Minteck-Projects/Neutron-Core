@@ -12,7 +12,8 @@
     }
     
     ?>
-    codeeditor.session.setMode("ace/mode/html");
+    codeeditor.session.setMode("ace/mode/json");
     codeeditor.session.setUseWrapMode(true);
     function loadAce() {}
 </script>
+<center><p><a onclick="pushSettings()" class="button">Sauvegarder</a></p></center>
