@@ -134,9 +134,8 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                     }
                 }
             }
-            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">Galerie de photos</a>");}
-            $count = $count + 1;
-            if ($count == 6) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">Galerie de photos</a>");$count = $count + 1;}
+            if ($count >= 5) {
                 echo("<a onclick=\"pushbar.open('panel-navigation')\" title=\"Ouvrir le menu\" class=\"menulink-desktop\">Plus...</a>");
             }
         }
