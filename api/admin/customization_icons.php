@@ -25,12 +25,18 @@ if (isset($_POST['theme'])) {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled")) {
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled");
         }
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {
+            unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled");
+        }
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled", "");
         die("ok");
     }
     if ($_POST['theme'] == "suru") {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled");
+        }
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled")) {
+            unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled");
         }
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled", "");
         die("ok");

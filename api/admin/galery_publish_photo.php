@@ -70,7 +70,7 @@ if (isset($_FILES['file'])) {
         } else {
             $maxsizestr = $maxsize . " octets";
         }
-        die("La taille du fichier de bannière dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
+        die("La taille du fichier de la photo dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
     }
     if ($_FILES['file']['error'] == 2) {
         die("La taille maximale du fichier de formulaire à été dépassée");

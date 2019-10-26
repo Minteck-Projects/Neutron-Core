@@ -142,3 +142,7 @@ html {
     box-shadow: 1px 1px 12px 
     #262626;
 }
+
+.reset-option:hover {
+    background: rgb(115, 115, 115);
+}
