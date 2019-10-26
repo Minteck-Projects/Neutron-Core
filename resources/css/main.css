@@ -131,7 +131,8 @@ body {
 
 #menubar {
     padding: 10px 20px;
-    background: rgb(66, 66, 66)
+    background: rgb(66, 66, 66);
+    box-shadow: 1px 10px 12px rgba(0, 0, 0, .5);
 }
 
 .menubar-link {
@@ -351,4 +352,30 @@ body {
     padding: 5px 10px;
     z-index: -2;
     color: white;
+}
+
+blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    border-left: 5px solid #ccc;
+    padding: 0px 1.5em;
+    font-style: italic;
+}
+
+blockquote p {
+    margin: 0;
+    padding: 16px 0px;
+}
+
+a:not([class]), a[class=""] {
+    color: inherit;
+}
+
+a:not([class]):hover, a[class=""]:hover {
+    text-decoration: none;
+}
+
+a:not([class]):not([id]):active, a[class=""][id=""]:active {
+    text-decoration: none;
+    opacity: 75%;
 }
