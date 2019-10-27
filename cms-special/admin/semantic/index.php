@@ -68,7 +68,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <h2>CMS Sémantique</h2>
         <h3>Apparance</h3>
         <input type="checkbox" name="001" onchange="updateKey('001', 'toc')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {echo("checked");} ?>><label for="001">Utiliser une table des matières pour les pages contenant plusieurs titres</label><br>
-        <input type="checkbox" name="002" onchange="updateKey('002', 'betterHome')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_betterHome")) {echo("checked");} ?>><label for="002">Générer automatiquement une page d'accueil améliorée</label><br>
+        <!-- <input type="checkbox" name="002" onchange="updateKey('002', 'betterHome')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_betterHome")) {echo("checked");} ?>><label for="002">Générer automatiquement une page d'accueil améliorée</label><br> -->
         <h3>Sécurité</h3>
         <input type="checkbox" name="003" onchange="updateKey('003', 'antiDdos')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {echo("checked");} ?>><label for="003">Bloquer les attaques par requêtes massives (DDOS) automatiquement</label><br>
         <h3>Optimisations</h3>

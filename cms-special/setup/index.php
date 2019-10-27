@@ -27,7 +27,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     }
 
     ?></title>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
 </head>
 <body>
     <?php

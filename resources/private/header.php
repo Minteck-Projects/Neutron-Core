@@ -1,6 +1,78 @@
 <?php
 
-die("<title>502 Bad Gateway</title><center><h1>502 Bad Gateway</h1><hr>{$_SERVER['SERVER_SIGNATURE']}</center>");
+function ipHash() {
+    $hash = str_replace("/", "-", str_replace(":", "-", password_hash($_SERVER['REMOTE_ADDR'], PASSWORD_BCRYPT, ['cost' => 5,'salt' => "MinteckProjectsCmsIpBan",])));
+    return $hash;
+}
+
+// var_dump($_SERVER['REMOTE_ADDR']);
+// die("<br>" . ipHash());
+
+function ipbPush() {
+    $ip = ipHash();
+    if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) {
+        mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList");
+    }
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList/" . $ip)) {
+        $ipb = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList/" . $ip);
+        $ipb_args = explode('|', $ipb);
+        if ($ipb_args[1] == date('YmdHi')) {
+            (int)$ipb_args[0] = (int)trim($ipb_args[0]) + 1;
+            if ($ipb_args[0] >= 10) {
+                if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) {
+                    mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps");
+                }
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps/" . ipHash(), date('Ymd'));
+            }
+        } else {
+            (int)$ipb_args[0] = 1;
+            $ipb_args[1] = date('YmdHi');
+        }
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList/" . $ip, implode("|", $ipb_args));
+        echo("<script>console.log('{$_SERVER['REMOTE_ADDR']}: {$ipb_args[0]} requests this minute.");
+        if ($ipb_args[0] >= 10) {
+            echo(" Next request will be tempban.");
+        }
+        echo("')</script>");
+    } else {
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList/" . $ip, "1|" . date('YmdHi'));
+        echo("<script>console.log('{$_SERVER['REMOTE_ADDR']}: 1 requests this minute.')</script>");
+    }
+}
+
+?>
+
+<?php
+
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps/" . ipHash())) {
+            if (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps/" . ipHash()) == date('Ymd')) {
+                ob_end_clean();
+                header("HTTP/1.1 429 Too Many Requests");
+                die("<title>429 Too Many Requests</title><center><h1>429 Too Many Requests</h1><hr>{$_SERVER['SERVER_SIGNATURE']}</center>");
+            } else {
+                ipbPush();
+            }
+        } else {
+            ipbPush();
+        }
+    }
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) {
+        $bans = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps");
+        $banscount = 0;
+        foreach ($bans as $ban) {
+            if ($ban != "." && $ban != "..") {
+                if (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps/" . $ban) == date('Ymd')) {
+                    $banscount = $banscount + 1;
+                }
+            }
+        }
+        if ($banscount >= 5) {
+            ob_end_clean();
+            header("HTTP/1.1 503 Service Unavailable");
+            die("<title>503 Service Unavailable</title><center><h1>503 Service Unavailable</h1><hr>{$_SERVER['SERVER_SIGNATURE']}</center>");
+        }
+    }
     $offlineMode = false;
     function initerr($level, $description, $file, $line) {
         global $offlineMode;
