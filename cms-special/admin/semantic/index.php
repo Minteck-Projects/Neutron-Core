@@ -6,10 +6,10 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/housekeeping&pa='</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/semantic&pa='</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/housekeeping&pa='</script>");
+    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/semantic&pa='</script>");
 }
 
 if (isset($_POST['password'])) {
@@ -67,12 +67,12 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/semantic" class="sblink">CMS Sémantique</a></div>
         <h2>CMS Sémantique</h2>
         <h3>Apparance</h3>
-        <input type="checkbox" name="001" onchange="updateKey('001', 'toc')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {echo("selected");} ?>><label for="001">Utiliser une table des matières pour les pages contenant plusieurs titres</label><br>
-        <input type="checkbox" name="002" onchange="updateKey('002', 'betterHome')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_betterHome")) {echo("selected");} ?>><label for="002">Générer automatiquement une page d'accueil améliorée</label><br>
+        <input type="checkbox" name="001" onchange="updateKey('001', 'toc')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {echo("checked");} ?>><label for="001">Utiliser une table des matières pour les pages contenant plusieurs titres</label><br>
+        <input type="checkbox" name="002" onchange="updateKey('002', 'betterHome')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_betterHome")) {echo("checked");} ?>><label for="002">Générer automatiquement une page d'accueil améliorée</label><br>
         <h3>Sécurité</h3>
-        <input type="checkbox" name="003" onchange="updateKey('003', 'antiDdos')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {echo("selected");} ?>><label for="003">Bloquer les attaques par requêtes massives (DDOS) automatiquement</label><br>
+        <input type="checkbox" name="003" onchange="updateKey('003', 'antiDdos')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {echo("checked");} ?>><label for="003">Bloquer les attaques par requêtes massives (DDOS) automatiquement</label><br>
         <h3>Optimisations</h3>
-        <input type="checkbox" name="006" onchange="updateKey('006', 'resourcesPreload')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_resourcesPreload")) {echo("selected");} ?>><label for="006">Précharger les ressources pour les prochaines visites</label><br>
+        <input type="checkbox" name="006" onchange="updateKey('006', 'resourcesPreload')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_resourcesPreload")) {echo("checked");} ?>><label for="006">Précharger les ressources pour les prochaines visites</label><br>
     </div>
 </body>
 </html>

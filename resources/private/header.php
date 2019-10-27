@@ -1,5 +1,6 @@
 <?php
 
+die("<title>502 Bad Gateway</title><center><h1>502 Bad Gateway</h1><hr>{$_SERVER['SERVER_SIGNATURE']}</center>");
     $offlineMode = false;
     function initerr($level, $description, $file, $line) {
         global $offlineMode;
