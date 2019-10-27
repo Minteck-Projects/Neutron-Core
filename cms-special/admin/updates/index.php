@@ -43,7 +43,7 @@ function getData(string $dir, $ignoreUploadDir = false) {
 
 ?>
 
-<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php ob_start();echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
