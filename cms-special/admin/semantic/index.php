@@ -71,8 +71,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <input type="checkbox" name="002" onchange="updateKey('002', 'betterHome')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_betterHome")) {echo("selected");} ?>><label for="002">Générer automatiquement une page d'accueil améliorée</label><br>
         <h3>Sécurité</h3>
         <input type="checkbox" name="003" onchange="updateKey('003', 'antiDdos')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {echo("selected");} ?>><label for="003">Bloquer les attaques par requêtes massives (DDOS) automatiquement</label><br>
-        <input type="checkbox" name="004" onchange="updateKey('004', 'antiBruteforce')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiBruteforce")) {echo("selected");} ?>><label for="004">Bloquer les tentatives infructueuses de connexion à l'administration</label><br>
-        <input type="checkbox" name="005" onchange="updateKey('005', 'autoLogout')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_autoLogout")) {echo("selected");} ?>><label for="005">Terminer la session d'administration automatiquement en cas d'innactivité</label><br>
         <h3>Optimisations</h3>
         <input type="checkbox" name="006" onchange="updateKey('006', 'resourcesPreload')" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_resourcesPreload")) {echo("selected");} ?>><label for="006">Précharger les ressources pour les prochaines visites</label><br>
     </div>

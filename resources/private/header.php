@@ -16,9 +16,24 @@
         file_get_contents("https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/ace.js");
     }
 
-?>
-
-<?php
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_resourcesPreload")) {
+    echo('<link rel="preload" href="/resources/themes/colors/dark.js" as="script">');
+    echo('<link rel="preload" href="/resources/themes/icons/classic.js" as="script">');
+    echo('<link rel="preload" href="/resources/themes/icons/suru.js" as="script">');
+    echo('<link rel="preload" href="/resources/js/right-click.js" as="script">');
+    echo('<link rel="preload" href="/resources/js/jquery.js" as="script">');
+    echo('<link rel="preload" href="/resources/lib/pushbar.js/library.js" as="script">');
+    echo('<link rel="preload" href="/resources/lib/pushbar.js/library.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/ui.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/snowapi.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/setup.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/right-click.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/preview.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/main.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/fonts-import.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/error.css" as="style">');
+    echo('<link rel="preload" href="/resources/css/admin.css" as="style">');
+}
 
 function dataValid($string) {
     json_decode($string);

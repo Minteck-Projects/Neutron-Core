@@ -214,30 +214,35 @@ if (!empty($widgets->list)) {
 	</div>
     <div id="page-placeholder">
         <div id="page-content">
-            <!-- <?php
+            <?php
             
             $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index");
             preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
 
-            //reformat the results to be more usable
             $toc = implode("\n",$results[0]);
-            $toc = str_replace('<a name="','<a href="#',$toc);
-            $toc = str_replace('</a>','',$toc);
-            $toc = preg_replace('#<h([1-6])>#','<li class="toc$1">',$toc);
-            $toc = preg_replace('#<\/h[1-6]>#','</a></li>',$toc);
+            $toc = preg_replace('#<h2>#','<li class="toc$1" style="margin-left: 0px;">',$toc);
+            $toc = preg_replace('#<\/h2>#','</li>',$toc);
+            $toc = preg_replace('#<h3>#','<li class="toc$1" style="margin-left: 20px;">',$toc);
+            $toc = preg_replace('#<\/h3>#','</li>',$toc);
+            $toc = preg_replace('#<h4>#','<li class="toc$1" style="margin-left: 40px;">',$toc);
+            $toc = preg_replace('#<\/h4>#','</li>',$toc);
+            $toc = preg_replace('#<h5>#','<li class="toc$1" style="margin-left: 60px;">',$toc);
+            $toc = preg_replace('#<\/h5>#','</li>',$toc);
+            $toc = preg_replace('#<h6>#','<li class="toc$1" style="margin-left: 80px;">',$toc);
+            $toc = preg_replace('#<\/h6>#','</li>',$toc);
         
-            //plug the results into appropriate HTML tags
             $toc = '<div id="toc"> 
-            <p id="toc-header">Table des matières</p>
-            <hr />
+            <h3>Table des matières</h3>
             <ul>
             '.$toc.'
             </ul>
-            </div><br /><br />';
+            </div><hr>';
         
-            echo($toc);
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {
+                echo($toc);
+            }
             
-            ?>-->
+            ?>
             <?php echo($html_string); ?>
         </div>
         <div id="page-footer">
