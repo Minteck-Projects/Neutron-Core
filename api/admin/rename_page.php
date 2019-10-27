@@ -41,7 +41,7 @@ if (isset($_POST['page'])) {
             $newslug = preg_replace("/[^0-9a-zA-Z ]/m", "", $newname );
             $newslug = str_replace(" ", "-", $newslug);
             $newslug = strtolower($newslug);
-            if ($newslug == "api" || $newslug == "cms-special" || $slug == "cms-unrelated" || $newslug == "data" || $newslug == "resources" || $newslug == "widgets" || $newslug == "-htaccess" || $newslug == "index" || $newslug == "index-php") {
+            if ($newslug == "api" || $newslug == "cms-special" || $newslug == "cms-unrelated" || $newslug == "data" || $newslug == "resources" || $newslug == "widgets" || $newslug == "-htaccess" || $newslug == "index" || $newslug == "index-php") {
                 die("Vous ne pouvez pas utiliser un nom réservé en interne par le logiciel");
             }
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $newslug)) {
