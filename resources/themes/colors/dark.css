@@ -122,6 +122,10 @@ html {
     color: white;
 }
 
+.ck-dropdown__button {
+    color: white !important;
+}
+
 .message_img {
     filter: invert(75%) brightness(175%);
 }
@@ -145,4 +149,12 @@ html {
 
 .reset-option:hover {
     background: rgb(115, 115, 115);
+}
+
+.ck.ck-button.ck-button_with-text.ck-off {
+    color: black;
+}
+
+.ck.ck-button.ck-button_with-text.ck-off:hover {
+    color: white;
 }

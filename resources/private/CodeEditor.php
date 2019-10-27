@@ -16,4 +16,5 @@
     codeeditor.session.setUseWrapMode(true);
     function loadAce() {}
 </script>
+<script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/html");}, 100)</script>
 <center><p><a onclick="updatePageHTML()" class="button">Publier</a></p></center>

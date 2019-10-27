@@ -73,7 +73,7 @@ if ($currentSlug == "index") {
     <title><?php
     
     if ($ready) {
-        echo("Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo("{$currentName} - Pages - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
         echo("Administration du site - MPCMS");
     }

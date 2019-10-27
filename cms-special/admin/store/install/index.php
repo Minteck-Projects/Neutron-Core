@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
     <title><?php
     
     if ($ready) {
-        echo("Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo("Installation de {$name} - CMS Store - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
         echo("Administration du site - MPCMS");
     }
