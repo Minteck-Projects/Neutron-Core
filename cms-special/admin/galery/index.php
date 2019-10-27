@@ -110,14 +110,14 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             <li><a class="sblink" href="/cms-special/admin/galery/addcategory">Créer une nouvelle catégorie</a></li>
         </ul>
         <h3>Catégories</h3>
-        <i>Une catégorie créée ne peut pas être modifiée ou supprimée. Pour vraiment supprimer cette catégorie, contactez votre administrateur réseau.</i>
+        <i>Pour modifier une catégorie, supprimez-la et recréez la.</i>
         <ul>
             <?php
             
             $dirs = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/categories");
             foreach ($dirs as $el) {
                 if ($el == "." || $el == "..") {} else {
-                    echo("<li>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/categories/" . $el) . "</li>");
+                    echo("<li>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/categories/" . $el) . ", <a class=\"sblink\" onclick=\"deleteCategory('{$el}')\">Supprimer</a></li>");
                 }
             }
 
@@ -139,13 +139,13 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         } else {
             foreach ($dirs as $el) {
                 if ($el == "." || $el == "..") {} else {
-                    echo("<li><i>" . $el ."</i>, ");
+                    echo("<li><code>" . $el ."</code>, ");
                     if (explode('|', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $el))[1] == "unclassed") {
                         echo("Non classé");
                     } else {
                         echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/categories/" . explode('|', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $el))[1]));
                     }
-                    echo(", <a href=\"" . explode('|', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $el))[0] . "\" class=\"sblink\" download>Télécharger</a> - <a onclick=\"confirmDelete('$el')\" class=\"sblink\">Supprimer</a></li>");
+                    echo(", <a onclick=\"labelPicture('$el')\" class=\"sblink\">Étiquetter</a> - <a href=\"" . explode('|', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $el))[0] . "\" class=\"sblink\" download>Télécharger</a> - <a onclick=\"confirmDelete('$el')\" class=\"sblink\">Supprimer</a></li>");
                 }
             }
             echo("<b><a class=\"sblink\" href=\"/cms-special/admin/galery/publish\">Publier une nouvelle photo</a></b>");
@@ -161,7 +161,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
 function confirmDelete(id) {
     if (confirm('Vous allez supprimer cette image et la dépublier du site.\nCette action est irréversible et l\'image ne pourra pas être récupérée...')) {
-        $('body').fadeOut(200)
+        $('#settings').fadeOut(200)
         document.title = "Suppression de l'image..."
         var formData = new FormData();
         formData.append("id", id);
@@ -180,6 +180,64 @@ function confirmDelete(id) {
             error: function (error) {
                 alert("Erreur de communication")
                 location.reload()
+            },
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+}
+
+function deleteCategory(id) {
+    if (confirm('Vous allez supprimer cette catégorie, cette action est irréversible. Toutes les images dans cette catégorie seront déclassées.')) {
+        $('#settings').fadeOut(200)
+        document.title = "Suppression de la catégorie..."
+        var formData = new FormData();
+        formData.append("id", id);
+        $.ajax({
+            type: "POST",
+            dataType: 'html',
+            url: "/api/admin/galery_delete_category.php",
+            success: function (data) {
+                if (data == "ok") {
+                    location.reload()
+                } else {
+                    alert("Erreur : " + data, true)
+                }
+            },
+            error: function (error) {
+                alert("Erreur de communication", true)
+            },
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+}
+
+function labelPicture(id) {
+    text = prompt("Entrez la nouvelle étiquette pour cette image")
+    if (typeof text == "string") {
+        $('#settings').fadeOut(200)
+        document.title = "Étiquetage de l'image..."
+        var formData = new FormData();
+        formData.append("id", id);
+        formData.append("label", text);
+        $.ajax({
+            type: "POST",
+            dataType: 'html',
+            url: "/api/admin/galery_label_picture.php",
+            success: function (data) {
+                if (data == "ok") {
+                    location.reload()
+                } else {
+                    alert("Erreur : " + data, true)
+                }
+            },
+            error: function (error) {
+                alert("Erreur de communication", true)
             },
             data: formData,
             cache: false,

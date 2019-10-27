@@ -1,3 +1,12 @@
+<?php
+
+if (isset($_GET['return'])) {
+    $callback = $_GET['return'];
+} else {
+    $callback = "/";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en" style="height:100%;overflow:hidden;">
 <head>
@@ -16,6 +25,6 @@
     
 ?>
 <body style="background-image:url('<?= $_GET['url'] ?>');background-size:contain;background-position:center;height: 100%;margin: 0;background-repeat: no-repeat;background-color: #222;">
-    <img src="/resources/image/close.svg" onclick="history.back()">
+    <img src="/resources/image/close.svg" onclick="location.href = &quot;<?= $callback ?>&quot;">
 </body>
 </html>

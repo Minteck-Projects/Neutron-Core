@@ -264,8 +264,13 @@ body {
     border-style: solid;
     border-color: black;
     width: 90%;
+    filter: blur(5px);
+    transition: filter 200ms;
 }
 
+.photo_image.loaded {
+    filter: none !important;
+}
 
 @media (max-width: 500px) {
     .menubar-mobile {
@@ -378,4 +383,8 @@ a:not([class]):hover, a[class=""]:hover {
 a:not([class]):not([id]):active, a[class=""][id=""]:active {
     text-decoration: none;
     opacity: 75%;
+}
+
+.photo_label {
+    color: black;
 }

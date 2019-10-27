@@ -217,7 +217,12 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-function alert(text) {
+roo_alert = false;
+
+function alert(text, refreshOnOk) {
+    if (typeof refreshOnOk == "boolean") {
+        roo_alert = refreshOnOk;
+    }
     if (typeof text == "string") {
         document.getElementById('errorbox-text').innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>")
     } else {
@@ -233,6 +238,9 @@ function closeError() {
     $("#errorbox-wrapper").fadeOut(200)
     setTimeout(() => {
         $("#errorbox-error").fadeOut(0)
+        if (roo_alert) {
+            location.reload()
+        }
     }, 100)
 }
 
