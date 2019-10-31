@@ -54,7 +54,7 @@ if (trim($title) == "") {
     die("Le titre ne peut pas être vide");
 }
 
-if ($slug == "api" || $slug == "cms-special" || $slug == "cms-unrelated" || $slug == "vendor" || $slug == "data" || $slug == "resources" || $slug == "widgets" || $slug == "-htaccess" || $slug == "index" || $slug == "index-php") {
+if ($slug == "api" || $slug == "cms-special" || $slug == "galery" || $slug == "cms-unrelated" || $slug == "vendor" || $slug == "data" || $slug == "resources" || $slug == "widgets" || $slug == "-htaccess" || $slug == "index" || $slug == "index-php") {
     die("Vous ne pouvez pas utiliser un nom réservé en interne par le logiciel");
 }
 

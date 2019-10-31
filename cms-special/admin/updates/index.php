@@ -156,6 +156,8 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     $mpcmsSize = $mpcmsSize + $size;
     getData($_SERVER['DOCUMENT_ROOT'] . "/widgets");
     $mpcmsSize = $mpcmsSize + $size;
+    getData($_SERVER['DOCUMENT_ROOT'] . "/vendor");
+    $mpcmsSize = $mpcmsSize + $size;
 
     $size = 0;
     getData($_SERVER['DOCUMENT_ROOT'] . "/data");
