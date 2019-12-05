@@ -12,7 +12,7 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/appearance&pa='</script>");
 }
 
-if (isset($_POST['password'])) {
+if (isset($_POST['password'])) { 
     if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
         die("<script>location.href = '/cms-special/admin/home';</script>");
         return;
