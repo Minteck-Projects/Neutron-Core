@@ -75,6 +75,11 @@ if (isset($_FILES['icon'])) {
     }
     if ($_FILES['icon']['error'] == 0) {
         imagepng(imagecreatefromstring(file_get_contents($_FILES['icon']['tmp_name'])), $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png");
+        if ($_FILES['icon']['type'] == "image/png") {
+            copy($_FILES['icon']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png");
+        } else {
+            copy($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png", $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png");
+        }
         unlink($_FILES['icon']['tmp_name']);
     }
 }

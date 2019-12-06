@@ -166,6 +166,72 @@ function updatePage() {
     });
 }
 
+function updatePageNoBack() {
+    document.getElementById('loader').classList.remove('hide')
+    document.getElementById('editing').classList.add('hide')
+    var formData = new FormData();
+    formData.append("title", page);
+    formData.append("content", editor.getData());
+    $.ajax({
+        type: "POST",
+        dataType: 'html',
+        url: "/api/admin/edit_page.php",
+        success: function (data) {
+            if (data == "ok") {
+                alert("La page a bien été sauvegardée");
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
+            } else {
+                alert("Erreur : " + data)
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
+            }
+        },
+        error: function (error) {
+            alert("Erreur de communication")
+            document.getElementById('loader').classList.add('hide')
+            document.getElementById('editing').classList.remove('hide')
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
+function updatePageHTMLNoBack() {
+    document.getElementById('loader').classList.remove('hide')
+    document.getElementById('editing').classList.add('hide')
+    var formData = new FormData();
+    formData.append("title", page);
+    formData.append("content", ace.edit("editor").getValue());
+    $.ajax({
+        type: "POST",
+        dataType: 'html',
+        url: "/api/admin/edit_page.php",
+        success: function (data) {
+            if (data == "ok") {
+                alert("La page a bien été sauvegardée");
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
+            } else {
+                alert("Erreur : " + data)
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
+            }
+        },
+        error: function (error) {
+            alert("Erreur de communication")
+            document.getElementById('loader').classList.add('hide')
+            document.getElementById('editing').classList.remove('hide')
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
 function updatePageHTML() {
     document.getElementById('loader').classList.remove('hide')
     document.getElementById('editing').classList.add('hide')

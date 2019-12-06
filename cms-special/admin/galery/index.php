@@ -139,7 +139,11 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         } else {
             foreach ($dirs as $el) {
                 if ($el == "." || $el == "..") {} else {
-                    echo("<li><code>" . $el ."</code>, ");
+                    if (isset(explode('|', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $el))[2])) {
+                        echo("<li><i>" . explode('|', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $el))[2] . "</i>, ");
+                    } else {
+                        echo("<li><code>" . $el ."</code>, ");
+                    }
                     if (explode('|', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $el))[1] == "unclassed") {
                         echo("Non classé");
                     } else {

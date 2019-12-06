@@ -141,6 +141,43 @@ function createPageVisual() {
     });
 }
 
+function createPageVisualNoBack() {
+    Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = true})
+    document.getElementById('loader').classList.remove('hide')
+    document.getElementById('editing').classList.add('hide')
+    var formData = new FormData();
+    formData.append("title", document.getElementById('name').value);
+    formData.append("type", "0");
+    formData.append("content", editor.getData());
+    $.ajax({
+        type: "POST",
+        dataType: 'html',
+        url: "/api/admin/create_page.php",
+        success: function (data) {
+            if (data == "ok") {
+                alert("La page a bien été sauvegardée");
+                Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
+            } else {
+                alert("Erreur : " + data)
+                Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
+            }
+        },
+        error: function (error) {
+            alert("Erreur de communication")
+            document.getElementById('loader').classList.add('hide')
+            document.getElementById('editing').classList.remove('hide')
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
 function createPageHTML() {
     Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = true})
     document.getElementById('loader').classList.remove('hide')
@@ -157,6 +194,43 @@ function createPageHTML() {
             if (data == "ok") {
                 window.onbeforeunload = undefined;
                 location.href = "/cms-special/admin/pages";
+            } else {
+                alert("Erreur : " + data)
+                Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
+            }
+        },
+        error: function (error) {
+            alert("Erreur de communication")
+            document.getElementById('loader').classList.add('hide')
+            document.getElementById('editing').classList.remove('hide')
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
+function createPageHTMLNoBack() {
+    Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = true})
+    document.getElementById('loader').classList.remove('hide')
+    document.getElementById('editing').classList.add('hide')
+    var formData = new FormData();
+    formData.append("title", document.getElementById('name').value);
+    formData.append("type", "1");
+    formData.append("content", ace.edit("editor").getValue());
+    $.ajax({
+        type: "POST",
+        dataType: 'html',
+        url: "/api/admin/create_page.php",
+        success: function (data) {
+            if (data == "ok") {
+                alert("La page a bien été sauvegardée");
+                Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
+                document.getElementById('loader').classList.add('hide')
+                document.getElementById('editing').classList.remove('hide')
             } else {
                 alert("Erreur : " + data)
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})

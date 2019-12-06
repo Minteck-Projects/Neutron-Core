@@ -23,21 +23,25 @@ function isJson($string) {
         sort($eventlist);
         $pos = 1;
         $shown = 0;
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events")) {
+            $calevn = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events");
+        } else {
+            $calevn = "3";
+        }
         foreach ($eventlist as $event) {
-            if ($pos == 4) {} else {
+            if ($pos == ($calevn + 1)) {} else {
                 foreach ($json->events as $el) {
                     if (isset($el->timestamp)) {
                         if ($el->timestamp == $event) {
                             (int)$currentDate = date("Ymd");
-                            // (int)$currentDate = "20191001";
                             if ($currentDate < $el->timestamp) {
                                 $shown = $shown + 1;
-                                echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
+                                echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li><i>" . $el->description . "</i>");
                                 $pos = $pos + 1;
                             }
                             if ($currentDate == $el->timestamp) {
                                 $shown = $shown + 1;
-                                echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
+                                echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li><i>" . $el->description . "</i>");
                                 $pos = $pos + 1;
                             }
                         }
@@ -54,4 +58,5 @@ function isJson($string) {
 
     ?>
     </ul>
+    <small><a href="/cms-special/calendar">Tout voir...</a></small>
 </div>

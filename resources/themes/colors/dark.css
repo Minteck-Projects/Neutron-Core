@@ -65,7 +65,7 @@ img[src='/resources/image/suru_contact_address.png'], img[src='/resources/image/
     filter: invert(100%);
 }
 
-div[data-pushbar-id="panel-sidebar"] > img#sidebar-close {
+div[data-pushbar-id="panel-sidebar"] > img#sidebar-close, .widget_cuc {
     filter: invert(100%);
 }
 

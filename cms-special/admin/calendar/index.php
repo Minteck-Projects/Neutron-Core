@@ -71,6 +71,27 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
     </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/calendar" class="sblink">Calendrier</a></div>
         <h2>Ajouter/supprimer des événements</h2>
+        <?php
+        
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events")) {
+            $calevn = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events");
+        } else {
+            $calevn = "3";
+        }
+        
+        ?>
+        Afficher les <select onchange="updateNextEvents()" id="nextevents">
+            <option value="1" <?php if ($calevn == "1") { echo("selected"); } ?>>1</option>
+            <option value="2" <?php if ($calevn == "2") { echo("selected"); } ?>>2</option>
+            <option value="3" <?php if ($calevn == "3") { echo("selected"); } ?>>3</option>
+            <option value="4" <?php if ($calevn == "4") { echo("selected"); } ?>>4</option>
+            <option value="5" <?php if ($calevn == "5") { echo("selected"); } ?>>5</option>
+            <option value="6" <?php if ($calevn == "6") { echo("selected"); } ?>>6</option>
+            <option value="7" <?php if ($calevn == "7") { echo("selected"); } ?>>7</option>
+            <option value="8" <?php if ($calevn == "8") { echo("selected"); } ?>>8</option>
+            <option value="9" <?php if ($calevn == "9") { echo("selected"); } ?>>9</option>
+            <option value="10" <?php if ($calevn == "10") { echo("selected"); } ?>>10</option>
+        </select> prochains événements dans le widget.
         <h3>Événements</h3>
         <ul>
         <?php
@@ -104,4 +125,35 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         </ul>
     </div>
 </body>
+<script>
+
+function updateNextEvents() {
+    value = document.getElementById('nextevents').value;
+    var formData = new FormData();
+    formData.append("value", value);
+    document.getElementById('nextevents').disabled = true;
+    $.ajax({
+        type: "POST",
+        dataType: 'html',
+        url: "/api/admin/calendar_nextevents.php",
+        success: function (data) {
+            if (data == "ok") {
+                document.getElementById('nextevents').disabled = false;
+            } else {
+                alert("Erreur : " + data)
+                document.getElementById('nextevents').disabled = false;
+            }
+        },
+        error: function (error) {
+            alert("Erreur de communication")
+            document.getElementById('nextevents').disabled = false;
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
+</script>
 </html>

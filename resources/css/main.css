@@ -46,7 +46,7 @@ body {
     padding: 40px 50px;
     background-position: center;
     background-size: 100%;
-    padding-top: 101px;
+    padding-top: 60px;
 }
 
 #banner-menu {
@@ -319,6 +319,7 @@ body {
 
 .pushbar.opened {
     box-shadow: 1px 1px 12px gray;
+    z-index: 999999999 !important;
 }
 
 .menubar-link {
@@ -387,4 +388,55 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
 
 .photo_label {
     color: black;
+}
+
+.sticky {
+    position: fixed;
+    top: 20px;
+    width: 97%;
+}
+  
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
+}
+
+#always-on-top, #menubar {
+    z-index: 99999999;
+}
+
+@media (min-width: 700px) {
+    #sidebar {
+        position: absolute;
+        right: 0;
+        background: rgb(66, 66, 66);
+        top: 152px;
+        overflow-y: hidden;
+        width: 256px !important;
+        max-width: initial !important;
+        max-height: initial !important;
+        height: initial !important;
+        transform: initial !important;
+    }
+    #menubar {
+        z-index: initial;
+    }
+    #sidebar-widgets {
+        top: initial !important;
+        padding-top: 30px;
+        display: block;
+    }
+    .sticky {
+        width: 78.2% !important;
+    }
+    #sidebar-separator, #sidebar-title, #sidebar-close {
+        opacity: 0;
+        cursor: default;
+    }
+    #menubar-link-tools {
+        display: none;
+    }
+    #page-placeholder {
+        margin-right: 256px;
+    }
 }

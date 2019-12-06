@@ -27,4 +27,9 @@ if (isset($_GET['return'])) {
 <body style="background-image:url('<?= $_GET['url'] ?>');background-size:contain;background-position:center;height: 100%;margin: 0;background-repeat: no-repeat;background-color: #222;">
     <img src="/resources/image/close.svg" onclick="location.href = &quot;<?= $callback ?>&quot;">
 </body>
+<script>
+
+window.onload = () => {setTimeout(() => {Array.from(document.getElementsByClassName('ppreview')).forEach((el) => {el.classList.add('loaded')});}, 1000)}
+
+</script>
 </html>

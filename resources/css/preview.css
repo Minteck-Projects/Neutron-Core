@@ -6,3 +6,11 @@ img {
     width: 36px;
     cursor: pointer;
 }
+
+.loaded {
+    filter: none !important;
+}
+
+.ppreview {
+    filter: blur(10px);
+}
