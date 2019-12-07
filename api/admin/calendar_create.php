@@ -37,6 +37,11 @@ if (isJson($jsonraw)) {
     } else {
         die("Pas de description");
     }
+    if (isset($_POST['link'])) {
+        $link = $_POST['link'];
+    } else {
+        die("Pas de lien");
+    }
     if (isset($_POST['day'])) {
         $day = $_POST['day'];
     } else {
@@ -132,6 +137,11 @@ if (isJson($jsonraw)) {
     $json->events[$pos]->timestamp = $year . date('m', $date) . date('d', $date);
     $json->events[$pos]->name = $name;
     $json->events[$pos]->description = $desc;
+    if (substr($link, 0, 4) == "http") {
+        $json->events[$pos]->link = $link;
+    } else {
+        $json->events[$pos]->link = "http://" . $link;
+    }
     $json->events[$pos]->datestr = $daystr . " " . $monthstr . " " . $year;
     $newjsonraw = json_encode($json, JSON_PRETTY_PRINT);
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json", $newjsonraw);

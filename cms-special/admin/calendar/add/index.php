@@ -141,8 +141,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             <ul>
                 <li>Nom de l'événement :</li>
                 <input type="text" placeholder="Nom de l'événement" id="name"><br><br>
-                <li>Description :</li>
-                <input type="text" placeholder="Description" id="desc">
+                <li>Description <i>(facultatif)</i> :</li>
+                <input type="text" placeholder="Description" id="desc"><br><br>
+                <li>Adresse du lien <i>(facultatif)</i> :</li>
+                <input onchange="validateUrl()" onkeyup="validateUrl()" onkeydown="validateUrl()" type="text" placeholder="Lien externe" id="link"><img id="link_check" src="/resources/image/storeloader.svg" style="vertical-align:middle;" class="hide" width="24px" height="24px"><a class="hide" id="link_invalid" title="L'adresse du lien est invalide"><img src="/resources/image/close.svg" style="vertical-align:middle;" class="invert" width="24px" height="24px"></a>
             </ul>
             <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>La description de l'événement s'affichera entièrement sur le widget "Prochains événements", nous vous conseillons donc de ne pas écrire une description trop longue</p></td></tr></tbody></table></p>
             <center><p><a class="button" onclick="createCmsEvent()">Ajouter l'événement</a></p></center><br>
@@ -153,6 +155,29 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
 <script>
 
+function UrlRegex(str) {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  return !!pattern.test(str);
+}
+
+function validateUrl() {
+    document.getElementById('link_invalid').classList.add('hide');
+    document.getElementById('link_check').classList.remove('hide');
+    setTimeout(() => {
+        if (!UrlRegex(document.getElementById('link').value)) {
+            document.getElementById('link_invalid').classList.remove('hide');
+        } else {
+            document.getElementById('link_invalid').classList.add('hide');
+        }
+        document.getElementById('link_check').classList.add('hide');
+    }, 2000)
+}
+
 function createCmsEvent() {
     document.getElementById('datainput').classList.add('hide')
     var formData = new FormData();
@@ -161,6 +186,7 @@ function createCmsEvent() {
     formData.append("year", document.getElementById('year').value);
     formData.append("name", document.getElementById('name').value);
     formData.append("desc", document.getElementById('desc').value);
+    formData.append("link", document.getElementById('link').value);
     $.ajax({
         type: "POST",
         dataType: 'html',

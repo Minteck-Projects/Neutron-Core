@@ -97,7 +97,19 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <h3>Informations sur l'événement</h3>
         <ul>
             <li><b><?= $event->name ?></b></li>
-            <li><i><?= $event->description ?></i></li>
+            <?php
+            
+            if (trim($event->description) != "") {
+                echo("<li><i>" . $event->description . "</i></li>");
+            }
+
+            if (isset($event->link)) {
+                if (trim($event->link) != "") {
+                    echo("<li><i>" . $event->link . "</i></li>");
+                }
+            }
+            
+            ?>
             <li><?= $event->datestr ?> (<code><?= $event->timestamp ?></code>)</li>
         </ul>
         <h3>Supprimer l'événement ?</h3>

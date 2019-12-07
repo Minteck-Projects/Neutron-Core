@@ -105,7 +105,7 @@ html {
     color: white !important;
 }
 
-.rmenuimg {
+.rmenuimg, .invert {
     filter: invert(100%);
 }
 

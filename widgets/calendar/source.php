@@ -36,12 +36,20 @@ function isJson($string) {
                             (int)$currentDate = date("Ymd");
                             if ($currentDate < $el->timestamp) {
                                 $shown = $shown + 1;
-                                echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li><i>" . $el->description . "</i>");
+                                if (isset($el->link)) {
+                                    if ($el->link != "") {
+                                        echo("<li><b><a target=\"_blank\" class=\"sblink\" href=\"" . $el->link . "\">" . $el->datestr . "</b> : " . $el->name . "</a></li>");
+                                    } else {
+                                        echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li>");
+                                    }
+                                } else {
+                                    echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li>");
+                                }
                                 $pos = $pos + 1;
                             }
                             if ($currentDate == $el->timestamp) {
                                 $shown = $shown + 1;
-                                echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li><i>" . $el->description . "</i>");
+                                echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li>");
                                 $pos = $pos + 1;
                             }
                         }

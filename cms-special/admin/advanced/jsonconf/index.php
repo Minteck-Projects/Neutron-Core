@@ -48,7 +48,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <title><?php
     
     if ($ready) {
-        echo("Paramètres avancés - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo("Préférences de développement - Paramètres avancés - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
         echo("Administration du site - MPCMS");
     }

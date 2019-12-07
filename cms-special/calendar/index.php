@@ -47,7 +47,7 @@ function buffer(string $value) {
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->description . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -61,7 +61,7 @@ function buffer(string $value) {
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->description . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -75,7 +75,7 @@ function buffer(string $value) {
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->description . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
