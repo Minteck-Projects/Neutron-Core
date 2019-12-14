@@ -8,7 +8,7 @@ html {
 
 body {
     margin: 0;
-    height: 100%;
+    height: auto;
 }
 
 #siteadmin {
@@ -415,7 +415,7 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
         width: 256px !important;
         max-width: initial !important;
         max-height: initial !important;
-        height: initial !important;
+        height: calc(100% - 152px) !important;
         transform: initial !important;
     }
     #menubar {
