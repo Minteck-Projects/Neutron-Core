@@ -10,4 +10,8 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
         }
     }
 }
-die("<script>location.href = '/'</script>");
+if (isset($_GET['mobile'])) {
+    die("<script>location.href = '/cms-special/admin'</script>");
+} else {
+    die("<script>location.href = '/'</script>");
+}

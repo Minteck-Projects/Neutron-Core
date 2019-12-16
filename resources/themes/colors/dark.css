@@ -158,3 +158,13 @@ html {
 .ck.ck-button.ck-button_with-text.ck-off:hover {
     color: white;
 }
+
+.photo {
+    background: #1d1d1d;
+    box-shadow: #1d1d1d 1px 1px 12px;
+    border: #080808 1px solid;
+}
+
+.photo_label {
+    color: whitesmoke;
+}

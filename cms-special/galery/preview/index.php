@@ -19,13 +19,25 @@ if (isset($_GET['return'])) {
 <?php
     
     if (isset($_GET['url'])) {
+        if (strpos($_GET['url'], '..') !== false) {
+            die("URL de l'image invalide");
+        } else {
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $_GET['url'])) {
+                $ext1 = explode(".", $_GET['url']);
+                $ext2 = end($ext1);
+                $ext = strtoupper($ext2);
+            } else {
+                die("Image inexistante");
+            }
+        }
     } else {
         die("Pas d'image");
     }
     
 ?>
 <body style="background-image:url('<?= $_GET['url'] ?>');background-size:contain;background-position:center;height: 100%;margin: 0;background-repeat: no-repeat;background-color: #222;">
-    <img src="/resources/image/close.svg" onclick="location.href = &quot;<?= $callback ?>&quot;">
+    <a title="Fermer la prévisualisation de l'image"><img src="/resources/image/close.svg" onclick="location.href = &quot;<?= $callback ?>&quot;"></a>
+    <a class="download" href="<?= $_GET['url'] ?>" title="Télécharger l'image au format <?= $ext ?> — vous serez redirigé vers un site externe si l'image se trouve sur un serveur externe" download>Télécharger l'image (<?= $ext ?>)</a>
 </body>
 <script>
 

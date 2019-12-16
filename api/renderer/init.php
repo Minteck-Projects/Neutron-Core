@@ -34,6 +34,12 @@ function getAvgLuminance($filename, $num_samples=30) {
     return ($avg_lum / 255) * 100;
 }
 
+function compareASCII($a, $b) {
+    $at = iconv('UTF-8', 'ASCII//TRANSLIT', $a);
+    $bt = iconv('UTF-8', 'ASCII//TRANSLIT', $b);
+    return strcmp($at, $bt);
+}
+
 ?>
 <?php ob_start();echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
 <?php
@@ -123,6 +129,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
             $count = $count + 1;
 
             $pages = scandir($_SERVER['DOCUMENT_ROOT']);
+            uasort($pages, 'compareASCII');
             foreach ($pages as $page) {
                 if ($page != ".." && $page != ".") {
                     if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
@@ -172,6 +179,7 @@ if (!empty($widgets->list)) {
         <?php
 
         $pages = scandir($_SERVER['DOCUMENT_ROOT']);
+        uasort($pages, 'compareASCII');
         foreach ($pages as $page) {
             if ($page != ".." && $page != ".") {
                 if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {

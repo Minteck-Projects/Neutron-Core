@@ -43,12 +43,19 @@ if (isset($_POST['content'])) {} else {
 $title = $_POST['title'];
 $title = str_replace('>', '&gt;', $title);
 $title = str_replace('<', '&lt;', $title);
+if (substr($title, 0, 1) == " " || substr($title, 0, 1) == "-" || substr($title, 0, 1) == " " || substr($title, 0, 1) == "_" || substr($title, 0, 1) == "@" || substr($title, 0, 1) == "|" || substr($title, 0, 1) == "'" || substr($title, 0, 1) == "\"" || substr($title, 0, 1) == "~" || substr($title, 0, 1) == "&" || substr($title, 0, 1) == "=") {
+    $prefixed = true;
+}
 $type = $_POST['type'];
 $content = $_POST['content'];
 
 $slug = preg_replace("/[^0-9a-zA-Z ]/m", "", $title );
 $slug = str_replace(" ", "-", $slug);
 $slug = strtolower($slug);
+
+if ($prefixed) {
+    $slug = "-" . $slug;
+}
 
 if (trim($title) == "") {
     die("Le titre ne peut pas être vide");

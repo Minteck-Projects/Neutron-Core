@@ -199,8 +199,16 @@ function getData(string $dir, $ignoreUploadDir = false) {
         <hr style="border-width:1px;border-color:lightgray;border-bottom-style:none;">
 
         <div class="home-wrapper">
-            <a href="/cms-special/admin/logout" title="Terminer l'administration de votre site de manière sécurisée"><div class="setting"><table><tr><td><img src="/resources/image/admin_logout.png" class="setting-img"><td><td><b>Terminer la session</b><br>Terminez l'administration de votre site de manière sécurisée<br><code>/cms-special/admin/logout</code></td></tr></table><span class="setting-info"><p>Termine de manière sécurisée l'administration de votre site, et vous déconnecte de manière sécurisée afin d'éviter que quelqu'un compromette votre session</p><p>Cela aura aussi pour effet de vous déconnecter de tous les autres appareils à partir desquels vous êtes connectés</p></span></div></a>
-            <a onclick="window.open('/?source=siteadmin')" title="Visiter votre site pour voir les changements appliqués"><div class="setting"><table><tr><td><img src="/resources/image/admin_tosite.png" class="setting-img"><td><td><b>Visiter le site</b><br>Visiter votre site pour voir les changements appliqués<br><code>/?source=siteadmin</code></td></tr></table><span class="setting-info"><p>Ouvrez votre site en tant que visiteur dans un nouvel onglet ou une nouvelle fenêtre.</p><p>Cela ne termine pas la session en cours</p></span></div></a>
+            <?php
+            
+            if (/* MinteckProjectsWebSpace/ */!strpos($_SERVER['HTTP_USER_AGENT'], 'MinteckProjectsWebSpace/') !== false) {
+                echo('<a href="/cms-special/admin/logout" title="Terminer l\'administration de votre site de manière sécurisée"><div class="setting"><table><tr><td><img src="/resources/image/admin_logout.png" class="setting-img"><td><td><b>Terminer la session</b><br>Terminez l\'administration de votre site de manière sécurisée<br><code>/cms-special/admin/logout</code></td></tr></table><span class="setting-info"><p>Termine de manière sécurisée l\'administration de votre site, et vous déconnecte de manière sécurisée afin d\'éviter que quelqu\'un compromette votre session</p><p>Cela aura aussi pour effet de vous déconnecter de tous les autres appareils à partir desquels vous êtes connectés</p></span></div></a>
+                <a onclick="window.open(\'/?source=siteadmin\')" title="Visiter votre site pour voir les changements appliqués"><div class="setting"><table><tr><td><img src="/resources/image/admin_tosite.png" class="setting-img"><td><td><b>Visiter le site</b><br>Visiter votre site pour voir les changements appliqués<br><code>/?source=siteadmin</code></td></tr></table><span class="setting-info"><p>Ouvrez votre site en tant que visiteur dans un nouvel onglet ou une nouvelle fenêtre.</p><p>Cela ne termine pas la session en cours</p></span></div></a>');
+            } else {
+                echo('<a href="/cms-special/admin/logout/?mobile" title="Terminer l\'administration de votre site de manière sécurisée"><div class="setting"><table><tr><td><img src="/resources/image/admin_logout.png" class="setting-img"><td><td><b>Terminer la session</b><br>Terminez l\'administration de votre site de manière sécurisée<br><code>/cms-special/admin/logout/?mobile</code></td></tr></table><span class="setting-info"><p>Termine de manière sécurisée l\'administration de votre site, et vous déconnecte de manière sécurisée afin d\'éviter que quelqu\'un compromette votre session</p><p>Cela aura aussi pour effet de vous déconnecter de tous les autres appareils à partir desquels vous êtes connectés</p></span></div></a>');
+            }
+            
+            ?>
         </div>
 
         <hr style="border-width:1px;border-color:lightgray;border-bottom-style:none;">

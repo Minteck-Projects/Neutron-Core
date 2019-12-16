@@ -1,6 +1,6 @@
 <textarea name="content" id="editor">
             </textarea><br>
-            <center><p><a onclick="createPageVisual()" class="button">Publier</a> <small><a onclick="createPageVisualNoBack()" class="sblink">Publier et continuer à modifier</a></small></p></center>
+            <center><p><a onclick="createPageVisual()" class="button">Publier</a></p></center>
             <script>
         let editor;
         ClassicEditor
