@@ -107,7 +107,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         }
         
         ?>
-        
+        <p><center><b>Conseil :</b> Vous pouvez installer de nouvelles extensions depuis le <b><a class="sblink" href="/cms-special/admin/store">CMS Store</a></b>, une bibliothèque de toutes les extensions pour Minteck Projects CMS</center></p>
     </div>
 </body>
 </html>

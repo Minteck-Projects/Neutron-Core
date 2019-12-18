@@ -14,7 +14,7 @@ body {
 #siteadmin {
     background: black;
     color: white;
-    padding: 4px;
+    padding: 4px 32px;
     font-size: 10px;
     height: 12px;
 }
@@ -32,6 +32,21 @@ body {
 }
 
 #siteadmin-button:hover {
+    background: rgb(41, 41, 41);
+}
+
+.sab {
+    cursor: pointer;
+    background: transparent;
+    transition: background 100ms;
+    margin: -4px;
+    padding: 4px;
+    padding-bottom: 3px;
+    color: white;
+    text-decoration: none;
+}
+
+.sab:hover {
     background: rgb(41, 41, 41);
 }
 

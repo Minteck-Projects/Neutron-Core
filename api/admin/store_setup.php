@@ -31,13 +31,15 @@ try {
     $packageslist = explode("\n", $packages);
     $packagesjson = new stdClass();
     foreach ($packageslist as $package) {
-        $packagesjson->$package = new stdClass();
-        try {
-            $packageinfo = file_get_contents("https://gitlab.com/minteck-projects/mpcms/plugins/raw/master/" . $package . "/store.json");
-            $packageinfojson = json_decode($packageinfo);
-            $packagesjson->$package = $packageinfojson;
-        } catch (Warning $err) {
-            die("Erreur d'incorporation du packet " . $package . " lors de l'obtention ou le décodage du fichier store");
+        if (trim($package) != "") {
+            $packagesjson->$package = new stdClass();
+            try {
+                $packageinfo = file_get_contents("https://gitlab.com/minteck-projects/mpcms/plugins/raw/master/" . $package . "/store.json");
+                $packageinfojson = json_decode($packageinfo);
+                $packagesjson->$package = $packageinfojson;
+            } catch (Warning $err) {
+                die("Erreur d'incorporation du packet " . $package . " lors de l'obtention ou le décodage du fichier store");
+            }
         }
     }
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json", json_encode($packagesjson, JSON_PRETTY_PRINT));
