@@ -82,7 +82,7 @@ function ipbPush() {
         }
         return true;
     }
-    set_error_handler("initerr");
+    // set_error_handler("initerr");
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         file_get_contents("https://gitlab.com/minteck-projects/mpcms/code-base");
         file_get_contents("https://cdn.ckeditor.com");

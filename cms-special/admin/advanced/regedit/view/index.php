@@ -219,7 +219,11 @@ function includes($string, $substring) {
                                 if ($file == "siteicon-uncomp.png") {
                                     echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Version non compressée du logo du site)</i><br>');
                                 } else {
-                                    echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Image canonique de la galerie)</i><br>');
+                                    if ($file == "banner.jpg") {
+                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Bannière importée par l\'utilisateur)</i><br>');
+                                    } else {
+                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Image canonique de la galerie)</i><br>');
+                                    }
                                 }
                             }
                         }

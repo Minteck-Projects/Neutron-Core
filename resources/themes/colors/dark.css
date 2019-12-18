@@ -78,7 +78,7 @@ div[data-pushbar-id="panel-sidebar"] > img#sidebar-close, .widget_cuc {
     border-bottom-color: white;
 }
 
-body {
+body:not([mpcms-error-body]) {
     min-height: 100%;
     position: absolute;
     min-width: 100%;

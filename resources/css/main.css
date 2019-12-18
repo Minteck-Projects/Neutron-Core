@@ -418,8 +418,9 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
 }
   
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-    padding-top: 102px;
+.sticky ~ #page-placeholder {
+    padding-top: 39px;
+    /* padding-top: 191px; */
 }
 
 #always-on-top, #menubar {
@@ -460,4 +461,9 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
     #page-placeholder {
         margin-right: 256px;
     }
+}
+
+.hint {
+    text-decoration: dotted underline;
+    cursor: help;
 }
