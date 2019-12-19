@@ -90,16 +90,33 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
         $currentVersion = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version");
         $latestVersion = file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version");
+        $returned = false;
 
         if (version_compare($currentVersion, $latestVersion) >= 1) {
             echo("<div id=\"protect\" class=\"s1\"><b>Votre site est potentiellement vulnérable</b><br>Vous utilisez une préversion de Minteck Projects CMS</div>");
+            $returned = true;
         }
         
-        if (version_compare($currentVersion, $latestVersion) <= -1) {
-            echo("<div id=\"protect\" class=\"s0\"><b>Votre site n'est pas protégé</b><br>Une mise à jour pour Minteck Projects CMS est disponible</div>");
+        if (!$returned) {
+            if (!strpos($currentVersion, 'LTS') !== false) {
+                if (version_compare($currentVersion, $latestVersion) <= -1) {
+                    echo("<div id=\"protect\" class=\"s0\"><b>Votre site n'est pas protégé</b><br>Une mise à jour pour Minteck Projects CMS est disponible</div>");
+                }
+            } else {
+                if (implode("", explode(".", explode(" ", $latestVersion)[0])) - implode("", explode(".", explode(" ", $currentVersion)[0])) >= 3) {
+                    echo("<div id=\"protect\" class=\"s0\"><b>Votre site n'est pas protégé</b><br>Le support à long terme de votre version est terminé, il vous est fortement recommandé de mettre à jour votre site vers la dernière version disposant du support à long terme</div>");
+                } else {
+                    if (version_compare($currentVersion, $latestVersion) <= -1) {
+                        echo("<div id=\"protect\" class=\"s2\"><b>Votre site est protégé</b><br>Une nouvelle version sans support à long terme est disponible, mais vous utilisez une version disposant du support à long terme</div><br>");
+                    } else {
+                        echo("<div id=\"protect\" class=\"s2\"><b>Votre site est protégé</b><br>Minteck Projects CMS est à jour, vous exécutez une version disposant du support à long terme</div><br>");
+                        $returned = true;
+                    }
+                }
+            }
         }
         
-        if (version_compare($currentVersion, $latestVersion) == 0) {
+        if (version_compare($currentVersion, $latestVersion) == 0 && !$returned) {
             echo("<div id=\"protect\" class=\"s2\"><b>Votre site est protégé</b><br>Minteck Projects CMS est à jour</div><br>");
         }
 
@@ -220,7 +237,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <?php
     
     try {
-        echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . $currentVersion));
+        echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion)));
     } catch (Notice $err) {
         echo("<i>Aucune information concernant votre version de Minteck Projects CMS</i>");
     }
@@ -236,7 +253,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             echo("<h4>Version stable en circulation (" . $latestVersion . ")</h4>");
         }
         try {
-            echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . $latestVersion));
+            echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $latestVersion)));
         } catch (Notice $err) {
             echo("<i>Aucune information concernant la dernière version de Minteck Projects CMS</i>");
         }

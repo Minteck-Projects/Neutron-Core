@@ -86,6 +86,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                 echo('<p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>La base de données des paquets du CMS Store est corrompue, vous devez donc <a href="/cms-special/admin/store/dbupdate" class="sblink">la regénérer en cliquant ici</a>, auquel cas elle n\'est pas exploitable par Minteck Projects CMS.</p><p>Cette corruption peut se produire si vous tentez de mettre à jour la base de données lorsque le serveur n\'a pas accès à Internet, ou que vous la modifiez vous-même.</p></td></tr></tbody></table></p>');
             }
             echo("</tbody></table>");
+            echo("<p><center><i><b>CMS Store</b> version " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_version") . "</i></center></p>");
         }
 
         ?>
