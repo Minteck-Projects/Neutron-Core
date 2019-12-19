@@ -437,8 +437,9 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
         width: 256px !important;
         max-width: initial !important;
         max-height: initial !important;
-        height: calc(100% - 152px) !important;
+        height: auto !important;
         transform: initial !important;
+        color: white !important;
     }
     #menubar {
         z-index: initial;
