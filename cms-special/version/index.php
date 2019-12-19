@@ -52,7 +52,7 @@ foreach ($days as $day) {
         }
     }
 }
-buffer("<li>" . $thisyear . " visite(s) ce mois-ci</li>");
+buffer("<li>" . $thisyear . " visite(s) cette année</li>");
 buffer("</ul>");
 buffer("<p><b>Ces statistiques sont à prendre avec des pincettes</b>, car elles peuvent ne plus être à jour si l'administrateur du site a désactivé l'option de CMS Sémantique.</p><p>La protection anti-DDOS est actuellement <b>");
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {
