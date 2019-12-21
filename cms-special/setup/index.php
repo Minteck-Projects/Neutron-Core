@@ -50,6 +50,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         return "En quittant cette page, vous perdrez les paramètres de configuration actuels.";
     };
     </script>
+    <script src="/resources/js/jquery.js"></script>
     <div class="centered box hide" id="00-error">
         <h2 id="00-error-title">Une erreur s'est produite</h2>
         <span id="00-error-message">Erreur inconnue</span><br><br>
