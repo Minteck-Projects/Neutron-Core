@@ -27,8 +27,14 @@ function getAvgLuminance($filename, $num_samples=30) {
     return ($avg_lum / 255) * 100;
 }
 
+function compareASCII($a, $b) {
+    $at = iconv('UTF-8', 'ASCII//TRANSLIT', $a);
+    $bt = iconv('UTF-8', 'ASCII//TRANSLIT', $b);
+    return strcmp($at, $bt);
+}
+
 ?>
-<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php ob_start();echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
@@ -53,7 +59,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         echo('<link rel="stylesheet" href="/resources/css/main.css">');
         echo('<link rel="stylesheet" href="/resources/lib/pushbar.js/library.css">');
         echo('<script src="/resources/lib/pushbar.js/library.js"></script>');
-        echo('<link rel="shortcut icon" href="/resources/upload/siteicon.png" type="image/png">');
+        echo('<link rel="shortcut icon" href="/resources/upload/siteicon-uncomp.png" type="image/png">');
     } else {
         echo('<link rel="stylesheet" href="/resources/css/ready.css">');
     }
@@ -108,8 +114,12 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
     ?>
     <div id="always-on-top">
-        <div id="siteadmin"><span class="branding-desktop">fonctionne sur Minteck Projects CMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span><span class="branding-mobile">MPCMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg">Administration du site</a></div>
-        <div id="menubar"><span class="menubar-link menubar-mobile" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text">Menu</span></span>
+        <div id="siteadmin"><a class="sab" href="/cms-special/version"><span class="branding-desktop">fonctionne sur Minteck Projects CMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span><span class="branding-mobile">MPCMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span></a><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg">Gérer le site</a></div>
+    </div>
+    <div id="banner" style='background-image: url("<?= $banner ?>");'>
+        <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?></span>
+    </div>
+    <div id="menubar"><span class="menubar-link menubar-mobile" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text">Menu</span></span>
         <?php
         
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
@@ -120,6 +130,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             $count = $count + 1;
 
             $pages = scandir($_SERVER['DOCUMENT_ROOT']);
+            uasort($pages, 'compareASCII');
             foreach ($pages as $page) {
                 if ($page != ".." && $page != ".") {
                     if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
@@ -135,7 +146,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                 }
             }
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">Galerie de photos</a>");$count = $count + 1;}
-            if ($count >= 5) {
+            if ($count >= 4) {
                 echo("<a onclick=\"pushbar.open('panel-navigation')\" title=\"Ouvrir le menu\" class=\"menulink-desktop\">Plus...</a>");
             }
         }
@@ -148,11 +159,7 @@ if (!empty($widgets->list)) {
     echo("<span class=\"menubar-link\" id=\"menubar-link-tools\" onclick=\"pushbar.open('panel-sidebar')\"><img src=\"/resources/image/tools.svg\" class=\"menubar-img\"><span class=\"menubar-link-text\">Détails</span></span>");
 }
 
-?></div>
-    </div>
-    <div id="banner" style='background-image: url("<?= $banner ?>");'>
-        <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?></span>
-    </div>
+?></div><script src="/resources/js/sticky.js"></script>
     <div data-pushbar-id="panel-navigation" class="pushbar from_left">
         <div id="banner-menu" style='background-image: url("<?= $banner ?>");'>
             <img id="banner-menu-logo" src="/resources/upload/siteicon.png"><span id="banner-menu-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php
@@ -173,6 +180,7 @@ if (!empty($widgets->list)) {
         <?php
 
         $pages = scandir($_SERVER['DOCUMENT_ROOT']);
+        uasort($pages, 'compareASCII');
         foreach ($pages as $page) {
             if ($page != ".." && $page != ".") {
                 if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
@@ -188,7 +196,7 @@ if (!empty($widgets->list)) {
 
         ?>
 	</div>
-	<div data-pushbar-id="panel-sidebar" class="pushbar from_right">
+	<div data-pushbar-id="panel-sidebar" id="sidebar" class="pushbar from_right">
         <img src="/resources/image/close.svg" id="sidebar-close" onclick="pushbar.close()">
         <span id="sidebar-title">Détails du site</span>
         <span id="sidebar-separator"></span>
@@ -214,30 +222,35 @@ if (!empty($widgets->list)) {
 	</div>
     <div id="page-placeholder">
         <div id="page-content">
-            <!-- <?php
+            <?php
             
             $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index");
             preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
 
-            //reformat the results to be more usable
             $toc = implode("\n",$results[0]);
-            $toc = str_replace('<a name="','<a href="#',$toc);
-            $toc = str_replace('</a>','',$toc);
-            $toc = preg_replace('#<h([1-6])>#','<li class="toc$1">',$toc);
-            $toc = preg_replace('#<\/h[1-6]>#','</a></li>',$toc);
+            $toc = preg_replace('#<h2>#','<li class="toc$1" style="margin-left: 0px;">',$toc);
+            $toc = preg_replace('#<\/h2>#','</li>',$toc);
+            $toc = preg_replace('#<h3>#','<li class="toc$1" style="margin-left: 20px;">',$toc);
+            $toc = preg_replace('#<\/h3>#','</li>',$toc);
+            $toc = preg_replace('#<h4>#','<li class="toc$1" style="margin-left: 40px;">',$toc);
+            $toc = preg_replace('#<\/h4>#','</li>',$toc);
+            $toc = preg_replace('#<h5>#','<li class="toc$1" style="margin-left: 60px;">',$toc);
+            $toc = preg_replace('#<\/h5>#','</li>',$toc);
+            $toc = preg_replace('#<h6>#','<li class="toc$1" style="margin-left: 80px;">',$toc);
+            $toc = preg_replace('#<\/h6>#','</li>',$toc);
         
-            //plug the results into appropriate HTML tags
             $toc = '<div id="toc"> 
-            <p id="toc-header">Table des matières</p>
-            <hr />
+            <h3>Table des matières</h3>
             <ul>
             '.$toc.'
             </ul>
-            </div><br /><br />';
+            </div><hr>';
         
-            echo($toc);
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {
+                echo($toc);
+            }
             
-            ?>-->
+            ?>
             <?php echo($html_string); ?>
         </div>
         <div id="page-footer">

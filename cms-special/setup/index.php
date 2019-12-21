@@ -1,4 +1,4 @@
-<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php ob_start();echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
@@ -27,7 +27,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     }
 
     ?></title>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
 </head>
 <body>
     <?php

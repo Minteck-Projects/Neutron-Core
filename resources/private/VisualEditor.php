@@ -1,7 +1,7 @@
 <textarea name="content" id="editor">
                 <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug) ?>
             </textarea><br>
-            <center><p><a onclick="updatePage()" class="button">Publier</a></p></center>
+            <center><p><a onclick="updatePage()" class="button">Publier</a> <small><a onclick="updatePageNoBack()" class="sblink">Publier et continuer à modifier</a></small></p></center>
             <script>
         let editor;
         ClassicEditor

@@ -65,7 +65,7 @@ img[src='/resources/image/suru_contact_address.png'], img[src='/resources/image/
     filter: invert(100%);
 }
 
-div[data-pushbar-id="panel-sidebar"] > img#sidebar-close {
+div[data-pushbar-id="panel-sidebar"] > img#sidebar-close, .widget_cuc {
     filter: invert(100%);
 }
 
@@ -78,7 +78,7 @@ div[data-pushbar-id="panel-sidebar"] > img#sidebar-close {
     border-bottom-color: white;
 }
 
-body {
+body:not([mpcms-error-body]) {
     min-height: 100%;
     position: absolute;
     min-width: 100%;
@@ -105,7 +105,7 @@ html {
     color: white !important;
 }
 
-.rmenuimg {
+.rmenuimg, .invert {
     filter: invert(100%);
 }
 
@@ -120,6 +120,10 @@ html {
 
 [id^=ck-editor__aria-label], .ck.ck-button__label, .ck-button__label, .ck.ck-button {
     color: white;
+}
+
+.ck-dropdown__button {
+    color: white !important;
 }
 
 .message_img {
@@ -145,4 +149,22 @@ html {
 
 .reset-option:hover {
     background: rgb(115, 115, 115);
+}
+
+.ck.ck-button.ck-button_with-text.ck-off {
+    color: black;
+}
+
+.ck.ck-button.ck-button_with-text.ck-off:hover {
+    color: white;
+}
+
+.photo {
+    background: #1d1d1d;
+    box-shadow: #1d1d1d 1px 1px 12px;
+    border: #080808 1px solid;
+}
+
+.photo_label {
+    color: whitesmoke;
 }

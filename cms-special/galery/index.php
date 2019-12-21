@@ -30,7 +30,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
                         $shown = true;
                         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $ppath)) {
                             buffer("<div class=\"photo\">");
-                            buffer("<a href=\"/cms-special/galery/preview/?url=" . $ppath . "\"><img class=\"photo_image\" src=\"" . $ppath . "\" /></a>");
+                            buffer("<a href=\"/cms-special/galery/preview/?url=" . $ppath . "&return=/cms-special/galery\"><img class=\"photo_image\" src=\"" . $ppath . "\" /></a>");
+                            if (isset(explode("|", $praw)[2])) {
+                                buffer("<br><span class=\"photo_label\">" . explode("|", $praw)[2] . "</span>");
+                            }
                             buffer("</div>");
                         } else {
                             buffer("<div class=\"photo\">");
@@ -49,6 +52,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
 } else {
     buffer("<center><i>La <b>galerie de photos</b> n'est pas activée sur ce site</i></center>");
 }
+buffer("<script>window.onload = () => {setTimeout(() => {Array.from(document.getElementsByClassName('photo_image')).forEach((el) => {el.classList.add('loaded')});}, 1000)}</script>");
 
 renderSpecial($buffer, 'Galerie de photos');
 

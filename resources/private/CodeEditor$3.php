@@ -16,4 +16,5 @@
     codeeditor.session.setUseWrapMode(true);
     function loadAce() {}
 </script>
+<script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/json");}, 100)</script>
 <center><p><a onclick="pushSettings()" class="button">Sauvegarder</a></p></center>

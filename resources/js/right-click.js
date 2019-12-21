@@ -1,4 +1,4 @@
-if (navigator.userAgent.includes("Mobile") || navigator.userAgent.includes("Android") || navigator.userAgent.includes("iOS") || navigator.userAgent.includes("iPadOS")) {} else {
+if (navigator.userAgent.includes("Mobile") || navigator.userAgent.includes("Android") || navigator.userAgent.includes("iOS") || navigator.userAgent.includes("iPadOS") || navigator.userAgent.includes("Trident") || navigator.userAgent.includes("Firefox/5") || navigator.userAgent.includes("Firefox/4") || navigator.userAgent.includes("Firefox/3") || navigator.userAgent.includes("Firefox/2") || navigator.userAgent.includes("Firefox/1") || navigator.userAgent.includes("Chrome/5") || navigator.userAgent.includes("Chrome/4") || navigator.userAgent.includes("Chrome/3") || navigator.userAgent.includes("Chrome/2") || navigator.userAgent.includes("Chrome/1")) {} else {
     $(document).ready(function() {
 
 

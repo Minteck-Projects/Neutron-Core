@@ -31,4 +31,5 @@ ____________________________
     codeeditor.session.setUseWrapMode(true);
     function loadAce() {}
 </script>
-<center><p><a onclick="createPageHTML()" class="button">Publier</a></p></center>
+<script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/html");}, 100)</script>
+<center><p><a onclick="createPageHTML()" class="button">Publier</a> <small><a onclick="createPageHTMLNoBack()" class="sblink">Publier et continuer à modifier</a></small></p></center>
