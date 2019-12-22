@@ -1,5 +1,5 @@
 include:
-  template: SAST.gitlab-ci.yml
+  template: DAST.gitlab-ci.yml
 
 image: php:latest
 
