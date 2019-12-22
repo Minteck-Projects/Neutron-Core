@@ -1,4 +1,0 @@
-ErrorDocument 401 /cms-special/error/?id=401&description=Accès%20refusé
-ErrorDocument 403 /cms-special/error/?id=403&description=Accès%20interdit
-ErrorDocument 403 /cms-special/error/?id=404&description=Ressource%20introuvable
-ErrorDocument 500 /cms-special/error/?id=500&description=Erreur%20interne

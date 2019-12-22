@@ -1,3 +1,6 @@
+include:
+  template: SAST.gitlab-ci.yml
+
 image: php:latest
 
 cache:

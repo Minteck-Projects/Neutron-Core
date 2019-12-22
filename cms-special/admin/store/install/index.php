@@ -44,21 +44,25 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 <?php
 
 if (isset($_GET['id'])) {
-    $foundone = false;
-    $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));
-    foreach ($db as $package) {
-        if (array_search($package, (array)$db) == $_GET['id']) {
-            $pf = $package;
-            $name = $package->name;
-            $foundone = true;
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
+        $foundone = false;
+        $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));
+        foreach ($db as $package) {
+            if (array_search($package, (array)$db) == $_GET['id']) {
+                $pf = $package;
+                $name = $package->name;
+                $foundone = true;
+            }
         }
-    }
-    if ($foundone) {
-        $package = $pf;
+        if ($foundone) {
+            $package = $pf;
+        } else {
+            $package = null;
+        }
+        if (!$foundone) {
+            die("<script>location.href = '/cms-special/admin/store';</script>");
+        }
     } else {
-        $package = null;
-    }
-    if (!$foundone) {
         die("<script>location.href = '/cms-special/admin/store';</script>");
     }
 } else {

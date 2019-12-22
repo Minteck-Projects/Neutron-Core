@@ -116,7 +116,7 @@ if (isset($_GET['id'])) {
                 echo('<a id="store-install" href="/cms-special/admin/store/install/?id=' . array_search($package, (array)$db) . '">Installer</a>&nbsp;&nbsp;<a id="store-more" onclick="window.open(&quot;https://gitlab.com/minteck-projects/mpcms/plugins/tree/master/' . array_search($package, (array)$db) . '&quot;)">Explorer</a><br><br>');
             }
             
-            if (strpos($package->author, 'Minteck Projects') !== false || strpos($package->author, 'Mozilla') !== false || strpos($package->author, 'Google') !== false || strpos($package->author, 'Microsoft') !== false || strpos($package->author, 'Canonical') !== false || strpos($package->author, 'Ubuntu') !== false || strpos($package->author, 'Firefox') !== false || strpos($package->author, 'Windows') !== false || strpos($package->author, 'Red Numérique') !== false) {
+            if (strpos($package->author, 'Minteck Projects') !== false || strpos($package->author, 'Mozilla') !== false || strpos($package->author, 'Google') !== false || strpos($package->author, 'Microsoft') !== false || strpos($package->author, 'Canonical') !== false || strpos($package->author, 'Ubuntu') !== false || strpos($package->author, 'Firefox') !== false || strpos($package->author, 'Windows') !== false || strpos($package->author, 'Red Numérique') !== false || strpos($package->author, 'KDE') !== false) {
                 echo("<small id=\"store-info-verified\">");
                 echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/image/store_verified.svg"));
                 echo("Éditeur vérifié par Secure CMS</small>");
@@ -135,7 +135,7 @@ if (isset($_GET['id'])) {
             <?php
             
             if (count($package->permissions) == 0) {
-                echo("<i>Cette application ne requiert aucune permission</i>");
+                echo("<i>Cette extension ne requiert aucune permission</i>");
             } else {
                 echo("<ul>");
             }

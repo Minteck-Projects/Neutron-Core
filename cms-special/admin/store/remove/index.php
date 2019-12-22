@@ -43,6 +43,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 ?>
 <?php
 
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
+    die("<script>location.href = '/cms-special/admin/store';</script>");
+}
+
 if (isset($_GET['id'])) {
     $foundone = false;
     $db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/packages.json"));

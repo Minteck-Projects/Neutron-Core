@@ -241,7 +241,7 @@ body {
 }
 
 #page-placeholder, body {
-    background: rgb(34, 34, 34);
+    background: rgb(66, 66, 66);
 }
 
 #page-footer {
@@ -467,4 +467,8 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
 .hint {
     text-decoration: dotted underline;
     cursor: help;
+}
+
+#sidebar-widgets img {
+    filter: invert(100%);
 }

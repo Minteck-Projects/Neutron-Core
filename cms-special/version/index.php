@@ -24,7 +24,7 @@ $exts = (array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/
 buffer("<ul>");
 foreach ($exts as $ext) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $ext)) {
-        buffer("<li><a href=\"#\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $ext . "/name") . "</a></li>");
+        buffer("<li><a target=\"_blank\" href=\"http://" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public") . "/view/?id=" . $ext . "&idType=old\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $ext . "/name") . "</a></li>");
     }
 }
 buffer("</ul>");
@@ -71,18 +71,18 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) {
     if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) {
         buffer("<p><center><i>La protection anti-DDOS n'a jamais été activée sur ce site, aucun contenu ne peut être affiché ici.</i></center></p>");
     }
+} else {
+    buffer("<ul>");
+    $iplist = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) - 2;
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) {
+        buffer("<li>" . $iplist . " visiteur(s) uniques enregistrés sur ce site <sup><a class=\"hint\" title=\"Les visites uniques sont enregistrées en utilisant la valeur du chiffrement de l'adresse IP. Toutefois, une adresse IP peut avoir appartenue à plusieurs personnes, même si cela est rare...\">[?]</a></sup></li>");
+    }
+    $banlist = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) - 2;
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) {
+        buffer("<li>" . $banlist . " bannissement(s) de visiteurs enregistrés sur ce site</li>");
+    }
+    buffer("</ul>");
 }
-
-buffer("<ul>");
-$iplist = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) - 2;
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) {
-    buffer("<li>" . $iplist . " visiteur(s) uniques enregistrés sur ce site <sup><a class=\"hint\" title=\"Les visites uniques sont enregistrées en utilisant la valeur du chiffrement de l'adresse IP. Toutefois, une adresse IP peut avoir appartenue à plusieurs personnes, même si cela est rare...\">[?]</a></sup></li>");
-}
-$banlist = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) - 2;
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) {
-    buffer("<li>" . $banlist . " bannissement(s) de visiteurs enregistrés sur ce site</li>");
-}
-buffer("</ul>");
 
 renderSpecial($buffer, 'Version du logiciel');
 
