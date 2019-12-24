@@ -21,6 +21,7 @@ cd code-base-* # Accéder aux fichiers extraits
 cp -Rv * /var/www/html # Copier les fichiers dans le dossier racine d'Apache
 cd .. # Retourner dans le dossier parent
 rm -Rfvd code-base-* mpcms.tar.gz # Supprimer les fichiers qui ne sont plus nécessaires.
+rm -fv /var/www/html/index.html # Supprimer la page de test par défaut
 ```
 
 Notez que le téléchargement des fichiers peut s'avérer long, soyez patient.
