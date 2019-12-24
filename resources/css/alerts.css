@@ -1,0 +1,116 @@
+/* Toast message */
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    position: fixed;
+    z-index: 99999999999999999999;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    width: calc(100% - 32px);
+}
+
+#snackbar.snackbar_show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: -30px; opacity: 0;}
+    to {bottom: 0px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: -30px; opacity: 0;}
+    to {bottom: 0px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 0px; opacity: 1;}
+    to {bottom: -30px; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: 0px; opacity: 1;}
+    to {bottom: -30px; opacity: 0;}
+}
+
+/* Legacy dialogs */
+pjse-placeholder {
+    z-index: 99999999999999999999;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    filter: blur(0);
+}
+
+pjse-window {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+pjse-window-inner {
+    background: white;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 12px black;
+}
+
+pjse-title {
+    color: black;
+    display: block;
+    margin: 10px 0px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+pjse-message {
+    color: black;
+}
+
+pjse-close {
+    display: block;
+    text-align: right;
+}
+
+pjse-close > span {
+    text-align: right;
+    color: #0bc7e8;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    background: transparent;
+    transition: background 200ms;
+    cursor: pointer;
+}
+
+pjse-close > span:hover {
+    background: #0be1e83b;
+}
+
+pjse-close > span:active {
+    background: #0bb4e862;
+}
+
+.pjse-blurry {
+    filter: blur(5px);
+}

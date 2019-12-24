@@ -73,21 +73,6 @@ function ipbPush() {
             die("<title>503 Service Unavailable</title><center><h1>503 Service Unavailable</h1><hr>{$_SERVER['SERVER_SIGNATURE']}</center>");
         }
     }
-    $offlineMode = false;
-    function initerr($level, $description, $file, $line) {
-        global $offlineMode;
-        if (!$offlineMode) {
-            echo("<p class=\"php-internal-error\">Votre site s'exécute en mode hors-ligne, le chargement de certaines librairies peut échouer et vous pourriez rencontrer des erreurs importantes. Afin d'éviter tout problème de corruption ou autre, préférez connecter votre serveur à Internet</p>");
-            $offlineMode = true;
-        }
-        return true;
-    }
-    // set_error_handler("initerr");
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
-        file_get_contents("https://gitlab.com/minteck-projects/mpcms/code-base");
-        file_get_contents("https://cdn.ckeditor.com");
-        file_get_contents("https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/ace.js");
-    }
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_resourcesPreload")) {
     echo('<link rel="preload" href="/resources/themes/colors/dark.js" as="script">');
@@ -288,15 +273,18 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled"
     <a href="/cms-special/admin" class="rmenulink"><img src="/resources/image/rightclick_admin.svg" class="rmenuimg"> &nbsp; Administration du site</a>
 </div>
 
-<div id="errorbox-wrapper" class="hide" onclick="closeError()">
-    <div id="errorbox-error" class="centered hide" onclick="return;">
-        <div id="errorbox-frame" onclick="return;">
-            <!-- <span id="errorbox-text">Erreur</span><br> -->
-            <table><tbody><tr><td><img src="/resources/image/message_warning.svg" id="errorbox-logo"></td><td style="width:100%;"><span id="errorbox-text">Erreur</span></td></tr></tbody></table><br>
-            <div id="errorbox-bottom" onclick="closeError()"><a id="errorbox-close" onclick="closeError()">OK</a></div>
-        </div>
-    </div>
-</div>
+<!-- Program JavaScript Error — taken from pMessage, a prototype of online messaging system -->
+<pjse-placeholder class="hide">
+        <pjse-window>
+            <pjse-window-inner>
+                <pjse-title>Avertissement</pjse-title>
+                <pjse-message>Une erreur interne de raison inconnue s'est produite</pjse-message><br><br>
+                <pjse-close onclick="closeError()"><span>Fermer</span></pjse-close>
+            </pjse-window-inner>
+        </pjse-window>
+    </pjse-placeholder>
+
+<div id="snackbar">Erreur interne</div>
 
 <script>
 
@@ -307,29 +295,62 @@ String.prototype.replaceAll = function(search, replacement) {
 
 roo_alert = false;
 
+function alert_full(text, refreshOnOk) {
+    try {
+        if (typeof refreshOnOk == "boolean") {
+            roo_alert = refreshOnOk;
+        }
+        if (typeof text == "string") {
+            document.querySelector('pjse-message').innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>")
+        } else {
+            document.querySelector('pjse-message').innerHTML = "Erreur"
+        }
+        $("pjse-placeholder").fadeIn(200)
+        document.querySelector('body').childNodes.forEach((el) => {
+            if (typeof el.classList != "undefined") {
+                if (el.localName != "pjse-placeholder") {
+                    el.classList.add("pjse-blurry")
+                }
+            }
+        })
+    } catch (err) {
+        alert("Une erreur s'est produite lors du chargement du message d'erreur");
+    }
+}
+
 function alert(text, refreshOnOk) {
     if (typeof refreshOnOk == "boolean") {
-        roo_alert = refreshOnOk;
+        if (refreshOnOk == true) {
+            console.warn("The refresh on OK feature isn't available on new dialogs, showing the legacy one");
+            alert_full(text, refreshOnOk)
+            return;
+        }
     }
+    var x = document.getElementById("snackbar");
+    
     if (typeof text == "string") {
-        document.getElementById('errorbox-text').innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>")
+        x.innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
     } else {
-        document.getElementById('errorbox-text').innerHTML = "Erreur"
+        x.innerHTML = "Erreur interne";
     }
-    $("#errorbox-wrapper").fadeIn(100)
-    setTimeout(() => {
-        $("#errorbox-error").fadeIn(100)
-    }, 100)
+
+    x.className = "snackbar_show";
+
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
 }
 
 function closeError() {
-    $("#errorbox-wrapper").fadeOut(200)
-    setTimeout(() => {
-        $("#errorbox-error").fadeOut(0)
-        if (roo_alert) {
-            location.reload()
+    $("pjse-placeholder").fadeOut(200)
+    document.querySelector('body').childNodes.forEach((el) => {
+        if (typeof el.classList != "undefined") {
+            if (el.localName != "pjse-placeholder") {
+                el.classList.remove("pjse-blurry")
+            }
         }
-    }, 100)
+    })
+    if (roo_alert) {
+        location.reload()
+    }
 }
 
 </script>

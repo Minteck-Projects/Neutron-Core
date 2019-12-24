@@ -98,6 +98,7 @@ if (isset($_GET['id'])) {
     <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <center><table style="width:100%;"><tr><td style="width:50%;"><img style="float:right;" id="banner-logo" src="/resources/upload/siteicon.png"><td><td><span style="float:left;" id="adminb" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?><br></span><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?> • <?= $sizestr ?></span></td></tr></table></center>
     </div><div id="navigation"><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/store" class="sblink">CMS Store</a> &gt; <a href="/cms-special/admin/store/package/?id=<?= $_GET['id'] ?>" class="sblink"><?= $name ?></a></div>
+    <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Le CMS Store intégré sera retiré de Minteck projects CMS lors de la version 1.5 LTS pour être entièrement remplacé par le site officiel du CMS Store. Si vous ne mettez pas à jour lors de la sortie de la version 1.5 LTS, vous ne pourrez plus utiliser le CMS Store.</p></td></tr></tbody></table></p>
         <?php
         
         if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
@@ -107,13 +108,18 @@ if (isset($_GET['id'])) {
         ?>
         <center><span id="store-info">
             <h2 style="margin-bottom:8px;"><?= $package->name ?></h2>
-            <div style="margin-bottom:12px;"><code><?= array_search($package, (array)$db) ?></code> • <?= $package->author ?></div>
             <?php
+
+            if (isset($package->id)) {
+                echo('<div style="margin-bottom:12px;"><code>' . $package->id . '</code><br>' . $package->author . '</div>');
+            } else {
+                echo('<div style="margin-bottom:12px;"><code>' . array_search($package, (array)$db) . '</code> • ' . $package->author . '</div>');
+            }
             
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db))) {
                 echo('<a id="store-install" href="/cms-special/admin/store/remove/?id=' . array_search($package, (array)$db) . '">Désinstaller</a>&nbsp;&nbsp;<a id="store-more" href="/cms-special/admin/store/update/?id=' . array_search($package, (array)$db) . '">Mettre à jour</a><br><br>');
             } else {
-                echo('<a id="store-install" href="/cms-special/admin/store/install/?id=' . array_search($package, (array)$db) . '">Installer</a>&nbsp;&nbsp;<a id="store-more" onclick="window.open(&quot;https://gitlab.com/minteck-projects/mpcms/plugins/tree/master/' . array_search($package, (array)$db) . '&quot;)">Explorer</a><br><br>');
+                echo('<a id="store-install" href="/cms-special/admin/store/install/?id=' . array_search($package, (array)$db) . '">Installer</a>&nbsp;&nbsp;<a id="store-more" target="_blank" href="https://gitlab.com/minteck-projects/mpcms/plugins/tree/master/' . array_search($package, (array)$db) . '">Explorer</a><br><br>');
             }
             
             if (strpos($package->author, 'Minteck Projects') !== false || strpos($package->author, 'Mozilla') !== false || strpos($package->author, 'Google') !== false || strpos($package->author, 'Microsoft') !== false || strpos($package->author, 'Canonical') !== false || strpos($package->author, 'Ubuntu') !== false || strpos($package->author, 'Firefox') !== false || strpos($package->author, 'Windows') !== false || strpos($package->author, 'Red Numérique') !== false || strpos($package->author, 'KDE') !== false) {
@@ -237,34 +243,5 @@ if (isset($_GET['id'])) {
         </span></center>
     </div>
 </body>
-
-<script>
-
-window.onload = () => {
-    if (<?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) { echo("true"); } else { echo("false"); } ?>) {} else {
-        $.ajax({
-            type: "POST",
-            dataType: 'html',
-            url: "/api/admin/store_setup.php",
-            success: function (data) {
-                if (data == "ok") {
-                    document.getElementById('loadmsg').innerHTML = "Terminé"
-                    location.reload()
-                } else {
-                    document.getElementById('loadmsg').innerHTML = "Une erreur s'est produite : " + data;
-                }
-            },
-            error: function (error) {
-                document.getElementById('loadmsg').innerHTML = "Erreur de communication";
-                window.onbeforeunload = undefined;
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    }
-}
-
-</script>
 
 </html>

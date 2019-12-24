@@ -79,9 +79,9 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                 } else {
                     echo("enabled");
                 }
-                echo("\"><table><tbody><tr><td><input type=\"checkbox\" onclick=\"updateWidgetStatus('" . $widget . "')\" name=\"" . $widget . "\"");
+                echo("\"><table><tbody><tr><td><label class=\"switch\"><input name=\"" . $widget . "\" type=\"checkbox\" onclick=\"updateWidgetStatus('" . $widget . "')\" onchange=\"updateWidgetStatus('" . $widget . "')\"");
                 if (array_search($widget, $json->list) === false) {} else {
-                    echo("checked");
+                    echo(" checked");
                 }
                 $size = filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/name") + filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/description") + filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/author") + filesize($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php");
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config")) {
@@ -94,14 +94,16 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                     }
                 }
                 $sizestr = $size . " octets";if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " Gio";} else {$sizestr = round($size / 1048576, 2) . " Mio";}} else {$sizestr = round($size / 1024, 2) . " Kio";}} else {$sizestr = $size . " octets";}$sizestr = str_replace(".", ",", $sizestr);
-                echo("></td><td><label for=\"" . $widget . "\"><b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/name") . "</b></label><br>par <b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/author") . "</b>");
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/cms-store")) {
-                    echo(", installé via le CMS Store");
+                echo("><span class=\"slider round\"></span></label></td><td class=\"widget-header-info\"><b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/name") . "</b><br>par <b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/author") . "</b>");
+                if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/cms-store")) {
+                    echo(", extension préinstallée");
                 }
-                echo("<i> (" . $sizestr . ")</i></td></tr></tbody></table></div><p>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/description") . "</p>");
+                echo("<i> (" . $sizestr . ")</i>");
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config")) {
-                    echo("<p><a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config") . "\" title=\"Modifier les paramètres de cette extension\" class=\"sblink\">Configurer...</a></p>");
+                    echo("<a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config") . "\" title=\"Modifier les paramètres de cette extension\" class=\"configure_ext\"><img src=\"/resources/image/ext-settings.svg\"></a>");
                 }
+                echo("<a href=\"" . "/cms-special/admin/store/package/?id=" . $widget . "\" title=\"Voir cette extension sur le CMS Store\" class=\"store_ext\"><img src=\"/resources/image/ext-store.svg\"></a>");
+                echo("</td></tr></tbody></table></div><p>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/description") . "</p>");
                 echo("</div>");
             }
         }
@@ -135,7 +137,7 @@ function updateWidgetStatus(widget) {
             url: "/api/admin/widgets.php",
             success: function (data) {
                 if (data == "ok") {
-                    console.log("Sauvegardé avec succès")
+                    alert("Modifications sauvegardées avec succès");
                     setTimeout(() => {
                         Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                     }, 500)

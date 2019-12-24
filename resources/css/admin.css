@@ -1,3 +1,5 @@
+@import "/resources/css/admin_widgets.css";
+
 * {
     font-family: CMS, Arial, Calibri, Ubuntu, Roboto, Liberation Sans, Helvetica, sans-serif;
 }
@@ -575,4 +577,26 @@ html {
 .home-wrapper a {
     text-decoration: none;
     color: inherit;
+}
+
+.configure_ext, .store_ext {
+    float: right;
+    position: relative;
+    bottom: 10px;
+    height: 24px;
+    transition: rotate 200ms, opacity 200ms;
+}
+
+.configure_ext:hover {
+    rotate: 90deg;
+    opacity: .75;
+}
+
+.store_ext:hover {
+    rotate: 360deg;
+    opacity: .75;
+}
+
+.widget-header-info {
+    width: 100%;
 }

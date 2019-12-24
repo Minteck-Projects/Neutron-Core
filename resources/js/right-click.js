@@ -15,11 +15,13 @@ if (navigator.userAgent.includes("Mobile") || navigator.userAgent.includes("Andr
       
       
             //alert("contextmenu"+event);
-            document.getElementById("rmenu").className = "show";
-            document.getElementById("rmenu").style.top = mouseY(event) + 'px';
-            document.getElementById("rmenu").style.left = mouseX(event) + 'px';
+            if (location.href.includes("/pages/edit") || location.href.includes("/pages/add")) {} else {
+              document.getElementById("rmenu").className = "show";
+              document.getElementById("rmenu").style.top = mouseY(event) + 'px';
+              document.getElementById("rmenu").style.left = mouseX(event) + 'px';
       
-            window.event.returnValue = false;
+              window.event.returnValue = false;
+            }
       
       
           });

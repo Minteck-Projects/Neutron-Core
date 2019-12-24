@@ -111,7 +111,8 @@ if (isset($_GET['id'])) {
             echo("<br><br><center><img src=\"/resources/image/storeloader.svg\" width=\"48px\" height=\"48px\" style=\"filter:brightness(50%);\"><br><span id=\"loadmsg\">Installation de l'extension...</span></center><br><br>");
             $install = true;
         } else {
-            echo("<center><br><br>L'extension est déjà installée<br><br><a onclick=\"history.back()\" class=\"sblink\">Retour</a></center>");
+            echo("<center><br><br>L'extension est déjà installée<br><br><a onclick=\"window.close()\" class=\"sblink\">Retour</a></center>");
+            $install = false;
         }
 
         ?>
