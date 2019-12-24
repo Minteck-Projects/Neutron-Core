@@ -15,11 +15,7 @@ Exécutez les commandes suivantes dans un terminal de commandes de type `bash` e
 apt-get update # Rechercher des mises à jour
 apt-get upgrade # Installer des mises à jour
 apt-get install apache2 php curl wget tar # Installer les logiciels requis (Apache et la dernière version de PHP)
-wget https://gitlab.com/minteck-projects/mpcms/code-base/-/archive/\
-$(curl https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version_dl)\
-/code-base-\
-$(curl https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version_dl)\
-.tar.gz -O mpcms.tar.gz # Téléchargez la dernière version stable
+wget https://gitlab.com/minteck-projects/mpcms/code-base/-/archive/$(curl https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version_dl)/code-base-$(curl https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version_dl).tar.gz -O mpcms.tar.gz # Téléchargez la dernière version stable
 tar xvzf mpcms.tar.gz # Extraire le fichier dans le dossier courant
 cd code-base-* # Accéder aux fichiers extraits
 cp -Rv * /var/www/html # Copier les fichiers dans le dossier racine d'Apache
