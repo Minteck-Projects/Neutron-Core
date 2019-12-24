@@ -3,15 +3,28 @@ Ce projet contient le code source de Minteck Projects CMS, distribué sous licen
 
 ## Liens
 *  [Contrat de licence (en anglais)](LICENSE)
+*  [Règles de contribution](CONTRIBUTING.md)
 *  [Télécharger une version](https://gitlab.com/minteck-projects/mpcms/code-base/-/tags)
 
-## Le logiciel contient déjà un site
-En effet, si vous téléchargez une préversion du logiciel, notre environnement de test reste installé. Vous pouvez, soit :
-*  utiliser l'environnement de test : le mot de passe de l'administration est `MPCMS-usr-motdepasse` (le mot de passe par défaut),
-*  repartir de zéro en **vidant** *et non en supprimant* les dossier `/data/tokens`, `/data/webcontent`, et `/resources/upload`, ou enfin
-*  mettre à jour à partir de votre base de données en suivant ces étapes :
-   *  supprimez le dossier `/data` du nouveau site ainsi que son contenu
-   *  créez un nouveau dossier `/data` sur le nouveau site
-   *  copiez le contenu du dossier `/data` de votre ancien site dans le dossier `/data` du nouveau site *(il devrait y avoir 2 dossiers et 1 fichier : `tokens`, `webcontent`, et `.htaccess`, le fichier [`.htaccess`] peut ne pas être visible selon la configuration de votre système)*
-   *  rechargez votre nouveau site
-   *  > Notez que si vous rencontrez des problèmes lors de cette manipulation, vous pouvez [créer un nouveau ticket](https://gitlab.com/minteck-projects/mpcms/code-base/issues) sur ce projet.
+## Installation
+
+### Serveur privé (Debian et dérivés)
+
+Exécutez les commandes suivantes dans un terminal de commandes de type `bash`.
+```shell
+# apt-get update # Rechercher des mises à jour
+# apt-get upgrade # Installer des mises à jour
+# apt-get install apache2 php curl wget tar # Installer les logiciels requis (Apache et la dernière version de PHP)
+$ wget https://gitlab.com/minteck-projects/mpcms/code-base/-/archive/$(curl https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version_dl)/code-base-$(curl https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version_dl).tar.gz -O mpcms.tar.gz # Téléchargez la dernière version stable
+$ tar xvzf mpcms.tar.gz # Extraire le fichier dans le dossier courant
+$ cd code-base-* # Accéder aux fichiers extraits
+# cp -Rv * /var/www/html # Copier les fichiers dans le dossier racine d'Apache
+$ cd .. # Retourner dans le dossier parent
+$ rm -Rfvd code-base-* mpcms.tar.gz # Supprimer les fichiers qui ne sont plus nécessaires.
+```
+
+Notez que le téléchargement des fichiers peut s'avérer long, soyez patient.
+
+Répétez les mêmes commandes pour mettre à jour le logiciel vers une nouvelle version.
+
+> Plus d'informations arrivent prochainement
