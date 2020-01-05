@@ -10,7 +10,7 @@ Sachez que les contributions sont soumises à des règles, vous êtes priés de 
 1. Soyez sûr que vous n'avez pas ajouté de code non libre au logiciel, sinon retirez le ou remplacez le par du code libre.
 2. Ajoutez dans votre message de requête de fusion ce que vous avez modifié, l'intérêt des modifications, et quelle soummission *(commit)* vous avez utilisé pour effectuer vos modifications.
 3. Si les changements sont conséquents, mettez à jour le numéro de version, selon ce que vous avez modifié... Le schéma de version que nous utilisons est un dérivé de [SemVer](https://semver.org/lang/fr/spec/v2.0.0.html).
-4. Si voous avez les permissions d'accepter une requête de fusion, vous ne devez l'accepter qu'avec l'autorisation d'au moins un des développeurs officiels du projet.
+4. Si vous avez les permissions d'accepter une requête de fusion, vous ne devez l'accepter qu'avec l'autorisation d'au moins un des développeurs officiels du projet.
 
 ## Règles de contribution
 

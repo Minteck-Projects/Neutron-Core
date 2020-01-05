@@ -18,6 +18,10 @@ if (strpos($_SERVER['HTTP_ACCEPT'], 'text/html') !== false) {} else {
     die("Le navigateur ne supporte pas le type de pages web utilisé par le logiciel");
 }
 
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) {
+    mkdir($_SERVER['DOCUMENT_ROOT'] . "/resources/upload");
+}
+
 ob_start();
 phpinfo();
 $data = ob_get_contents();
