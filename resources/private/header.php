@@ -1,3 +1,4 @@
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php" ?>
 <?php
 
 function ipHash() {
@@ -112,10 +113,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                 echo("<style type=\"text/css\">" . $customSettings->RessourcesPersonnalisées->CSS . "</style>");
                 echo("<script type=\"text/javascript\">" . $customSettings->RessourcesPersonnalisées->JS . "</script>");
             } else {
-                die("<h1>Erreur interne</h1><p>Le fichier des paramètres avancés nst pas dans une syntaxe reconnue, mais il ne contient pas certains paramètres requis. Le chargement de la page s'est arrêté ici.</p><p>Si vous contactez votre administrateur système, demandez lui de supprimer le fichier <code>/data/webcontent/customSettings.json</code>, Minteck Projects CMS se chargera d'en générer un nouveau pour vous.</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
+                die("<h1>" . $lang["header"]["internalError"][0] . "</h1><p>" . $lang["header"]["internalError"][1] . "</p><p>" . $lang["header"]["internalError"][2] . "<code>/data/webcontent/customSettings.json</code>" . $lang["header"]["internalError"][3] . "</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
             }
         } else {
-            die("<h1>Erreur interne</h1><p>Le fichier des paramètres avancés n'est pas dans une syntaxe reconnue, le chargement de la page s'est arrêté ici.</p><p>Si vous contactez votre administrateur réseau, demandez lui de supprimer le fichier <code>/data/webcontent/customSettings.json</code>, Minteck Projects CMS se chargera d'en générer un nouveau pour vous.</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
+            die("<h1>" . $lang["header"]["internalError"][0] . "</h1><p>" . $lang["header"]["internalError"][4] . "</p><p>" . $lang["header"]["internalError"][2] . "<code>/data/webcontent/customSettings.json</code>" . $lang["header"]["internalError"][3] . "</p><hr><i>Minteck Projects CMS " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
         }
     } else {
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", "{
@@ -168,7 +169,7 @@ function errors($level, $description, $file, $line) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/UNKNOWN - " . $file . ":" . $line . " - " . $description . "\n\n");
         }
     }
-    echo('<p><table class="message_error"><tbody><tr><td><img src="/resources/image/message_error.svg" class="message_img"></td><td style="width:100%;"><p>Une erreur s\'est produite lors du chargement de cette page, des informations détaillées ont été inscrites dans les fichiers journaux.</p><p>Le message d\'erreur dans les fichiers journaux commence généralement par <b>PHP-INTERNAL-ERROR/</b></p><p>Merci de contacter l\'administrateur système du site. Si vous êtes l\'administrateur système, nous vous conseillons d\'analyser et de corriger cette erreur.</p></td></tr></tbody></table></p>');
+    echo('<p><table class="message_error"><tbody><tr><td><img src="/resources/image/message_error.svg" class="message_img"></td><td style="width:100%;"><p>' . $lang["header"]["phpError"][0] . '</p><p>' . $lang["header"]["phpError"][1] . ' <b>PHP-INTERNAL-ERROR/</b></p><p>' . $lang["header"]["phpError"][2] . '</p></td></tr></tbody></table></p>');
     return true;
 }
 
@@ -252,45 +253,47 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled"
 }
 
 ?>
-<script src="/resources/js/right-click.js"></script>
-<link rel="stylesheet" href="/resources/css/right-click.css" />
+<?php
+
+if (strpos("/cms-special/admin/", $_SERVER['REQUEST_URI']) !== false) {
+    echo('<script src="/resources/js/right-click.js"></script><link rel="stylesheet" href="/resources/css/right-click.css" />');
+}
+
+?>
 <div class="hide" id="rmenu">
     <?php
   
     if (isset($name)) {
-        echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink"><img src="/resources/image/rightclick_page.svg" class="rmenuimg"> &nbsp; Gérer cette page</a>');
+        echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink"><img src="/resources/image/rightclick_page.svg" class="rmenuimg"> &nbsp; ' . $lang["menu"]["manage"] . '</a>');
         $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
         if (!empty($widgets->list)) {
-            echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink"><img src="/resources/image/rightclick_details.svg"     class="rmenuimg"> &nbsp; Détails</a>');
+            echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink"><img src="/resources/image/rightclick_details.svg"     class="rmenuimg"> &nbsp; ' . $lang["menu"]["widgets"] . '</a>');
         }
-    } else {
-        echo('<a href="/cms-special/admin/logout" class="rmenulink"><img src="/resources/image/rightclick_exit.svg" class="rmenuimg"> &nbsp; Terminer la session</a>');
-        echo('<a href="/cms-special/admin/store" class="rmenulink"><img src="/resources/image/rightclick_store.svg" class="rmenuimg"> &nbsp; CMS Store</a>');
     }
   
     ?>
     <hr class="rmenusep">
-    <a onclick="history.back()" class="rmenulink"><img src="/resources/image/rightclick_back.svg" class="rmenuimg"> &nbsp; Précédent</a>
-    <a onclick="history.forward()" class="rmenulink"><img src="/resources/image/rightclick_forward.svg" class="rmenuimg"> &nbsp; Suivant</a>
-    <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_refresh.svg" class="rmenuimg"> &nbsp; Actualiser</a>
+    <a onclick="history.back()" class="rmenulink"><img src="/resources/image/rightclick_back.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["back"] ?></a>
+    <a onclick="history.forward()" class="rmenulink"><img src="/resources/image/rightclick_forward.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["forward"] ?></a>
+    <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_refresh.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["refresh"] ?></a>
     <!-- <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_save.svg" class="rmenuimg"> &nbsp; Enregistrer la     page</a> -->
     <hr class="rmenusep">
-    <a href="/" class="rmenulink"><img src="/resources/image/rightclick_home.svg" class="rmenuimg"> &nbsp; Accueil</a>
-    <a href="/cms-special/admin" class="rmenulink"><img src="/resources/image/rightclick_admin.svg" class="rmenuimg"> &nbsp; Administration du site</a>
+    <a href="/" class="rmenulink"><img src="/resources/image/rightclick_home.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["home"] ?></a>
+    <a href="/cms-special/admin" class="rmenulink"><img src="/resources/image/rightclick_admin.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["admin"] ?></a>
 </div>
 
 <!-- Program JavaScript Error — taken from pMessage, a prototype of online messaging system -->
 <pjse-placeholder class="hide">
         <pjse-window>
             <pjse-window-inner>
-                <pjse-title>Avertissement</pjse-title>
-                <pjse-message>Une erreur interne de raison inconnue s'est produite</pjse-message><br><br>
-                <pjse-close onclick="closeError()"><span>Fermer</span></pjse-close>
+                <pjse-title><?= $lang["header"]["pjseDefault"][0] ?></pjse-title>
+                <pjse-message><?= $lang["header"]["pjseDefault"][1] ?></pjse-message><br><br>
+                <pjse-close onclick="closeError()"><span><?= $lang["header"]["pjseDefault"][2] ?></span></pjse-close>
             </pjse-window-inner>
         </pjse-window>
     </pjse-placeholder>
 
-<div id="snackbar">Erreur interne</div>
+<div id="snackbar"><?= $lang["header"]["snackbarDefault"] ?></div>
 
 <script>
 
@@ -309,7 +312,7 @@ function alert_full(text, refreshOnOk) {
         if (typeof text == "string") {
             document.querySelector('pjse-message').innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>")
         } else {
-            document.querySelector('pjse-message').innerHTML = "Erreur"
+            document.querySelector('pjse-message').innerHTML = "<?= $lang["header"]["pjseDefault"][1] ?>"
         }
         $("pjse-placeholder").fadeIn(200)
         document.querySelector('body').childNodes.forEach((el) => {
@@ -337,7 +340,7 @@ function alert(text, refreshOnOk) {
     if (typeof text == "string") {
         x.innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
     } else {
-        x.innerHTML = "Erreur interne";
+        x.innerHTML = "<?= $lang["header"]["snackbarDefault"] ?>";
     }
 
     x.className = "snackbar_show";

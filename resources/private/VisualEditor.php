@@ -7,8 +7,8 @@
         ClassicEditor
             .create( document.querySelector( '#editor' ), {
                 language: {
-                    ui: 'fr',
-                    content: 'fr'
+                    ui: <?= $langsel == "fr" ? "fr" : "en" ?>,
+                    content: <?= $langsel == "fr" ? "fr" : "en" ?>
                 },
                 toolbar: [
                     'heading', '|', 'bold', 'italic', 'link', '|', 'mediaembed', 'blockquote', 'inserttable', '|', 'bulletedList', 'numberedList', '|', 'undo', 'redo'

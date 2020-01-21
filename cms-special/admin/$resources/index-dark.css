@@ -1,0 +1,19 @@
+@import "/cms-special/admin/$resources/common.css";
+
+:root {
+    --mdc-theme-primary: #49948a;
+    --mdc-theme-secondary: #55b2b8;
+    --mdc-theme-secondary-light: #88b8b6;
+    --mdc-theme-on-primary: white;
+    --mdc-theme-on-secondary: white;
+    --mdc-theme-surface: rgb(44, 44, 44);
+    --mdc-theme-on-surface: whitesmoke;
+    --mpc-background: rgb(46, 46, 46);
+    --mpc-menu-background: rgb(22, 22, 22);
+    --mpc-text: whitesmoke;
+    --mpc-menu-selected: var(--mdc-theme-secondary-light);
+    --mpc-menu-header: rgb(223, 223, 223);
+    --mpc-menu-subtitle: rgb(182, 182, 182);
+    --mpc-icons: rgb(226, 226, 226);
+    --mpc-separator: rgb(138, 138, 138);
+}

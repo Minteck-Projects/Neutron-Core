@@ -1,0 +1,43 @@
+@media (max-width: 500px) {
+    /* The following CSS will apply ONLY to smartphones or small screens */
+    #header-desktop {
+        display: none;
+    }
+    .mdc-drawer {
+        display: none;
+    }
+    #header-mobile {
+        display: initial;
+    }
+    .error-desktop {
+        display: none;
+    }
+    .error-mobile {
+        display: initial;
+    }
+    #main-content {
+        margin-top: 56px !important;
+        margin-left: 0 !important;
+    }
+}
+
+@media (min-width: 500px) {
+    /* The following CSS will NEVER apply to smartphones or small screens */
+    #header-desktop {
+        display: initial;
+    }
+    #header-mobile {
+        display: none;
+    }
+    .error-desktop {
+        display: initial;
+    }
+    .error-mobile {
+        display: none;
+    }
+    .mdc-drawer {
+        top: initial !important;
+        right: initial !important;
+        transform: initial !important;
+    }
+}

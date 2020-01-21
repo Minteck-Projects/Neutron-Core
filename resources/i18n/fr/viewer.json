@@ -1,0 +1,17 @@
+{
+    "powered": "fonctionne sur",
+    "manage": "Gérer le site",
+    "home": "Accueil",
+    "galery": "Galerie de photos",
+    "menutitle": "Ouvrir le menu",
+    "menudesktop": "Plus...",
+    "menu": "Menu",
+    "widgets": "Détails",
+    "widgetspane": "Détails du site",
+    "logout": [
+        "Vous êtes encore connecté à l'administration de votre site, cliquez ",
+        "ici ",
+        "pour vous déconnecter"
+    ],
+    "toc": "Table des matières"
+}

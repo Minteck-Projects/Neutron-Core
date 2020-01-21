@@ -1,0 +1,167 @@
+@import "/cms-special/admin/$resources/responsive.css";
+
+html, body {
+    margin: 0;
+    color: var(--mpc-text) !important;
+    background-color: var(--mpc-background);
+}
+
+.mdc-drawer {
+    color: var(--mpc-text) !important;
+    background-color: var(--mpc-menu-background) !important;
+    height: 100vh;
+    z-index: 99999999999 !important;
+}
+
+.mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
+    color: var(--mpc-menu-selected) !important;
+}
+
+.mdc-list-item__graphic {
+    color: var(--mpc-icons) !important;
+}
+
+.mdc-list-group__subheader {
+    color: var(--mpc-menu-header) !important;
+}
+
+.mdc-drawer__subtitle {
+    color: var(--mpc-menu-subtitle) !important;
+}
+
+.mdc-drawer__title {
+    color: var(--mpc-text) !important;
+}
+
+.mdc-list-divider {
+    border-bottom-color: var(--mpc-separator);
+}
+
+.mdc-list-item__text {
+    color: var(--mpc-text);
+}
+
+.mdc-list-item.mdc-list-item--activated .mdc-list-item__text {
+    color: var(--mpc-menu-selected);
+}
+
+.ttdemo {
+    padding: 10px;
+    font-family: "CMS", "Ubuntu", "Roboto", "Google Sans", "Segoe UI", "Noto Sans", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+* {
+    font-family: "CMS", "Ubuntu", "Roboto", "Google Sans", "Segoe UI", "Noto Sans", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+span, p, body, div, h1, h2, h3, h4, h5, h6 {
+    font-family: "CMS", "Ubuntu", "Roboto", "Google Sans", "Segoe UI", "Noto Sans", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+#header-desktop {
+    margin-left: 256px;
+}
+
+#main-content {
+    padding: 16px;
+    margin-left: 256px;
+    margin-top: 64px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+html, body, #app-grid {
+    height: 100%;
+}
+
+#app-frame {
+    margin: -16px;
+    border: none;
+    width: calc(100% + 32px);
+    height: calc(100% + 32px);
+}
+
+.mdc-top-app-bar--fixed-adjust {
+    margin: 0;
+    padding: 0;
+    height: calc(100% - 64px);
+}
+
+.dualtitle-top {
+    margin-bottom: 4px;
+}
+
+.dualtitle-bottom {
+    margin-top: 4px;
+}
+
+.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start > a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+code {
+    font-family: monospace
+}
+
+a {
+    color: slategray;
+}
+
+a:hover {
+    color: gray;
+}
+
+a:active {
+    color: lightgray;
+}
+
+.mdc-card__primary-action {
+    padding: 0 16px;
+}
+
+.mdc-icon-button.material-icons.mdc-card__action.mdc-card__action--icon--unbounded {
+    color: whitesmoke;
+}
+
+img[width="128px"] {
+    border-radius: 9999px;
+}
+
+.demo-card__primary {
+    display: grid;
+    grid-template-columns: 69.6px 1fr;
+}
+
+.ccard_p1 {
+    margin-left: -15px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    height: 100%;
+    background-size: 100%;
+}
+
+.ccard_p2 {
+    margin-left: 10px;
+}
+
+.ccard_p2 h2 {
+    margin-bottom: 0;
+}
+
+.ccard_p2 h3 {
+    margin-top: 0;
+}
+
+.card_link, .card_link:hover, .card_link:active {
+    color: var(--mpc-text);
+    text-decoration: none;
+}
+
+.mdc-list-item {
+    cursor: pointer;
+}

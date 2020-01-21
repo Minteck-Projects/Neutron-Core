@@ -32,5 +32,6 @@
     "/galery/enabled": "État de la galerie",
     "/galery/pictures": "Images de la galerie",
     "/store/packages.json": "Base de données des paquets du CMS Store",
-    "/store/sources.list": "Dépôt utilisés par le CMS Store"
+    "/store/sources.list": "Dépôt utilisés par le CMS Store",
+    "/lang": "Langue utilisée par le logiciel"
 }

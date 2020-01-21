@@ -429,6 +429,7 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
 
 @media (min-width: 700px) {
     #sidebar {
+        height: calc(100% - 152px) !important;
         position: absolute;
         right: 0;
         background: rgb(66, 66, 66);
@@ -436,8 +437,6 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
         overflow-y: hidden;
         width: 256px !important;
         max-width: initial !important;
-        max-height: initial !important;
-        height: auto !important;
         transform: initial !important;
         color: white !important;
     }
@@ -448,9 +447,6 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
         top: initial !important;
         padding-top: 30px;
         display: block;
-    }
-    .sticky {
-        width: 78.2% !important;
     }
     #sidebar-separator, #sidebar-title, #sidebar-close {
         opacity: 0;
