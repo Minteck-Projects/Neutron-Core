@@ -45,6 +45,8 @@ $title = str_replace('>', '&gt;', $title);
 $title = str_replace('<', '&lt;', $title);
 if (substr($title, 0, 1) == " " || substr($title, 0, 1) == "-" || substr($title, 0, 1) == " " || substr($title, 0, 1) == "_" || substr($title, 0, 1) == "@" || substr($title, 0, 1) == "|" || substr($title, 0, 1) == "'" || substr($title, 0, 1) == "\"" || substr($title, 0, 1) == "~" || substr($title, 0, 1) == "&" || substr($title, 0, 1) == "=") {
     $prefixed = true;
+} else {
+    $prefixed = false;
 }
 $type = $_POST['type'];
 $content = $_POST['content'];
