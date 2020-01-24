@@ -1,0 +1,11 @@
+{
+    "title": "Galerie de photos",
+    "unclassed": "Non classé",
+    "disabled": [
+        "La ",
+        "galerie de photos",
+        " n'est pas activée sur ce site"
+    ],
+    "nothing": "Aucune photo dans cette catégorie",
+    "deleted": "Photo introuvable ou supprimée incorrectement, veuillez contacter l'administrateur du site"
+}

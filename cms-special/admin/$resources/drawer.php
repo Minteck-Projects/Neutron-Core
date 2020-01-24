@@ -33,47 +33,47 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
         <nav class="mdc-list">
             <a class="mdc-list-item <?php if ($path == "/cms-special/admin/home") { echo("mdc-list-item--activated"); } ?>" href="/cms-special/admin/home" aria-current="page">
                 <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
-                <span class="mdc-list-item__text">Tableau de bord</span>
+                <span class="mdc-list-item__text"><?= $lang["admin-drawer-items"]["home"] ?></span>
             </a>
 
             <hr class="mdc-list-divider">
-            <h6 class="mdc-list-group__subheader">Contenu</h6>
-            <?= renderItem("/cms-special/admin/pages", "insert_drive_file", "Pages") ?>
-            <?= renderItem("/cms-special/admin/galery", "insert_photo", "Galerie de photos") ?>
-            <?= renderItem("/cms-special/admin/calendar", "calendar_today", "Calendrier") ?>
+            <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["content"] ?></h6>
+            <?= renderItem("/cms-special/admin/pages", "insert_drive_file", $lang["admin-drawer-items"]["pages"]) ?>
+            <?= renderItem("/cms-special/admin/galery", "insert_photo", $lang["admin-drawer-items"]["gallery"]) ?>
+            <?= renderItem("/cms-special/admin/calendar", "calendar_today", $lang["admin-drawer-items"]["calendar"]) ?>
 
             <hr class="mdc-list-divider">
-            <h6 class="mdc-list-group__subheader">Extensions</h6>
-            <?= renderItem("/cms-special/admin/store", "store", "CMS Store") ?>
-            <?= renderItem("/cms-special/admin/plugins", "extension", "Option des extensions") ?>
+            <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["plugins"] ?></h6>
+            <?= renderItem("/cms-special/admin/store", "store", $lang["admin-drawer-items"]["store"]) ?>
+            <?= renderItem("/cms-special/admin/plugins", "extension", $lang["admin-drawer-items"]["plugins"]) ?>
 
             <hr class="mdc-list-divider">
-            <h6 class="mdc-list-group__subheader">Tâches récurrentes</h6>
-            <?= renderItem("/cms-special/admin/advanced", "settings", "Options avancées") ?>
-            <?= renderItem("/cms-special/admin/housekeeping", "autorenew", "Maintenance") ?>
-            <?= renderItem("/cms-special/admin/updates", "info", "Mise à jour et sécurité") ?>
+            <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["repetitive"] ?></h6>
+            <?= renderItem("/cms-special/admin/advanced", "settings", $lang["admin-drawer-items"]["advanced"]) ?>
+            <?= renderItem("/cms-special/admin/housekeeping", "autorenew", $lang["admin-drawer-items"]["housekeeping"]) ?>
+            <?= renderItem("/cms-special/admin/updates", "info", $lang["admin-drawer-items"]["updates"]) ?>
 
             <hr class="mdc-list-divider">
-            <h6 class="mdc-list-group__subheader">Visuel et comportement</h6>
-            <?= renderItem("/cms-special/admin/appearance", "web", "Apparence") ?>
-            <?= renderItem("/cms-special/admin/customization", "format_paint", "Personnalisation") ?>
-            <?= renderItem("/cms-special/admin/logs", "short_text", "Historique d'activité") ?>
+            <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["look-feel"] ?></h6>
+            <?= renderItem("/cms-special/admin/appearance", "web", $lang["admin-drawer-items"]["appearance"]) ?>
+            <?= renderItem("/cms-special/admin/customization", "format_paint", $lang["admin-drawer-items"]["customize"]) ?>
+            <?= renderItem("/cms-special/admin/logs", "short_text", $lang["admin-drawer-items"]["logs"]) ?>
 
             <hr class="mdc-list-divider">
-            <h6 class="mdc-list-group__subheader">Données et optimisation</h6>
-            <?= renderItem("/cms-special/admin/semantic", "adjust", "CMS Sémantique") ?>
-            <?= renderItem("/cms-special/admin/stats", "insert_chart", "Statistiques") ?>
+            <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["data-opti"] ?></h6>
+            <?= renderItem("/cms-special/admin/semantic", "adjust", $lang["admin-drawer-items"]["semantic"]) ?>
+            <?= renderItem("/cms-special/admin/stats", "insert_chart", $lang["admin-drawer-items"]["stats"]) ?>
 
             <hr class="mdc-list-divider">
-            <h6 class="mdc-list-group__subheader">Accès rapide</h6>
-            <?= renderItem("/cms-special/admin/logout", "exit_to_app", "Déconnexion") ?>
-            <?= renderItem("/?source=admin", "power", "Retourner au site", true) ?>
+            <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["easy"] ?></h6>
+            <?= renderItem("/cms-special/admin/logout", "exit_to_app", $lang["admin-drawer-items"]["logout"]) ?>
+            <?= renderItem("/?source=admin", "power", $lang["admin-drawer-items"]["back"], true) ?>
 
             <h6 class="mdc-drawer__subtitle">
                 <center>
-                    propulsé par Minteck Projects CMS<br>
+                    <?= $lang["admin-drawer-footer"]["powered"] ?><br>
                     © 2019-<?= date('Y') ?> Minteck Projects Ltd.<br><br>
-                    Minteck Projects CMS est distribué sous licence <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">GNU GPL3</a> ou version ultérieure. Tout travail dérivé doit aussi être distribué sous cette licence.
+                    <?= $lang["admin-drawer-footer"]["license"][0] ?><a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">GNU GPL3</a><?= $lang["admin-drawer-footer"]["license"][1] ?>
                 </center>
             </h6>
         </nav>

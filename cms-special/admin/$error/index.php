@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => $lang["admin-titles"]["error"]->dom, "headerName" => $lang["admin-titles"]["error"]->header ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
                     <center>
                         <h2><?= $lang["admin-home"]["greeting"] ?></h2>
                         <p>

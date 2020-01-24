@@ -147,8 +147,8 @@
     <h4>Version actuelle (<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?>)</h4>
     <?php
     
-    if (file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion))) {
-        echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion)));
+    if (!startsWith(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion),false,stream_context_create(['http' => ['ignore_errors' => true,],])), "<!DOCTYPE")) {
+        echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion),false,stream_context_create(['http' => ['ignore_errors' => true,],])));
     } else {
         echo("<i>Aucune information concernant votre version de Minteck Projects CMS</i>");
     }
@@ -163,10 +163,10 @@
         } else {
             echo("<h4>Version stable en circulation (" . $latestVersion . ")</h4>");
         }
-        if (file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $latestVersion))) {
-            echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $latestVersion)));
+        if (!startsWith(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $latestVersion),false,stream_context_create(['http' => ['ignore_errors' => true,],])), "<!DOCTYPE")) {
+            echo(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $latestVersion),false,stream_context_create(['http' => ['ignore_errors' => true,],])));
         } else {
-            echo("<i>Aucune information concernant la dernière version de Minteck Projects CMS</i>");
+            echo("<i>Aucune information concernant votre version de Minteck Projects CMS</i>");
         }
     }
 

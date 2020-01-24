@@ -1,5 +1,5 @@
 <?php $pageConfig = [ "domName" => "Configuration de l'extension - Extensions", "headerName" => "Configuration de l'extension" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-        <p>Entrez les informations de contact que vous souhaitez fournir à vos visiteurs. Laissez vide les champs que vous ne souhaitez pas afficher</p>
+        <p><?= $lang["admin-plugins-contact"]["disclaimer"] ?></p>
         <div id="data">
         <?php
         
@@ -12,24 +12,24 @@
             <table>
                 <tbody>
                     <tr>
-                        <td>Numéro de téléphone : </td>
+                        <td><?= $lang["admin-plugins-contact"]["phone"] ?></td>
                         <td><input type="text" id="phone" placeholder="ex: +33 1 23 45 67 89" value="<?php if (isset($parts)) {echo($parts[0]);} ?>"></td>
                     </tr>
                     <tr>
-                        <td>Adresse email : </td>
+                        <td><?= $lang["admin-plugins-contact"]["email"] ?></td>
                         <td><input type="text" id="email" placeholder="ex: contact@example.com" value="<?php if (isset($parts)) {echo($parts[1]);} ?>"></td>
                     </tr>
                     <tr>
-                        <td>Adresse postale : </td>
+                        <td><?= $lang["admin-plugins-contact"]["address"] ?></td>
                         <td><input type="text" id="address" placeholder="ex: 123 Rue du Test, Paris, France" value="<?php if (isset($parts)) {echo($parts[2]);} ?>"></td>
                     </tr>
                     <tr>
-                        <td>Personne à contacter en cas de nécessité : </td>
+                        <td><?= $lang["admin-plugins-contact"]["people"] ?></td>
                         <td><input type="text" id="people" placeholder="ex: John Doe" value="<?php if (isset($parts)) {echo($parts[3]);} ?>"></td>
                     </tr>
                 </tbody>
             </table>
-            <p><center><a class="button" onclick="saveChanges()" title="Sauvegarder la configuration du widget">Sauvegarder</a></center></p>
+            <p><center><a class="button" onclick="saveChanges()" title="<?= $lang["admin-plugins"]["widgetconf"]->saveph ?>"><?= $lang["admin-plugins"]["widgetconf"]->save ?></a></center></p>
         </div>
         <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
@@ -52,13 +52,13 @@ function saveChanges() {
             if (data == "ok") {
                 location.href = "/cms-special/admin/widgets"
             } else {
-                alert("Erreur : " + data);
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data);
                 document.getElementById('data').classList.remove('hide')
                 document.getElementById('loader').classList.add('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication");
+            alert("<?= $lang["admin-errors"]["errorprefix"] ?>");
             document.getElementById('data').classList.remove('hide')
             document.getElementById('loader').classList.add('hide')
         },

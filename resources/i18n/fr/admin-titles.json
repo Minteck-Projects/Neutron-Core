@@ -1,0 +1,173 @@
+{
+    "$notice": "Please keep this file AS CLEAN as possible, because it is automatically parsed by the precontent.php file in the admin system. Values names MUST BE admin pages names (except for fallback value) !",
+
+    "suffix": "Administration",
+    "fallback": "Page sans titre",
+    "fallback-subpages": "Sous-page sans titre",
+    "home": {
+        "dom": "Tableau de bord",
+        "header": "Tableau de bord"
+    },
+    "$error": {
+        "dom": "Erreur",
+        "header": "Erreur"
+    },
+    "pages": {
+        "dom": "Pages",
+        "header": "Pages du site",
+        "subpages": {
+            "manage": {
+                "dom": "Gérer la page",
+                "header": "Options de la page"
+            },
+            "edit": {
+                "dom": "Modifier la page",
+                "header": "Modification de la page"
+            },
+            "delete": {
+                "dom": "Supprimer la page",
+                "header": "Suppression de la page"
+            },
+            "rename": {
+                "dom": "Renommer la page",
+                "header": "Renommage de la page"
+            },
+            "add": {
+                "dom": "Nouvelle page",
+                "header": "Créer une page"
+            }
+        }
+    },
+    "galery": {
+        "dom": "Galerie de photos",
+        "header": "Galerie de photos",
+        "subpages": {
+            "addcategory": {
+                "dom": "Nouvelle catégorie",
+                "header": "Créer une nouvelle catégorie"
+            },
+            "publish": {
+                "dom": "Nouvelle photo",
+                "header": "Ajouter une nouvelle photo"
+            }
+        }
+    },
+    "calendar": {
+        "dom": "Calendrier",
+        "header": "Événements",
+        "subpages": {
+            "add": {
+                "dom": "Nouvel événement",
+                "header": "Ajouter un nouvel événement"
+            },
+            "manage": {
+                "dom": "Gérer l'événement",
+                "header": "Paramètres de l'événement"
+            }
+        }
+    },
+    "store": {
+        "dom": "CMS Store",
+        "header": "CMS Store",
+        "subpages": {
+            "dbupdate": {
+                "dom": "Opération en cours",
+                "header": "Regénération de la base de données..."
+            },
+            "install": {
+                "dom": "Opération en cours",
+                "header": "Installation de l'extension..."
+            },
+            "remove": {
+                "dom": "Opération en cours",
+                "header": "Désinstallation de l'extension..."
+            },
+            "update": {
+                "dom": "Opération en cours",
+                "header": "Mise à jour de l'extension..."
+            },
+            "ext-dbupdate": {
+                "dom": "Opération en cours",
+                "header": "Regénération de la base de données..."
+            },
+            "ext-install": {
+                "dom": "Opération en cours",
+                "header": "Installation de l'extension..."
+            },
+            "ext-remove": {
+                "dom": "Opération en cours",
+                "header": "Désinstallation de l'extension..."
+            },
+            "ext-update": {
+                "dom": "Opération en cours",
+                "header": "Mise à jour de l'extension..."
+            },
+            "ext-init": {
+                "dom": "Opération en cours",
+                "header": "Préparation du CMS Store pour une première utilisation..."
+            },
+            "package": {
+                "dom": "Informations sur le paquet",
+                "header": "Informations sur l'extension"
+            }
+        }
+    },
+    "plugins": {
+        "dom": "Extensions",
+        "header": "Options des extensions",
+        "subpages": {
+            "widget-contact-configure": {
+                "dom": "Options",
+                "header": "Configuration de l'extension"
+            },
+            "widget-notes-configure": {
+                "dom": "Options",
+                "header": "Configuration de l'extension"
+            }
+        }
+    },
+    "advanced": {
+        "dom": "Options avancés",
+        "header": "Paramètres avancés du site",
+        "subpages": {
+            "jsonconf": {
+                "dom": "Options pour les développeurs",
+                "header": "Préférences de développement"
+            }
+        }
+    },
+    "housekeeping": {
+        "dom": "Maintenance",
+        "header": "Options de maintenance",
+        "subpages": {
+            "reset": {
+                "dom": "Réinitialisation",
+                "header": "Réinitialisez votre site"
+            }
+        }
+    },
+    "updates": {
+        "dom": "Mise à jour et sécurité",
+        "header": "Mise à jour et sécurité"
+    },
+    "appearance": {
+        "dom": "Apparence",
+        "header": "Apparence de votre site"
+    },
+    "customize": {
+        "dom": "Personnalisation",
+        "header": "Identité visuelle de votre site"
+    },
+    "logs": {
+        "dom": "Historique d'activité",
+        "header": "Dernières activités sur votre site"
+    },
+    "semantic": {
+        "dom": "CMS Sémantique",
+        "header": "Options de logique"
+    },
+    "stats": {
+        "dom": "Statistiques",
+        "header": "Statistiques sur votre site"
+    }
+}

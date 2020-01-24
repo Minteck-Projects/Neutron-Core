@@ -1,5 +1,5 @@
 <?php $pageConfig = [ "domName" => "Configuration de l'extension - Extensions", "headerName" => "Configuration de l'extension" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-        <p>Entrez le texte qui devra être affiché dans la barre des widgets. L'édition "inline" uniquement est supportée (pas de titres, tableaux, etc...).</p>
+        <p><?= $lang["admin-plugins"]["widgetconf"]->textedit ?></p>
         <div id="data">
         <textarea name="content" id="editor">
                 <?php
@@ -29,7 +29,7 @@
                 console.error( error );
             } );
     </script>
-            <p><center><a class="button" onclick="saveChanges()" title="Sauvegarder la configuration du widget">Sauvegarder</a></center></p>
+            <p><center><a class="button" onclick="saveChanges()" title="<?= $lang["admin-plugins"]["widgetconf"]->saveph ?>"><?= $lang["admin-plugins"]["widgetsconf"]->save ?></a></center></p>
         </div>
         <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
@@ -49,13 +49,13 @@ function saveChanges() {
             if (data == "ok") {
                 location.href = "/cms-special/admin/widgets"
             } else {
-                alert("Erreur : " + data);
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data);
                 document.getElementById('data').classList.remove('hide')
                 document.getElementById('loader').classList.add('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication");
+            alert("<?= $lang["admin-errors"]["comerror"] ?>");
             document.getElementById('data').classList.remove('hide')
             document.getElementById('loader').classList.add('hide')
         },

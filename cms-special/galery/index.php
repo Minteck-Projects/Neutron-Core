@@ -15,7 +15,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
         if ($category != "." && $category != "..") {
             $shown = false;
             if ($category == "unclassed") {
-                buffer("<h2>Non classé</h2>");
+                buffer("<h2>" . $lang["gallery"]["unclassed"] . "</h2>");
             } else {
                 buffer("<h2>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/categories/" . $category) . "</h2>");
             }
@@ -37,23 +37,23 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
                             buffer("</div>");
                         } else {
                             buffer("<div class=\"photo\">");
-                            buffer('<p><table class="message_error message_black"><tbody><tr><td><img src="/resources/image/message_error.svg" class="message_img"></td><td style="width:100%;">Photo introuvable ou supprimée incorrectement, merci de contacter l\'administrateur du site</td></tr></tbody></table></p>');
+                            buffer('<p><table class="message_error message_black"><tbody><tr><td><img src="/resources/image/message_error.svg" class="message_img"></td><td style="width:100%;">' . $lang["gallery"]["error"] . '</td></tr></tbody></table></p>');
                             buffer("</div>");
                         }
                     }
                 }
             }
             if (!$shown) {
-                buffer("<p><center><i>Aucun photo dans cette catégorie</i></center></p>");
+                buffer("<p><center><i>" . $lang["gallery"]["nothing"] . "</i></center></p>");
             }
             buffer("</center></div></center>");
         }
     }
 } else {
-    buffer("<center><i>La <b>galerie de photos</b> n'est pas activée sur ce site</i></center>");
+    buffer("<center><i>" . $lang["gallery"]["disabled"][0] . "<b>" . $lang["gallery"]["disabled"][1] . "</b>" . $lang["gallery"]["disabled"][2] . "</i></center>");
 }
 buffer("<script>window.onload = () => {setTimeout(() => {Array.from(document.getElementsByClassName('photo_image')).forEach((el) => {el.classList.add('loaded')});}, 1000)}</script>");
 
-renderSpecial($buffer, 'Galerie de photos');
+renderSpecial($buffer, $lang["gallery"]["title"]);
 
 ?>

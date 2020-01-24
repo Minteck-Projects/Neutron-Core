@@ -1,4 +1,25 @@
 <?php $pageConfig = [ "domName" => "Supprimer un événement - Calendrier", "headerName" => "Supprimer un événement" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php   
+$eventsraw = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json");
+if (isset($_GET['id'])) {} else {
+    die("<script>location.href = '/cms-special/admin/calendar';</script>");
+}
+if (isJson($eventsraw)) {
+    $events = json_decode($eventsraw);
+    foreach ($events->events as $element) {
+        if (isset($element->timestamp)) {
+            if ($element->timestamp == $_GET['id']) {
+                $event = $element;
+            }
+        }
+    }
+} else {
+    die("<script>location.href = '/cms-special/admin/calendar';</script>");
+}
+if (!isset($event)) {
+    die("<script>location.href = '/cms-special/admin/calendar';</script>");
+}
+?>
         <h3>Informations sur l'événement</h3>
         <ul>
             <li><b><?= $event->name ?></b></li>

@@ -1,13 +1,10 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php" ?>
 <?php
 
 function ipHash() {
     $hash = str_replace("/", "-", str_replace(":", "-", password_hash($_SERVER['REMOTE_ADDR'], PASSWORD_BCRYPT, ['cost' => 5,'salt' => "MinteckProjectsCmsIpBan",])));
     return $hash;
 }
-
-// var_dump($_SERVER['REMOTE_ADDR']);
-// die("<br>" . ipHash());
 
 function ipbPush() {
     $ip = ipHash();
@@ -141,6 +138,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 //
 
 function errors($level, $description, $file, $line) {
+    global $lang;
     if ($level == E_USER_ERROR) {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/ERROR - " . $file . ":" . $line . " - " . $description . "\n\n");

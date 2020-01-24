@@ -168,3 +168,7 @@ html {
 .photo_label {
     color: whitesmoke;
 }
+
+.configure_ext, .store_ext {
+    filter: invert(100%);
+}

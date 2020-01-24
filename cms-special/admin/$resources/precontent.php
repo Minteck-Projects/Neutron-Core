@@ -1,5 +1,50 @@
 <?php
 
+include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+
+$pageid = explode("/", $_SERVER['REQUEST_URI'])[3];
+if (isset(explode("/", $_SERVER['REQUEST_URI'])[4])) {
+    if (explode("/", $_SERVER['REQUEST_URI'])[4] != "index.php") {
+        if (isset($lang["admin-titles"][$pageid]->subpages)) {
+            $subpageid = explode("/", $_SERVER['REQUEST_URI'])[4];
+            $subpageel = (array)$lang["admin-titles"][$pageid]->subpages;
+        } else {
+            $subpageid = "";
+        }
+    } else {
+        $subpageid = "";
+    }
+} else {
+    $subpageid = "";
+}
+
+if (isset($lang["admin-titles"][$pageid])) {
+    if (isset($lang["admin-titles"][$pageid]->dom) && isset($lang["admin-titles"][$pageid]->header)) {
+        if (isset($lang["admin-titles"][$pageid]->subpages)) {
+            if ($subpageid != "") {
+                $subpages = $lang["admin-titles"][$pageid]->subpages;
+                if (isset($subpageel)) {
+                    if (isset($subpageel[$subpageid])) {
+                        $pageConfig = [ "domName" => $subpageel[$subpageid]->dom . " - " . $lang["admin-titles"][$pageid]->dom, "headerName" => $subpageel[$subpageid]->header ];
+                    } else {
+                        $pageConfig = [ "domName" => $lang["admin-titles"]["fallback-subpages"] . " - " . $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"]["fallback-subpages"] ];
+                    }
+                } else {
+                    $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];
+                }
+            } else {
+                $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];    
+            }
+        } else {
+            $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];
+        }
+    } else {
+        $pageConfig = [ "domName" => $lang["admin-titles"]["fallback"]->dom, "headerName" => $lang["admin-titles"]["fallback"]->header ];    
+    }
+} else {
+    $pageConfig = [ "domName" => $lang["admin-titles"]["fallback"], "headerName" => $lang["admin-titles"]["fallback"] ];
+}
+
 $invalid = false;
 
 if (isset($_COOKIE['ADMIN_TOKEN'])) {
@@ -98,9 +143,9 @@ function isJson(string $json) {
     <title><?php
     
     if ($ready) {
-        echo($pageConfig['domName'] . " - Administration - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo($pageConfig['domName'] . " - {$lang["admin-titles"]["suffix"]} - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
-        echo($pageConfig['domName'] . " - Administration - MPCMS");
+        echo($pageConfig['domName'] . " - {$lang["admin-titles"]["suffix"]} - MPCMS");
     }
 
     ?></title>
@@ -113,21 +158,21 @@ function isJson(string $json) {
     <?php
     
     getData($_SERVER['DOCUMENT_ROOT']);
-    $sizestr = $size . " octets";
+    $sizestr = $size . " " . $lang["sizes"]["bytes"];
     if ($size > 1024) {
         if ($size > 1048576) {
             if ($size > 1073741824) {
-                $sizestr = round($size / 1073741824, 2) . " Gio";
+                $sizestr = round($size / 1073741824, 2) . " " . $lang["sizes"]["gib"];
             } else {
-                $sizestr = round($size / 1048576, 2) . " Mio";
+                $sizestr = round($size / 1048576, 2) . " " . $lang["sizes"]["mib"];
             }
         } else {
-            $sizestr = round($size / 1024, 2) . " Kio";
+            $sizestr = round($size / 1024, 2) . " " . $lang["sizes"]["kib"];
         }
     } else {
-        $sizestr = $size . " octets";
+        $sizestr = $size . " " . $lang["sizes"]["bytes"];
     }
-    $sizestr = str_replace(".", ",", $sizestr);
+    $sizestr = str_replace(".", $lang["sizes"]["separator"], $sizestr);
     
     ?>
 </head>

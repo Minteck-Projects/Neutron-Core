@@ -40,4 +40,7 @@
         right: initial !important;
         transform: initial !important;
     }
+    .mdc-top-app-bar__row {
+        width: calc(100% - 256px);
+    }
 }

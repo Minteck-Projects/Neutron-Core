@@ -1,0 +1,13 @@
+{
+    "byte": "octet",
+    "bytes": "octets",
+    "kib": "Kio",
+    "mib": "Mio",
+    "gib": "Gio",
+    "tib": "Tio",
+    "kibibytes": "kibioctets",
+    "mebibytes": "mébioctets",
+    "gibibytes": "gibioctets",
+    "tebibytes": "tébioctets",
+    "separator": ","
+}

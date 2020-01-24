@@ -1,5 +1,5 @@
 <?php $pageConfig = [ "domName" => "Extensions", "headerName" => "Extensions" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-        <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Minteck Projects CMS dispose du support d'extensions, qui vous permettent de modifier les fonctionnalités et/ou le comportement du logiciel, ou d'afficher des widgets supplémentaires dans la barre des widgets (sortes d'informations enrichies qui sont affichés à la suite)</p></td></tr></tbody></table></p>
+        <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-plugins"]["disclaimer"] ?></p></td></tr></tbody></table></p>
         <?php
 
         $widgets = scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets/");
@@ -26,23 +26,23 @@
                         $size = $size + filesize($_SERVER['DOCUMENT_ROOT'] . $dep);
                     }
                 }
-                $sizestr = $size . " octets";if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " Gio";} else {$sizestr = round($size / 1048576, 2) . " Mio";}} else {$sizestr = round($size / 1024, 2) . " Kio";}} else {$sizestr = $size . " octets";}$sizestr = str_replace(".", ",", $sizestr);
+                $sizestr = $size . " " . $lang["sizes"]["bytes"];if ($size > 1024) {if ($size > 1048576) {if ($size > 1073741824) {$sizestr = round($size / 1073741824, 2) . " " . $lang["sizes"]["gib"];} else {$sizestr = round($size / 1048576, 2) . " " . $lang["sizes"]["mib"];}} else {$sizestr = round($size / 1024, 2) . " " . $lang["sizes"]["kib"];}} else {$sizestr = $size . " " . $lang["sizes"]["bytes"];}$sizestr = str_replace(".", ",", $sizestr);
                 echo("><span class=\"slider round\"></span></label></td><td class=\"widget-header-info\"><b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/name") . "</b><br>par <b>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/author") . "</b>");
                 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/cms-store")) {
-                    echo(", extension préinstallée");
+                    echo(", " . $lang["admin-plugins"]["builtin"]);
                 }
                 echo("<i> (" . $sizestr . ")</i>");
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config")) {
-                    echo("<a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config") . "\" title=\"Modifier les paramètres de cette extension\" class=\"configure_ext\"><img src=\"/resources/image/ext-settings.svg\"></a>");
+                    echo("<a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config") . "\" title=\"" . $lang["admin-plugins"]["config"] . "\" class=\"configure_ext\"><img src=\"/resources/image/ext-settings.svg\"></a>");
                 }
-                echo("<a href=\"" . "/cms-special/admin/store/package/?id=" . $widget . "\" title=\"Voir cette extension sur le CMS Store\" class=\"store_ext\"><img src=\"/resources/image/ext-store.svg\"></a>");
+                echo("<a href=\"" . "/cms-special/admin/store/package/?id=" . $widget . "\" title=\"" . $lang["admin-plugins"]["store"] . "\" class=\"store_ext\"><img src=\"/resources/image/ext-store.svg\"></a>");
                 echo("</td></tr></tbody></table></div><p>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/description") . "</p>");
                 echo("</div>");
             }
         }
         
         ?>
-        <p><center><b>Conseil :</b> Vous pouvez installer de nouvelles extensions depuis le <b><a class="sblink" href="/cms-special/admin/store">CMS Store</a></b>, une bibliothèque de toutes les extensions pour Minteck Projects CMS</center></p>
+        <p><center><b><?= $lang["admin"]["tip"][0] ?></b><?= $lang["admin"]["tip"][1] ?><b><a class="sblink" href="/cms-special/admin/store">CMS Store</a></b><?= $lang["admin"]["tip"][2] ?></center></p>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
@@ -68,16 +68,16 @@ function updateWidgetStatus(widget) {
             url: "/api/admin/widgets.php",
             success: function (data) {
                 if (data == "ok") {
-                    alert("Modifications sauvegardées avec succès");
+                    alert("<?= $lang["admin-plugins"]["saved"] ?>");
                     setTimeout(() => {
                         Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                     }, 500)
                 } else {
-                    alert("Erreur : " + data);
+                    alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data);
                 }
             },
             error: function (error) {
-                alert("Erreur de communication");
+                alert("<?= $lang["admin-errors"]["connerror"] ?>");
                 window.onbeforeunload = undefined;
             },
             data: formData,

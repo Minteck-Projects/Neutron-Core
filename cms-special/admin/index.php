@@ -94,10 +94,11 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
     <title><?php
     
     if ($ready) {
-        echo("Connexion - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo($lang["login"]["login"] . " - " . $lang["login"]["title"] .  " - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
         echo("Administration du site - MPCMS");
     }
@@ -108,18 +109,17 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             die("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
 </head>
 <body id="login">
     <div class="centered">
-        <span class="intro"><img src="/resources/image/admin_appearance.png" class="blk1 intro-element"> - <img src="/resources/image/admin_housekeeping.png" class="blk2 intro-element"> - <img src="/resources/image/admin_pages.png" class="blk3 intro-element"> - <img src="/resources/image/admin_updates.png" class="blk4 intro-element"> - <img src="/resources/image/admin_plugins.png" class="blk5 intro-element"></span>
-        <h2>Administration du site</h2>
+        <img src="/resources/upload/siteicon.png" class="intro-element">
+        <h2><?= $lang["login"]["title"] ?></h2>
         <?php if ($invalid) {echo('<div id="error">Le mot de passe est incorrect</div>');} ?>
         <form action="./<?php if (isset($_GET['pr'])) {echo("?pr=" . $_GET['pr']);if (isset($_GET['pa'])) {echo("&pa=" . urlencode($_GET['pa']));}} ?>" method="post">
             <input name="password" type="password" placeholder="Mot de passe"><br><br>
             <input type="submit" class="button" href="/" value="Connexion">
         </form><br>
-        <center><div id="loginnotice" style="margin:0% 30%;"><b>Note :</b><p>Vous pouvez aussi vous connecter en utilisant la clé d'administration de votre site. Elle est située dans le fichier <code>/data/adminkey</code> et permet à l'administrateur réseau de se connecter, quel que soit le mot de passe du webmaster.</p><p>Par défaut, le fichier n'existe pas. Il vous suffit de le créer</p></div></center>
+        <center><div id="loginnotice" style="margin:0% 30%;"><b><?= $lang["login"]["notice"][0] ?></b><p><?= $lang["login"]["notice"][1] ?><code>/data/adminkey</code><?= $lang["login"]["notice"][2] ?></p><p><?= $lang["login"]["notice"][3] ?></p></div></center>
     </div>
 </body>
 </html>

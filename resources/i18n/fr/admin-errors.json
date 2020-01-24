@@ -1,0 +1,8 @@
+{
+    "errorprefix": "Erreur : ",
+    "connerror": "Erreur de communication",
+    "housekeeping": [
+        "Votre site risque d'être endommagé",
+        "Aucune modification n'a été apportée sur votre site"
+    ]
+}
