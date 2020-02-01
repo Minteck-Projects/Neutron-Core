@@ -193,7 +193,7 @@ try {
             mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats");
         }
     }
-    
+
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/")) {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . date("Y-m-d"))) {
             if (strpos($_SERVER['HTTP_USER_AGENT'], "MinteckProjectsAutoUptime") !== false) {} else {
@@ -260,7 +260,7 @@ if (strpos("/cms-special/admin/", $_SERVER['REQUEST_URI']) !== false) {
 ?>
 <div class="hide" id="rmenu">
     <?php
-  
+
     if (isset($name)) {
         echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink"><img src="/resources/image/rightclick_page.svg" class="rmenuimg"> &nbsp; ' . $lang["menu"]["manage"] . '</a>');
         $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
@@ -268,7 +268,7 @@ if (strpos("/cms-special/admin/", $_SERVER['REQUEST_URI']) !== false) {
             echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink"><img src="/resources/image/rightclick_details.svg"     class="rmenuimg"> &nbsp; ' . $lang["menu"]["widgets"] . '</a>');
         }
     }
-  
+
     ?>
     <hr class="rmenusep">
     <a onclick="history.back()" class="rmenulink"><img src="/resources/image/rightclick_back.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["back"] ?></a>
@@ -334,7 +334,7 @@ function alert(text, refreshOnOk) {
         }
     }
     var x = document.getElementById("snackbar");
-    
+
     if (typeof text == "string") {
         x.innerHTML = text.replaceAll(">", "&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
     } else {
