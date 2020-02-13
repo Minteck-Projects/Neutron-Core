@@ -33,13 +33,13 @@ if (isset($lang["admin-titles"][$pageid])) {
                     $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];
                 }
             } else {
-                $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];    
+                $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];
             }
         } else {
             $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];
         }
     } else {
-        $pageConfig = [ "domName" => $lang["admin-titles"]["fallback"]->dom, "headerName" => $lang["admin-titles"]["fallback"]->header ];    
+        $pageConfig = [ "domName" => $lang["admin-titles"]["fallback"]->dom, "headerName" => $lang["admin-titles"]["fallback"]->header ];
     }
 } else {
     $pageConfig = [ "domName" => $lang["admin-titles"]["fallback"], "headerName" => $lang["admin-titles"]["fallback"] ];
@@ -77,9 +77,9 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     $ready = false;
 }
 
-function startsWith ($string, $startString) { 
-    $len = strlen($startString); 
-    return (substr($string, 0, $len) === $startString); 
+function startsWith ($string, $startString) {
+    $len = strlen($startString);
+    return (substr($string, 0, $len) === $startString);
 }
 
 function getData(string $dir, $ignoreUploadDir = false) {
@@ -121,7 +121,7 @@ function isJson(string $json) {
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <?php
-    
+
     if (!isset($loadEditor)) {
         $loadEditor = true;
     }
@@ -129,7 +129,7 @@ function isJson(string $json) {
     if ($loadEditor) {
         echo('<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script><script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/translations/fr.js"></script>');
     }
-    
+
     ?>
     <?php
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {
@@ -141,7 +141,7 @@ function isJson(string $json) {
     <link rel="stylesheet" href="/resources/lib/pushbar.js/library.css">
     <script src="/resources/lib/pushbar.js/library.js"></script>
     <title><?php
-    
+
     if ($ready) {
         echo($pageConfig['domName'] . " - {$lang["admin-titles"]["suffix"]} - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
@@ -156,7 +156,7 @@ function isJson(string $json) {
     ?>
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
     <?php
-    
+
     getData($_SERVER['DOCUMENT_ROOT']);
     $sizestr = $size . " " . $lang["sizes"]["bytes"];
     if ($size > 1024) {
@@ -173,15 +173,15 @@ function isJson(string $json) {
         $sizestr = $size . " " . $lang["sizes"]["bytes"];
     }
     $sizestr = str_replace(".", $lang["sizes"]["separator"], $sizestr);
-    
+
     ?>
 </head>
 <body id="settings" style="overflow-x:hidden;">
     <?php
-    
+
     $path = str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']);
     $name = $pageConfig['headerName'];
-    
+
     ?>
     <div id="admin">
         <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/header.php"; ?>

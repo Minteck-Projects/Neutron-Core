@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => $lang["admin-titles"]["error"]->dom, "headerName" => $lang["admin-titles"]["error"]->header ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Erreur", "headerName" => "Erreur" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
                     <center>
                         <h2><?= $lang["admin-home"]["greeting"] ?></h2>
                         <p>
@@ -11,7 +11,7 @@
                         <h3><?= $lang["admin-home"]["pagelisttitle"] ?></h3>
                         <ul>
                             <?php
-                            
+
                             foreach (scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages") as $page) {
                                 if ($page != "." && $page != "..") {
                                     echo("<li>");
@@ -23,14 +23,14 @@
                                     echo("</li>");
                                 }
                             }
-                            
+
                             ?>
                             <p><small><a href="/cms-special/admin/pages"><?= $lang["admin-home"]["more"] ?></a></small></p>
                         </ul>
                         <h3><?= $lang["admin-home"]["pluginlist"] ?></h3>
                         <ul>
                         <?php
-                            
+
                             foreach (scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets") as $ext) {
                                 if ($ext != "." && $ext != ".." && $ext != ".htaccess") {
                                     echo("<li>");
@@ -38,7 +38,7 @@
                                     echo("</li>");
                                 }
                             }
-                            
+
                             ?>
                             <p><small><a href="/cms-special/admin/plugins"><?= $lang["admin-home"]["more"] ?></a></small></p>
                         </ul>

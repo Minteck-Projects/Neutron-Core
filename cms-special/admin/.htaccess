@@ -1,1 +1,1 @@
-ErrorDocument 404 "/cms-special/admin/$error"
+ErrorDocument 404 "/cms-special/admin/%24error"
