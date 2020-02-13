@@ -1,4 +1,5 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php" ?>
+
 <?php
 
 function ipHash() {
