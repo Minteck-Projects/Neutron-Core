@@ -143,9 +143,9 @@ function isJson(string $json) {
     <title><?php
 
     if ($ready) {
-        echo($pageConfig['domName'] . " - {$lang["admin-titles"]["suffix"]} - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo($pageConfig['domName'] . " — {$lang["admin-titles"]["suffix"]} — " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
-        echo($pageConfig['domName'] . " - {$lang["admin-titles"]["suffix"]} - MPCMS");
+        echo($pageConfig['domName'] . " — {$lang["admin-titles"]["suffix"]} — MPCMS");
     }
 
     ?></title>

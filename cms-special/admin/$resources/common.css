@@ -165,3 +165,12 @@ img[width="128px"] {
 .mdc-list-item {
     cursor: pointer;
 }
+
+.mdc-list-item > i {
+    transform: rotate(0deg);
+    transition: transform 500ms;
+}
+
+.mdc-list-item:hover > i {
+    transform: rotate(360deg) scale(125%);
+}
