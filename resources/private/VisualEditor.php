@@ -7,8 +7,8 @@
         ClassicEditor
             .create( document.querySelector( '#editor' ), {
                 language: {
-                    ui: <?= $langsel == "fr" ? "fr" : "en" ?>,
-                    content: <?= $langsel == "fr" ? "fr" : "en" ?>
+                    ui: <?= "'" . $langsel . "'" ?>,
+                    content: <?= "'" . $langsel . "'" ?>
                 },
                 toolbar: [
                     'heading', '|', 'bold', 'italic', 'link', '|', 'mediaembed', 'blockquote', 'inserttable', '|', 'bulletedList', 'numberedList', '|', 'undo', 'redo'
@@ -33,7 +33,7 @@
             }
         }
             } )
-            
+
             .then( newEditor => {
                 editor = newEditor;
             } )

@@ -3,11 +3,11 @@
         <div id="data">
         <textarea name="content" id="editor">
                 <?php
-                
+
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widget-notes-data")) {
                     echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widget-notes-data"));
                 }
-                
+
                 ?>
             </textarea><br>
             <script>
@@ -55,7 +55,7 @@ function saveChanges() {
             }
         },
         error: function (error) {
-            alert("<?= $lang["admin-errors"]["comerror"] ?>");
+            alert("<?= $lang["admin-errors"]["connerror"] ?>");
             document.getElementById('data').classList.remove('hide')
             document.getElementById('loader').classList.add('hide')
         },

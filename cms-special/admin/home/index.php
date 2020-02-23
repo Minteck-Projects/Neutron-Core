@@ -11,26 +11,26 @@
                         <h3><?= $lang["admin-home"]["pagelisttitle"] ?></h3>
                         <ul>
                             <?php
-                            
+
                             foreach (scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages") as $page) {
                                 if ($page != "." && $page != "..") {
                                     echo("<li>");
                                     if ($page == "index") {
                                         echo($lang["viewer"]["home"] . "<small> : <a target=\"_blank\" href=\"/\">{$lang["admin-home"]["pagelistview"]}</a> - <a href=\"/cms-special/admin/pages/manage/?slug=index\">{$lang["admin-home"]["pagelistmanage"]}</a></small>");
                                     } else {
-                                        echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "<small> : <a target=\"_blank\" href=\"/" . $page . "\">{$lang["admin-home"]["pagelistview"]}</a> - <a href=\"/cms-special/admin/pages/manage/?slug=" . $page . "\">{$lang["admin-home"]["pagelisttitle"]}</a></small>");
+                                        echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "<small> : <a target=\"_blank\" href=\"/" . $page . "\">{$lang["admin-home"]["pagelistview"]}</a> - <a href=\"/cms-special/admin/pages/manage/?slug=" . $page . "\">{$lang["admin-home"]["pagelistmanage"]}</a></small>");
                                     }
                                     echo("</li>");
                                 }
                             }
-                            
+
                             ?>
                             <p><small><a href="/cms-special/admin/pages"><?= $lang["admin-home"]["more"] ?></a></small></p>
                         </ul>
                         <h3><?= $lang["admin-home"]["pluginlist"] ?></h3>
                         <ul>
                         <?php
-                            
+
                             foreach (scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets") as $ext) {
                                 if ($ext != "." && $ext != ".." && $ext != ".htaccess") {
                                     echo("<li>");
@@ -38,7 +38,7 @@
                                     echo("</li>");
                                 }
                             }
-                            
+
                             ?>
                             <p><small><a href="/cms-special/admin/plugins"><?= $lang["admin-home"]["more"] ?></a></small></p>
                         </ul>
