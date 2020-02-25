@@ -11,7 +11,7 @@ if (isset($_GET['slug'])) {
 
 if ($currentSlug == "index") {
     $currentName = "Accueil";
-    echo("<script>page = \"Accueil\"</script>");
+    echo("<script>page = \"index\"</script>");
 } else {
     $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
     echo("<script>page = \"{$currentSlug}\"</script>");
@@ -59,7 +59,7 @@ function updatePage() {
     document.getElementById('loader').classList.remove('hide')
     document.getElementById('editing').classList.add('hide')
     var formData = new FormData();
-    formData.append("title", page);
+    formData.append("title", "<?= $currentSlug ?>");
     formData.append("content", editor.getData());
     $.ajax({
         type: "POST",
@@ -91,7 +91,7 @@ function updatePageNoBack() {
     document.getElementById('loader').classList.remove('hide')
     document.getElementById('editing').classList.add('hide')
     var formData = new FormData();
-    formData.append("title", page);
+    formData.append("title", "<?= $currentSlug ?>");
     formData.append("content", editor.getData());
     $.ajax({
         type: "POST",
@@ -124,7 +124,7 @@ function updatePageHTMLNoBack() {
     document.getElementById('loader').classList.remove('hide')
     document.getElementById('editing').classList.add('hide')
     var formData = new FormData();
-    formData.append("title", page);
+    formData.append("title", "<?= $currentSlug ?>");
     formData.append("content", ace.edit("editor").getValue());
     $.ajax({
         type: "POST",
@@ -157,7 +157,7 @@ function updatePageHTML() {
     document.getElementById('loader').classList.remove('hide')
     document.getElementById('editing').classList.add('hide')
     var formData = new FormData();
-    formData.append("title", page);
+    formData.append("title", "<?= $currentSlug ?>");
     formData.append("content", ace.edit("editor").getValue());
     $.ajax({
         type: "POST",
