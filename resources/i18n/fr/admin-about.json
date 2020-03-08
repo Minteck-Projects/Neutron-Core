@@ -1,0 +1,50 @@
+{
+    "updates": {
+        "beta": [
+            "Votre site est potentiellement vulnérable",
+            "Vous utilisez une préversion de Minteck Projects CMS"
+        ],
+        "ltsend": [
+            "Votre site n'est pas protégé",
+            "Le support à long terme de votre version est terminé, il vous est fortement recommandé de mettre à jour votre site vers la dernière version disposant du support à long terme"
+        ],
+        "ltsnew": [
+            "Votre site est protégé",
+            "Une nouvelle version sans support à long terme est disponible, mais vous utilisez une version disposant du support à long terme"
+        ],
+        "ltsuptodate": [
+            "Votre site est protégé",
+            "Minteck projects CMS est à jour, vous exécutez une version disposant du support à long terme"
+        ],
+        "uptodate": [
+            "Votre site est protégé",
+            "Minteck Projects CMS est à jour"
+        ],
+        "newversion": [
+            "Votre site n'est pas protégé",
+            "Une mise à jour pour Minteck Projects CMS est disponible"
+        ]
+    },
+    "version": {
+        "prefix": "Votre serveur exécute Minteck Projects CMS version",
+        "update": ", et la dernière version disponible est la version",
+        "beta": ", et la dernière version stable en circulation est la version"
+    },
+    "diskspace": [
+        "Votre site utilise",
+        "d'espace disque"
+    ],
+    "info": "Informations",
+    "disk": "Espace disque",
+    "changes": "Changements",
+    "current": "Version actuelle",
+    "nolog": "Aucune information concernant cette version de Minteck Projects CMS",
+    "stable": "Dernière version stable",
+    "beta": "Version stable en circulation",
+    "categories": {
+        "system": "Minteck Projects CMS",
+        "config": "Contenu et configuration",
+        "resources": "Photos et autres ressources",
+        "misc": "Fichiers inconnus"
+    }
+}

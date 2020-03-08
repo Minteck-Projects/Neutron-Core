@@ -1,6 +1,8 @@
 {
     "title": "Administration du site",
     "login": "Connexion",
+    "password": "Mot de passe",
+    "invalid": "Le mot de passe est incorrect",
     "notice": [
         "Note :",
         "Vous pouvez aussi vous connecter en utilisant la clé d'administration de votre site. Elle est située dans le fichier ",

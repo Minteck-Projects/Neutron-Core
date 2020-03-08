@@ -1,4 +1,4 @@
-<p><input type="checkbox" name="wordwrap" id="wordwrap" onchange="ace.edit(&quot;editor&quot;).getSession().setUseWrapMode(document.getElementById('wordwrap').checked);" checked><label for="wordwrap">Retour automatique à la ligne</label></p>
+<p><input type="checkbox" name="wordwrap" id="wordwrap" onchange="ace.edit(&quot;editor&quot;).getSession().setUseWrapMode(document.getElementById('wordwrap').checked);" checked><label for="wordwrap"><?= $lang["editor"]["wrap"] ?></label></p>
 
 <div id="editor"><?php echo(str_ireplace(">", "&gt;", str_ireplace("<", "&lt;", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)))) ?></div>
 
@@ -6,15 +6,28 @@
 <script>
     var codeeditor = ace.edit("editor");
     <?php
-    
+
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {
         echo("ace.edit(\"editor\").setTheme('ace/theme/monokai');");
     }
-    
+
     ?>
     codeeditor.session.setMode("ace/mode/html");
     codeeditor.session.setUseWrapMode(true);
     function loadAce() {}
 </script>
 <script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/html");}, 100)</script>
-<center><p><a onclick="updatePageHTML()" class="button">Publier</a> <small><a onclick="updatePageHTMLNoBack()" class="sblink">Publier et continuer à modifier</a></small></p></center>
+<center><p><a onclick="updatePageHTML()" class="button"><?= $lang["editor"]["publish"] ?></a> <small><a onclick="updatePageHTMLNoBack()" class="sblink"><?= $lang["editor"]["publishnoback"] ?></a></small></p></center>
+<script>
+    window.onbeforeunload = function (e) {
+    e = e || window.event;
+
+    // For IE and Firefox prior to version 4
+    if (e) {
+        e.returnValue = "<?= $lang["editor"]["exit"] ?>";
+    }
+
+        // For Safari
+        return "<?= $lang["editor"]["exit"] ?>";
+    };
+</script>

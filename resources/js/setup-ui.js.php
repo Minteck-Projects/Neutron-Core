@@ -120,6 +120,7 @@ function upload() {
         }
         formData.append("upload_file", true);
         formData.append("sitename", document.getElementById('04-name-field').value);
+        formData.append("language", lang);
         $.ajax({
             type: "POST",
             dataType: 'html',

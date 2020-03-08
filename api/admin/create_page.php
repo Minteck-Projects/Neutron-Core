@@ -84,4 +84,5 @@ file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $s
 mkdir($_SERVER['DOCUMENT_ROOT'] . "/" . $slug);
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $slug . "/index.php", '<?php include_once $_SERVER[\'DOCUMENT_ROOT\'] . "/api/renderer/render.php"; render(\'' . $slug . '\'); ?>');
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $slug . "/pagename", $title);
+include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
 die("ok");

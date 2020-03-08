@@ -60,6 +60,7 @@ if (isset($_POST['page'])) {
             rmdir($_SERVER['DOCUMENT_ROOT'] . "/" . $oldslug);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $oldslug);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $oldslug);
+            include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
             die("ok");
         } else {
             die("Aucun nouveau nom spécifié");

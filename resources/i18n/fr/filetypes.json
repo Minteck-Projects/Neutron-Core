@@ -33,5 +33,8 @@
     "/galery/pictures": "Images de la galerie",
     "/store/packages.json": "Base de données des paquets du CMS Store",
     "/store/sources.list": "Dépôt utilisés par le CMS Store",
-    "/lang": "Langue utilisée par le logiciel"
+    "/lang": "Langue utilisée par le logiciel",
+    "/cache": "Données en cache du site",
+    "/cache/banner.mtd": "Données en cache de la bannière",
+    "/cache/pagelist.mtd": "Données en cache de la liste des pages"
 }

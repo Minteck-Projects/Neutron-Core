@@ -1,0 +1,7 @@
+{
+    "warning": "Modifiez ces paramètres avec les plus grandes précautions, car toute modification erronée peut empêcher votre site de fonctionner.",
+    "remove": [
+        "Si votre site ne fonctionne plus après une modification, demandez à votre administrateur système de supprimer le fichier",
+        "Le logiciel se chargera de regénérer un nouveau fichier de paramètres avancés sans erreurs."
+    ]
+}

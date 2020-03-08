@@ -3,6 +3,7 @@
     "builtin": "extension préinstallée",
     "config": "Modifier les paramètres de cette extension",
     "store": "Voir cette extension sur le CMS Store",
+    "remove": "Désinstaller l'extension",
     "tip": [
         "Conseil :",
         " Vous pouvez installer de nouvelles extensions depuis le ",

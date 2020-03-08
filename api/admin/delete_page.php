@@ -33,6 +33,7 @@ if (isset($_POST['page'])) {
         rmdir($_SERVER['DOCUMENT_ROOT'] . "/" . $_POST['page']);
         unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $_POST['page']);
         unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $_POST['page']);
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
         die("ok");
     } else {
         die("La page sélectionné n'existe pas");

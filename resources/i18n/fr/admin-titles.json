@@ -66,6 +66,20 @@
             }
         }
     },
+    "css": {
+        "dom": "Styles personnalisés",
+        "header": "Atelier de personnalisation",
+        "subpages": {
+            "studio": {
+                "dom": "Personnalisation en cours",
+                "header": "Concentrez-vous sur la personnalisation de votre site"
+            }
+        }
+    },
+    "language": {
+        "dom": "Langue et région",
+        "header": "Paramètres régionnaux du site"
+    },
     "store": {
         "dom": "CMS Store",
         "header": "CMS Store",
@@ -150,11 +164,15 @@
         "dom": "Mise à jour et sécurité",
         "header": "Mise à jour et sécurité"
     },
+    "about": {
+        "dom": "À propos de Minteck Projects CMS",
+        "header": "À propos du logiciel"
+    },
     "appearance": {
         "dom": "Apparence",
         "header": "Apparence de votre site"
     },
-    "customize": {
+    "customization": {
         "dom": "Personnalisation",
         "header": "Identité visuelle de votre site"
     },

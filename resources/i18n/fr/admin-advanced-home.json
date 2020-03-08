@@ -1,0 +1,8 @@
+{
+    "dev": "Préférences de développement",
+    "regedit": "Explorateur de registre",
+    "placeholders": {
+        "dev": "Modifiez le fichier JSON des préférences de développement avancées",
+        "regedit": "Explorez la base de registre de votre site"
+    }
+}

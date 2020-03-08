@@ -21,7 +21,7 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
 }
 
 try {
-    $packages = file_get_contents("https://gitlab.com/minteck-projects/mpcms/plugins/raw/master/LIST.mpd");
+    $packages = file_get_contents("https://gitlab.com/minteck-projects/mpcms/plugins/raw/master/plugins.list");
     $packageslist = explode("\n", $packages);
     $packagesjson = new stdClass();
     foreach ($packageslist as $package) {

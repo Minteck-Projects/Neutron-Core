@@ -33,7 +33,7 @@ window.onload = () => {
             success: function (data) {
                 if (data == "ok") {
                     document.getElementById('loadmsg').innerHTML = "Terminé"
-                    location.reload()
+                    reloadPage()
                 } else {
                     document.getElementById('loadmsg').innerHTML = "Une erreur s'est produite : " + data;
                 }

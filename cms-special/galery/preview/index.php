@@ -1,5 +1,7 @@
 <?php
 
+include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+
 if (isset($_GET['return'])) {
     $callback = $_GET['return'];
 } else {
@@ -14,30 +16,30 @@ if (isset($_GET['return'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/resources/css/preview.css">
-    <title>Prévisualisation de l'image</title>
+    <title><?= $lang["gallery"]["preview"]->title ?></title>
 </head>
 <?php
-    
+
     if (isset($_GET['url'])) {
         if (strpos($_GET['url'], '..') !== false) {
-            die("URL de l'image invalide");
+            die($lang["gallery"]["preview"]->invalid);
         } else {
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $_GET['url'])) {
                 $ext1 = explode(".", $_GET['url']);
                 $ext2 = end($ext1);
                 $ext = strtoupper($ext2);
             } else {
-                die("Image inexistante");
+                die($lang["gallery"]["preview"]->notfound);
             }
         }
     } else {
-        die("Pas d'image");
+        die($lang["gallery"]["preview"]->none);
     }
-    
+
 ?>
 <body style="background-image:url('<?= $_GET['url'] ?>');background-size:contain;background-position:center;height: 100%;margin: 0;background-repeat: no-repeat;background-color: #222;">
-    <a title="Fermer la prévisualisation de l'image"><img src="/resources/image/close.svg" onclick="location.href = &quot;<?= $callback ?>&quot;"></a>
-    <a class="download" href="<?= $_GET['url'] ?>" title="Télécharger l'image au format <?= $ext ?> — vous serez redirigé vers un site externe si l'image se trouve sur un serveur externe" download>Télécharger l'image (<?= $ext ?>)</a>
+    <a title="<?= $lang["gallery"]["preview"]->close ?>"><img src="/resources/image/close.svg" onclick="location.href = &quot;<?= $callback ?>&quot;"></a>
+    <a class="download" href="<?= $_GET['url'] ?>" title="<?= $lang["gallery"]["preview"]->placeholder[0] ?> <?= $ext ?> <?= $lang["gallery"]["preview"]->placeholder[1] ?>" download><?= $lang["gallery"]["preview"]->download ?> (<?= $ext ?>)</a>
 </body>
 <script>
 

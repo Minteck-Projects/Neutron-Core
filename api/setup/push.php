@@ -1,12 +1,8 @@
 <?php
 
-// var_dump($_FILES);
-// var_dump($_GET);
-// var_dump($_POST);
-// exit;
-
-// var_dump($_POST['sitename']);
-// exit;
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) {
+    mkdir($_SERVER['DOCUMENT_ROOT'] . "/resources/upload");
+}
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     die("La configuration du site Web à déjà été effectuée, vous devez le réinitialiser pour relancer la configurer");
@@ -24,6 +20,12 @@ if (isset($_POST['sitename'])) {
     }
 } else {
     die("Aucun nom n'a été spécifié pour le site");
+}
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n/" . $_POST['language'])) {
+    $lang = $_POST['language'];
+} else {
+    $lang = "fr";
 }
 
 if (isset($_FILES['file'])) {
@@ -83,8 +85,9 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes")) {
 
 $password = password_hash("MPCMS-usr-motdepasse", PASSWORD_BCRYPT, ['cost' => 12,]);
 
-file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index", "<h4>Bienvenue sur Minteck Projects CMS !</h4><blockquote><p>La nouvelle génération de sites Web</p></blockquote><h2>Installation terminée avec succès</h2><p>Vous avez terminé l'installation de Minteck Projects CMS, il ne vous reste plus qu'à le configurer</p><h3>Fonctionnalités</h3><p>Voici une courte liste de ce que vous pouvez faire avec Minteck Projects CMS :</p><ul><li>Mettre en ligne des fichiers,</li><li>Afficher une galerie de photos,</li><li>Informer vos visiteurs des prochains évènements,</li><li>Donner des informations sur ce que vous faites,</li><li>Modifier votre site plus facilement</li></ul><h3>Éditeur visuel</h3><p>Pour vous faciliter la modification de votre site, Minteck Projects CMS vous propose un éditeur visuel.</p><h4>Utilisation</h4><p>Pour créer une page avec l'éditeur visuel, accédez à <i>Administration &gt; Pages &gt; Créer une page &gt; Classique</i>.</p><h4>Fonctionnalités</h4><p>Voici une liste de ce que vous pouvez faire avec l'éditeur visuel :</p><ul><li>Paragraphe</li><li>Titre (3 niveaux différents)</li><li>Gras</li><li>Italique</li><li>Liens</li><li>Insertion de média (YouTube, Spotify, ...)</li><li>Citation</li><li>Insertion de tableau</li><li>Liste à puces</li><li>Liste numérotée</li><li>Annuler</li><li>Restaurer</li>et bien plus...</ul><blockquote><p>Cette page a été créée en utilisant l'éditeur visuel de Minteck Projects CMS</p></blockquote>");
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/setup/defaultHomepage.html"));
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/index", "0");
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/lang", $lang);
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer", "Copyright © Votre nom ici<br>Tous droits réservés");
 $sitename = str_replace('>', '&gt;', $_POST['sitename']);
 $sitename = str_replace('<', '&lt;', $sitename);

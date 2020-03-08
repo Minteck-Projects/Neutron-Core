@@ -21,13 +21,13 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
 }
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
-    die("CMS Store a déjà été configuré, utilisez la fonction d'API 'store_update' pour mettre à jour la base de données");
+    die("CMS Store a déjà été configuré, utilisez la fonction d'API 'store_database_update' pour mettre à jour la base de données");
 }
 
 mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store");
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store/sources.list", "https gitlab.com/minteck-projects/mpcms/plugins/raw/master");
 try {
-    $packages = file_get_contents("https://gitlab.com/minteck-projects/mpcms/plugins/raw/master/LIST.mpd");
+    $packages = file_get_contents("https://gitlab.com/minteck-projects/mpcms/plugins/raw/master/plugins.list");
     $packageslist = explode("\n", $packages);
     $packagesjson = new stdClass();
     foreach ($packageslist as $package) {

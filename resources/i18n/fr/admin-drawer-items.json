@@ -8,11 +8,14 @@
     "advanced": "Options avancés",
     "housekeeping": "Maintenance",
     "updates": "Mise à jour et sécurité",
+    "about": "À propos du logiciel",
     "appearance": "Apparence",
     "customize": "Personnalisation",
-    "logs": "Historique d'activité",
+    "css": "Atelier de personnalisation",
+    "language": "Langue et région",
     "semantic": "CMS Sémantique",
     "stats": "Statistiques",
+    "logs": "Historique d'activité",
     "logout": "Déconnexion",
     "back": "Retourner au site"
 }

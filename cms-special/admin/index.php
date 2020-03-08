@@ -46,7 +46,7 @@ if (isset($_POST['password'])) {
                 }
                 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
                 header("Set-Cookie: ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-                die("<script>location.href = ''" . $callback . "';</script>");
+                die("<script>location.href = '" . $callback . "';</script>");
                 return;
             } else {
                 $invalid = true;
@@ -96,11 +96,11 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <link rel="stylesheet" href="/resources/css/ui.css">
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
     <title><?php
-    
+
     if ($ready) {
         echo($lang["login"]["login"] . " - " . $lang["login"]["title"] .  " - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
-        echo("Administration du site - MPCMS");
+        echo("MPCMS");
     }
 
     ?></title>
@@ -114,10 +114,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <div class="centered">
         <img src="/resources/upload/siteicon.png" class="intro-element">
         <h2><?= $lang["login"]["title"] ?></h2>
-        <?php if ($invalid) {echo('<div id="error">Le mot de passe est incorrect</div>');} ?>
+        <?php if ($invalid) {echo('<div id="error">' . $lang["login"]["invalid"] . '</div>');} ?>
         <form action="./<?php if (isset($_GET['pr'])) {echo("?pr=" . $_GET['pr']);if (isset($_GET['pa'])) {echo("&pa=" . urlencode($_GET['pa']));}} ?>" method="post">
-            <input name="password" type="password" placeholder="Mot de passe"><br><br>
-            <input type="submit" class="button" href="/" value="Connexion">
+            <input name="password" type="password" placeholder="<?= $lang["login"]["password"] ?>"><br><br>
+            <input type="submit" class="button" href="/" value="<?= $lang["login"]["login"] ?>">
         </form><br>
         <center><div id="loginnotice" style="margin:0% 30%;"><b><?= $lang["login"]["notice"][0] ?></b><p><?= $lang["login"]["notice"][1] ?><code>/data/adminkey</code><?= $lang["login"]["notice"][2] ?></p><p><?= $lang["login"]["notice"][3] ?></p></div></center>
     </div>

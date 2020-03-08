@@ -107,15 +107,15 @@ function confirmDelete(id) {
             url: "/api/admin/galery_delete_image.php",
             success: function (data) {
                 if (data == "ok") {
-                    location.reload()
+                    reloadPage()
                 } else {
                     alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
-                    location.reload()
+                    reloadPage()
                 }
             },
             error: function (error) {
                 alert("<?= $lang["admin-errors"]["connerror"] ?>")
-                location.reload()
+                reloadPage()
             },
             data: formData,
             cache: false,
@@ -137,7 +137,7 @@ function deleteCategory(id) {
             url: "/api/admin/galery_delete_category.php",
             success: function (data) {
                 if (data == "ok") {
-                    location.reload()
+                    reloadPage()
                 } else {
                     alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data, true)
                 }
@@ -167,7 +167,7 @@ function labelPicture(id) {
             url: "/api/admin/galery_label_picture.php",
             success: function (data) {
                 if (data == "ok") {
-                    location.reload()
+                    reloadPage()
                 } else {
                     alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data, true)
                 }

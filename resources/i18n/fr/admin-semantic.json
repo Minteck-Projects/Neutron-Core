@@ -1,0 +1,10 @@
+{
+    "toc": "Utiliser une table des matières pour les pages contenant plusieurs titres",
+    "ddos": "Bloquer les attaques par requêtes massives (DDOS) automatiquement",
+    "preload": "Précharger les ressources pour les prochaines visites",
+    "categories": {
+        "appearance": "Apparance",
+        "security": "Sécurity",
+        "opti": "Optimisations"
+    }
+}

@@ -7,16 +7,16 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
         if (isset($_GET['id'])) {
-            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/update/&pa=?id=" . $_GET['id'] . "'</script>");
+            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-update/&pa=?id=" . $_GET['id'] . "'</script>");
         } else {
-            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/update&pa='</script>");
+            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-update&pa='</script>");
         }
     }
 } else {
     if (isset($_GET['id'])) {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/update/&pa=?id=" . $_GET['id'] . "'</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-update/&pa=?id=" . $_GET['id'] . "'</script>");
     } else {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/update&pa='</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-update&pa='</script>");
     }
 }
 
@@ -81,7 +81,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <title><?php
-    
+
     if ($ready) {
         echo("Mise à jour de {$name} - CMS Store - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
@@ -99,7 +99,7 @@ if (isset($_GET['id'])) {
 <body>
     <div id="settings">
         <?php
-        
+
         if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
             die("<script>location.href = \"/cms-special/admin/store\"</script></div></body></html>");
         }

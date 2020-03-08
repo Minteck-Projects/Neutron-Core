@@ -1,0 +1,17 @@
+{
+    "publish": "Publier le style",
+    "preview": "Aperçu",
+    "elements": [
+        "Filigrane",
+        "Barre de menu",
+        "Bannière",
+        "Barre des widgets",
+        "Contenu de la page",
+        "Pied de page",
+        "Administration — Lanceur",
+        "Administration — Barre de menu",
+        "Administration — Contenu de la page",
+        "Administration — Lien"
+    ],
+    "saved": "Les styles personnalisés ont été sauvegardés et publiés"
+}

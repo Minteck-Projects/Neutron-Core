@@ -1,0 +1,85 @@
+.easycss-input-selector, .easycss-input-property {
+    background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA40lEQVR4Ae3RMRUCQQBDQQQgAAmIwAVCkXAFJQKQgABKilBsuQ1UgbsZBXn5OwAAAAAAAAAAAAAAAP5MkkOSW5LTD206J1mS7Ldw/j3Dc45QO/+V4VqJUDg/c4T6+alGKJw/R+ieX4jQP3+O0D9/XRGSLPnIiNA9f3JZQ4Bjkkc/wpfnj83H3SBC83wR+ueL0D9fhP75IvTPF6F/vgj980Xony9C/3wR+ueLUD5fhPL5IhTOF6Fzvgj980Xony9C/3wR+ueL0D9fhP75IvTPF6F/vgjOBwAAAAAAAAAAAAAA2LI3R8ZsTQJrqBcAAAAASUVORK5CYII='), linear-gradient(
+        270deg,
+        rgb(170, 170, 225) 0%,
+        rgb(170, 170, 225) 32px,
+        rgb(230, 230, 230) 32px,
+        rgb(230, 230, 230) 100%
+    );
+    background-position-x: right;
+    background-size: 32px;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 5px 10px;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    appearance:none;
+    outline: none;
+    font-size: 13px;
+    border-color: lightgray;
+    border-width: 1px;
+    border-style: solid;
+    background-color: rgb(230, 230, 230);
+}
+
+.easycss-input-selector:hover, .easycss-input-property:hover, .easycss-input-selector:active, .easycss-input-property:active, .easycss-input-selector:focus, .easycss-input-property:focus {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA40lEQVR4Ae3RMRUCQQBDQQQgAAmIwAVCkXAFJQKQgABKilBsuQ1UgbsZBXn5OwAAAAAAAAAAAAAAAP5MkkOSW5LTD206J1mS7Ldw/j3Dc45QO/+V4VqJUDg/c4T6+alGKJw/R+ieX4jQP3+O0D9/XRGSLPnIiNA9f3JZQ4Bjkkc/wpfnj83H3SBC83wR+ueL0D9fhP75IvTPF6F/vgj980Xony9C/3wR+ueLUD5fhPL5IhTOF6Fzvgj980Xony9C/3wR+ueL0D9fhP75IvTPF6F/vgjOBwAAAAAAAAAAAAAA2LI3R8ZsTQJrqBcAAAAASUVORK5CYII='), linear-gradient(
+        270deg,
+        rgb(170, 170, 225) 0%,
+        rgb(170, 170, 225) 31px,
+        rgb(230, 230, 230) 31px,
+        rgb(230, 230, 230) 100%
+    );
+}
+
+.easycss-input-value:hover, .easycss-input-property:hover, .easycss-input-selector:hover, .easycss-button-add:hover, .easycss-button-remove:hover, .easycss-input-value:active, .easycss-input-property:active, .easycss-input-selector:active, .easycss-button-add:active, .easycss-button-remove:active, .easycss-input-value:focus, .easycss-input-property:focus, .easycss-input-selector:focus {
+    border-color: lightgray;
+    border-width: 2px;
+    border-style: solid;
+    padding: 4px 9px;
+}
+
+.easycss-input-value:active, .easycss-input-value:focus, .easycss-input-selector:active, .easycss-input-selector:focus, .easycss-input-property:active, .easycss-input-property:focus, .easycss-button-add:active, .easycss-button-remove:active {
+    border-color: rgb(170, 170, 225);
+}
+
+.easycss-input-value, .easycss-button-add, .easycss-button-remove {
+    color: inherit;
+    text-decoration: none;
+    border-color: lightgray;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px 10px;
+    background-color: rgb(250, 250, 250);
+    height: 18px;
+}
+
+.easycss-button-add, .easycss-button-remove {
+    font-size: 15px;
+    padding-bottom: 6px;
+}
+
+.easycss-button-add:hover, .easycss-button-remove:hover, .easycss-button-add:focus, .easycss-button-remove:focus {
+    padding-bottom: 5px;
+}
+
+.easycss-list-separator {
+    display: none;
+}
+
+.easycss-separator {
+    border-top: none;
+    border-bottom-color: lightgray;
+}
+
+.easycss-list-item {
+    padding: 7px;
+    list-style-type: none;
+}
+
+.easycss-expected-prefix {
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 5px;
+}

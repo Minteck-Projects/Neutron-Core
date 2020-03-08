@@ -16,5 +16,6 @@
         "Une erreur interne de raison inconnue s'est produite",
         "Fermer"
     ],
-    "snackbarDefault": "Erreur interne"
+    "snackbarDefault": "Erreur interne",
+    "errorError": "Une erreur s'est produite lors du chargement du message d'erreur"
 }

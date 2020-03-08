@@ -8,30 +8,31 @@ if (isset($MPCMSRendererPageMarkup)) {
 $ready = true;
 
 function getAvgLuminance($filename, $num_samples=30) {
-    // needs a mimetype check
-    $img = imagecreatefromjpeg($filename);
-    $width = imagesx($img);
-    $height = imagesy($img);
-    $x_step = intval($width/$num_samples);
-    $y_step = intval($height/$num_samples);
-    $total_lum = 0;
-    $sample_no = 1;
-    for ($x=0; $x<$width; $x+=$x_step) {
-        for ($y=0; $y<$height; $y+=$y_step) {
-            $rgb = imagecolorat($img, $x, $y);
-            $r = ($rgb >> 16) & 0xFF;
-            $g = ($rgb >> 8) & 0xFF;
-            $b = $rgb & 0xFF;
-            // choose a simple luminance formula from here
-            // http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
-            $lum = ($r+$r+$b+$g+$g+$g)/6;
-            $total_lum += $lum;
-            $sample_no++;
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd")) {
+        return file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd");
+    } else {
+        $img = imagecreatefromjpeg($filename);
+        $width = imagesx($img);
+        $height = imagesy($img);
+        $x_step = intval($width/$num_samples);
+        $y_step = intval($height/$num_samples);
+        $total_lum = 0;
+        $sample_no = 1;
+        for ($x=0; $x<$width; $x+=$x_step) {
+            for ($y=0; $y<$height; $y+=$y_step) {
+                $rgb = imagecolorat($img, $x, $y);
+                $r = ($rgb >> 16) & 0xFF;
+                $g = ($rgb >> 8) & 0xFF;
+                $b = $rgb & 0xFF;
+                $lum = ($r+$r+$b+$g+$g+$g)/6;
+                $total_lum += $lum;
+                $sample_no++;
+            }
         }
+        $avg_lum  = $total_lum / $sample_no;
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd", ($avg_lum / 255) * 100);
+        return ($avg_lum / 255) * 100;
     }
-    // work out the average
-    $avg_lum  = $total_lum / $sample_no;
-    return ($avg_lum / 255) * 100;
 }
 
 function compareASCII($a, $b) {
@@ -71,7 +72,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <title><?php
-    
+
     if (isset($MPCMSRendererPageMarkup)) {
         echo($MPCMSRendererPageMarkupDN . " - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
@@ -85,7 +86,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
     <?php
 
     echo("<script type=\"text/javascript\">\nvar pushbar = new Pushbar({\nblur:true,\noverlay:true,\n});\n</script>");
-    
+
 
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg")) {
         $banner = "/resources/upload/banner.jpg";
@@ -109,7 +110,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
     </div>
         <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php
-        
+
         if (isset($MPCMSRendererPageMarkup)) {
             echo($MPCMSRendererPageMarkupDN);
         } else {
@@ -120,7 +121,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
         </div>
         <div id="menubar"><span class="menubar-link menubar-mobile" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text"><?= $lang["viewer"]["menu"] ?></span></span>
         <?php
-        
+
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
             echo('<span class="menubar-link menubar-desktop" id="menubar-link-navigation" onclick="pushbar.open(\'panel-navigation\')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text">' . $lang["viewer"]["menu"] . '</span></span>');
         } else {
@@ -128,28 +129,32 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
             echo('<a href="/" title="/" class="menulink-desktop">' . $lang["viewer"]["home"] . '</a>');
             $count = $count + 1;
 
-            $pages = scandir($_SERVER['DOCUMENT_ROOT']);
-            uasort($pages, 'compareASCII');
-            foreach ($pages as $page) {
-                if ($page != ".." && $page != ".") {
-                    if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
-                        if ($count < 4) {
-                            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
-                                if (!in_array($page, $customSettings->PagesMasquées)) {
-                                    echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
-                                    $count = $count + 1;
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd")) {
+                echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd"));
+            } else {
+                $pages = scandir($_SERVER['DOCUMENT_ROOT']);
+                uasort($pages, 'compareASCII');
+                foreach ($pages as $page) {
+                    if ($page != ".." && $page != ".") {
+                        if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
+                            if ($count < 4) {
+                                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
+                                    if (!in_array($page, $customSettings->PagesMasquées)) {
+                                        echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
+                                        $count = $count + 1;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">" . $lang["viewer"]["galery"] . "</a>");$count = $count + 1;}
             }
-            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">" . $lang["viewer"]["galery"] . "</a>");$count = $count + 1;}
             if ($count >= 4) {
                 echo("<a onclick=\"pushbar.open('panel-navigation')\" title=\"" . $lang["viewer"]["menutitle"] . "\" class=\"menulink-desktop\">" . $lang["viewer"]["menudesktop"] . "</a>");
             }
         }
-        
+
         ?>
         <?php
 
@@ -162,7 +167,7 @@ if (!empty($widgets->list)) {
     <div data-pushbar-id="panel-navigation" class="pushbar from_left">
         <div id="banner-menu" style='background-image: url("<?= $banner ?>");'>
             <img id="banner-menu-logo" src="/resources/upload/siteicon.png"><span id="banner-menu-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php
-            
+
             $sitename = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename");
 
             if (strlen($sitename) < 15) {
@@ -170,7 +175,7 @@ if (!empty($widgets->list)) {
             } else {
                 echo(substr($sitename, 0, 14) . "...");
             }
-            
+
             ?></span>
         </div>
         <img src="/resources/image/close.svg" id="menubar-close" onclick="pushbar.close()">
@@ -207,7 +212,7 @@ if (!empty($widgets->list)) {
                 echo('<p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>' . $lang["viewer"]["logout"][0] . '<a href="/cms-special/admin/logout" style="color:inherit;text-decoration:none;">' . $lang["viewer"]["logout"][1] . '</a>' . $lang["viewer"]["logout"][2] . '</p></td></tr></tbody></table></p>');
             }
         }
-        
+
         ?>
             <?php
                 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
@@ -225,7 +230,7 @@ if (!empty($widgets->list)) {
             if (!isset($MPCMSRendererPageMarkup)) {
                 $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $pagename);
                 preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
-                
+
                 $toc = implode("\n",$results[0]);
                 $toc = preg_replace('#<h2>#','<li class="toc$1" style="margin-left: 0px;">',$toc);
                 $toc = preg_replace('#<\/h2>#','</li>',$toc);
@@ -237,28 +242,28 @@ if (!empty($widgets->list)) {
                 $toc = preg_replace('#<\/h5>#','</li>',$toc);
                 $toc = preg_replace('#<h6>#','<li class="toc$1" style="margin-left: 80px;">',$toc);
                 $toc = preg_replace('#<\/h6>#','</li>',$toc);
-                
-                $toc = '<div id="toc"> 
+
+                $toc = '<div id="toc">
                 <h3>' . $lang["viewer"]["toc"] . '</h3>
                 <ul>
                 '.$toc.'
                 </ul>
                 </div><hr>';
-                
+
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {
                     echo($toc);
                 }
             }
-            
+
             ?>
             <?php
-            
+
             if (isset($MPCMSRendererPageMarkup)) {
                 echo($MPCMSRendererPageMarkup);
             } else {
                 echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $pagename));
             }
-            
+
             ?>
         </div>
         <div id="page-footer">

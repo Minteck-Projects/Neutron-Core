@@ -1,10 +1,11 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+// var_dump($_SERVER['REQUEST_URI']);
 
 $pageid = explode("/", $_SERVER['REQUEST_URI'])[3];
 if (isset(explode("/", $_SERVER['REQUEST_URI'])[4])) {
-    if (explode("/", $_SERVER['REQUEST_URI'])[4] != "index.php") {
+    if (explode("/", $_SERVER['REQUEST_URI'])[4] != "index.php" && substr(explode("/", $_SERVER['REQUEST_URI'])[4], 0, 1) != "?" && substr(explode("/", $_SERVER['REQUEST_URI'])[4], 0, 1) != "#") {
         if (isset($lang["admin-titles"][$pageid]->subpages)) {
             $subpageid = explode("/", $_SERVER['REQUEST_URI'])[4];
             $subpageel = (array)$lang["admin-titles"][$pageid]->subpages;
@@ -25,9 +26,9 @@ if (isset($lang["admin-titles"][$pageid])) {
                 $subpages = $lang["admin-titles"][$pageid]->subpages;
                 if (isset($subpageel)) {
                     if (isset($subpageel[$subpageid])) {
-                        $pageConfig = [ "domName" => $subpageel[$subpageid]->dom . " - " . $lang["admin-titles"][$pageid]->dom, "headerName" => $subpageel[$subpageid]->header ];
+                        $pageConfig = [ "domName" => $subpageel[$subpageid]->dom . " — " . $lang["admin-titles"][$pageid]->dom, "headerName" => $subpageel[$subpageid]->header ];
                     } else {
-                        $pageConfig = [ "domName" => $lang["admin-titles"]["fallback-subpages"] . " - " . $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"]["fallback-subpages"] ];
+                        $pageConfig = [ "domName" => $lang["admin-titles"]["fallback-subpages"] . " — " . $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"]["fallback-subpages"] ];
                     }
                 } else {
                     $pageConfig = [ "domName" => $lang["admin-titles"][$pageid]->dom, "headerName" => $lang["admin-titles"][$pageid]->header ];
@@ -120,6 +121,21 @@ function isJson(string $json) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
+    <script src="/cms-special/admin/$resources/admin.js"></script>
+
+    <link rel="preload" href="/resources/css/fonts-import.css" as="style">
+    <link rel="preload" href="/resources/css/alerts.css" as="style">
+    <link rel="preload" href="/resources/css/admin.css" as="style">
+    <link rel="preload" href="/resources/css/ui.css" as="style">
+    <link rel="preload" href="/cms-special/admin/$resources/common.css" as="style">
+    <link rel="preload" href="/cms-special/admin/$resources/index.css" as="style">
+    <link rel="preload" href="/cms-special/admin/$resources/responsive.css" as="style">
+    <link rel="preload" href="/cms-special/admin/$resources/index-dark.css" as="style">
+    <link rel="preload" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
+    <link rel="preload" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js" as="script">
+    <link rel="preload" href="/cms-special/admin/$resources/admin.js" as="script">
+
     <?php
 
     if (!isset($loadEditor)) {
@@ -127,7 +143,7 @@ function isJson(string $json) {
     }
 
     if ($loadEditor) {
-        echo('<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script><script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/translations/fr.js"></script>');
+        echo('<script src="/resources/js/ckeditor5/ckeditor.js"></script><script src="/resources/js/ckeditor5/translations/fr.js"></script>');
     }
 
     ?>

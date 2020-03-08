@@ -1,4 +1,5 @@
 <?php ob_start();echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/setup.php"; ?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
@@ -19,7 +20,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <title><?php
-    
+
     if ($ready) {
         echo("Configuration - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
@@ -30,14 +31,14 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 </head>
 <body>
     <?php
-    
+
     if ($ready) {
         // Si le site est prêt, faire le rendu et s'arrêter là
         die("<script>location.href = '/';</script></body></html>");
     }
 
     ?>
-    <script>
+    <?= $nolang ? "" : '<script>
     window.onbeforeunload = function (e) {
     e = e || window.event;
 
@@ -49,14 +50,36 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         // For Safari
         return "En quittant cette page, vous perdrez les paramètres de configuration actuels.";
     };
-    </script>
+    </script>' ?>
     <script src="/resources/js/jquery.js"></script>
     <div class="centered box hide" id="00-error">
         <h2 id="00-error-title">Une erreur s'est produite</h2>
         <span id="00-error-message">Erreur inconnue</span><br><br>
-        <img src="/resources/image/config_restart.svg" onclick="location.reload()" class="icon_button"><br><small>Relancer la configuration</small>
+        <img src="/resources/image/config_restart.svg" onclick="reloadPage()" class="icon_button"><br><small>Relancer la configuration</small>
     </div>
-    <div class="centered box" id="01-loader">
+    <div class="centered box<?= $nolang ? "" : " hide" ?>" id="00-language">
+        <h2>Minteck Projects CMS</h2>
+        <p>
+        <select id="00-language-select">
+            <?php
+
+            $langs = scandir($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n");
+            foreach ($langs as $language) {
+                if ($language != "." && $language != ".." && $language != ".htaccess") {
+                    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n/" . $language . "/\$metadata.json")) {
+                        echo("<option value=\"" . $language . "\">");
+                        echo(json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n/" . $language . "/\$metadata.json"))->localized_name . " — " . json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n/" . $language . "/\$metadata.json"))->name);
+                        echo("</option>");
+                    }
+                }
+            }
+
+            ?>
+        </select>
+        </p>
+        <input type="button" value="OK" onclick="location.href = '?lang=' + document.getElementById('00-language-select').value">
+    </div>
+    <div class="centered box<?= $nolang ? " hide" : "" ?>" id="01-loader">
         <h2>Préparation</h2>
         <img src="/resources/image/storeloader.svg" class="loader">
     </div>
@@ -120,6 +143,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <p>Pour modifier son contenu et/ou ses paramètres, vous devez vous connecter à l'interface d'administration. Le mot de passe est <b>MPCMS-usr-motdepasse</b>. Pensez à le modifier !</p>
         <img src="/resources/image/config_explore.svg" onclick="location.href = '/'" class="icon_button"><br><small>Explorer</small>
     </div>
-    <script src="/resources/js/setup-ui.js"></script>
+    <?= $nolang ? "" : '<script src="/resources/js/setup-ui.js.php"></script>' ?>
 </body>
 </html>

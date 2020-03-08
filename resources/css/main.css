@@ -416,7 +416,7 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
     top: 20px;
     width: 97%;
 }
-  
+
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
 .sticky ~ #page-placeholder {
     padding-top: 39px;
@@ -467,4 +467,8 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
 
 #sidebar-widgets img {
     filter: invert(100%);
+}
+
+.image.image_resized > img {
+    width:100%;
 }

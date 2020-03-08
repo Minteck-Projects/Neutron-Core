@@ -6,10 +6,10 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/dbupdate&pa='</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-dbupdate&pa='</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/dbupdate&pa='</script>");
+    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-dbupdate&pa='</script>");
 }
 
 if (isset($_POST['password'])) {
@@ -44,7 +44,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <title><?php
-    
+
     if ($ready) {
         echo("Régénération de la base de données - CMS Store - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
@@ -62,7 +62,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 <body>
     <div id="settings">
         <?php
-        
+
         if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
             die("<script>location.href = \"/cms-special/admin/store/ext-init\"</script></div></body></html>");
         }

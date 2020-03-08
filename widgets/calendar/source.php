@@ -37,7 +37,7 @@ function isJson($string) {
                             if ($currentDate < $el->timestamp) {
                                 $shown = $shown + 1;
                                 if (isset($el->link)) {
-                                    if ($el->link != "") {
+                                    if ($el->link != "" && $el->link != "http://") {
                                         echo("<li><b><a target=\"_blank\" class=\"sblink\" href=\"" . $el->link . "\">" . $el->datestr . "</b> : " . $el->name . "</a></li>");
                                     } else {
                                         echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li>");

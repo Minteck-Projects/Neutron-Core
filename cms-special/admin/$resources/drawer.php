@@ -27,7 +27,15 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
     <div class="mdc-drawer__header">
         <h3 class="mdc-drawer__title"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?></h3>
         <h6 class="mdc-drawer__subtitle"><?= $sizestr ?><br>
-        Minteck Projects CMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></h6>
+        version <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> "<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?>"
+            <?php
+
+            if (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental") == "1") {
+                echo("<br><br>" . $lang["admin-drawer-footer"]["experimental"]);
+            }
+
+            ?>
+        </h6>
     </div>
     <div class="mdc-drawer__content">
         <nav class="mdc-list">
@@ -51,18 +59,21 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["repetitive"] ?></h6>
             <?= renderItem("/cms-special/admin/advanced", "settings", $lang["admin-drawer-items"]["advanced"]) ?>
             <?= renderItem("/cms-special/admin/housekeeping", "autorenew", $lang["admin-drawer-items"]["housekeeping"]) ?>
-            <?= renderItem("/cms-special/admin/updates", "info", $lang["admin-drawer-items"]["updates"]) ?>
+            <!-- <?= renderItem("/cms-special/admin/updates", "info", $lang["admin-drawer-items"]["updates"]) ?> -->
+            <?= renderItem("/cms-special/admin/about", "info", $lang["admin-drawer-items"]["about"]) ?>
 
             <hr class="mdc-list-divider">
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["look-feel"] ?></h6>
             <?= renderItem("/cms-special/admin/appearance", "web", $lang["admin-drawer-items"]["appearance"]) ?>
             <?= renderItem("/cms-special/admin/customization", "format_paint", $lang["admin-drawer-items"]["customize"]) ?>
-            <?= renderItem("/cms-special/admin/logs", "short_text", $lang["admin-drawer-items"]["logs"]) ?>
+            <?= renderItem("/cms-special/admin/css", "style", $lang["admin-drawer-items"]["css"]) ?>
+            <?= renderItem("/cms-special/admin/language", "translate", $lang["admin-drawer-items"]["language"]) ?>
 
             <hr class="mdc-list-divider">
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["data-opti"] ?></h6>
             <?= renderItem("/cms-special/admin/semantic", "adjust", $lang["admin-drawer-items"]["semantic"]) ?>
             <?= renderItem("/cms-special/admin/stats", "insert_chart", $lang["admin-drawer-items"]["stats"]) ?>
+            <?= renderItem("/cms-special/admin/logs", "short_text", $lang["admin-drawer-items"]["logs"]) ?>
 
             <hr class="mdc-list-divider">
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["easy"] ?></h6>

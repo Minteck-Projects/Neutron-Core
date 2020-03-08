@@ -1,3 +1,4 @@
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php"; ?>
 <?php
 
 if (isset($_COOKIE['ADMIN_TOKEN'])) {
@@ -25,7 +26,7 @@ if (isset($_GET['key'])) {
         $root = $_SERVER['DOCUMENT_ROOT'] . "/resources/upload";
     }
     if (!isset($keyfull)) {
-        die("<script>location.href = '/cms-special/admin/regedit'</script>");    
+        die("<script>location.href = '/cms-special/admin/regedit'</script>");
     }
 } else {
     die("<script>location.href = '/cms-special/admin/regedit'</script>");
@@ -41,7 +42,7 @@ if ($path == "/") {
     $path = "";
 }
 
-$types = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/advanced/regedit/filetypes.json"));
+$types = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n/" . $langsel . "/filetypes.json"));
 
 function getDescription($fileuri) {
     global $types;
@@ -92,12 +93,11 @@ function includes($string, $substring) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Explorateur de registre MPCMS</title>
+    <title><?= $lang["admin-advanced-regedit"]["win"] ?></title>
     <link rel="stylesheet" href="/resources/css/regedit.css">
 </head>
 <body>
-    <h1>Explorateur de registre de Minteck Projects CMS</h1>
-    <p><b>Attention :</b> L'éditeur de registre constitue le cœur de votre site, toute modification erronée peut empêcher votre site de fonctionner correctement ou le rendre vulnérable à de potentielles failles de sécurité. Pour cela, seul votre administrateur système est en mesure d'effectuer des modifications.</p>
+    <h1><?= $lang["admin-advanced-regedit"]["title"] ?></h1>
     <h3>/<?= $keyfull ?><?= $path ?></h3>
     <?php
 
@@ -106,77 +106,77 @@ function includes($string, $substring) {
     if ($path == "") {
         echo('<a href="/cms-special/admin/advanced/regedit">Dossier parent</a>');
     } else {
-        echo('<a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path='. dirname($path) . '">Dossier parent</a>');
+        echo('<a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path='. dirname($path) . '">' . $lang["admin-advanced-regedit"]["parent"] . '</a>');
     }
 
     if (!is_dir($root . $path)) {
         if (startsWith($path, "/pages")) {
-            echo(" | <a href=\"/cms-special/admin/pages/edit/?slug=" . basename($path) . "\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/pages/edit/?slug=" . basename($path) . "\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/caldb.json")) {
-            echo(" | <a href=\"/cms-special/admin/calendar\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/calendar\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/widgets.json")) {
-            echo(" | <a href=\"/cms-special/admin/plugins\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/plugins\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/galery")) {
-            echo(" | <a href=\"/cms-special/admin/galery\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/galery\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/footer")) {
-            echo(" | <a href=\"/cms-special/admin/appearance\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/appearance\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/sitename")) {
-            echo(" | <a href=\"/cms-special/admin/appearance\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/appearance\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/darktheme-enabled")) {
-            echo(" | <a href=\"/cms-special/admin/customization\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/customization\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/ubuntufont-enabled")) {
-            echo(" | <a href=\"/cms-special/admin/customization\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/customization\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/ubuntulfont-enabled")) {
-            echo(" | <a href=\"/cms-special/admin/customization\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/customization\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/suru-enabled")) {
-            echo(" | <a href=\"/cms-special/admin/customization\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/customization\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/classic-enabled")) {
-            echo(" | <a href=\"/cms-special/admin/customization\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/customization\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/customSettings.json")) {
-            echo(" | <a href=\"/cms-special/admin/advanced/jsonconf\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/advanced/jsonconf\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/password")) {
-            echo(" | <a href=\"/cms-special/admin/appearance\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/appearance\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/store")) {
-            echo(" | <a href=\"/cms-special/admin/store\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/store\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/semantic_")) {
-            echo(" | <a href=\"/cms-special/admin/semantic\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/semantic\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/system.log")) {
-            echo(" | <a href=\"/cms-special/admin/logs\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/logs\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/widget-notes-data")) {
-            echo(" | <a href=\"/cms-special/admin/plugins/widget-notes-configure\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/plugins/widget-notes-configure\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/widget-contact-data")) {
-            echo(" | <a href=\"/cms-special/admin/plugins/widget-contact-configure\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/plugins/widget-contact-configure\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/stats")) {
-            echo(" | <a href=\"/cms-special/admin/stats\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/stats\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/picdb.json")) {
-            echo(" | <a href=\"/cms-special/admin/galery\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/galery\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
         if (startsWith($path, "/calendar_events")) {
-            echo(" | <a href=\"/cms-special/admin/calendar\">Modifier en utilisant la méthode recommandée</a>");
+            echo(" | <a href=\"/cms-special/admin/calendar\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
     }
 
     echo("</small><br>");
-    
+
     if (is_dir($root . $path)) {
         foreach (scandir($root . $path) as $file) {
             if ($file != "." && $file != "..") {
@@ -208,21 +208,21 @@ function includes($string, $substring) {
                     }
                 } else {
                     if ($key == "HKST") {
-                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/token.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Jeton d\'authentification de l\'administration du site)</i><br>');
+                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/token.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["token"] . ')</i><br>');
                     } else {
                         if ($file == ".gitkeep") {
-                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/special.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Configuration du gestionnaire de versions de Minteck Projects CMS)</i><br>');
+                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/special.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["git"] . ')</i><br>');
                         } else {
                             if ($file == "siteicon.png") {
-                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Version compressée du logo du site)</i><br>');
+                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["logocomp"] . ')</i><br>');
                             } else {
                                 if ($file == "siteicon-uncomp.png") {
-                                    echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Version non compressée du logo du site)</i><br>');
+                                    echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["logo"] . ')</i><br>');
                                 } else {
                                     if ($file == "banner.jpg") {
-                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Bannière importée par l\'utilisateur)</i><br>');
+                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["banner"] . ')</i><br>');
                                     } else {
-                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(Image canonique de la galerie)</i><br>');
+                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["gallery"] . ')</i><br>');
                                     }
                                 }
                             }
@@ -234,7 +234,7 @@ function includes($string, $substring) {
     } else {
         $file = basename($path);
         if ($key == "HKST") {
-            echo("Jeton d'authentification — rien de spécial à afficher");
+            echo($lang["admin-advanced-regedit"]["tokenview"]);
         }
         if ($key == "HKWC") {
             echo('<code class="fcontent">' . str_replace("\n", "<br>", str_replace(">", "&gt;", str_replace("<", "&lt;", str_replace(" ", "&nbsp;", file_get_contents($root . $path))))) . '</code>');
@@ -255,7 +255,7 @@ function includes($string, $substring) {
             }
         }
     }
-    
+
     ?>
 </body>
 </html>

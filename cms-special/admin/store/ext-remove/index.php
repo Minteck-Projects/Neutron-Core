@@ -7,16 +7,16 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
         if (isset($_GET['id'])) {
-            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/remove/&pa=?id=" . $_GET['id'] . "'</script>");
+            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-remove/&pa=?id=" . $_GET['id'] . "'</script>");
         } else {
-            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/remove&pa='</script>");
+            die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-remove&pa='</script>");
         }
     }
 } else {
     if (isset($_GET['id'])) {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/remove/&pa=?id=" . $_GET['id'] . "'</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-remove/&pa=?id=" . $_GET['id'] . "'</script>");
     } else {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/remove&pa='</script>");
+        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/store/ext-remove&pa='</script>");
     }
 }
 
@@ -81,7 +81,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <title><?php
-    
+
     if ($ready) {
         echo("Désinstallation de {$name} - CMS Store - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
@@ -99,7 +99,7 @@ if (isset($_GET['id'])) {
 <body>
     <div id="settings">
         <?php
-        
+
         if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
             die("<script>location.href = \"/cms-special/admin/store/ext-init\"</script></div></body></html>");
         }
@@ -111,7 +111,8 @@ if (isset($_GET['id'])) {
             echo("<br><br><center><img src=\"/resources/image/storeloader.svg\" width=\"48px\" height=\"48px\" style=\"filter:brightness(50%);\"><br><span id=\"loadmsg\">Désinstallation de l'extension...</span></center><br><br>");
             $install = true;
         } else {
-            echo("<center><br><br>L'extension n'est pas installée<br><br><a onclick=\"history.back()\" class=\"sblink\">Retour</a></center>");
+            echo("<center><br><br>L'extension n'est pas installée<br><br><a onclick=\"window.close()\" class=\"sblink\">Retour</a></center>");
+            $install = false;
         }
 
         ?>

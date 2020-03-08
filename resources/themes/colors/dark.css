@@ -143,7 +143,7 @@ html {
 }
 
 .pushbar.opened {
-    box-shadow: 1px 1px 12px 
+    box-shadow: 1px 1px 12px
     #262626;
 }
 
@@ -169,6 +169,6 @@ html {
     color: whitesmoke;
 }
 
-.configure_ext, .store_ext {
+.configure_ext, .store_ext, .remove_ext {
     filter: invert(100%);
 }

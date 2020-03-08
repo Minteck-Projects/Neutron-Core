@@ -552,6 +552,7 @@ html {
     text-decoration-style: dotted;
     text-decoration-color: inherit;
     text-decoration-line: underline;
+    color: inherit;
 }
 
 #stats {
@@ -579,11 +580,12 @@ html {
     color: inherit;
 }
 
-.configure_ext, .store_ext {
+.configure_ext, .store_ext, .remove_ext {
     float: right;
     position: relative;
     bottom: 10px;
     height: 24px;
+    cursor: pointer;
     transition: rotate 200ms, opacity 200ms;
 }
 
@@ -597,6 +599,15 @@ html {
     opacity: .75;
 }
 
+.remove_ext:hover {
+    rotate: 180deg;
+    opacity: .75;
+}
+
 .widget-header-info {
     width: 100%;
+}
+
+#main-content {
+    overflow-x: hidden;
 }

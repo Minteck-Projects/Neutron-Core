@@ -35,14 +35,15 @@
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config")) {
                     echo("<a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/config") . "\" title=\"" . $lang["admin-plugins"]["config"] . "\" class=\"configure_ext\"><img src=\"/resources/image/ext-settings.svg\"></a>");
                 }
-                echo("<a href=\"" . "/cms-special/admin/store/package/?id=" . $widget . "\" title=\"" . $lang["admin-plugins"]["store"] . "\" class=\"store_ext\"><img src=\"/resources/image/ext-store.svg\"></a>");
+                echo("<a href=\"http://" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public") . "/view/?id=" . $widget . "&idType=old\" target=\"_blank\" title=\"" . $lang["admin-plugins"]["store"] . "\" class=\"store_ext\"><img src=\"/resources/image/ext-store.svg\"></a>");
+                echo("<a onclick=\"window.open('/cms-special/admin/store/ext-remove/?id=" . $widget . "');\" title=\"" . $lang["admin-plugins"]["remove"] . "\" class=\"remove_ext\"><img src=\"/resources/image/ext-remove.svg\"></a>");
                 echo("</td></tr></tbody></table></div><p>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/description") . "</p>");
                 echo("</div>");
             }
         }
-        
+
         ?>
-        <p><center><b><?= $lang["admin"]["tip"][0] ?></b><?= $lang["admin"]["tip"][1] ?><b><a class="sblink" href="/cms-special/admin/store">CMS Store</a></b><?= $lang["admin"]["tip"][2] ?></center></p>
+        <p><center><b><?= $lang["admin-plugins"]["tip"][0] ?></b><?= $lang["admin-plugins"]["tip"][1] ?><b><a class="sblink" target="_blank" href="http://<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public") ?>">CMS Store</a></b><?= $lang["admin-plugins"]["tip"][2] ?></center></p>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>

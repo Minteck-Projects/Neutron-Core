@@ -39,6 +39,10 @@ function ipbPush() {
     }
 }
 
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache")) {
+    mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache");
+}
+
 ?>
 
 <?php
@@ -129,7 +133,16 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     }
 }
 
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.css")) {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.css", "");
+}
+
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.json")) {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.json", "[]");
+}
+
 ?>
+<link rel="stylesheet" href="/resources/upload/styles.css">
 <script src="/resources/js/jquery.js"></script>
 
 <?php
@@ -252,34 +265,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled"
 }
 
 ?>
-<?php
-
-if (strpos("/cms-special/admin/", $_SERVER['REQUEST_URI']) !== false) {
-    echo('<script src="/resources/js/right-click.js"></script><link rel="stylesheet" href="/resources/css/right-click.css" />');
-}
-
-?>
-<div class="hide" id="rmenu">
-    <?php
-
-    if (isset($name)) {
-        echo('<a href="/cms-special/admin/pages/manage/?slug=' . $name . '" class="rmenulink"><img src="/resources/image/rightclick_page.svg" class="rmenuimg"> &nbsp; ' . $lang["menu"]["manage"] . '</a>');
-        $widgets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
-        if (!empty($widgets->list)) {
-            echo('<a onclick="pushbar.open(\'panel-sidebar\')" class="rmenulink"><img src="/resources/image/rightclick_details.svg"     class="rmenuimg"> &nbsp; ' . $lang["menu"]["widgets"] . '</a>');
-        }
-    }
-
-    ?>
-    <hr class="rmenusep">
-    <a onclick="history.back()" class="rmenulink"><img src="/resources/image/rightclick_back.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["back"] ?></a>
-    <a onclick="history.forward()" class="rmenulink"><img src="/resources/image/rightclick_forward.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["forward"] ?></a>
-    <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_refresh.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["refresh"] ?></a>
-    <!-- <a onclick="location.reload()" class="rmenulink"><img src="/resources/image/rightclick_save.svg" class="rmenuimg"> &nbsp; Enregistrer la     page</a> -->
-    <hr class="rmenusep">
-    <a href="/" class="rmenulink"><img src="/resources/image/rightclick_home.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["home"] ?></a>
-    <a href="/cms-special/admin" class="rmenulink"><img src="/resources/image/rightclick_admin.svg" class="rmenuimg"> &nbsp; <?= $lang["menu"]["admin"] ?></a>
-</div>
 
 <!-- Program JavaScript Error — taken from pMessage, a prototype of online messaging system -->
 <pjse-placeholder class="hide">
@@ -305,6 +290,9 @@ roo_alert = false;
 
 function alert_full(text, refreshOnOk) {
     try {
+        if (text == "ResizeObserver loop completed with undelivered notifications.") {
+            return;
+        }
         if (typeof refreshOnOk == "boolean") {
             roo_alert = refreshOnOk;
         }
@@ -322,14 +310,14 @@ function alert_full(text, refreshOnOk) {
             }
         })
     } catch (err) {
-        alert("Une erreur s'est produite lors du chargement du message d'erreur");
+        alert("<?= $lang["header"]["errorError"] ?>");
     }
 }
 
 function alert(text, refreshOnOk) {
     if (typeof refreshOnOk == "boolean") {
         if (refreshOnOk == true) {
-            console.warn("The refresh on OK feature isn't available on new dialogs, showing the legacy one");
+            console.warn("The refresh on OK feature isn't available on new errors, showing the legacy one");
             alert_full(text, refreshOnOk)
             return;
         }
@@ -357,7 +345,7 @@ function closeError() {
         }
     })
     if (roo_alert) {
-        location.reload()
+        reloadPage()
     }
 }
 
