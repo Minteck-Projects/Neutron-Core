@@ -7,6 +7,14 @@ if (isset($MPCMSRendererPageMarkup)) {
 }
 $ready = true;
 
+if ($ready) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar")) {
+        $pimb = (integer)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar");
+    } else {
+        $pimb = 4;
+    }
+}
+
 function getAvgLuminance($filename, $num_samples=30) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd")) {
         return file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd");
@@ -137,7 +145,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
                 foreach ($pages as $page) {
                     if ($page != ".." && $page != ".") {
                         if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
-                            if ($count < 4) {
+                            if ($count < $pimb) {
                                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
                                     if (!in_array($page, $customSettings->PagesMasquées)) {
                                         echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");

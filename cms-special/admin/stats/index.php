@@ -1,6 +1,6 @@
 <?php $pageConfig = [ "domName" => "Statistiques", "headerName" => "Statistiques" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-        <h3>Visites du site ce mois</h3>
+        <h3><?= $lang["admin-stats"]["visits"] ?></h3>
         <div id="visits" class="chart--container"></div>
         <script>
       let chartConfig = {
@@ -22,28 +22,12 @@
     margin: '20 0 0 0'
   },
   source: {
-    text: 'Certaines informations peuvent être inexactes',
+    text: '<?= $lang["admin-stats"]["disclaimer"] ?>',
     fontColor: '#8e99a9',
     fontFamily: 'Open Sans',
     textAlign: 'left'
   },
   series: [
-    // {
-    //   text: 'IE and Edge',
-    //   values: [2],
-    // },
-    // {
-    //   text: 'Chrome',
-    //   values: [2],
-    // },
-    // {
-    //   text: 'Firefox',
-    //   values: [2],
-    // },
-    // {
-    //   text: 'Safari',
-    //   values: [2],
-    // },
 <?php
 
 $dates = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats");
@@ -67,7 +51,7 @@ zingchart.render({
 });
     </script>
     <div id="afterchart">
-        <h3>Visites totales cette année</h3>
+        <h3><?= $lang["admin-stats"]["disclaimer"] ?></h3>
         <table>
             <tbody>
                 <?php
@@ -124,23 +108,23 @@ zingchart.render({
                         $visits['12'] = $visits['12'] + (int)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . $list);
                     }
                 }
-                
-                echo("<tr><td><b>Janvier :</b></td><td>{$visits['01']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Février :</b></td><td>{$visits['02']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Mars :</b></td><td>{$visits['03']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Avril :</b></td><td>{$visits['04']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Mai :</b></td><td>{$visits['05']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Juin :</b></td><td>{$visits['06']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Juillet :</b></td><td>{$visits['07']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Août :</b></td><td>{$visits['08']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Septembre :</b></td><td>{$visits['09']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Octobre :</b></td><td>{$visits['10']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Novembre :</b></td><td>{$visits['11']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Décembre :</b></td><td>{$visits['12']}</td><td> visites</td></tr>");
+
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][0]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['01']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][1]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['02']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][2]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['03']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][3]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['04']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][4]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['05']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][5]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['06']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][6]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['07']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][7]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['08']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][8]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['09']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][9]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['10']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][10]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['11']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][11]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['12']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
                 ?>
             </tbody>
         </table>
-        <h3>Visites totales l'année dernière</h3>
+        <h3><?= $lang["admin-stats"]["last"] ?></h3>
         <table>
             <tbody>
                 <?php
@@ -197,19 +181,19 @@ zingchart.render({
                         $visits['12'] = $visits['12'] + (int)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . $list);
                     }
                 }
-                
-                echo("<tr><td><b>Janvier " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['01']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Février " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['02']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Mars " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['03']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Avril " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['04']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Mai " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['05']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Juin " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['06']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Juillet " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['07']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Août " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['08']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Septembre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['09']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Octobre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['10']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Novembre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['11']}</td><td> visites</td></tr>");
-                echo("<tr><td><b>Décembre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['12']}</td><td> visites</td></tr>");
+
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][0]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['01']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][1]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['02']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][2]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['03']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][3]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['04']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][4]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['05']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][5]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['06']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][6]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['07']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][7]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['08']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][8]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['09']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][9]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['10']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][10]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['11']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                echo("<tr><td><b>{$lang["admin-stats"]["months"][11]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['12']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
                 ?>
             </tbody>
         </table>

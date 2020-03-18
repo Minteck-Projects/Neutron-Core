@@ -38,6 +38,14 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     $ready = false;
 }
 
+if ($ready) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar")) {
+        $pimb = (integer)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar");
+    } else {
+        $pimb = 4;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -137,7 +145,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
                 foreach ($pages as $page) {
                     if ($page != ".." && $page != ".") {
                         if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
-                            if ($count < 4) {
+                            if ($count < $pimb) {
                                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
                                     if (!in_array($page, $customSettings->PagesMasquées)) {
                                         echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");

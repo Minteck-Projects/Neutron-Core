@@ -83,7 +83,7 @@ if (isset($_GET['id'])) {
     <title><?php
 
     if ($ready) {
-        echo("Mise à jour de {$name} - CMS Store - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo("CMS Store");
     } else {
         echo("Administration du site - MPCMS");
     }
@@ -108,10 +108,10 @@ if (isset($_GET['id'])) {
         <?php
 
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . array_search($package, (array)$db))) {
-            echo("<br><br><center><img src=\"/resources/image/storeloader.svg\" width=\"48px\" height=\"48px\" style=\"filter:brightness(50%);\"><br><span id=\"loadmsg\">Mise à jour de l'extension...</span></center><br><br>");
+            echo("<br><br><center><img src=\"/resources/image/storeloader.svg\" width=\"48px\" height=\"48px\" style=\"filter:brightness(50%);\"><br><span id=\"loadmsg\">{$lang["admin-store"]["update"]}</span></center><br><br>");
             $install = true;
         } else {
-            echo("<center><br><br>L'extension n'est pas installée<br><br><a onclick=\"history.back()\" class=\"sblink\">Retour</a></center>");
+            echo("<center><br><br>L'extension n'est pas installée<br><br><a onclick=\"history.back()\" class=\"sblink\">{$lang["admin-store"]["back"]}</a></center>");
         }
 
         ?>
@@ -128,14 +128,13 @@ window.onload = () => {
             url: "/api/admin/update_plugin.php?id=<?= array_search($package, (array)$db) ?>",
             success: function (data) {
                 if (data == "ok") {
-                    document.getElementById('loadmsg').innerHTML = "Terminé"
-                    window.close()
+                    document.getElementById('loadmsg').innerHTML = "<?= $lang["admin-store"]["done"][0] ?><br><?= $lang["admin-store"]["done"][1] ?>"
                 } else {
-                    document.getElementById('loadmsg').innerHTML = "Une erreur s'est produite : " + data;
+                    document.getElementById('loadmsg').innerHTML = "<?= $lang["admin-errors"]["errorprefix"] ?>" + data;
                 }
             },
             error: function (error) {
-                document.getElementById('loadmsg').innerHTML = "Erreur de communication";
+                document.getElementById('loadmsg').innerHTML = "<?= $lang["admin-errors"]["connerror"] ?>";
                 window.onbeforeunload = undefined;
             },
             cache: false,

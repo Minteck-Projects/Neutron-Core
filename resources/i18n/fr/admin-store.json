@@ -1,0 +1,19 @@
+{
+    "home": {
+        "message": [
+            "Le CMS Store intégré dans Minteck Projects CMS n'est plus disponible. Vous devez ",
+            "accéder au site officiel du CMS Store",
+            " pour continuer à installer des extensions."
+        ]
+    },
+    "back": "Retour",
+    "dbupdate": "Regénération de la base de données...",
+    "init": "Initialisation du CMS Store...",
+    "install": "Installation de l'extension...",
+    "remove": "Désinstallation de l'extension...",
+    "update": "Mise à jour de l'extension...",
+    "done": [
+        "Terminé",
+        "Vous pouvez maintenant fermer cet onglet ou cette fenêtre."
+    ]
+}

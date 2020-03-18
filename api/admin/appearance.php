@@ -22,6 +22,12 @@ if (isset($_POST['alwaysmenu'])) {
     die("Pas d'AlwaysMenu passé");
 }
 
+if (isset($_POST['showpages'])) {
+    (integer)$sp = $_POST['showpages'];
+} else {
+    die("Pas de ShowPages passé");
+}
+
 if ($am == "true") {
     if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu", "");
@@ -31,6 +37,8 @@ if ($am == "true") {
         unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu");
     }
 }
+
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar", $sp);
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - API/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");

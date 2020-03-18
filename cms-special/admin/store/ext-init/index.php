@@ -1,6 +1,7 @@
 <?php
 
 $invalid = false;
+$install = true;
 
 if (isset($_COOKIE['ADMIN_TOKEN'])) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
@@ -41,13 +42,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 }
 
 ?>
-<?php
-
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
-    die("<script>location.href = '/cms-special/admin/store/ext-init';</script>");
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,7 +55,7 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
     <title><?php
 
     if ($ready) {
-        echo("Initialisation en cours - CMS Store - Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo("CMS Store");
     } else {
         echo("Administration du site - MPCMS");
     }
@@ -85,7 +79,7 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/store")) {
         ?>
         <?php
 
-        echo("<br><br><center><img src=\"/resources/image/storeloader.svg\" width=\"48px\" height=\"48px\" style=\"filter:brightness(50%);\"><br><span id=\"loadmsg\">Initialisation du CMS Store...</span></center><br><br>");
+        echo("<br><br><center><img src=\"/resources/image/storeloader.svg\" width=\"48px\" height=\"48px\" style=\"filter:brightness(50%);\"><br><span id=\"loadmsg\">{$lang["admin-store"]["init"]}</span></center><br><br>");
 
         ?>
     </div>
@@ -101,14 +95,13 @@ window.onload = () => {
             url: "/api/admin/store_setup.php",
             success: function (data) {
                 if (data == "ok") {
-                    document.getElementById('loadmsg').innerHTML = "Terminé"
-                    window.close()
+                    document.getElementById('loadmsg').innerHTML = "<?= $lang["admin-store"]["done"][0] ?><br><?= $lang["admin-store"]["done"][1] ?>"
                 } else {
-                    document.getElementById('loadmsg').innerHTML = "Une erreur s'est produite : " + data;
+                    document.getElementById('loadmsg').innerHTML = "<?= $lang["admin-errors"]["errorprefix"] ?>" + data;
                 }
             },
             error: function (error) {
-                document.getElementById('loadmsg').innerHTML = "Erreur de communication";
+                document.getElementById('loadmsg').innerHTML = "<?= $lang["admin-errors"]["connerror"] ?>";
                 window.onbeforeunload = undefined;
             },
             cache: false,
