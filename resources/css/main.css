@@ -60,14 +60,14 @@ body {
 #banner {
     padding: 40px 50px;
     background-position: center;
-    background-size: 100%;
+    background-size: cover;
     padding-top: 60px;
 }
 
 #banner-menu {
     padding: 20px 50px;
     background-position: center;
-    background-size: 100%;
+    background-size: cover;
 }
 
 @media (max-width: 500px) {
