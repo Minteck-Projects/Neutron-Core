@@ -28,7 +28,7 @@ function updateKey(name, title) {
                         Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                     }, 500)
                 } else {
-                    alert("<?= $lang["admin-errors"]["error-prefix"] ?>" + data);
+                    alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data);
                 }
             },
             error: function (error) {

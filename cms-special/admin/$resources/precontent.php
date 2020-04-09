@@ -93,7 +93,9 @@ function getData(string $dir, $ignoreUploadDir = false) {
                     if (is_dir($dir . "/" . $direl)) {
                         getData($dir . "/" . $direl);
                     } else {
-                        $size = $size + filesize($dir . "/" . $direl);
+			try {
+			    $size = $size + filesize($dir . "/" . $direl);
+			} catch (Error $err) {}
                     }
                 }
             }

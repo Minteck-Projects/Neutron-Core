@@ -1,6 +1,6 @@
 <?php $pageConfig = [ "domName" => "Statistiques", "headerName" => "Statistiques" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-        <h3><?= $lang["admin-stats"]["visits"] ?></h3>
+        <h3><?= $lang["admin-stats"]["thisMonth"]?></h3>
         <div id="visits" class="chart--container"></div>
         <script>
       let chartConfig = {
@@ -22,7 +22,7 @@
     margin: '20 0 0 0'
   },
   source: {
-    text: '<?= $lang["admin-stats"]["disclaimer"] ?>',
+    text: "<?= $lang["admin-stats"]["disclaimer"] ?>",
     fontColor: '#8e99a9',
     fontFamily: 'Open Sans',
     textAlign: 'left'
@@ -51,7 +51,7 @@ zingchart.render({
 });
     </script>
     <div id="afterchart">
-        <h3><?= $lang["admin-stats"]["disclaimer"] ?></h3>
+        <h3><?= $lang["admin-stats"]["year"] ?></h3>
         <table>
             <tbody>
                 <?php

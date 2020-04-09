@@ -133,9 +133,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     }
 }
 
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.css")) {
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.css", "");
-}
 
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.json")) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.json", "[]");
@@ -154,10 +151,12 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.json")) {
 function errors($level, $description, $file, $line) {
     global $lang;
     if ($level == E_USER_ERROR) {
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/ERROR - " . $file . ":" . $line . " - " . $description . "\n\n");
-        } else {
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/ERROR - " . $file . ":" . $line . " - " . $description . "\n\n");
+	if (strpos($description, "filesize()") === false) {
+	    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/ERROR - " . $file . ":" . $line . " - " . $description . "\n\n");
+            } else {
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/ERROR - " . $file . ":" . $line . " - " . $description . "\n\n");
+            }
         }
     }
     if ($level == E_USER_WARNING) {
@@ -175,13 +174,17 @@ function errors($level, $description, $file, $line) {
         }
     }
     if ($level != E_USER_NOTICE && $level != E_USER_ERROR && $level != E_USER_WARNING) {
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/UNKNOWN - " . $file . ":" . $line . " - " . $description . "\n\n");
-        } else {
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/UNKNOWN - " . $file . ":" . $line . " - " . $description . "\n\n");
+        if (strpos($description, "filesize()") === false) {
+	    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/UNKNOWN - " . $file . ":" . $line . " - " . $description . "\n\n");
+            } else {
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - PHP-INTERNAL-ERROR/UNKNOWN - " . $file . ":" . $line . " - " . $description . "\n\n");
+            }
         }
     }
-    echo('<p><table class="message_error"><tbody><tr><td><img src="/resources/image/message_error.svg" class="message_img"></td><td style="width:100%;"><p>' . $lang["header"]["phpError"][0] . '</p><p>' . $lang["header"]["phpError"][1] . ' <b>PHP-INTERNAL-ERROR/</b></p><p>' . $lang["header"]["phpError"][2] . '</p></td></tr></tbody></table></p>');
+    if (strpos($description, "filesize()") === false) {
+        echo('<p><table class="message_error"><tbody><tr><td><img src="/resources/image/message_error.svg" class="message_img"></td><td style="width:100%;"><p>' . $lang["header"]["phpError"][0] . '</p><p>' . $lang["header"]["phpError"][1] . ' <b>PHP-INTERNAL-ERROR/</b></p><p>' . $lang["header"]["phpError"][2] . '</p></td></tr></tbody></table></p>');
+    }
     return true;
 }
 
@@ -228,14 +231,6 @@ try {
 
 <div id="snowapi-placeholder"><div snowapi-enable-snowfall></div></div>
 <?= "<script>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/global.js") . "</script>" ?>
-<?php
-
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {
-    echo('<script src="/resources/themes/icons/suru.js"></script>');
-    echo("<style>img[src='/resources/image/suru_menu.png'] {filter:brightness(200%);}img[src='/resources/image/suru_tools.png'] {filter:brightness(200%);}img[src='/resources/image/suru_admin.png'] {filter:brightness(200%) !important;}img[src='/resources/image/suru_contact_address.png'] {filter:brightness(0%);}img[src='/resources/image/suru_contact_email.png'] {filter:brightness(0%);}img[src='/resources/image/suru_contact_phone.png'] {filter:brightness(0%);}img[src='/resources/image/suru_contact_priority.png'] {filter:brightness(0%);}</style>");
-}
-
-?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled")) {
