@@ -539,7 +539,7 @@ const EasyCSS = {
     reloadList: function (session) {
         elements = "<ul>";
         EasyCSS.data[session].forEach((e, i) => {
-            if (typeof e != "undefined") {
+            if (typeof e != "undefined" && typeof e != "null" && e != null) {
                 elements = elements + "<li class=\"easycss-list-item\">" + EasyCSS.sessions[session].lang.verbose.selector + "<b>" + e.selector + "</b>" + EasyCSS.sessions[session].lang.verbose.property + "<b>" + e.property + "</b>" + EasyCSS.sessions[session].lang.verbose.value + "<b>" + e.value + "</b>" + " <span class=\"easycss-list-separator\">— </span><a class=\"easycss-button-remove\" href=\"#\" onclick=\"EasyCSS.removeOption(" + e.id + "," + session + "," + i + ")\">" + EasyCSS.sessions[session].lang.verbose.remove + "</a></li>";
             }
         })

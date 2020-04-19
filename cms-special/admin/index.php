@@ -112,7 +112,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 </head>
 <body id="login">
     <div class="centered">
-        <img src="/resources/upload/siteicon.png" class="intro-element">
+        <img src="/resources/upload/siteicon.png" style="border-radius:100%;" class="intro-element">
         <h2><?= $lang["login"]["title"] ?></h2>
         <?php if ($invalid) {echo('<div id="error">' . $lang["login"]["invalid"] . '</div>');} ?>
         <form action="./<?php if (isset($_GET['pr'])) {echo("?pr=" . $_GET['pr']);if (isset($_GET['pa'])) {echo("&pa=" . urlencode($_GET['pa']));}} ?>" method="post">

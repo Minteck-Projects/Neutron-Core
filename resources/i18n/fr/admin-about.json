@@ -42,7 +42,7 @@
     "stable": "Dernière version stable",
     "beta": "Version stable en circulation",
     "categories": {
-        "system": "Minteck Projects CMS",
+        "system": "Fichiers système",
         "config": "Contenu et configuration",
         "resources": "Photos et autres ressources",
         "misc": "Fichiers inconnus"
