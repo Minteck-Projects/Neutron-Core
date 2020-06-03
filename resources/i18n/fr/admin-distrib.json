@@ -1,0 +1,12 @@
+{
+    "intro": "Vous utilisez la distribution ",
+    "change": "Pour changer de distribution, accédez au [[site officiel de Minteck Projects CMS]] si vous souhaitez télécharger une variante officielle, ou au site de votre distribution pour une variante de tierce partie.",
+    "defaultDistros": {
+        "generic": "Minteck Projects CMS Générique",
+        "mprj": "Minteck Projects CMS pour Minteck Projects",
+        "start": "Minteck Projects CMS pour pays en développement",
+        "chinese": "Minteck Projects CMS pour la Chine",
+        "korea": "Minteck Projects CMS pour la Corée",
+        "unrpa": "Minteck Projects CMS pour l'UNRPA"
+    }
+}

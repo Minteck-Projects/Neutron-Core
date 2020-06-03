@@ -29,7 +29,7 @@ function getAvgLuminance($filename, $num_samples=30) {
 }
 
 ?>
-<?php ob_start();echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php ob_start();echo("<!--\n\n" . str_replace('%year%', date('Y'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license")) . "\n\n-->") ?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
@@ -95,7 +95,6 @@ if ($ready) {
     <?php
 
     if (!$ready) {
-        // die('<div class="centered discover"><h1>Minteck Projects CMS</h1><h3>La nouvelle génération de sites Web</h3><p>Tous les fichiers ont été copiés correctement, vous devez maintenant configurer le logiciel Minteck Projects CMS.</p><p>Pour cela, nous vous conseillons d\'utiliser un ordinateur, ou tout autre appareil avec un écran plus grand.</p><a href="/cms-special/setup"><img src="/resources/image/config_explore.svg">Configurer</a><br><br><hr><small>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") . '</small></div>');
         die("<script>location.href='/cms-special/setup';</script>");
     }
 
@@ -122,7 +121,7 @@ if ($ready) {
 
     ?>
     <div id="always-on-top">
-        <div id="siteadmin"><a class="sab" href="/cms-special/version"><span class="branding-desktop"><?= $lang["viewer"]["powered"] ?> Minteck Projects CMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span><span class="branding-mobile">MPCMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span></a><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg"><?= $lang["viewer"]["manage"] ?></a></div>
+        <div id="siteadmin"><a class="sab" href="/cms-special/version"><span class="branding-desktop"><?= $lang["viewer"]["powered"] ?> Minteck Projects CMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span><span class="branding-mobile">MPCMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span></a><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg"><?= $lang["viewer"]["manage"] ?></a></div>
     </div>
     <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?></span>

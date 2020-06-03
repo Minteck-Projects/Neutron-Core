@@ -174,3 +174,8 @@ img[width="128px"] {
 .mdc-list-item:hover > i {
     transform: rotate(360deg) scale(125%);
 }
+
+.mdc-drawer__header {
+    background: linear-gradient(to bottom, var(--mpc-menu-background-image) 50%, var(--mpc-menu-background)), url('/resources/image/codename.jpg');
+    background-size: 100%;
+}

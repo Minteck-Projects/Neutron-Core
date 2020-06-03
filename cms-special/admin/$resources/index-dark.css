@@ -10,6 +10,7 @@
     --mdc-theme-on-surface: whitesmoke;
     --mpc-background: rgb(46, 46, 46);
     --mpc-menu-background: rgb(22, 22, 22);
+    --mpc-menu-background-image: rgb(22, 22, 22, .5);
     --mpc-text: whitesmoke;
     --mpc-menu-selected: var(--mdc-theme-secondary-light);
     --mpc-menu-header: rgb(223, 223, 223);

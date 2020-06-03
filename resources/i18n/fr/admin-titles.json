@@ -78,7 +78,11 @@
     },
     "language": {
         "dom": "Langue et région",
-        "header": "Paramètres régionnaux du site"
+        "header": "Paramètres régionaux du site"
+    },
+    "distrib": {
+        "dom": "Distribution",
+        "header": "Distribution Minteck Projects CMS"
     },
     "store": {
         "dom": "CMS Store",

@@ -32,7 +32,7 @@ function buffer(string $value) {
         sort($eventlistpassed);
         $pos = 1;
         $shown = 0;
-        buffer("<h2>Événements à venir</h2>");
+        buffer("<h2>" . $lang["calendar"]["futureh"] . "</h2>");
         foreach ($eventlist as $event) {
             if (1 == 2) {} else {
                 foreach ($json->events as $el) {
@@ -47,7 +47,7 @@ function buffer(string $value) {
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "" && $el->link != "http://") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"" . $lang["calendar"]["newtab"] . "\">" . $lang["calendar"]["more"] . "</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -55,13 +55,13 @@ function buffer(string $value) {
                             }
                             if ($currentDate == $el->timestamp) {
                                 $shown = $shown + 1;
-                                buffer("<h3>Aujourd'hui</h3><ul><li>" . $el->name . "</li>");
+                                buffer("<h3>" . $lang["calendar"]["today"] . "</h3><ul><li>" . $el->name . "</li>");
                                 if ($el->description != "") {
                                     buffer("<li>" . $el->description . "</li>");
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "" && $el->link != "http://") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"" . $lang["calendar"]["newtab"] . "\">" . $lang["calendar"]["more"] . "</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -69,13 +69,13 @@ function buffer(string $value) {
                             }
                             if ($currentDate > $el->timestamp) {
                                 $shown = $shown + 1;
-                                buffer("<h3>Événement passé (" . $el->datestr . ")</h3><ul><li>" . $el->name . "</li>");
+                                buffer("<h3>" . $lang["calendar"]["pasth"] . " (" . $el->datestr . ")</h3><ul><li>" . $el->name . "</li>");
                                 if ($el->description != "") {
                                     buffer("<li>" . $el->description . "</li>");
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "" && $el->link != "http://") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"" . $lang["calendar"]["newtab"] . "\">" . $lang["calendar"]["more"] . "</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -87,9 +87,9 @@ function buffer(string $value) {
             }
         }
         if ($shown == "0") {
-            buffer("</ul><center><i>Aucun événement à venir</i></center>");
+            buffer("</ul><center><i>" . $lang["calendar"]["future"] . "</i></center>");
         }
-        buffer("<h2>Événements passés</h2>");
+        buffer("<h2>" . $lang["calendar"]["pasth"] . "</h2>");
         $pos = 1;
         $shown = 0;
         foreach ($eventlistpassed as $event) {
@@ -106,7 +106,7 @@ function buffer(string $value) {
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "" && $el->link != "http://") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"" . $lang["calendar"]["newtab"] . "\">" . $lang["calendar"]["more"] . "</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -114,13 +114,13 @@ function buffer(string $value) {
                             }
                             if ($currentDate == $el->timestamp) {
                                 $shown = $shown + 1;
-                                buffer("<h3>Aujourd'hui</h3><ul><li>" . $el->name . "</li>");
+                                buffer("<h3>" . $lang["calendar"]["today"] . "</h3><ul><li>" . $el->name . "</li>");
                                 if ($el->description != "") {
                                     buffer("<li>" . $el->description . "</li>");
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "" && $el->link != "http://") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"" . $lang["calendar"]["newtab"] . "\">" . $lang["calendar"]["more"] . "</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -134,7 +134,7 @@ function buffer(string $value) {
                                 }
                                 if (isset($el->link)) {
                                     if ($el->link != "" && $el->link != "http://") {
-                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"Ouvrir un site associé à cet événement dans un nouvel onglet\">En savoir plus (site externe)</a></li>");
+                                        buffer("<br><li><a target=\"_blank\" href=\"" . $el->link . "\" title=\"" . $lang["calendar"]["newtab"] . "\">" . $lang["calendar"]["more"] . "</a></li>");
                                     }
                                 }
                                 buffer("</ul>");
@@ -146,12 +146,12 @@ function buffer(string $value) {
             }
         }
         if ($shown == "0") {
-            buffer("</ul><center><i>Aucun événement passé</i></center>");
+            buffer("</ul><center><i>" . $lang["calendar"]["past"] . "</i></center>");
         }
     } else {
-        buffer("<b>Base de données du calendrier corrompue</b>");
+        buffer("<b>" . $lang["calendar"]["corrupted"] . "</b>");
     }
 
-renderSpecial($buffer, 'Calendrier');
+renderSpecial($buffer, $lang["calendar"]["title"]);
 
 ?>

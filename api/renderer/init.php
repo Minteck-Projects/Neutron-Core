@@ -50,7 +50,7 @@ function compareASCII($a, $b) {
 }
 
 ?>
-<?php ob_start();echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php ob_start();echo("<!--\n\n" . str_replace('%year%', date('Y'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license")) . "\n\n-->") ?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
@@ -114,7 +114,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
 
     ?>
     <div id="always-on-top">
-        <div id="siteadmin"><a class="sab" href="/cms-special/version"><span class="branding-desktop"><?= $lang["viewer"]["powered"] ?> Minteck Projects CMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span><span class="branding-mobile">MPCMS <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?></span></a><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg"><?= $lang["viewer"]["manage"] ?></a></div>
+        <div id="siteadmin"><a class="sab" href="/cms-special/version"><span class="branding-desktop"><?= $lang["viewer"]["powered"] ?> Minteck Projects CMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span><span class="branding-mobile">MPCMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span></a><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg"><?= $lang["viewer"]["manage"] ?></a></div>
     </div>
         <div id="banner" style='background-image: url("<?= $banner ?>");'>
         <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php

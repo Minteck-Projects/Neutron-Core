@@ -27,10 +27,10 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
     <div class="mdc-drawer__header">
         <h3 class="mdc-drawer__title"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?></h3>
         <h6 class="mdc-drawer__subtitle"><?= $sizestr ?><br>
-        version <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?> "<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?>"
+        version <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?> "<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?>"
             <?php
 
-            if (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental") == "1") {
+            if (trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")) == "1") {
                 echo("<br><br>" . $lang["admin-drawer-footer"]["experimental"]);
             }
 
@@ -43,6 +43,10 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
                 <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
                 <span class="mdc-list-item__text"><?= $lang["admin-drawer-items"]["home"] ?></span>
             </a>
+            <a class="mdc-list-item <?php if ($path == "/cms-special/admin/distrib") { echo("mdc-list-item--activated"); } ?>" href="/cms-special/admin/distrib" aria-current="page">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">publish</i>
+                <span class="mdc-list-item__text"><?= $lang["admin-drawer-items"]["distrib"] ?></span>
+            </a>
 
             <hr class="mdc-list-divider">
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["content"] ?></h6>
@@ -52,7 +56,7 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
 
             <hr class="mdc-list-divider">
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["plugins"] ?></h6>
-            <?= renderItem("/cms-special/admin/store", "store", $lang["admin-drawer-items"]["store"]) ?>
+            <?= renderItem("http://" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public"), "store", $lang["admin-drawer-items"]["store"], true) ?>
             <?= renderItem("/cms-special/admin/plugins", "extension", $lang["admin-drawer-items"]["plugins"]) ?>
 
             <hr class="mdc-list-divider">

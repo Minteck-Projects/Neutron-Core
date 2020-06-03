@@ -1,7 +1,8 @@
 <?php $pageConfig = [ "domName" => "Mise à jour et sécurité", "headerName" => "Mise à jour et sécurité" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <?php
 
-        $currentVersion = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version");
+        $currentVersionP = str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"));
+        $currentVersion = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[0];
         $latestVersion = file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version");
         $returned = false;
 
@@ -39,12 +40,12 @@
     <?php
 
     if (version_compare($currentVersion, $latestVersion) == 0) {
-        echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersion . "</b>");
+        echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>");
     } else {
         if (version_compare($currentVersion, $latestVersion) <= -1) {
-            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersion . "</b>" . $lang['admin-about']['version']->update . " <b>" . $latestVersion . "</b>");
+            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->update . " <b>" . $latestVersion . "</b>");
         } else {
-            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersion . "</b>" . $lang['admin-about']['version']->beta . " <b>" . $latestVersion . "</b>");
+            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->beta . " <b>" . $latestVersion . "</b>");
         }
     }
     echo("</li>");
@@ -133,7 +134,7 @@
         }
     </style>
     <h3><?= $lang["admin-about"]["changes"] ?></h3>
-    <h4><?= $lang["admin-about"]["current"] ?> (<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version") ?>)</h4>
+    <h4><?= $lang["admin-about"]["current"] ?> (<?= $currentVersion ?>)</h4>
     <?php
 
     if (!startsWith(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion),false,stream_context_create(['http' => ['ignore_errors' => true,],])), "<!DOCTYPE")) {

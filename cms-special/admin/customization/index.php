@@ -1,12 +1,6 @@
 <?php $pageConfig = [ "domName" => "Personnalisation", "headerName" => "Personnalisation" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <!-- <blockquote>Les modifications apportées ne s'appliqueront qu'après le <a onclick="reloadPage()" class="sblink" title="Recharger la page">rechargement de la page</a>.</blockquote> -->
         <!-- <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-customization"]["disclaimer"][0] ?> <a onclick="reloadPage()" class="sblink" title="Recharger la page"><?= $lang["admin-customization"]["disclaimer"][1] ?></a>.</p><p><?= $lang["admin-customization"]["disclaimer"][2] ?> (<b><a title="Control" class="indication">⌃</a>+<a title="Shift" class="indication">⇧</a>+R</b> <?= $lang["admin-customization"]["disclaimer"][3] ?> <b><a title="Command/Super" class="indication">⌘</a>+<a title="Shift" class="indication">⇧</a>+R</b> <?= $lang["admin-customization"]["disclaimer"][4] ?>)</p></td></tr></tbody></table></p> -->
-        <h3><?= $lang["admin-customization"]["icons"] ?></h3>
-        <select id="icons" onchange="updateIcons()" disabled>
-            <option value="default" <?php if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {echo("selected");} ?>>Minteck Projects CMS</option>
-            <option value="suru" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/suru-enabled")) {echo("selected");} ?>>Suru</option>
-            <option value="classic" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/classic-enabled")) {echo("selected");} ?>>Classic</option>
-        </select> <i class="material-icons" style="vertical-align:middle;">error</i> <?= $lang["admin-customization"]["deprecated"] ?>
         <h3><?= $lang["admin-customization"]["font"] ?></h3>
         <select id="font" onchange="updateFont()">
             <option value="default" <?php if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntufont-enabled") && !file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntulfont-enabled")) {echo("selected");} ?>>Product Sans</option>
