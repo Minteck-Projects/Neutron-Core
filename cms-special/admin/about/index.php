@@ -2,8 +2,10 @@
         <?php
 
         $currentVersionP = str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"));
+        $channel = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[2];
         $currentVersion = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[0];
         $latestVersion = file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version");
+        $latestVersionP = str_replace("#", substr(md5($latestVersion . "-#-" . $channel), 0, 2), $latestVersion . "-#-" . $channel);
         $returned = false;
 
         if (version_compare($currentVersion, $latestVersion) >= 1 || file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental") == "1") {
@@ -43,12 +45,25 @@
         echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>");
     } else {
         if (version_compare($currentVersion, $latestVersion) <= -1) {
-            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->update . " <b>" . $latestVersion . "</b>");
+            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->update . " <b>" . $latestVersionP . "</b>");
         } else {
-            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->beta . " <b>" . $latestVersion . "</b>");
+            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->beta . " <b>" . $latestVersionP . "</b>");
         }
     }
     echo("</li>");
+
+    if (version_compare($currentVersion, $latestVersion) >= 1 || file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental") == "1") {
+        $upchan = "dev";
+    } else {
+        if (!strpos($currentVersion, 'LTS') !== false) {
+            $upchan = "esr";
+        } else {
+            $upchan = "stable";
+        }
+    }
+
+    echo("<li>" . $lang['admin-about']['version']->channel . " <b>" . $upchan . "</b>" . "</li>");
+    echo("<li><a href='/cms-special/admin/distrib'>" . $lang['admin-about']['version']->distrib . "</a></li>");
 
     $size = 0;
     getData($_SERVER['DOCUMENT_ROOT']);

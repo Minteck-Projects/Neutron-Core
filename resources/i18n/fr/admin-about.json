@@ -28,7 +28,9 @@
     "version": {
         "prefix": "Votre serveur exécute Minteck Projects CMS version",
         "update": ", et la dernière version disponible est la version",
-        "beta": ", et la dernière version stable en circulation est la version"
+        "beta": ", et la dernière version stable en circulation est la version",
+        "channel": "Vous êtes sur le canal de mise à jour",
+        "distrib": "→ Informations sur la distribution"
     },
     "diskspace": [
         "Votre site utilise",

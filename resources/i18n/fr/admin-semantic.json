@@ -3,8 +3,8 @@
     "ddos": "Bloquer les attaques par requêtes massives (DDOS) automatiquement",
     "preload": "Précharger les ressources pour les prochaines visites",
     "categories": {
-        "appearance": "Apparance",
-        "security": "Sécurity",
+        "appearance": "Apparence",
+        "security": "Sécurité",
         "opti": "Optimisations"
     }
 }
