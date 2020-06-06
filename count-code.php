@@ -11,11 +11,11 @@ function crawl(string $dir) {
    $files = scandir($dir);
    foreach ($files as $file) {
       if (is_dir($dir . "/" . $file)) {
-         if ($file == "." || $file == ".." || $file == ".git") {} else {
+         if ($file == "." || $file == "..") {} else {
             crawl($dir . "/" . $file);
          }
       } else {
-         if (is_link($dir . "/" . $file)) {} else {
+         if (is_link($file)) {} else {
             echo("(DOC) " . $dir . "/" . $file . "\n");
             $size = $size + filesize($dir . "/" . $file);
             $found = $found + count(file($dir . "/" . $file));

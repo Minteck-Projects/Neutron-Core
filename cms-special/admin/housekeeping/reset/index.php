@@ -1,34 +1,100 @@
-<?php $pageConfig = [ "domName" => "Réinitialisation - Maintenance", "headerName" => "Réinitialisation" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php
+
+$invalid = false;
+
+if (isset($_COOKIE['ADMIN_TOKEN'])) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+
+    } else {
+        die("<script>location.href = '/cms-special/admin'</script>");
+    }
+} else {
+    die("<script>location.href = '/cms-special/admin'</script>");
+}
+
+if (isset($_POST['password'])) {
+    if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
+        die("<script>location.href = '/cms-special/admin/home';</script>");
+        return;
+    } else {
+        $invalid = true;
+    }
+}
+
+?>
+
+<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+    $ready = true;
+} else {
+    $ready = false;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/resources/css/admin.css">
+    <link rel="stylesheet" href="/resources/css/fonts-import.css">
+    <link rel="stylesheet" href="/resources/css/ui.css">
+    <title><?php
+    
+    if ($ready) {
+        echo("Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+    } else {
+        echo("Administration du site - MPCMS");
+    }
+
+    ?></title>
+    <?php
+        if (!$ready) {
+            die("<script>location.href = '/cms-special/setup';</script></head>");
+        }
+    ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
+</head>
+<body>
+    <div id="settings">
+        <h1><center>Administration du site</center></h1><center><a class="sblink" href="/cms-special/admin/logout" title="Terminer la session de manière sécurisée et retourner à l'écran de connexion">Terminer la session</a></center>
+        <p class="place-bar"><small><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/housekeeping" class="sblink">Maintenance</a> &gt; <a href="/cms-special/admin/housekeeping/reset" class="sblink">Réinitialiser</a></small></p>
+        <h2>Réinitialiser votre site</h2>
         <div id="page-confirm">
-            <center><p><?= $lang["admin-housekeeping"]["disclaimer"][0] ?><ul><li><?= $lang["admin-housekeeping"]["disclaimer"][1] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][2] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][3] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][4] ?></li></ul></p>
-            <p><b><?= $lang["admin-housekeeping"]["confirm"] ?></b></p><input id="confirm" onkeyup="validate()" onkeydown="validate()" onchange="validate()" type="text" placeholder="<?= $lang["admin-housekeeping"]["confirmboxph"] ?>"></center>
-            <p><center><a onclick="confirmPass()" id="reset-confirm" class="hide button-dangerous"><?= $lang["admin-housekeeping"]["confirmbutton"] ?></a></center></p>
+            <center><p>Cette action aura pour effet de supprimer :<ul><li>toutes les pages de votre site</li><li>toutes les images des galeries de photo</li><li>les images de l'îcone et de la bannière</li><li>les informations du nom de votre site, et le pied de page</li></ul></p>
+            <p><b>Entrez le nom de votre site dans le champ suivant pour pouvoir le réinitialiser :</b></p><input id="confirm" onkeyup="validate()" onkeydown="validate()" onchange="validate()" type="text" placeholder="Nom de votre site"></center>
+            <p><center><a onclick="confirmPass()" id="reset-confirm" class="hide button-dangerous">Réinitialiser</a></center></p>
         </div>
         <div id="page-select" class="hide">
-            <?= $lang["admin-housekeeping"]["select"][0] ?>
-            <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-housekeeping"]["select"][1] ?></p></td></tr></tbody></table></p>
+            Sélectionnez comment nous devons réinitialiser votre site :
             <div class="reset-option" onclick="resetKeep()">
-                <b><?= $lang["admin-housekeeping"]["select"][2] ?></b>
-                <p><?= $lang["admin-housekeeping"]["select"][3] ?></p>
+                <b>Conserver le contenu</b>
+                <p>Réinitialise la configuration de votre site et conserve le contenu que vous y avez inséré. Utile si vous rencontrez des problèmes avec votre site ou que vous avez besoin d'espace disque suplémentaire.</p>
             </div>
             <div class="reset-option" onclick="resetClear()">
-                <b><?= $lang["admin-housekeeping"]["select"][4] ?></b>
-                <p><?= $lang["admin-housekeeping"]["select"][5] ?></p>
+                <b>Tout supprimer</b>
+                <p>Supprimer toutes les données de votre site et vous redirige vers l'utilitaire de première configuration. Utile si vous souhaitez recréer votre site depuis le début, ou qu'une mise à jour a causé des problèmes.</p>
             </div>
         </div>
     </div>
     <div class="hide" id="resetbox-placeholder">
         <div id="resetbox" class="centered">
-            <p><?= $lang["admin-housekeeping"]["select"][6] ?></p>
+            <p>La réinitialisation de votre site est en cours...</p>
             <div id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
-            <p><small><?= $lang["admin-housekeeping"]["select"][7] ?><br><span id="reset-message">-</span></small></p>
+            <p><small>Ne quittez pas cette page<br><span id="reset-message">-</span></small></p>
         </div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+    </div>
+</body>
+</html>
 
 <script>
 
 function resetKeep() {
-    document.getElementById('reset-message').innerHTML = "<?= $lang["admin-housekeeping"]["select"][2] ?>"
+    document.getElementById('reset-message').innerHTML = "Conserver le contenu"
     progressbox(true)
     var formData = new FormData();
     formData.append("keep", "1");
@@ -40,13 +106,13 @@ function resetKeep() {
             if (data == "ok") {
                 location.href = "/cms-special/admin/resetted";
             } else {
-                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data + "\n\n<?= $lang["admin-errors"]["housekeeping"][0] ?>")
+                alert("Erreur : " + data + "\n\nVotre site risque d'être endommagé")
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                 progressbox(false)
             }
         },
         error: function (error) {
-            alert("<?= $lang["admin-errors"]["connerror"] ?>\n\n<?= $lang["admin-errors"]["housekeeping"][1] ?>")
+            alert("Erreur de communication\n\nAucune modification n'a été apportée à votre site")
             progressbox(false)
         },
         data: formData,
@@ -57,7 +123,7 @@ function resetKeep() {
 }
 
 function resetClear() {
-    document.getElementById('reset-message').innerHTML = "<?= $lang["admin-housekeeping"]["select"][4] ?>"
+    document.getElementById('reset-message').innerHTML = "Tout supprimer"
     progressbox(true)
     var formData = new FormData();
     formData.append("keep", "0");
@@ -69,13 +135,13 @@ function resetClear() {
             if (data == "ok") {
                 location.href = "/cms-special/admin/resetted";
             } else {
-                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data + "\n\n<?= $lang["admin-errors"]["housekeeping"][0] ?>")
+                alert("Erreur : " + data + "\n\nVotre site risque d'être endommagé")
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                 progressbox(false)
             }
         },
         error: function (error) {
-            alert("<?= $lang["admin-errors"]["connerror"] ?>\n\n<?= $lang["admin-errors"]["housekeeping"][1] ?>")
+            alert("Erreur de communication\n\nAucune modification n'a été apportée à votre site")
             progressbox(false)
         },
         data: formData,

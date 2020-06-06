@@ -1,3 +1,0 @@
-<?php $pageConfig = [ "domName" => "CMS Store", "headerName" => "CMS Store" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-    <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-store"]["home"]->message[0] ?><a class="sblink" style="text-decoration:underline;" target="_blank" href="http://<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public") ?>"><?= $lang["admin-store"]["home"]->message[1] ?></a><?= $lang["admin-store"]["home"]->message[2] ?></p></td></tr></tbody></table></p>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

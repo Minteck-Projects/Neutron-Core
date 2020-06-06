@@ -16,30 +16,6 @@ if (isset($_POST['sitename'])) {
     die("Aucun nom n'a été reçu");
 }
 
-if (isset($_POST['alwaysmenu'])) {
-    (string)$am = $_POST['alwaysmenu'];
-} else {
-    die("Pas d'AlwaysMenu passé");
-}
-
-if (isset($_POST['showpages'])) {
-    (integer)$sp = $_POST['showpages'];
-} else {
-    die("Pas de ShowPages passé");
-}
-
-if ($am == "true") {
-    if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
-        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu", "");
-    }
-} else {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu");
-    }
-}
-
-file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar", $sp);
-
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - API/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
 } else {
@@ -83,11 +59,6 @@ if (isset($_FILES['icon'])) {
     }
     if ($_FILES['icon']['error'] == 0) {
         imagepng(imagecreatefromstring(file_get_contents($_FILES['icon']['tmp_name'])), $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png");
-        if ($_FILES['icon']['type'] == "image/png") {
-            copy($_FILES['icon']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png");
-        } else {
-            copy($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png", $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png");
-        }
         unlink($_FILES['icon']['tmp_name']);
     }
 }
@@ -129,26 +100,6 @@ if (isset($_FILES['banner'])) {
     }
     if ($_FILES['banner']['error'] == 0) {
         imagejpeg(imagecreatefromstring(file_get_contents($_FILES['banner']['tmp_name'])), $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg");
-        $img = imagecreatefromjpeg($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg");
-        $width = imagesx($img);
-        $height = imagesy($img);
-        $x_step = intval($width/$num_samples);
-        $y_step = intval($height/$num_samples);
-        $total_lum = 0;
-        $sample_no = 1;
-        for ($x=0; $x<$width; $x+=$x_step) {
-            for ($y=0; $y<$height; $y+=$y_step) {
-                $rgb = imagecolorat($img, $x, $y);
-                $r = ($rgb >> 16) & 0xFF;
-                $g = ($rgb >> 8) & 0xFF;
-                $b = $rgb & 0xFF;
-                $lum = ($r+$r+$b+$g+$g+$g)/6;
-                $total_lum += $lum;
-                $sample_no++;
-            }
-        }
-        $avg_lum  = $total_lum / $sample_no;
-        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd", ($avg_lum / 255) * 100);
         unlink($_FILES['banner']['tmp_name']);
     }
 }

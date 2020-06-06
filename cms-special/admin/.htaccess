@@ -1,4 +1,0 @@
-ErrorDocument 404 "/cms-special/admin/error"
-ErrorDocument 403 "/cms-special/admin/error"
-ErrorDocument 401 "/cms-special/admin/error"
-ErrorDocument 500 "/cms-special/admin/error"

@@ -1,25 +1,5 @@
 <?php
 
-if (isset($_COOKIE['ADMIN_TOKEN'])) {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
-
-    } else {
-        die("Jeton d'authentification invalide");
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
-        } else {
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
-        }
-    }
-} else {
-    die("Jeton d'authentification invalide");
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
-        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
-    } else {
-        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
-    }
-}
-
 function isJson($string) {
     json_decode($string);
     return (json_last_error() == JSON_ERROR_NONE);
@@ -36,11 +16,6 @@ if (isJson($jsonraw)) {
         $desc = $_POST['desc'];
     } else {
         die("Pas de description");
-    }
-    if (isset($_POST['link'])) {
-        $link = $_POST['link'];
-    } else {
-        die("Pas de lien");
     }
     if (isset($_POST['day'])) {
         $day = $_POST['day'];
@@ -137,13 +112,8 @@ if (isJson($jsonraw)) {
     $json->events[$pos]->timestamp = $year . date('m', $date) . date('d', $date);
     $json->events[$pos]->name = $name;
     $json->events[$pos]->description = $desc;
-    if (substr($link, 0, 4) == "http") {
-        $json->events[$pos]->link = $link;
-    } else {
-        $json->events[$pos]->link = "http://" . $link;
-    }
     $json->events[$pos]->datestr = $daystr . " " . $monthstr . " " . $year;
-    $newjsonraw = json_encode($json, JSON_PRETTY_PRINT);
+    $newjsonraw = json_encode($json);
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json", $newjsonraw);
     die("ok");
 } else {

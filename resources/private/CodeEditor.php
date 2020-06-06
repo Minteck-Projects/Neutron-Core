@@ -1,33 +1,19 @@
-<p><input type="checkbox" name="wordwrap" id="wordwrap" onchange="ace.edit(&quot;editor&quot;).getSession().setUseWrapMode(document.getElementById('wordwrap').checked);" checked><label for="wordwrap"><?= $lang["editor"]["wrap"] ?></label></p>
+<!-- <div id="editor">&lt;!-- L'éditeur de code Minteck Projects CMS ne vous fait pas modifier un fichier entier.
+Vous ne modifiez qu'une partie de fichier.
 
-<div id="editor"><?php echo(str_ireplace(">", "&gt;", str_ireplace("<", "&lt;", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)))) ?></div>
+Vous pouvez donc ignorer les avertissements relatifs à certaines informations manquantes
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var codeeditor = ace.edit("editor");
-    <?php
+____________________________
 
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {
-        echo("ace.edit(\"editor\").setTheme('ace/theme/monokai');");
-    }
+--&gt;
 
-    ?>
-    codeeditor.session.setMode("ace/mode/html");
-    codeeditor.session.setUseWrapMode(true);
-    function loadAce() {}
-</script>
-<script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/html");}, 100)</script>
-<center><p><a onclick="updatePageHTML()" class="button"><?= $lang["editor"]["publish"] ?></a> <small><a onclick="updatePageHTMLNoBack()" class="sblink"><?= $lang["editor"]["publishnoback"] ?></a></small></p></center>
-<script>
-    window.onbeforeunload = function (e) {
-    e = e || window.event;
+&lt;!-- Insérez le code CSS requis pour votre page ici --&gt;
+&lt;style&gt;&lt;/style&gt;
 
-    // For IE and Firefox prior to version 4
-    if (e) {
-        e.returnValue = "<?= $lang["editor"]["exit"] ?>";
-    }
+&lt;!-- Insérez le code JavaScript requis pour votre page ici --&gt;
+&lt;script type="text/javascript"&gt;&lt;/script&gt;
 
-        // For Safari
-        return "<?= $lang["editor"]["exit"] ?>";
-    };
-</script>
+&lt;!-- Insérez le code HTML de votre page ici --&gt;</div> -->
+
+<textarea id="codeeditor"><?php echo(str_ireplace(">", "&gt;", str_ireplace("<", "&lt;", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)))) ?></textarea>
+<center><p><a onclick="updatePageHTML()" class="button">Publier</a></p></center>

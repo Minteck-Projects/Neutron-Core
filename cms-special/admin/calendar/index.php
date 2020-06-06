@@ -1,25 +1,74 @@
-<?php $pageConfig = [ "domName" => "Calendrier", "headerName" => "Gestion des événements" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-        <?php
-        
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events")) {
-            $calevn = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events");
-        } else {
-            $calevn = "3";
+<?php
+
+$invalid = false;
+
+if (isset($_COOKIE['ADMIN_TOKEN'])) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+
+    } else {
+        die("<script>location.href = '/cms-special/admin'</script>");
+    }
+} else {
+    die("<script>location.href = '/cms-special/admin'</script>");
+}
+
+if (isset($_POST['password'])) {
+    if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
+        die("<script>location.href = '/cms-special/admin/home';</script>");
+        return;
+    } else {
+        $invalid = true;
+    }
+}
+
+function isJson($string) {
+    json_decode($string);
+    return (json_last_error() == JSON_ERROR_NONE);
+}
+
+?>
+
+<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+    $ready = true;
+} else {
+    $ready = false;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/resources/css/admin.css">
+    <link rel="stylesheet" href="/resources/css/fonts-import.css">
+    <link rel="stylesheet" href="/resources/css/ui.css">
+    <title><?php
+    
+    if ($ready) {
+        echo("Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+    } else {
+        echo("Administration du site - MPCMS");
+    }
+
+    ?></title>
+    <?php
+        if (!$ready) {
+            die("<script>location.href = '/cms-special/setup';</script></head>");
         }
-        
-        ?>
-        Afficher les <select onchange="updateNextEvents()" id="nextevents">
-            <option value="1" <?php if ($calevn == "1") { echo("selected"); } ?>>1</option>
-            <option value="2" <?php if ($calevn == "2") { echo("selected"); } ?>>2</option>
-            <option value="3" <?php if ($calevn == "3") { echo("selected"); } ?>>3</option>
-            <option value="4" <?php if ($calevn == "4") { echo("selected"); } ?>>4</option>
-            <option value="5" <?php if ($calevn == "5") { echo("selected"); } ?>>5</option>
-            <option value="6" <?php if ($calevn == "6") { echo("selected"); } ?>>6</option>
-            <option value="7" <?php if ($calevn == "7") { echo("selected"); } ?>>7</option>
-            <option value="8" <?php if ($calevn == "8") { echo("selected"); } ?>>8</option>
-            <option value="9" <?php if ($calevn == "9") { echo("selected"); } ?>>9</option>
-            <option value="10" <?php if ($calevn == "10") { echo("selected"); } ?>>10</option>
-        </select> prochains événements dans le widget.
+    ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
+</head>
+<body>
+    <div id="settings">
+        <h1><center>Administration du site</center></h1><center><a class="sblink" href="/cms-special/admin/logout" title="Terminer la session de manière sécurisée et retourner à l'écran de connexion">Terminer la session</a></center>
+        <p class="place-bar"><small><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/calendar" class="sblink">Calendrier</a></small></p>
+        <h2>Ajouter/supprimer des événements</h2>
         <h3>Événements</h3>
         <ul>
         <?php
@@ -51,35 +100,6 @@
         
         ?>
         </ul>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
-<script>
-
-function updateNextEvents() {
-    value = document.getElementById('nextevents').value;
-    var formData = new FormData();
-    formData.append("value", value);
-    document.getElementById('nextevents').disabled = true;
-    $.ajax({
-        type: "POST",
-        dataType: 'html',
-        url: "/api/admin/calendar_nextevents.php",
-        success: function (data) {
-            if (data == "ok") {
-                document.getElementById('nextevents').disabled = false;
-            } else {
-                alert("Erreur : " + data)
-                document.getElementById('nextevents').disabled = false;
-            }
-        },
-        error: function (error) {
-            alert("Erreur de communication")
-            document.getElementById('nextevents').disabled = false;
-        },
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false
-    });
-}
-
-</script>
+    </div>
+</body>
+</html>

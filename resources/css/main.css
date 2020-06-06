@@ -8,13 +8,13 @@ html {
 
 body {
     margin: 0;
-    height: auto;
+    height: 100%;
 }
 
 #siteadmin {
     background: black;
     color: white;
-    padding: 4px 32px;
+    padding: 4px;
     font-size: 10px;
     height: 12px;
 }
@@ -35,21 +35,6 @@ body {
     background: rgb(41, 41, 41);
 }
 
-.sab {
-    cursor: pointer;
-    background: transparent;
-    transition: background 100ms;
-    margin: -4px;
-    padding: 4px;
-    padding-bottom: 3px;
-    color: white;
-    text-decoration: none;
-}
-
-.sab:hover {
-    background: rgb(41, 41, 41);
-}
-
 #siteadmin-img {
     filter: invert(100%);
     width: 16px;
@@ -60,14 +45,14 @@ body {
 #banner {
     padding: 40px 50px;
     background-position: center;
-    background-size: cover;
-    padding-top: 60px;
+    background-size: 100%;
+    padding-top: 101px;
 }
 
 #banner-menu {
     padding: 20px 50px;
     background-position: center;
-    background-size: cover;
+    background-size: 100%;
 }
 
 @media (max-width: 500px) {
@@ -146,8 +131,7 @@ body {
 
 #menubar {
     padding: 10px 20px;
-    background: rgb(66, 66, 66);
-    box-shadow: 1px 10px 12px rgba(0, 0, 0, .5);
+    background: rgb(66, 66, 66)
 }
 
 .menubar-link {
@@ -241,7 +225,7 @@ body {
 }
 
 #page-placeholder, body {
-    background: rgb(66, 66, 66);
+    background: rgb(34, 34, 34);
 }
 
 #page-footer {
@@ -268,11 +252,9 @@ body {
     width: 30%;
     margin: 10px;
     background: #c8c8c8;
-    padding: 15px 5px;
+    padding: 5px;
     box-shadow: #c8c8c8 1px 1px 12px;
     display: inline-block;
-    border-radius: 7.5px;
-    border: #716f6f 1px solid;
 }
 
 .photo_image {
@@ -281,194 +263,4 @@ body {
     border-style: solid;
     border-color: black;
     width: 90%;
-    filter: blur(5px);
-    transition: filter 200ms;
-    border-radius: 5px;
-}
-
-.photo_image.loaded {
-    filter: none !important;
-}
-
-@media (max-width: 500px) {
-    .menubar-mobile {
-        display: initial;
-    }
-    .menulink-desktop {
-        display: none;
-    }
-    .menubar-desktop {
-        display: none;
-    }
-}
-
-@media (min-width: 500px) {
-    .menubar-mobile {
-        display: none;
-    }
-    .menulink-desktop {
-        display: initial;
-    }
-    .menubar-desktop {
-        display: initial;
-    }
-}
-
-.menulink-desktop {
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: -10px 0;
-    transition: background 200ms;
-    text-decoration: none;
-}
-
-.menulink-desktop:hover {
-    background: #626262;
-}
-
-.menulink-desktop:active {
-    background: #1d1d1d;
-}
-
-.pushbar_overlay {
-    background: #2f2f2f;
-}
-
-.pushbar.opened {
-    box-shadow: 1px 1px 12px gray;
-    z-index: 999999999 !important;
-}
-
-.menubar-link {
-    margin: -10px;
-    padding: 10px;
-    padding-bottom: 8px;
-    transition: background 200ms;
-}
-
-.menubar-link:hover {
-    background: #626262;
-}
-
-.menubar-link:active {
-    background: #1d1d1d;
-}
-
-.message_img {
-    width: 36px;
-    height: 36px;
-    z-index: -1;
-}
-
-.message_info {
-    background: rgba(116, 227, 255, 0.31);
-    margin: 10px;
-    border-radius: 10px;
-    padding: 5px 10px;
-    z-index: -2;
-}
-
-.message_error {
-    background: rgba(255, 117, 117, 0.31);
-    margin: 10px;
-    border-radius: 10px;
-    padding: 5px 10px;
-    z-index: -2;
-    color: white;
-}
-
-blockquote {
-    margin-left: 0;
-    margin-right: 0;
-    border-left: 5px solid #ccc;
-    padding: 0px 1.5em;
-    font-style: italic;
-}
-
-blockquote p {
-    margin: 0;
-    padding: 16px 0px;
-}
-
-a:not([class]), a[class=""] {
-    color: inherit;
-}
-
-a:not([class]):hover, a[class=""]:hover {
-    text-decoration: none;
-}
-
-a:not([class]):not([id]):active, a[class=""][id=""]:active {
-    text-decoration: none;
-    opacity: 75%;
-}
-
-.photo_label {
-    color: black;
-    padding: 10px 0;
-    display: block;
-    margin-bottom: -15px;
-}
-
-.sticky {
-    position: fixed;
-    top: 20px;
-    width: 97%;
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky ~ #page-placeholder {
-    padding-top: 39px;
-    /* padding-top: 191px; */
-}
-
-#always-on-top, #menubar {
-    z-index: 99999999;
-}
-
-@media (min-width: 700px) {
-    #sidebar {
-        height: calc(100% - 152px) !important;
-        position: absolute;
-        right: 0;
-        background: rgb(66, 66, 66);
-        top: 152px;
-        overflow-y: hidden;
-        width: 256px !important;
-        max-width: initial !important;
-        transform: initial !important;
-        color: white !important;
-    }
-    #menubar {
-        z-index: initial;
-    }
-    #sidebar-widgets {
-        top: initial !important;
-        padding-top: 30px;
-        display: block;
-    }
-    #sidebar-separator, #sidebar-title, #sidebar-close {
-        opacity: 0;
-        cursor: default;
-    }
-    #menubar-link-tools {
-        display: none;
-    }
-    #page-placeholder {
-        margin-right: 256px;
-    }
-}
-
-.hint {
-    text-decoration: dotted underline;
-    cursor: help;
-}
-
-#sidebar-widgets img {
-    filter: invert(100%);
-}
-
-.image.image_resized > img {
-    width:100%;
 }

@@ -41,7 +41,7 @@ if (isset($_POST['page'])) {
             $newslug = preg_replace("/[^0-9a-zA-Z ]/m", "", $newname );
             $newslug = str_replace(" ", "-", $newslug);
             $newslug = strtolower($newslug);
-            if ($newslug == "api" || $newslug == "cms-special" || $newslug == "galery" || $newslug == "vendor" || $newslug == "cms-unrelated" || $newslug == "data" || $newslug == "resources" || $newslug == "widgets" || $newslug == "-htaccess" || $newslug == "index" || $newslug == "index-php") {
+            if ($newslug == "api" || $newslug == "cms-special" || $newslug == "data" || $newslug == "resources" || $newslug == "widgets" || $newslug == "-htaccess" || $newslug == "index" || $newslug == "index-php") {
                 die("Vous ne pouvez pas utiliser un nom réservé en interne par le logiciel");
             }
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $newslug)) {
@@ -60,7 +60,6 @@ if (isset($_POST['page'])) {
             rmdir($_SERVER['DOCUMENT_ROOT'] . "/" . $oldslug);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $oldslug);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $oldslug);
-            include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
             die("ok");
         } else {
             die("Aucun nouveau nom spécifié");

@@ -1,11 +1,81 @@
-<?php $pageConfig = [ "domName" => "Statistiques", "headerName" => "Statistiques" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php
+
+$invalid = false;
+
+function startsWith ($string, $startString) 
+{ 
+    $len = strlen($startString); 
+    return (substr($string, 0, $len) === $startString); 
+}
+
+if (isset($_COOKIE['ADMIN_TOKEN'])) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+
+    } else {
+        die("<script>location.href = '/cms-special/admin'</script>");
+    }
+} else {
+    die("<script>location.href = '/cms-special/admin'</script>");
+}
+
+if (isset($_POST['password'])) {
+    if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
+        die("<script>location.href = '/cms-special/admin/home';</script>");
+        return;
+    } else {
+        $invalid = true;
+    }
+}
+
+?>
+
+<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+    $ready = true;
+} else {
+    $ready = false;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/resources/css/admin.css">
+    <link rel="stylesheet" href="/resources/css/fonts-import.css">
+    <link rel="stylesheet" href="/resources/css/ui.css">
+    <title><?php
+    
+    if ($ready) {
+        echo("Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+    } else {
+        echo("Administration du site - MPCMS");
+    }
+
+    ?></title>
+    <?php
+        if (!$ready) {
+            die("<script>location.href = '/cms-special/setup';</script></head>");
+        }
+    ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
+</head>
+<body>
+    <div id="settings">
+        <h1><center>Administration du site</center></h1><center><a class="sblink" href="/cms-special/admin/logout" title="Terminer la session de manière sécurisée et retourner à l'écran de connexion">Terminer la session</a></center>
+        <p class="place-bar"><small><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/stats" class="sblink">Statistiques</a></small></p>
+        <h2>Statistiques de votre site</h2>
         <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-        <h3><?= $lang["admin-stats"]["thisMonth"]?></h3>
+        <h3>Visites du site ce mois</h3>
         <div id="visits" class="chart--container"></div>
         <script>
       let chartConfig = {
   type: 'pie',
-  backgroundColor: 'transparent',
   plot: {
     tooltip: {
       text: '%npv%',
@@ -22,12 +92,28 @@
     margin: '20 0 0 0'
   },
   source: {
-    text: "<?= $lang["admin-stats"]["disclaimer"] ?>",
+    text: 'Certaines informations peuvent être inexactes',
     fontColor: '#8e99a9',
     fontFamily: 'Open Sans',
     textAlign: 'left'
   },
   series: [
+    // {
+    //   text: 'IE and Edge',
+    //   values: [2],
+    // },
+    // {
+    //   text: 'Chrome',
+    //   values: [2],
+    // },
+    // {
+    //   text: 'Firefox',
+    //   values: [2],
+    // },
+    // {
+    //   text: 'Safari',
+    //   values: [2],
+    // },
 <?php
 
 $dates = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats");
@@ -51,7 +137,7 @@ zingchart.render({
 });
     </script>
     <div id="afterchart">
-        <h3><?= $lang["admin-stats"]["year"] ?></h3>
+        <h3>Visites totales cette année</h3>
         <table>
             <tbody>
                 <?php
@@ -108,23 +194,23 @@ zingchart.render({
                         $visits['12'] = $visits['12'] + (int)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . $list);
                     }
                 }
-
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][0]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['01']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][1]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['02']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][2]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['03']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][3]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['04']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][4]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['05']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][5]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['06']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][6]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['07']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][7]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['08']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][8]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['09']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][9]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['10']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][10]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['11']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][11]}{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['12']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                
+                echo("<tr><td><b>Janvier :</b></td><td>{$visits['01']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Février :</b></td><td>{$visits['02']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Mars :</b></td><td>{$visits['03']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Avril :</b></td><td>{$visits['04']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Mai :</b></td><td>{$visits['05']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Juin :</b></td><td>{$visits['06']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Juillet :</b></td><td>{$visits['07']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Août :</b></td><td>{$visits['08']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Septembre :</b></td><td>{$visits['09']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Octobre :</b></td><td>{$visits['10']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Novembre :</b></td><td>{$visits['11']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Décembre :</b></td><td>{$visits['12']}</td><td> visites</td></tr>");
                 ?>
             </tbody>
         </table>
-        <h3><?= $lang["admin-stats"]["last"] ?></h3>
+        <h3>Visites totales l'année dernière</h3>
         <table>
             <tbody>
                 <?php
@@ -181,21 +267,23 @@ zingchart.render({
                         $visits['12'] = $visits['12'] + (int)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . $list);
                     }
                 }
-
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][0]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['01']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][1]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['02']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][2]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['03']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][3]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['04']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][4]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['05']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][5]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['06']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][6]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['07']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][7]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['08']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][8]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['09']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][9]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['10']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][10]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['11']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
-                echo("<tr><td><b>{$lang["admin-stats"]["months"][11]} " . ((int)date("Y") - 1) . "{$lang["admin-stats"]["separator"]}</b></td><td>{$visits['12']}</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
+                
+                echo("<tr><td><b>Janvier " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['01']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Février " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['02']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Mars " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['03']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Avril " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['04']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Mai " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['05']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Juin " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['06']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Juillet " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['07']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Août " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['08']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Septembre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['09']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Octobre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['10']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Novembre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['11']}</td><td> visites</td></tr>");
+                echo("<tr><td><b>Décembre " . ((int)date("Y") - 1) . " :</b></td><td>{$visits['12']}</td><td> visites</td></tr>");
                 ?>
             </tbody>
         </table>
     </div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+    </div>
+</body>
+</html>

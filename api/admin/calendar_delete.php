@@ -53,7 +53,7 @@ if (isJson($jsonraw)) {
             }
         }
     }
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json", json_encode($json, JSON_PRETTY_PRINT));
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json", json_encode($json));
     die("ok");
 } else {
     die("CalDb1: ParseError: Unable to open database, JSON parse failed. Data might be corrupted");

@@ -1,5 +1,3 @@
-@import "/resources/css/alerts.css";
-
 .button {
     cursor: pointer;
     text-decoration: none;
@@ -9,9 +7,8 @@
     border-radius: 5px;
     border-style: solid;
     border-width: 0px;
-    border-width: 3px;
-    border-color: transparent;
-    transition: border-color 100ms;
+    border-color: rgb(65, 65, 65);
+    transition: border-width 100ms cubic-bezier(.17,.67,.83,.67);
     box-shadow: 1px 1px 5px rgb(65, 65, 65);
 }
 
@@ -23,20 +20,14 @@
     background: rgb(182, 19, 19);
     border-radius: 5px;
     border-style: solid;
-    border-width: 3px;
-    border-color: transparent;
-    transition: border-color 100ms;
+    border-width: 0px;
+    border-color: rgb(173, 56, 56);
+    transition: border-width 100ms cubic-bezier(.17,.67,.83,.67);
     box-shadow: 1px 1px 5px rgb(173, 56, 56);
 }
 
-.button:hover {
-    color: white;
-    border-color: rgb(65, 65, 65);
-}
-
-.button-dangerous:hover {
-    color: white;
-    border-color: rgb(173, 56, 56);
+.button:hover, .button-dangerous:hover {
+    border-width: 3px;
 }
 
 .icon_button {
@@ -46,7 +37,6 @@
     border-radius: 999px;
     box-shadow: none;
     transition: box-shadow 200ms;
-    background: whitesmoke;
 }
 
 .icon_button:hover {
@@ -57,7 +47,7 @@
     display: none;
 }
 
-input[type="text"]:not(.easycss-input-value), input[type="password"] {
+input[type="text"], input[type="password"] {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -67,7 +57,7 @@ input[type="text"]:not(.easycss-input-value), input[type="password"] {
     text-align: center;
 }
 
-input[type="text"]:hover:not(.easycss-input-value), input[type="password"]:hover {
+input[type="text"]:hover, input[type="password"]:hover {
     border-color: rgb(75, 75, 75);
 }
 
@@ -99,68 +89,4 @@ center {
 code {
     font-family: monospace;
     font-size: 14px;
-}
-
-#errorbox-wrapper {
-    z-index: 99999;
-    background-color: rgba(0, 0, 0, 0.75);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-#errorbox-frame {
-    margin: 0 25%;
-    padding: 30px;
-    border-radius: 10px;
-    background: #eaeaea;
-    box-shadow: 0px 0px 8px #eaeaea;
-    color: black;
-}
-
-#errorbox-bottom {
-    margin-bottom: -30px;
-    margin-left: -30px;
-    margin-right: -30px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background: #5487ff;
-    padding: 5px;
-    margin-top: 30px;
-    box-shadow: 1px 5px 8px #5487ff;
-    cursor: pointer;
-    transition: box-shadow 200ms, background 200ms;
-}
-
-#errorbox-bottom:hover {
-    background: #417aff;
-    box-shadow: 1px 5px 8px #417aff;
-}
-
-#errorbox-bottom:active {
-    background: #195eff;
-    box-shadow: 1px 5px 8px #195eff;
-}
-
-@media (max-width: 500px) {
-    #errorbox-frame {
-        padding: 10px;
-    }
-    #errorbox-bottom {
-        margin-bottom: -10px;
-        margin-left: -10px;
-        margin-right: -10px;
-        margin-top: 10px;
-    }
-    #errorbox-logo {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-#errorbox-logo {
-    width: 48px;
-    height: 48px;
 }

@@ -1,4 +1,4 @@
-<?php ob_start();echo("<!--\n\n" . str_replace('%year%', date('Y'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license")) . "\n\n-->") ?>
+<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
-    <title>Réinitialisation du site - MPCMS</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/translations/fr.js"></script>
+    <title>Réinitilisation du site - MPCMS</title>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
 </head>
 <body>
     <div id="settings" class="centered">

@@ -1,4 +1,4 @@
-<?php ob_start();echo("<!--\n\n" . str_replace('%year%', date('Y'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license")) . "\n\n-->") ?>
+<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
@@ -45,7 +45,7 @@ if ($ready) {
     ?></title>
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
 </head>
-<body mpcms-error-body>
+<body>
     <div class="centered discover">
         <h2>Une erreur s'est produite</h2>
         <p>Nous sommes désolés, mais une erreur s'est produite lors du chargement de la page.</p>

@@ -43,11 +43,6 @@ if (isset($_POST['content'])) {} else {
 $title = $_POST['title'];
 $title = str_replace('>', '&gt;', $title);
 $title = str_replace('<', '&lt;', $title);
-if (substr($title, 0, 1) == " " || substr($title, 0, 1) == "-" || substr($title, 0, 1) == " " || substr($title, 0, 1) == "_" || substr($title, 0, 1) == "@" || substr($title, 0, 1) == "|" || substr($title, 0, 1) == "'" || substr($title, 0, 1) == "\"" || substr($title, 0, 1) == "~" || substr($title, 0, 1) == "&" || substr($title, 0, 1) == "=") {
-    $prefixed = true;
-} else {
-    $prefixed = false;
-}
 $type = $_POST['type'];
 $content = $_POST['content'];
 
@@ -55,15 +50,11 @@ $slug = preg_replace("/[^0-9a-zA-Z ]/m", "", $title );
 $slug = str_replace(" ", "-", $slug);
 $slug = strtolower($slug);
 
-if ($prefixed) {
-    $slug = "-" . $slug;
-}
-
 if (trim($title) == "") {
     die("Le titre ne peut pas être vide");
 }
 
-if ($slug == "api" || $slug == "cms-special" || $slug == "galery" || $slug == "cms-unrelated" || $slug == "vendor" || $slug == "data" || $slug == "resources" || $slug == "widgets" || $slug == "-htaccess" || $slug == "index" || $slug == "index-php") {
+if ($slug == "api" || $slug == "cms-special" || $slug == "data" || $slug == "resources" || $slug == "widgets" || $slug == "-htaccess" || $slug == "index" || $slug == "index-php") {
     die("Vous ne pouvez pas utiliser un nom réservé en interne par le logiciel");
 }
 
@@ -84,5 +75,4 @@ file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $s
 mkdir($_SERVER['DOCUMENT_ROOT'] . "/" . $slug);
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $slug . "/index.php", '<?php include_once $_SERVER[\'DOCUMENT_ROOT\'] . "/api/renderer/render.php"; render(\'' . $slug . '\'); ?>');
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $slug . "/pagename", $title);
-include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
 die("ok");

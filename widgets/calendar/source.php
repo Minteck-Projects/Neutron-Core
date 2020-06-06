@@ -23,35 +23,21 @@ function isJson($string) {
         sort($eventlist);
         $pos = 1;
         $shown = 0;
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events")) {
-            $calevn = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/calendar_events");
-        } else {
-            $calevn = "3";
-        }
         foreach ($eventlist as $event) {
-            if ($pos == ($calevn + 1)) {} else {
+            if ($pos == 4) {} else {
                 foreach ($json->events as $el) {
-                    if (isset($el->timestamp)) {
-                        if ($el->timestamp == $event) {
-                            (int)$currentDate = date("Ymd");
-                            if ($currentDate < $el->timestamp) {
-                                $shown = $shown + 1;
-                                if (isset($el->link)) {
-                                    if ($el->link != "" && $el->link != "http://") {
-                                        echo("<li><b><a target=\"_blank\" class=\"sblink\" href=\"" . $el->link . "\">" . $el->datestr . "</b> : " . $el->name . "</a></li>");
-                                    } else {
-                                        echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li>");
-                                    }
-                                } else {
-                                    echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li>");
-                                }
-                                $pos = $pos + 1;
-                            }
-                            if ($currentDate == $el->timestamp) {
-                                $shown = $shown + 1;
-                                echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li>");
-                                $pos = $pos + 1;
-                            }
+                    if ($el->timestamp == $event) {
+                        (int)$currentDate = date("Ymd");
+                        // (int)$currentDate = "20191001";
+                        if ($currentDate < $el->timestamp) {
+                            $shown = $shown + 1;
+                            echo("<li><b>" . $el->datestr . "</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
+                            $pos = $pos + 1;
+                        }
+                        if ($currentDate == $el->timestamp) {
+                            $shown = $shown + 1;
+                            echo("<li><b>Aujourd'hui</b> : " . $el->name . "</li><i>" . $el->description . "</i><br><br>");
+                            $pos = $pos + 1;
                         }
                     }
                 }
@@ -66,5 +52,4 @@ function isJson($string) {
 
     ?>
     </ul>
-    <small><a href="/cms-special/calendar">Tout voir...</a></small>
 </div>

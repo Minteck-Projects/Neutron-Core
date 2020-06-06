@@ -1,4 +1,74 @@
-<?php $pageConfig = [ "domName" => "Ajouter un événement - Calendrier", "headerName" => "Ajouter un événement" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php
+
+$invalid = false;
+
+if (isset($_COOKIE['ADMIN_TOKEN'])) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+
+    } else {
+        die("<script>location.href = '/cms-special/admin'</script>");
+    }
+} else {
+    die("<script>location.href = '/cms-special/admin'</script>");
+}
+
+if (isset($_POST['password'])) {
+    if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
+        die("<script>location.href = '/cms-special/admin/home';</script>");
+        return;
+    } else {
+        $invalid = true;
+    }
+}
+
+function isJson($string) {
+    json_decode($string);
+    return (json_last_error() == JSON_ERROR_NONE);
+}
+
+?>
+
+<?php echo("<!--\n\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license") . "\n\n-->") ?>
+<?php
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+    $ready = true;
+} else {
+    $ready = false;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/resources/css/admin.css">
+    <link rel="stylesheet" href="/resources/css/fonts-import.css">
+    <link rel="stylesheet" href="/resources/css/ui.css">
+    <title><?php
+    
+    if ($ready) {
+        echo("Administration du site - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+    } else {
+        echo("Administration du site - MPCMS");
+    }
+
+    ?></title>
+    <?php
+        if (!$ready) {
+            die("<script>location.href = '/cms-special/setup';</script></head>");
+        }
+    ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
+</head>
+<body>
+    <div id="settings">
+        <h1><center>Administration du site</center></h1><center><a class="sblink" href="/cms-special/admin/logout" title="Terminer la session de manière sécurisée et retourner à l'écran de connexion">Terminer la session</a></center>
+        <p class="place-bar"><small><a href="/cms-special/admin/home" class="sblink">Administration</a> &gt; <a href="/cms-special/admin/calendar" class="sblink">Calendrier</a> &gt; <a href="/cms-special/admin/calendar/zff" class="sblink">Ajouter un événement</a></small></p>
+        <h2>Ajouter un événement</h2>
         <div id="datainput">
             <h3>Date</h3>
             <ul>
@@ -69,40 +139,16 @@
             <ul>
                 <li>Nom de l'événement :</li>
                 <input type="text" placeholder="Nom de l'événement" id="name"><br><br>
-                <li>Description <i>(facultatif)</i> :</li>
-                <input type="text" placeholder="Description" id="desc"><br><br>
-                <li>Adresse du lien <i>(facultatif)</i> :</li>
-                <input onchange="validateUrl()" onkeyup="validateUrl()" onkeydown="validateUrl()" type="text" placeholder="Lien externe" id="link"><img id="link_check" src="/resources/image/storeloader.svg" style="vertical-align:middle;" class="hide" width="24px" height="24px"><a class="hide" id="link_invalid" title="L'adresse du lien est invalide"><img src="/resources/image/close.svg" style="vertical-align:middle;" class="invert" width="24px" height="24px"></a>
+                <li>Description :</li>
+                <input type="text" placeholder="Description" id="desc">
             </ul>
-            <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>La description de l'événement s'affichera entièrement sur le widget "Prochains événements", nous vous conseillons donc de ne pas écrire une description trop longue</p></td></tr></tbody></table></p>
             <center><p><a class="button" onclick="createCmsEvent()">Ajouter l'événement</a></p></center><br>
         </div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+    </div>
+</body>
+</html>
 
 <script>
-
-function UrlRegex(str) {
-  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  return !!pattern.test(str);
-}
-
-function validateUrl() {
-    document.getElementById('link_invalid').classList.add('hide');
-    document.getElementById('link_check').classList.remove('hide');
-    setTimeout(() => {
-        if (!UrlRegex(document.getElementById('link').value)) {
-            document.getElementById('link_invalid').classList.remove('hide');
-        } else {
-            document.getElementById('link_invalid').classList.add('hide');
-        }
-        document.getElementById('link_check').classList.add('hide');
-    }, 2000)
-}
 
 function createCmsEvent() {
     document.getElementById('datainput').classList.add('hide')
@@ -112,7 +158,6 @@ function createCmsEvent() {
     formData.append("year", document.getElementById('year').value);
     formData.append("name", document.getElementById('name').value);
     formData.append("desc", document.getElementById('desc').value);
-    formData.append("link", document.getElementById('link').value);
     $.ajax({
         type: "POST",
         dataType: 'html',

@@ -55,6 +55,6 @@ if ($_POST['value'] == "false") {
 }
 $settings->list = $array;
 
-file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json", json_encode($settings, JSON_PRETTY_PRINT));
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json", json_encode($settings));
 
 die("ok");
