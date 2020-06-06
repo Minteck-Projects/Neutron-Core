@@ -4,7 +4,7 @@
         $currentVersionP = str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"));
         $channel = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[2];
         $currentVersion = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[0];
-        $latestVersion = file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version");
+        $latestVersion = trim(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version"));
         $latestVersionP = str_replace("#", substr(md5($latestVersion . "-#-" . $channel), 0, 2), $latestVersion . "-#-" . $channel);
         $returned = false;
 
