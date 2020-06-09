@@ -55,11 +55,17 @@
 }
 
 #error {
-    background: rgb(255, 65, 65);
+    background: rgb(123, 4, 4);
     text-align: center;
-    margin: 10px 0px;
+    margin: auto;
     padding: 10px;
-    box-shadow: 1px 1px 12px rgb(255, 65, 65);
+    box-shadow: 1px 1px 2px rgb(123, 4, 4);
+    color: white;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
 }
 
 body {
@@ -583,7 +589,6 @@ html {
 .configure_ext, .store_ext, .remove_ext {
     float: right;
     position: relative;
-    bottom: 10px;
     height: 24px;
     cursor: pointer;
     transition: rotate 200ms, opacity 200ms;
@@ -610,4 +615,17 @@ html {
 
 #main-content {
     overflow-x: hidden;
+}
+
+.clink {
+    color: black;
+    text-decoration: underline;
+}
+
+.clink:hover {
+    text-decoration: none;
+}
+
+.clink:active, .clink:focus {
+    opacity: .75;
 }

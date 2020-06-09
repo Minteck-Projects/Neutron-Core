@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
-    <title>Réinitialisation du site - MPCMS</title>
+    <title>Minteck Projects CMS</title>
 </head>
 <body>
     <div id="settings" class="centered">
         <img src="/resources/image/resetted.png" height="64px" width="64px">
-        <p>Réinitialisation du site terminée avec succès</p>
-        <p><a href="/" class="button">Retourner à l'accueil</a></p>
+        <p><a href="/" class="button">OK</a></p>
     </div>
 </body>
 </html>

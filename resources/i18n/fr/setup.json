@@ -1,0 +1,84 @@
+{
+    "ititle": "Configuration",
+    "steps": [
+        "Vérification",
+        "Erreur",
+        "Bienvenue",
+        "Identité graphique",
+        "Sauvegarde",
+        "Terminé",
+        "Chargement",
+        "Votre site",
+        "Contrat de licence",
+        "Confirmation"
+    ],
+    "sitename": [
+        "Le nom ne peut pas être vide",
+        "Le nom contient des caractères invalides",
+        "Le nom est trop long",
+        "Nom plus long recommandé",
+        "Nom plus court recommandé",
+        "Ce nom semble parfait"
+    ],
+    "errors": [
+        "Impossible de terminer la configuration",
+        "Erreur de communication",
+        "La connexion avec le serveur distant a été intérrompue inopinément pendant la transmission des données"
+    ],
+    "done": [
+        "Terminé",
+        "Votre site est maintenant correctement configuré, et est prêt à être visité par le monde entier.",
+        "Pour modifier son contenu et/ou ses paramètres, vous devez vous connecter à l'interface d'administration. Le mot de passe est ",
+        ". Pensez à le modifier ou votre site pourrait être vulnérable !"
+    ],
+    "links": [
+        "Explorer",
+        "Terminer",
+        "J'accepte",
+        "Suivant",
+        "Commencer"
+    ],
+    "defaulterr": [
+        "Une erreur s'est produite",
+        "Erreur inconnue",
+        "Relancer la configuration"
+    ],
+    "sections": [
+        "Préparation",
+        "Vérification de votre environnement",
+        "Bienvenue !",
+        "Votre site",
+        "Identité graphique",
+        "Contrat de licence",
+        "Confirmation"
+    ],
+    "upload": [
+        "Vérification des informations",
+        "Envoi des informations",
+        "Vérification de l'intégrité",
+        "Vérification du serveur"
+    ],
+    "warning": [
+        "Ne quittez pas cette page",
+        "Cela peut prendre plusieurs minutes"
+    ],
+    "confirm": [
+        "Vous avez terminé la configuration basique de Minteck Projects CMS, le serveur va maintenant créer le site selon vos paramètres.",
+        "Cette action ne pourra pas être annulée, et peut prendre plusieurs minutes selon la vitesse de votre serveur. Cela inclut une vérification de vos paramètres, la configuration de votre site, et la vérification de votre serveur."
+    ],
+    "license": "Vous devez accepter le suivant contrat de licence avant de commencer à utiliser Minteck Projects CMS :",
+    "logo": [
+        "Importez un logo pour votre site",
+        "Vous pouvez ne pas importer de logo, ce qui affichera le logo par défaut",
+        "Importer un fichier"
+    ],
+    "name": [
+        "Choisissez un nom pour votre site.",
+        "Si vous ne savez pas quoi choisir, choisissez un nom court, facile à retenir, et qui définit bien le contenu que vous allez poster sur votre site"
+    ],
+    "welcome": [
+        "Merci d'avoir choisi Minteck Projects CMS pour votre site Web, nous apprécions votre soutien.",
+        "Vous allez d'abord devoir le configurer en choisissant certains paramètres selon ce que vous voulez, tels que le nom, le logo et autre. Ces paramètres pourront être modifiés plus tard dans l'espace d'administration de votre site.",
+        "Si vous voulez revenir au début de la configuration ou que vous avez fait une erreur, rechargez la page (en utilisant le bouton « Actualiser » sur votre navigateur). Tant que vous ne cliquez pas sur « Terminer », aucune communication n'est effectuée vers le serveur."
+    ]
+}

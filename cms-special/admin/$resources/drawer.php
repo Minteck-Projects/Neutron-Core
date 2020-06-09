@@ -30,7 +30,7 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
         version <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?> "<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") ?>"
             <?php
 
-            if (trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")) == "1") {
+            if (explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[0] == "1") {
                 echo("<br><br>" . $lang["admin-drawer-footer"]["experimental"]);
             }
 
@@ -53,11 +53,7 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
             <?= renderItem("/cms-special/admin/pages", "insert_drive_file", $lang["admin-drawer-items"]["pages"]) ?>
             <?= renderItem("/cms-special/admin/galery", "insert_photo", $lang["admin-drawer-items"]["gallery"]) ?>
             <?= renderItem("/cms-special/admin/calendar", "calendar_today", $lang["admin-drawer-items"]["calendar"]) ?>
-
-            <hr class="mdc-list-divider">
-            <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["plugins"] ?></h6>
-            <?= renderItem("http://" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public"), "store", $lang["admin-drawer-items"]["store"], true) ?>
-            <?= renderItem("/cms-special/admin/plugins", "extension", $lang["admin-drawer-items"]["plugins"]) ?>
+            <?= renderItem("/cms-special/admin/plugins", "extension", $lang["admin-drawer-items"]["options"]) ?>
 
             <hr class="mdc-list-divider">
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["repetitive"] ?></h6>
@@ -88,7 +84,7 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
                 <center>
                     <?= $lang["admin-drawer-footer"]["powered"] ?><br>
                     © 2019-<?= date('Y') ?> Minteck Projects Ltd.<br><br>
-                    <?= $lang["admin-drawer-footer"]["license"][0] ?><a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">GNU GPL3</a><?= $lang["admin-drawer-footer"]["license"][1] ?>
+                    <?= $lang["admin-drawer-footer"]["license"][0] ?><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GNU GPL3</a><?= $lang["admin-drawer-footer"]["license"][1] ?>
                 </center>
             </h6>
         </nav>

@@ -1,5 +1,22 @@
 <?php
 
+// Trim Build Values
+try {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version", trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")));
+} catch (E_WARNING $err) {}
+try {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename", trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename")));
+} catch (E_WARNING $err) {}
+try {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental", trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")));
+} catch (E_WARNING $err) {}
+try {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/api/public", trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/public")));
+} catch (E_WARNING $err) {}
+try {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/api/bugs", trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/bugs")));
+} catch (E_WARNING $err) {}
+
 // Language Loader
 include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 
@@ -109,31 +126,42 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json")) {
         if (dataValid(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"))) {
             $customSettings = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"));
-            if (isset($customSettings->AfficherBoutonAdministration) && isset($customSettings->AdministrationBarreNavigation) && isset($customSettings->RessourcesPersonnalisées) && isset($customSettings->RessourcesPersonnalisées->CSS) && isset($customSettings->RessourcesPersonnalisées->JS) && isset($customSettings->PagesMasquées)) {
-                if (!$customSettings->AfficherBoutonAdministration) {
-                    echo("<style>#siteadmin-button{display:none;}</style>");
-                }
-                if (!$customSettings->AdministrationBarreNavigation) {
-                    echo("<style>#settings #navigation{display:none;}</style>");
-                }
-                echo("<style type=\"text/css\">" . $customSettings->RessourcesPersonnalisées->CSS . "</style>");
-                echo("<script type=\"text/javascript\">" . $customSettings->RessourcesPersonnalisées->JS . "</script>");
+            if (isset($customSettings->AfficherBoutonAdministration) && isset($customSettings->AdministrationBarreNavigation) && isset($customSettings->RessourcesPersonnalisées) && isset($customSettings->RessourcesPersonnalisées->CSS) && isset($customSettings->RessourcesPersonnalisées->JS) && isset($customSettings->PagesMasquées)) { // If it's using the old system, delete the file and generate a new one.
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json.bak", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"));
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", "{
+     \"customResources\": {
+         \"styles\": \"\",
+        \"script\": \"\"
+    },
+    \"hiddenPages\": [],
+    \"showAdminButton\": true
+}");
+                $continue = false;
             } else {
-                die("<h1>" . $lang["header"]["internalError"][0] . "</h1><p>" . $lang["header"]["internalError"][1] . "</p><p>" . $lang["header"]["internalError"][2] . "<code>/data/webcontent/customSettings.json</code>" . $lang["header"]["internalError"][3] . "</p><hr><i>Minteck Projects CMS " . str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
+                $continue = true;
+            }
+            if ($continue) {
+                if (isset($customSettings->showAdminButton) && isset($customSettings->customResources) && isset($customSettings->customResources->styles) && isset($customSettings->customResources->script) && isset($customSettings->hiddenPages)) {
+                    if (!$customSettings->showAdminButton) {
+                        echo("<style>#siteadmin-button{display:none;}</style>");
+                    }
+                    echo("<style type=\"text/css\">" . $customSettings->customResources->styles . "</style>");
+                    echo("<script type=\"text/javascript\">" . $customSettings->customResources->script . "</script>");
+                } else {
+                    die("<h1>" . $lang["header"]["internalError"][0] . "</h1><p>" . $lang["header"]["internalError"][1] . "</p><p>" . $lang["header"]["internalError"][2] . "<code>/data/webcontent/customSettings.json</code>" . $lang["header"]["internalError"][3] . "</p><hr><i>Minteck Projects CMS " . str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
+                }
             }
         } else {
             die("<h1>" . $lang["header"]["internalError"][0] . "</h1><p>" . $lang["header"]["internalError"][4] . "</p><p>" . $lang["header"]["internalError"][2] . "<code>/data/webcontent/customSettings.json</code>" . $lang["header"]["internalError"][3] . "</p><hr><i>Minteck Projects CMS " . str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
         }
     } else {
-        // TODO: Due to i18n, change custom settings to english names, and require migration at user-end
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", "{
-    \"RessourcesPersonnalisées\": {
-        \"CSS\": \"\",
-        \"JS\": \"\"
+    \"customResources\": {
+        \"styles\": \"\",
+        \"script\": \"\"
     },
-    \"PagesMasquées\": [],
-    \"AfficherBoutonAdministration\": true,
-    \"AdministrationBarreNavigation\": true
+    \"hiddenPages\": [],
+    \"showAdminButton\": true
 }");
     }
 }

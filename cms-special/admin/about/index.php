@@ -4,11 +4,15 @@
         $currentVersionP = str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"));
         $channel = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[2];
         $currentVersion = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[0];
+        $currentVersionS = $currentVersion;
+        if (explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[0] == "1") {
+            $currentVersion = explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[1];
+        }
         $latestVersion = trim(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version"));
         $latestVersionP = str_replace("#", substr(md5($latestVersion . "-#-" . $channel), 0, 2), $latestVersion . "-#-" . $channel);
         $returned = false;
 
-        if (version_compare($currentVersion, $latestVersion) >= 1 || file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental") == "1") {
+        if (version_compare($currentVersion, $latestVersion) >= 1 || explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[0] == "1") {
             echo("<div id=\"protect\" class=\"s1\"><b>" . $lang['admin-about']['updates']->beta[0] . "</b><br>" . $lang['admin-about']['updates']->beta[1] . "</div>");
             $returned = true;
         }
@@ -52,7 +56,7 @@
     }
     echo("</li>");
 
-    if (version_compare($currentVersion, $latestVersion) >= 1 || file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental") == "1") {
+    if (version_compare($currentVersion, $latestVersion) >= 1 || explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[0] == "1") {
         $upchan = "dev";
     } else {
         if (!strpos($currentVersion, 'LTS') !== false) {
@@ -121,10 +125,12 @@
     $resSize = $size;
 
     ?>
-    <span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#8bcf69;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->system ?> (<?= round(($mpcmsSize*100)/$globalSize, 2) ?>%)</span>
-    <span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#e6d450;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->config ?> (<?= round(($dataSize*100)/$globalSize, 2) ?>%)</span>
-    <span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#cf82bf;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->resources ?> (<?= round(($resSize*100)/$globalSize, 2) ?>%)</span>
-    <span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:gray;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->misc ?></span>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;">
+    <span><span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#8bcf69;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->system ?> (<?= round(($mpcmsSize*100)/$globalSize, 2) ?>%)</span></span>
+    <span><span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#e6d450;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->config ?> (<?= round(($dataSize*100)/$globalSize, 2) ?>%)</span></span>
+    <span><span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:#cf82bf;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->resources ?> (<?= round(($resSize*100)/$globalSize, 2) ?>%)</span></span>
+    <span><span style="margin-right:5px;border-radius:999px;vertical-align:middle;background-color:gray;position:relative;width:15px;height:15px;display:inline-block;"></span><span style="margin-right:30px;"><?= $lang["admin-about"]["categories"]->misc ?></span></span>
+    </div>
     <!-- <?= $globalSize - ($mpcmsSize + $dataSize + $resSize) ?>
     <?= "<br>" ?>
     <?= (($mpcmsSize + $dataSize + $resSize) * 100)/$globalSize ?> -->
@@ -149,7 +155,7 @@
         }
     </style>
     <h3><?= $lang["admin-about"]["changes"] ?></h3>
-    <h4><?= $lang["admin-about"]["current"] ?> (<?= $currentVersion ?>)</h4>
+    <h4><?= $lang["admin-about"]["current"] ?> (<?= $currentVersionS ?>)</h4>
     <?php
 
     if (!startsWith(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion),false,stream_context_create(['http' => ['ignore_errors' => true,],])), "<!DOCTYPE")) {

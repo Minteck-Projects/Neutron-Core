@@ -1,1 +1,0 @@
-This page is now deprecated, you should access <a href="http://<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public") ?>">online CMS Store</a> to continue.

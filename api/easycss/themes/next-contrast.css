@@ -87,3 +87,7 @@
 .easycss-input-value::placeholder {
     opacity: 1;
 }
+
+.easycss-block {
+    display: inline-block;
+}

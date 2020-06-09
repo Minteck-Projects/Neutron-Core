@@ -26,8 +26,8 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     <h1><?= $lang["admin-advanced-regedit"]["title"] ?></h1>
     <h3>/</h3>
     <a href="/cms-special/admin/advanced/regedit"><small><?= $lang["admin-advanced-regedit"]["parent"] ?></small></a><br>
-    <img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/keys.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=HKWC">HKEY_WEBSITE_CONTENT</a> <i>(<?= $lang["admin-advanced-regedit"]["content"] ?>)</i><br>
-    <img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/keys.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=HKST">HKEY_SESSION_TOKENS</a> <i>(<?= $lang["admin-advanced-regedit"]["tokens"] ?>)</i><br>
-    <img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/keys.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=HKUR">HKEY_UPLOADS_ROOT</a> <i>(<?= $lang["admin-advanced-regedit"]["upload"] ?>)</i>
+    <img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/keys.png"><a href="/cms-special/admin/advanced/regedit/view/?key=HKWC">HKEY_WEBSITE_CONTENT</a> <i>(<?= $lang["admin-advanced-regedit"]["content"] ?>)</i><br>
+    <img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/keys.png"><a href="/cms-special/admin/advanced/regedit/view/?key=HKST">HKEY_SESSION_TOKENS</a> <i>(<?= $lang["admin-advanced-regedit"]["tokens"] ?>)</i><br>
+    <img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/keys.png"><a href="/cms-special/admin/advanced/regedit/view/?key=HKUR">HKEY_UPLOADS_ROOT</a> <i>(<?= $lang["admin-advanced-regedit"]["upload"] ?>)</i>
 </body>
 </html>

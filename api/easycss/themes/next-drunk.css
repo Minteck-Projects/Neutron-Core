@@ -111,3 +111,7 @@
     90%  { filter: hue-rotate(324deg); }
     100% { filter: hue-rotate(360deg); }
 }
+
+.easycss-block {
+    display: inline-block;
+}

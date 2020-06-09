@@ -10,25 +10,14 @@ function buffer(string $value) {
 }
 
 buffer("<p>" . $lang["version"]["workswith"] . "<b><a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/public") . "\" target=\"_blank\">Minteck Projects CMS</a> version " . str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) . " \"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "\"</b>" . $lang["version"]["providedby"] . "<a href=\"https://minteck-projects.alwaysdata.net\" target=\"_blank\">Minteck Projects</a>" . $lang["version"]["description"] . "</p>");
-buffer("<p>" . $lang["version"]["workswith"] . $lang["version"]["store"][0] . "<b>CMS Store version " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_version") . "</b>" . $lang["version"]["store"][1] . "</p>");
 buffer("<p>" . $lang["version"]["freesoftware"][0] . "<a href=\"https://www.gnu.org/licenses/gpl-3.0.html\" target=\"_blank\">" . $lang["version"]["freesoftware"][1] . "</a>" . $lang["version"]["freesoftware"][2] . "<a href=\"https://www.gnu.org/licenses/gpl-3.0.html\" target=\"_blank\">" . $lang["version"]["freesoftware"][3] . "</a>" . $lang["version"]["freesoftware"][4] . "</p>");
 buffer("<p>" . $lang["version"]["warranty"][0] . "<a href=\"https://www.gnu.org/licenses/gpl-3.0.html\" target=\"_blank\">" . $lang["version"]["warranty"][1] . "</a>" . $lang["version"]["warranty"][2] . "</p>");
 
 buffer("<h2>" . $lang["version"]["resources"] . "</h2>");
 buffer("<ul><li><a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/bugs") . "/set_project.php?project_id=1\" target=\"_blank\">" . $lang["version"]["support"] . "</a></li>");
-buffer("<li><a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/bugs") . "/set_project.php?project_id=8\" target=\"_blank\">" . $lang["version"]["storesupport"] . "</a></li>");
+// buffer("<li><a href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/bugs") . "/set_project.php?project_id=8\" target=\"_blank\">" . $lang["version"]["storesupport"] . "</a></li>");
 buffer("<li><a href=\"https://minteck-projects.alwaysdata.net/prod/info/?el=mpcms\" target=\"_blank\">" . $lang["version"]["mprj"] . "</a></li>");
 buffer("<li><a href=\"https://gitlab.com/minteck-projects/mpcms/changelog/issues\" target=\"_blank\">" . $lang["version"]["changelog"] . "</a></li></ul>");
-
-buffer("<h2>" . $lang["version"]["plugins"] . "</h2>");
-$exts = (array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"))->list;
-buffer("<ul>");
-foreach ($exts as $ext) {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $ext)) {
-        buffer("<li><a target=\"_blank\" href=\"http://" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/store_public") . "/view/?id=" . $ext . "&idType=old\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $ext . "/name") . "</a></li>");
-    }
-}
-buffer("</ul>");
 
 buffer("<h2>" . $lang["version"]["stats"] . "</h2>");
 buffer("<p><b>" . $lang["version"]["disclaimer"][0] . "</b>" . $lang["version"]["disclaimer"][1] . "</p>");

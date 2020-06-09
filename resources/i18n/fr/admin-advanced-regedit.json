@@ -12,5 +12,6 @@
     "logo": "Version non compressée du logo du site",
     "banner": "Bannière importée par l'utilisateur",
     "gallery": "Image canonique de la galerie",
+    "styleinfo": "Informations des styles personnalisés",
     "tokenview": "Jeton d'authentification — rien de spécial à afficher"
 }

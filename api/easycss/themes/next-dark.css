@@ -87,3 +87,7 @@
 .easycss-input-property, .easycss-input-selector, .easycss-input-value, .easycss-button-add, .easycss-button-remove {
     color: whitesmoke;
 }
+
+.easycss-block {
+    display: inline-block;
+}

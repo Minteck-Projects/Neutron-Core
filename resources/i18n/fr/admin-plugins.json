@@ -1,7 +1,7 @@
 {
-    "disclaimer": "Minteck Projects CMS dispose du support d'extensions, qui vous permettent de modifier les fonctionnalités et/ou le comportement du logiciel, ou d'afficher des widgets supplémentaires dans la barre des widgets (sortes d'informations enrichies qui sont affichés à la suite)",
+    "newnotice": "Activez ou désactivez des fonctionnalités optionnelles pour ajuster votre site selon vos envies.",
     "builtin": "extension préinstallée",
-    "config": "Modifier les paramètres de cette extension",
+    "config": "Modifier les paramètres de cette fonctionnalité",
     "store": "Voir cette extension sur le CMS Store",
     "remove": "Désinstaller l'extension",
     "tip": [

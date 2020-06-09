@@ -123,6 +123,7 @@ function isJson(string $json) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
+    <link rel="stylesheet" href="/resources/css/codename.css">
     <script src="/cms-special/admin/$resources/admin.js"></script>
 
     <link rel="preload" href="/resources/css/fonts-import.css" as="style">

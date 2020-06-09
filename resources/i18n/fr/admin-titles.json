@@ -131,16 +131,16 @@
         }
     },
     "plugins": {
-        "dom": "Extensions",
-        "header": "Options des extensions",
+        "dom": "Fonctionnalités optionnelles",
+        "header": "Fonctionnalités optionnelles",
         "subpages": {
             "widget-contact-configure": {
                 "dom": "Options",
-                "header": "Configuration de l'extension"
+                "header": "Configuration de la fonctionnalité"
             },
             "widget-notes-configure": {
                 "dom": "Options",
-                "header": "Configuration de l'extension"
+                "header": "Configuration de la fonctionnalité"
             }
         }
     },

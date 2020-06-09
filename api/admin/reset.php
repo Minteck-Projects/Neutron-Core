@@ -43,8 +43,6 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
 
 sleep(2);
 
-// die("API pas prêt");
-
 if (isset($_POST['keep'])) {
     if ($_POST['keep'] == "1") {
         $keep = true;
@@ -59,10 +57,10 @@ if ($keep) {
     rrmdir($_SERVER['DOCUMENT_ROOT'] . "/resources/upload");
     mkdir($_SERVER['DOCUMENT_ROOT'] . "/resources/upload");
     copy($_SERVER['DOCUMENT_ROOT'] . "/resources/image/siteicon.png", $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png");
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json", '{"list":["test"],"settings":{"test":{"sampleSetting":"This is a sample setting"}}}');
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json", '{"list":[],"settings":{}');
     rrmdir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
     mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer", "Réinitialisation terminée, accédez à l'administration du site pour modifier le pied de page");
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer", "#####");
     die("ok");
 } else {
     rrmdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent");

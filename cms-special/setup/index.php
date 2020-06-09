@@ -11,7 +11,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $langsel ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,17 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <title><?php
 
     if ($ready) {
-        echo("Configuration - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        if (!isset($lang)) {
+            echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        } else {
+            echo($lang["setup"]["ititle"] . " - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        }
     } else {
-        echo("Configuration - Minteck Projects CMS");
+        if (!isset($lang)) {
+            echo("Minteck Projects CMS");
+        } else {
+            echo($lang["setup"]["ititle"] . " - Minteck Projects CMS");
+        }
     }
 
     ?></title>
@@ -33,7 +41,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     <?php
 
     if ($ready) {
-        // Si le site est prêt, faire le rendu et s'arrêter là
+        // If the website is ready, render the headers and stop here
         die("<script>location.href = '/';</script></body></html>");
     }
 
@@ -44,18 +52,18 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
     // For IE and Firefox prior to version 4
     if (e) {
-        e.returnValue = "En quittant cette page, vous perdrez les paramètres de configuration actuels.";
+        e.returnValue = "<!>";
     }
 
         // For Safari
-        return "En quittant cette page, vous perdrez les paramètres de configuration actuels.";
+        return "<!>";
     };
     </script>' ?>
     <script src="/resources/js/jquery.js"></script>
     <div class="centered box hide" id="00-error">
-        <h2 id="00-error-title">Une erreur s'est produite</h2>
-        <span id="00-error-message">Erreur inconnue</span><br><br>
-        <img src="/resources/image/config_restart.svg" onclick="reloadPage()" class="icon_button"><br><small>Relancer la configuration</small>
+        <h2 id="00-error-title"><?= $lang['setup']['defaulterr'][0] ?></h2>
+        <span id="00-error-message"><?= $lang['setup']['defaulterr'][1] ?></span><br><br>
+        <img src="/resources/image/config_restart.svg" onclick="reloadPage()" class="icon_button"><br><small><?= $lang['setup']['defaulterr'][2] ?></small>
     </div>
     <div class="centered box<?= $nolang ? "" : " hide" ?>" id="00-language">
         <h2>Minteck Projects CMS</h2>
@@ -80,69 +88,68 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <input type="button" value="OK" onclick="location.href = '?lang=' + document.getElementById('00-language-select').value">
     </div>
     <div class="centered box<?= $nolang ? " hide" : "" ?>" id="01-loader">
-        <h2>Préparation</h2>
+        <h2><?= $lang['setup']['sections'][0] ?></h2>
         <img src="/resources/image/storeloader.svg" class="loader">
     </div>
     <div class="centered box hide" id="02-check">
-        <h2>Vérification de votre environnement</h2>
+        <h2><?= $lang['setup']['sections'][1] ?></h2>
         <img src="/resources/image/storeloader.svg" class="loader">
     </div>
     <div class="centered box hide" id="03-welcome">
-        <h2>Bienvenue !</h2>
-        <p>Merci d'avoir choisi Minteck Projects CMS pour votre site Internet, nous apprécions votre soutien.</p>
-        <p>La première étape dans la mise en marche de votre site Internet est de le configurer en choisissant parmi un large choix de paramètres disponibles.</p>
-        <p>Tous ces paramètres sont modifiables dans le futur à partir du Tableau de bord de votre site, et certains sont même facultatifs.</p>
-        <p>Si vous avez besoin de recommencer la configuration depuis le début ou que vous avez mal configuré quelque chose, vous pouvez recharger la page. Tant que vous ne cliquez pas sur le bouton "Terminer", aucun changement n'est appliqué sur le serveur.</p>
-        <img src="/resources/image/config_next.svg" onclick="document.title = 'Votre site - Configuration - Minteck Projects CMS';switchPage('03-welcome', '04-name');" class="icon_button"><br><small>Commencer</small>
+        <h2><?= $lang['setup']['sections'][2] ?></h2>
+        <p><?= $lang['setup']['welcome'][0] ?></p>
+        <p><?= $lang['setup']['welcome'][1] ?></p>
+        <p><?= $lang['setup']['welcome'][2] ?></p>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][7] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';switchPage('03-welcome', '04-name');" class="icon_button"><br><small><?= $lang['setup']['links'][4] ?></small>
     </div>
     <div class="centered box hide" id="04-name">
-        <h2>Votre site</h2>
-        <p>Choisissez un nom pour votre site Internet</p>
-        <p>Si vous ne savez pas quoi choisir, choisissez un nom court, facile à retenir, et qui définit bien le contenu que vous allez poster sur votre site</p>
-        <input id="04-name-field" type="text" onchange="validateName()" onkeyup="validateName()" onkeydown="validateName()" placeholder="Nom de votre site"><br><p id="04-name-tip" class="tip-red">Le nom ne peut pas être vide</p>
-        <img src="/resources/image/config_next.svg" onclick="Name_ChangeIfOk()" class="icon_button"><br><small>Suivant</small>
+        <h2><?= $lang['setup']['sections'][3] ?></h2>
+        <p><?= $lang['setup']['name'][0] ?></p>
+        <p><?= $lang['setup']['name'][1] ?></p>
+        <input id="04-name-field" type="text" onchange="validateName()" onkeyup="validateName()" onkeydown="validateName()" placeholder="Nom de votre site"><br><p id="04-name-tip" class="tip-red"><?= $lang['setup']['sitename'][0] ?></p>
+        <img src="/resources/image/config_next.svg" onclick="Name_ChangeIfOk()" class="icon_button"><br><small><?= $lang['setup']['links'][3] ?></small>
     </div>
     <div class="centered box hide" id="05-icon">
-        <h2>Identité graphique</h2>
-        <p>Importez une îcone pour votre site</p>
-        <p>Vous pouvez ne pas importer d'îcone, ce qui affichera l'îcone par défaut</p>
-        <input id="05-icon-file" type="file" onchange="Icon_Validate()" style="display:none;width:0;height:0;left:0;top:0;"><img id="05-icon-img" src="/resources/image/config_file_import.svg" onclick="Icon_UploadFile()" class="icon_button"><br><small>Importer un fichier</small><br><br>
-        <img src="/resources/image/config_next.svg" onclick="document.title = 'Contrat de licence - Configuration - Minteck Projects CMS';switchPage('05-icon', '06-terms');" class="icon_button"><br><small>Suivant</small>
+        <h2><?= $lang['setup']['sections'][4] ?></h2>
+        <p><?= $lang['setup']['logo'][0] ?></p>
+        <p><?= $lang['setup']['logo'][1] ?></p>
+        <input id="05-icon-file" type="file" onchange="Icon_Validate()" style="display:none;width:0;height:0;left:0;top:0;"><img id="05-icon-img" src="/resources/image/config_file_import.svg" onclick="Icon_UploadFile()" class="icon_button"><br><small><?= $lang['setup']['logo'][2] ?></small><br><br>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][8] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';switchPage('05-icon', '06-terms');" class="icon_button"><br><small><?= $lang['setup']['links'][3] ?></small>
     </div>
     <div class="centered box hide" id="06-terms">
-        <h2>Contrat de licence</h2>
-        <p>Vous devez accepter le suivant contrat de licence avant de commencer à utiliser Minteck Projects CMS</p>
-        <iframe class="termsbox" src="https://www.gnu.org/licenses/gpl-3.0-standalone.html" style="width:100%;"></iframe><br><br>
-        <img src="/resources/image/config_next.svg" onclick="document.title = 'Confirmation - Configuration - Minteck Projects CMS';switchPage('06-terms', '07-finish');" class="icon_button"><br><small>J'accepte</small>
+        <h2><?= $lang['setup']['sections'][5] ?></h2>
+        <p><?= $lang['setup']['license'] ?></p>
+        <iframe class="termsbox" src="/resources/lib/license.html" style="width:100%;"></iframe><br><br>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][9] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';switchPage('06-terms', '07-finish');" class="icon_button"><br><small><?= $lang['setup']['links'][2] ?></small>
     </div>
     <div class="centered box hide" id="07-finish">
-        <h2>Confirmation</h2>
-        <p>Vous avez terminé la configuration de départ de Minteck Projects CMS, les informations vont maintenant être transmises au serveur.</p>
-        <p>Cette action ne pourra pas être annulée, et peut prendre plusieurs minutes selon la vitesse de votre serveur. Cela inclut une verification des informations entrées, l'envoi des informations, la verification des informations envoyées, et un test des performances du serveur.</p>
-        <img src="/resources/image/config_finish.svg" onclick="upload()" class="icon_button"><br><small>Terminer</small>
+        <h2><?= $lang['setup']['sections'][6] ?></h2>
+        <p><?= $lang['setup']['confirm'][0] ?></p>
+        <p><?= $lang['setup']['confirm'][1] ?></p>
+        <img src="/resources/image/config_finish.svg" onclick="upload()" class="icon_button"><br><small><?= $lang['setup']['links'][1] ?></small>
     </div>
     <div class="centered box hide" id="08-checking">
-        <h2>Vérification des informations</h2>
-        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small>Ne quittez pas cette page<br>Cela peut prendre plusieurs minutes</small>
+        <h2><?= $lang['setup']['upload'][0] ?></h2>
+        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small><?= $lang['setup']['warning'][0] ?><br><?= $lang['setup']['warning'][1] ?></small>
     </div>
     <div class="centered box hide" id="09-uploading">
-        <h2>Envoi des informations</h2>
-        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small>Ne quittez pas cette page<br>Cela peut prendre plusieurs minutes</small>
+        <h2><?= $lang['setup']['upload'][1] ?></h2>
+        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small><?= $lang['setup']['warning'][0] ?><br><?= $lang['setup']['warning'][1] ?></small>
     </div>
     <div class="centered box hide" id="10-summing">
-        <h2>Validation des informations envoyées</h2>
-        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small>Ne quittez pas cette page<br>Cela peut prendre plusieurs minutes</small>
+        <h2><?= $lang['setup']['upload'][2] ?></h2>
+        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small><?= $lang['setup']['warning'][0] ?><br><?= $lang['setup']['warning'][1] ?></small>
     </div>
     <div class="centered box hide" id="11-performance">
-        <h2>Test des performances du serveur</h2>
-        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small>Ne quittez pas cette page<br>Cela peut prendre plusieurs minutes</small>
+        <h2><?= $lang['setup']['upload'][3] ?></h2>
+        <img src="/resources/image/storeloader.svg" class="finisher loadblink"><br><br><small><?= $lang['setup']['warning'][0] ?><br><?= $lang['setup']['warning'][1] ?></small>
     </div>
     <div class="centered box hide" id="12-done">
-        <h2>Terminé</h2>
-        <p>Votre site à maintenant été créé, et est prêt à être visité par des personnes.</p>
-        <p>Pour modifier son contenu et/ou ses paramètres, vous devez vous connecter à l'interface d'administration. Le mot de passe est <b>MPCMS-usr-motdepasse</b>. Pensez à le modifier !</p>
-        <img src="/resources/image/config_explore.svg" onclick="location.href = '/'" class="icon_button"><br><small>Explorer</small>
+        <h2><?= $lang['setup']['done'][0] ?></h2>
+        <p><?= $lang['setup']['done'][1] ?></p>
+        <p><?= $lang['setup']['done'][2] ?> <b>MPCMS-usr-motdepasse</b><?= $lang['setup']['done'][3] ?></p>
+        <img src="/resources/image/config_explore.svg" onclick="location.href = '/'" class="icon_button"><br><small><?= $lang['setup']['links'][0] ?></small>
     </div>
-    <?= $nolang ? "" : '<script src="/resources/js/setup-ui.js.php"></script>' ?>
+    <?= $nolang ? "" : '<script src="/resources/js/setup-ui.js.php?lang=' . $langsel . '"></script>' ?>
 </body>
 </html>

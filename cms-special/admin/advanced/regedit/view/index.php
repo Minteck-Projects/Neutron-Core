@@ -44,26 +44,6 @@ if ($path == "/") {
 
 $types = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n/" . $langsel . "/filetypes.json"));
 
-function getDescription($fileuri) {
-    global $types;
-    global $path;
-    if ($path == "/") {
-        $newpath = "";
-    } else {
-        $newpath = $path;
-    }
-    $tarray = (array)$types;
-    if (substr($fileuri, 0, 9) == "semantic_") {
-        return $types->_semantic;
-    } else {
-        if (isset($tarray[$newpath . "/" . $fileuri])) {
-            return $tarray[$newpath . "/" . $fileuri];
-        } else {
-            return $types->_unknown;
-        }
-    }
-}
-
 function startsWith ($string, $startString) {
     $len = strlen($startString);
     return (substr($string, 0, $len) === $startString);
@@ -75,6 +55,30 @@ function endsWith($string, $endString) {
         return true;
     }
     return (substr($string, -$len) === $endString);
+}
+
+function getDescription($fileuri) {
+    global $types;
+    global $path;
+    if ($path == "/") {
+        $newpath = "";
+    } else {
+        $newpath = $path;
+    }
+    $tarray = (array)$types;
+    if (startsWith($fileuri, "semantic_")) {
+        return $types->_semantic;
+    } else {
+        if (endsWith($fileuri, ".bak")) {
+            return $types->_backup;
+        } else {
+            if (isset($tarray[$newpath . "/" . $fileuri])) {
+                return $tarray[$newpath . "/" . $fileuri];
+            } else {
+                return $types->_unknown;
+            }
+        }
+    }
 }
 
 function includes($string, $substring) {
@@ -104,7 +108,7 @@ function includes($string, $substring) {
     echo("<small>");
 
     if ($path == "") {
-        echo('<a href="/cms-special/admin/advanced/regedit">Dossier parent</a>');
+        echo('<a href="/cms-special/admin/advanced/regedit">' . $lang["admin-advanced-regedit"]["parent"] . '</a>');
     } else {
         echo('<a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path='. dirname($path) . '">' . $lang["admin-advanced-regedit"]["parent"] . '</a>');
     }
@@ -164,6 +168,9 @@ function includes($string, $substring) {
         if (startsWith($path, "/widget-contact-data")) {
             echo(" | <a href=\"/cms-special/admin/plugins/widget-contact-configure\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
+        if (startsWith($path, "/lang")) {
+            echo(" | <a href=\"/cms-special/admin/lang\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
+        }
         if (startsWith($path, "/stats")) {
             echo(" | <a href=\"/cms-special/admin/stats\">" . $lang["admin-advanced-regedit"]["edit"] . "</a>");
         }
@@ -182,24 +189,28 @@ function includes($string, $substring) {
             if ($file != "." && $file != "..") {
                 if ($key == "HKWC") {
                     if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent" . $path . "/" . $file)) {
-                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/folder.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . getDescription($file) . ')</i><br>');
+                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/folder.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . getDescription($file) . ')</i><br>');
                     } else {
-                        if (substr($file, -5) == ".json") {
-                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/json.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . getDescription($file) . ')</i><br>');
+                        if (endsWith($file, ".bak")) {
+                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/backup.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . getDescription($file) . ')</i><br>');
                         } else {
-                            if ($path == "/pages") {
-                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/page.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_page . ')</i><br>');
+                            if (substr($file, -5) == ".json") {
+                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/json.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . getDescription($file) . ')</i><br>');
                             } else {
-                                if ($path == "/pagetypes") {
-                                    echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/data.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_pagetype . ')</i><br>');
+                                if ($path == "/pages") {
+                                    echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/page.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_page . ')</i><br>');
                                 } else {
-                                    if ($path == "/galery/categories") {
-                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/data.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_galery_cat . ')</i><br>');
+                                    if ($path == "/pagetypes") {
+                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/data.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_pagetype . ')</i><br>');
                                     } else {
-                                        if ($path == "/galery/pictures") {
-                                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_galery_pic . ')</i><br>');
+                                        if ($path == "/galery/categories") {
+                                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/data.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_galery_cat . ')</i><br>');
                                         } else {
-                                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/data.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . getDescription($file) . ')</i><br>');
+                                            if ($path == "/galery/pictures") {
+                                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $types->_galery_pic . ')</i><br>');
+                                            } else {
+                                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/data.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . getDescription($file) . ')</i><br>');
+                                            }
                                         }
                                     }
                                 }
@@ -208,21 +219,25 @@ function includes($string, $substring) {
                     }
                 } else {
                     if ($key == "HKST") {
-                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/token.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["token"] . ')</i><br>');
+                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/token.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["token"] . ')</i><br>');
                     } else {
                         if ($file == ".gitkeep") {
-                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/special.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["git"] . ')</i><br>');
+                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/special.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["git"] . ')</i><br>');
                         } else {
                             if ($file == "siteicon.png") {
-                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["logocomp"] . ')</i><br>');
+                                echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["logocomp"] . ')</i><br>');
                             } else {
                                 if ($file == "siteicon-uncomp.png") {
-                                    echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["logo"] . ')</i><br>');
+                                    echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["logo"] . ')</i><br>');
                                 } else {
                                     if ($file == "banner.jpg") {
-                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["banner"] . ')</i><br>');
+                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/icon.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["banner"] . ')</i><br>');
                                     } else {
-                                        echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.svg"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["gallery"] . ')</i><br>');
+                                        if (startsWith($file, "styles")) {
+                                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/json.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["styleinfo"] . ')</i><br>');
+                                        } else {
+                                            echo('<img width="36px" height="36px" style="vertical-align:middle;margin-left:10px;" src="/resources/image/regedit/image.png"><a href="/cms-special/admin/advanced/regedit/view/?key=' . $key . '&path=' . $path . "/" . $file . '">' . $file . '</a> <i>(' . $lang["admin-advanced-regedit"]["gallery"] . ')</i><br>');
+                                        }
                                     }
                                 }
                             }
@@ -249,7 +264,11 @@ function includes($string, $substring) {
                     if ($file == "siteicon-uncomp.png") {
                         echo('<img style="vertical-align:middle;max-height:100%;max-width:100%;" src="/resources/upload/' . $file . '">');
                     } else {
-                        echo('<img style="vertical-align:middle;max-height:100%;max-width:100%;" src="/resources/upload/' . $file . '">');
+                        if (startsWith($file, "styles")) {
+                            echo('<code class="fcontent">' . str_replace("\n", "<br>", str_replace(">", "&gt;", str_replace("<", "&lt;", str_replace(" ", "&nbsp;", file_get_contents($root . $path))))) . '</code>');
+                        } else {
+                            echo('<img style="vertical-align:middle;max-height:100%;max-width:100%;" src="/resources/upload/' . $file . '">');
+                        }
                     }
                 }
             }

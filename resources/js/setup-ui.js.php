@@ -1,8 +1,7 @@
+/*<?php header("Content-Type: application/javascript");include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/setup.php"; ?>*/
 setTimeout(() => {
-    // document.getElementById('02-check').classList.remove('hide')
-    // document.getElementById('01-loader').classList.add('hide')
     switchPage("01-loader", "02-check")
-    document.title = 'Vérification - Configuration - Minteck Projects CMS';
+    document.title = '<?= $lang["setup"]["steps"][0] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
     $.ajax({
         url: "/api/setup/check.php",
         dataType: 'html',
@@ -15,16 +14,12 @@ setTimeout(() => {
                 if (data != "ok") {
                     document.getElementById('00-error-title').innerHTML = "Environnement incorrect"
                     document.getElementById('00-error-message').innerHTML = data
-                    // document.getElementById('02-check').classList.add("hide")
-                    // document.getElementById('00-error').classList.remove("hide")
                     switchPage("02-check", "00-error")
-                    document.title = "Erreur - Configuration - Minteck Projects CMS";
+                    document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
                     window.onbeforeunload = undefined;
                 } else {
-                    // document.getElementById('02-check').classList.add("hide")
-                    // document.getElementById('03-welcome').classList.remove("hide")
                     switchPage("02-check", "03-welcome")
-                    document.title = "Bienvenue - Configuration - Minteck Projects CMS";
+                    document.title = '<?= $lang["setup"]["steps"][2] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
                 }
             }, 1000)
         }
@@ -40,31 +35,31 @@ function validateName() {
         name = document.getElementById('04-name-field').value
         if (name.trim() == "") {
             document.getElementById('04-name-tip').classList.add('tip-red')
-            document.getElementById('04-name-tip').innerHTML = "Le nom ne peut pas être vide";
+            document.getElementById('04-name-tip').innerHTML = "<?= $lang['setup']['sitename'][0] ?>";
             return;
         }
         if (name.includes("<") || name.includes(">") || name.includes("#") || name.includes("@") || name.includes("}") || name.includes("{") || name.includes("|")) {
             document.getElementById('04-name-tip').classList.add('tip-red')
-            document.getElementById('04-name-tip').innerHTML = "Le nom contient des charactères invalides";
+            document.getElementById('04-name-tip').innerHTML = "<?= $lang['setup']['sitename'][1] ?>";
             return;
         }
         if (name.length > 75) {
             document.getElementById('04-name-tip').classList.add('tip-red')
-            document.getElementById('04-name-tip').innerHTML = "Le nom est trop long";
+            document.getElementById('04-name-tip').innerHTML = "<?= $lang['setup']['sitename'][2] ?>";
             return;
         }
         if (name.length < 4) {
             document.getElementById('04-name-tip').classList.add('tip-orange')
-            document.getElementById('04-name-tip').innerHTML = "Nom plus long recommandé";
+            document.getElementById('04-name-tip').innerHTML = "<?= $lang['setup']['sitename'][3] ?>";
             return;
         }
         if (name.length > 30) {
             document.getElementById('04-name-tip').classList.add('tip-orange')
-            document.getElementById('04-name-tip').innerHTML = "Nom plus court recommandé";
+            document.getElementById('04-name-tip').innerHTML = "<?= $lang['setup']['sitename'][4] ?>";
             return;
         }
         document.getElementById('04-name-tip').classList.add('tip-green')
-        document.getElementById('04-name-tip').innerHTML = "Ce nom semble parfait";
+        document.getElementById('04-name-tip').innerHTML = "<?= $lang['setup']['sitename'][5] ?>";
         return;
     }, 100)
 }
@@ -72,10 +67,8 @@ function validateName() {
 function Name_ChangeIfOk() {
     name = document.getElementById('04-name-field').value
     if (name.trim() == "" || name.includes("<") || name.includes(">") || name.includes("#") || name.includes("@") || name.includes("}") || name.includes("{") || name.includes("|") || name.length > 75) {return;}
-    // document.getElementById('04-name').classList.add('hide');
-    // document.getElementById('05-icon').classList.remove('hide');
     switchPage("04-name", "05-icon")
-    document.title = 'Identité graphique - Configuration - Minteck Projects CMS';
+    document.title = '<?= $lang["setup"]["steps"][3] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
 }
 
 function Icon_UploadFile() {
@@ -106,13 +99,9 @@ document.getElementById('05-icon-file').value = ""
 setInterval(Icon_Validate, 100)
 
 function upload() {
-    document.title = "Sauvegarde - Configuration - Minteck Projects CMS";
-    // document.getElementById('07-finish').classList.add('hide');
-    // document.getElementById('08-checking').classList.remove('hide');
+    document.title = '<?= $lang["setup"]["steps"][4] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
     switchPage("07-finish", "08-checking")
     setTimeout(() => {
-        // document.getElementById('08-checking').classList.add('hide');
-        // document.getElementById('09-uploading').classList.remove('hide');
         switchPage("08-checking", "09-uploading")
         var formData = new FormData();
         if (document.getElementById('05-icon-file').value.trim() != "") {
@@ -128,38 +117,28 @@ function upload() {
             success: function (data) {
                 if (data == "ok") {
                     setTimeout(() => {
-                        // document.getElementById('09-uploading').classList.add('hide');
-                        // document.getElementById('10-summing').classList.remove('hide');
                         switchPage("09-uploading", "10-summing")
                         setTimeout(() => {
-                            // document.getElementById('10-summing').classList.add('hide');
-                            // document.getElementById('11-performance').classList.remove('hide');
-                            switchPage("10-summing", "11-performances")
+                            switchPage("10-summing", "11-performance")
                             setTimeout(() => {
-                                // document.getElementById('11-performance').classList.add('hide');
-                                // document.getElementById('12-done').classList.remove('hide');
                                 switchPage("11-performance", "12-done")
-                                document.title = "Terminé - Configuration - Minteck Projects CMS";
+                                document.title = '<?= $lang["setup"]["steps"][5] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
                                 window.onbeforeunload = undefined;
                             }, 3000)
                         }, 2000)
                     }, 3000)
                 } else {
-                    document.getElementById('00-error-title').innerHTML = "Impossible de terminer la configuration"
+                    document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][0] ?>`
                     document.getElementById('00-error-message').innerHTML = data
-                    document.title = "Erreur - Configuration - Minteck Projects CMS";
-                    // document.getElementById('09-uploading').classList.add("hide")
-                    // document.getElementById('00-error').classList.remove("hide")
+                    document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS`;
                     switchPage("09-uploading", "00-error")
                     window.onbeforeunload = undefined;
                 }
             },
             error: function (error) {
-                document.title = "Erreur - Configuration - Minteck Projects CMS";
-                document.getElementById('00-error-title').innerHTML = "Erreur de communication"
-                document.getElementById('00-error-message').innerHTML = "La connexion avec le serveur distant à été intérrompue pendant la transmition des données"
-                // document.getElementById('02-check').classList.add("hide")
-                // document.getElementById('00-error').classList.remove("hide")
+                document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+                document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][1] ?>`
+                document.getElementById('00-error-message').innerHTML = `<?= $lang["setup"]["errors"][2] ?>`
                 switchPage("02-check", "00-error")
                 window.onbeforeunload = undefined;
             },
@@ -171,7 +150,7 @@ function upload() {
     }, 1000)
 }
 
-document.title = "Chargement - Configuration - Minteck Projects CMS";
+document.title = '<?= $lang["setup"]["steps"][6] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
 
 function switchPage(from, to) {
     $("#" + from).fadeOut(200);

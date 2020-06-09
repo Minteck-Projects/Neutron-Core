@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url("/resources/image/oobe.jpg");
+    background-image: url("/resources/image/config.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: initial;
@@ -11,10 +11,10 @@ body {
 
 .box {
     width: 60% !important;
-    border-radius: 10px;
-    /* box-shadow: 1px 1px 10px rgb(235, 235, 235); */
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px gray;
     padding: 20px;
-    /* background-color: rgb(235, 235, 235); */
+    background-color: rgb(235, 235, 235);
 }
 
 h1, h2, h3, h4, h5, h6 {

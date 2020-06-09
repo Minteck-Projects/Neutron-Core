@@ -147,7 +147,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
                         if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
                             if ($count < $pimb) {
                                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
-                                    if (!in_array($page, $customSettings->PagesMasquées)) {
+                                    if (!in_array($page, $customSettings->hiddenPages)) {
                                         echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menulink-desktop\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
                                         $count = $count + 1;
                                     }
@@ -197,7 +197,7 @@ if (!empty($widgets->list)) {
             if ($page != ".." && $page != ".") {
                 if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
                     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) {
-                        if (!in_array($page, $customSettings->PagesMasquées)) {
+                        if (!in_array($page, $customSettings->hiddenPages)) {
                             echo("<a href=\"/{$page}\" title=\"/{$page}\" class=\"menu-link\">" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a>");
                         }
                     }
