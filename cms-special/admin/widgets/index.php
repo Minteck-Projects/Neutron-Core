@@ -1,1 +1,4 @@
-<?php die("<script>location.href = \"/cms-special/admin/plugins\"</script>"); ?>
+<?php
+
+header("Location: /cms-special/plugins");
+die();

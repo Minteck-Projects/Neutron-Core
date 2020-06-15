@@ -1,0 +1,28 @@
+#page-elements {
+    display: grid;
+    grid-template-columns: 1fr 256px;
+    column-gap: 38px;
+    margin-top: 32px;
+}
+
+.mdc-drawer-app-content {
+    padding-top: 64px;
+}
+
+body {
+    background-color: var(--mdc-theme-background);
+}
+
+#page-elements div {
+    background: whitesmoke;
+    padding: 15px 25px;
+    border-radius: 30px;
+}
+
+#page-elements #page-content-inner {
+    margin-left: 38px;
+}
+
+#page-elements #page-content-widgets {
+    margin-right: 38px;
+}

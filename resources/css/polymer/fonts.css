@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "Google Sans";
+    src: url('/resources/fonts/font-regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url('/resources/fonts/font-italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url('/resources/fonts/font-bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url('/resources/fonts/font-bold-italic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('/resources/fonts/body/Roboto-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('/resources/fonts/body/Roboto-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('/resources/fonts/body/Roboto-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('/resources/fonts/body/Roboto-BoldItalic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+center { /* Polyfill in case HTML5 drops the support */
+    text-align: center;
+}
+
+* {
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', "Noto Sans", Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+h1, h2, h3, h4, h5, h6, .title, #snackbar, pjse-title {
+    font-family: "Google Sans", Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', "Noto Sans", Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+}
+
+.hide {
+    display: none;
+}
+
+html, body {
+    margin: 0;
+}
+
+.menubutton {
+    font-variant: normal;
+    color: white;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+#menuitems {
+    vertical-align: middle;
+    display: flex;
+    align-content: center;
+}
+
+.menuitem {
+    width: max-content;
+    font-size: inherit;
+}
