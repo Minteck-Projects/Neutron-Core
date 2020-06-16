@@ -66,7 +66,9 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     }
 }
 
-echo('<link rel="stylesheet" href="/resources/upload/styles.css">'); // Custom styles loader
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.css")) {
+    echo('<link rel="stylesheet" href="/resources/upload/styles.css">'); // Custom styles loader
+}
 echo('<script src="/resources/js/jquery.js"></script>'); // JQuery, used at almost all pages
 
 echo("<script>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/global.js") . "</script>"); // Global Scripts

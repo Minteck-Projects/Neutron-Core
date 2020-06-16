@@ -1,0 +1,11 @@
+{
+    "name": {
+        "en": "Notes",
+        "fr": "Notes"
+    },
+    "description": {
+        "en": "Shows the text you want in a widget",
+        "fr": "Affiche le texte que vous voulez dans un widget"
+    },
+    "config": "/cms-special/admin/plugins/widget-notes-configure"
+}

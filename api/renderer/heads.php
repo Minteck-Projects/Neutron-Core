@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/resources/css/themes/blue-light.css">
     <link rel="stylesheet" href="/resources/css/polymer/menubar.css">
     <link rel="stylesheet" href="/resources/css/polymer/content.css">
-    <link rel="shortcut icon" href="/resources/upload/siteicon<?= file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png") ? "-uncomp" : "" ?>.png" type="image/png">
+    <link rel="shortcut icon" href="/resources/upload/favicon.png" type="image/png">
     <link rel="stylesheet" href="/resources/css/polymer/responsive.css">
     <link rel="stylesheet" href="/resources/css/polymer/warnings.css">
     <link rel="stylesheet" href="/resources/lib/pushbar.js/library.css">
@@ -27,7 +27,6 @@
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>
 </head>
 <body>
-<script src="/resources/js/home.js"></script>
 <script>
     pushbar = new Pushbar({
         blur: true,

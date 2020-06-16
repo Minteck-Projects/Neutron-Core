@@ -10,7 +10,7 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-fu
 
 ?>
 
-<aside class="mdc-drawer" data-pushbar-direction="left" data-pushbar-id="navigation">
+<aside class="mdc-drawer" data-pushbar-direction="right" data-pushbar-id="navigation">
     <div class="mdc-drawer__content">
         <nav class="mdc-list">
             <a class="mdc-list-item" onclick="pushbar.close();">
@@ -40,7 +40,7 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-fu
                 <span class="mdc-list-item__text"><?= $el[1] ?></span>
             </a>
             <?php endforeach ?>
-            <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures") && count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) > 0): ?>
+            <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures") && count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) > 2): ?>
             <a class="mdc-list-item<?= $_SERVER['PHP_SELF'] == "/cms-special/galery/index.php" ? " mdc-list-item--activated" : "" ?>" href="/cms-special/gallery" aria-current="page">
                 <i class="material-icons-outlined mdc-list-item__graphic" aria-hidden="true">image</i>
                 <span class="mdc-list-item__text"><?= $lang["viewer"]["gallery"] ?></span>

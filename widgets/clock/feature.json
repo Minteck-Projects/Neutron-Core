@@ -1,0 +1,11 @@
+{
+    "name": {
+        "en": "Clock",
+        "fr": "Horloge"
+    },
+    "description": {
+        "en": "Shows the current time in a widget",
+        "fr": "Affiche un widget contenant l'heure"
+    },
+    "config": null
+}

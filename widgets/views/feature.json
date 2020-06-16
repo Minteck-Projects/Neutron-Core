@@ -1,0 +1,11 @@
+{
+    "name": {
+        "en": "Views Count",
+        "fr": "Compteur de visites"
+    },
+    "description": {
+        "en": "Shows the number of today's site visits in a widget",
+        "fr": "Affiche un widget avec le nombre de vues du jour"
+    },
+    "config": null
+}

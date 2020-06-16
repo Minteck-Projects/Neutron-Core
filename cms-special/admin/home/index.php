@@ -1,4 +1,14 @@
-<?php $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php
+
+// _____ ___  ____   ___    
+// |_   _/ _ \|  _ \ / _ \ _ 
+//   | || | | | | | | | | (_)
+//   | || |_| | |_| | |_| |_ 
+//   |_| \___/|____/ \___/(_)
+//
+// Refaire la page d'accueil
+
+$pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
                     <center>
                         <h2><?= $lang["admin-home"]["greeting"] ?></h2>
                         <p>
@@ -27,7 +37,7 @@
                             ?>
                             <p><small><a href="/cms-special/admin/pages"><?= $lang["admin-home"]["more"] ?></a></small></p>
                         </ul>
-                        <h3><?= $lang["admin-home"]["pluginlist"] ?></h3>
+                        <!-- <h3><?= $lang["admin-home"]["pluginlist"] ?></h3>
                         <ul>
                         <?php
 
@@ -43,6 +53,6 @@
                             <p><small><a href="/cms-special/admin/plugins"><?= $lang["admin-home"]["more"] ?></a></small></p>
                         </ul>
                         <h3><?= $lang["admin-home"]["continue"] ?></h3>
-                        <p><?= $lang["admin-home"]["continuemsg"][0] ?><i class="material-icons" style="vertical-align:middle;">menu</i><?= $lang["admin-home"]["continuemsg"][1] ?></p>
+                        <p><?= $lang["admin-home"]["continuemsg"][0] ?><i class="material-icons" style="vertical-align:middle;">menu</i><?= $lang["admin-home"]["continuemsg"][1] ?></p> -->
                     </center>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

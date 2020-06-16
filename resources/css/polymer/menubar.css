@@ -32,3 +32,14 @@
 .mdc-top-app-bar__title {
     max-width: 256px;
 }
+
+.menubutton {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#menuitems {
+    width: 100%;
+    justify-content: right;
+}

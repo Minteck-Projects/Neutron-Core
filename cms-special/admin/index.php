@@ -116,7 +116,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
         <?php if (!isset($_GET['authkey']) || file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey")): ?>
             <form action="./<?php if (isset($_GET['pr'])) {echo("?pr=" . $_GET['pr']);if (isset($_GET['pa'])) {echo("&pa=" . urlencode($_GET['pa']));}} ?>" method="post">
-                <input name="password" type="password" placeholder="<?= isset($_GET['authkey']) ? $lang["login"]["authph"] : $lang["login"]["password"] ?>"><br><br>
+                <input name="authkey" type="password" placeholder="<?= isset($_GET['authkey']) ? $lang["login"]["authph"] : $lang["login"]["password"] ?>"><br><br>
                 <input type="submit" class="button" href="/" value="<?= $lang["login"]["login"] ?>">
             </form><br>
         <?php else: ?>

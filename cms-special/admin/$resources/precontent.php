@@ -108,6 +108,8 @@ function isJson(string $json) {
     return (json_last_error() == JSON_ERROR_NONE);
 }
 
+include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocessor.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -118,9 +120,9 @@ function isJson(string $json) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/alerts.css">
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="<?= $_MD_INCLUDES ?>/material-components-web.min.css" rel="stylesheet">
+    <script src="<?= $_MD_INCLUDES ?>/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="<?= $_MDI_PATH ?>">
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <link rel="stylesheet" href="/resources/css/codename.css">
@@ -138,6 +140,7 @@ function isJson(string $json) {
     <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
     <link rel="preload" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js" as="script">
     <link rel="preload" href="/cms-special/admin/$resources/admin.js" as="script">
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>
 
     <?php
 
@@ -197,6 +200,8 @@ function isJson(string $json) {
 </head>
 <body id="settings" style="overflow-x:hidden;">
     <?php
+
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documentbody.php";
 
     $path = str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']);
     $name = $pageConfig['headerName'];

@@ -1,0 +1,11 @@
+{
+    "name": {
+        "en": "Xmas Mode",
+        "fr": "Mode Noël"
+    },
+    "description": {
+        "en": "Adapts your website's appearance for Christmas",
+        "fr": "Adapte l'apparence de votre site pour Noël"
+    },
+    "config": null
+}
