@@ -71,7 +71,6 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
 
             <hr class="mdc-list-divider">
             <h6 class="mdc-list-group__subheader"><?= $lang["admin-drawer-categories"]["data-opti"] ?></h6>
-            <?= renderItem("/cms-special/admin/semantic", "adjust", $lang["admin-drawer-items"]["semantic"]) ?>
             <?= renderItem("/cms-special/admin/stats", "insert_chart", $lang["admin-drawer-items"]["stats"]) ?>
             <?= renderItem("/cms-special/admin/logs", "short_text", $lang["admin-drawer-items"]["logs"]) ?>
 
