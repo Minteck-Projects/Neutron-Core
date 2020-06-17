@@ -18,7 +18,7 @@ if ($currentSlug == "index") {
 }
 
 ?>
-<?php $pageConfig = [ "domName" => "Suppression de " . $currentName . " - Pages", "headerName" => "Suppression de " . $currentName ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Suppression de " . $currentName . " - Pages", "headerName" => "Suppression de " . $currentName ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <div id="confirm">
             <p>Voulez-vous vraiment supprimer la page "<?= $currentName ?>" ? Cette action est irréversible et tout lien menant vers cette page renverra à une page     d'erreur...</p>
             <?php
@@ -34,7 +34,7 @@ if ($currentSlug == "index") {
             </ul>
         </div>
         <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

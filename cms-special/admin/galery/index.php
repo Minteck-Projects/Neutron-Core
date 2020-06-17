@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Galerie de photos", "headerName" => "Galerie de photos" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Galerie de photos", "headerName" => "Galerie de photos" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
 <?php
 
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery")) {
@@ -91,7 +91,7 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery")) {
 
         ?>
         </ul>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

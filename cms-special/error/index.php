@@ -43,7 +43,7 @@ if ($ready) {
     }
 
     ?></title>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
 </head>
 <body mpcms-error-body>
     <div class="centered discover">

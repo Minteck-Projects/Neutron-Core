@@ -20,18 +20,9 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     }
 }
 
-if (isset($_POST['theme'])) {
-    if ($_POST['theme'] == "dark") {
-        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled", "");
-        die("ok");
-    }
-    if ($_POST['theme'] == "default") {
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {
-            unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled");
-        }
-        die("ok");
-    }
-    die("Thème non reconnu");
+if (isset($_POST['color'])) {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/color", $_POST['color']);
+    die("ok");
 } else {
-    die("Pas de thème");
+    die("Pas de couleur");
 }

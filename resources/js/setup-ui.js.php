@@ -1,4 +1,4 @@
-/*<?php header("Content-Type: application/javascript");include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/setup.php"; ?>*/
+/*<?php header("Content-Type: application/javascript");require_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/setup.php"; ?>*/
 setTimeout(() => {
     switchPage("01-loader", "02-check")
     document.title = '<?= $lang["setup"]["steps"][0] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';

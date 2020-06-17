@@ -88,7 +88,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
     }
 
     ?></title>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
 </head>
 <body>
     <?php
@@ -226,7 +226,7 @@ if (!empty($widgets->list)) {
                 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
                 foreach ($config->list as $widget) {
                     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php")) {
-                        include_once $_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php";
+                        require_once $_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php";
                     }
                 }
             ?>

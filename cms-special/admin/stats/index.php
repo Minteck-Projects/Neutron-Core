@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Statistiques", "headerName" => "Statistiques" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Statistiques", "headerName" => "Statistiques" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
         <h3><?= $lang["admin-stats"]["thisMonth"]?></h3>
         <div id="visits" class="chart--container"></div>
@@ -198,4 +198,4 @@ zingchart.render({
             </tbody>
         </table>
     </div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>

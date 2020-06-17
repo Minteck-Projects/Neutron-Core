@@ -57,7 +57,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             die("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
 </head>
 <body>
     <div id="settings">

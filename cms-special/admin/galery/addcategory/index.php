@@ -1,10 +1,10 @@
-<?php $pageConfig = [ "domName" => "Nouvelle catégorie - Galerie de photos", "headerName" => "Nouvelle catégorie" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Nouvelle catégorie - Galerie de photos", "headerName" => "Nouvelle catégorie" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <div id="hidding">
             <input type="text" id="catname" placeholder="Nom de la catégorie">
             <p><i>Si une catégorie du même nom existe déjà, rien ne se passera</i></p>
             <p><center><a class="button" onclick="createCat()">Créer la catégorie</a></center></p>
         </div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

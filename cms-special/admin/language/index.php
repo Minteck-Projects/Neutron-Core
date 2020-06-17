@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Langue et région", "headerName" => "Langue et région" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Langue et région", "headerName" => "Langue et région" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
 <center><select id="langselect">
     <?php
 
@@ -17,7 +17,7 @@
 </select>
 </p>
 <input id="langselect-confirm" type="button" value="OK" onclick="changeLanguage()"></center>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

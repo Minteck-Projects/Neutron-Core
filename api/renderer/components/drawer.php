@@ -1,11 +1,11 @@
 <?php
 
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd"), "|") === false)) {
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
 }
 
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd"), "|") === false)) {
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
 }
 
 ?>

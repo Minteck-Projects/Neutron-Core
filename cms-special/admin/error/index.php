@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Erreur", "headerName" => "Erreur" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Erreur", "headerName" => "Erreur" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
                     <h1><center><?= $lang["admin-errors"]["common"]->title ?></center></h1>
                     <p><center><?= $lang["admin-errors"]["common"]->message ?></center></p>
                     <p><center>
@@ -7,4 +7,4 @@
                             <li><a href="/cms-special/admin/home"><?= $lang["admin-errors"]["common"]->home ?></a></li>
                         </ul>
                     </center></p>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

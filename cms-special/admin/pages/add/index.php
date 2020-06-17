@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Nouvelle page - Pages", "headerName" => "Nouvelle page" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Nouvelle page - Pages", "headerName" => "Nouvelle page" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
             <p>
                 <form name="settings">
                     <center><input id="name" type="text" placeholder="Nom de la page"></center><br>
@@ -18,7 +18,7 @@
                 </div>
             </div>
     <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
     window.onbeforeunload = function (e) {

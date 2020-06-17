@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Historique d'activité", "headerName" => "Historique d'activité" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Historique d'activité", "headerName" => "Historique d'activité" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <div id="logs">
             <?php
             
@@ -13,4 +13,4 @@
             
             ?>
             </div><br><br>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

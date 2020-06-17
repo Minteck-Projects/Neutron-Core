@@ -1,0 +1,3 @@
+@import url("./green-light.css") only screen and (prefers-color-scheme: light);
+@import url("./green-light.css") only screen and (prefers-color-scheme: no-preference);
+@import url("./green-dark.css") only screen and (prefers-color-scheme: dark);

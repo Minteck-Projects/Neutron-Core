@@ -73,19 +73,6 @@ echo('<script src="/resources/js/jquery.js"></script>'); // JQuery, used at almo
 
 echo("<script>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/global.js") . "</script>"); // Global Scripts
 
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntufont-enabled")) { // Change font to Ubuntu if enabled
-    echo('<link rel="stylesheet" href="/resources/themes/fonts/ubuntu.css">');
-}
-
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ubuntulfont-enabled")) { // Change font to Ubuntu Light if enabled
-    echo('<link rel="stylesheet" href="/resources/themes/fonts/ubuntu-light.css">');
-}
-
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) { // Load Dark Theme if enabled
-    echo('<link rel="stylesheet" href="/resources/themes/colors/dark.css">');
-    echo('<script src="/resources/themes/colors/dark.js"></script>');
-}
-
 ?>
 
 <script>

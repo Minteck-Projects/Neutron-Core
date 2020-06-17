@@ -10,7 +10,7 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
             if (isset($_POST['title'])) {
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $_POST['title'])) {
                     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $_POST['title'], $_POST['content']);
-                    include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
+                    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
                     die("ok");
                 } else {
                     die("La page sélectionnée est introuvable");

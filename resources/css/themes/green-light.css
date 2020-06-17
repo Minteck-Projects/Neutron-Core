@@ -1,0 +1,11 @@
+:root {
+    --mdc-theme-primary: #00c924;
+    --mdc-theme-secondary: #c900a4;
+    --mdc-theme-background: #cbffd4;
+    --mdc-theme-surface: #00c924;
+    --mdc-theme-on-surface: white;
+    --mdc-theme-on-primary: white;
+    --mdc-theme-on-secondary: black;
+
+    --cms-extra-superdark: #002507;
+}

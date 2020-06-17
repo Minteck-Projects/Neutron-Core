@@ -1,7 +1,7 @@
-<?php $pageConfig = [ "domName" => "Personnalisation en cours - Styles personnalisés", "headerName" => "Concentrez-vous sur la personnalisation de votre site" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Personnalisation en cours - Styles personnalisés", "headerName" => "Concentrez-vous sur la personnalisation de votre site" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
     <center><p><a onclick="publishCss()" class="button"><?= $lang["admin-css-studio"]["publish"] ?></a></p></center>
     <div id="easycss-main"></div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script src="/api/easycss/src/easycss.js" type="application/javascript" charset="utf-8"></script>
 <script src="/api/easycss/language/<?= $langsel ?>.js" type="application/javascript" charset="utf-8"></script>

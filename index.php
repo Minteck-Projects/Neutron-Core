@@ -11,7 +11,7 @@ using your package manager.
 */
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/main.php"; render('index');
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/main.php"; render('index');
 } else {
     header("Location: /cms-special/setup");
     die();

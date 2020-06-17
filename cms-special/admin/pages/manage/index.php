@@ -18,7 +18,7 @@ if ($currentSlug == "index") {
 }
 
 ?>
-<?php $pageConfig = [ "domName" => $currentName . " - Pages", "headerName" => $currentName ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => $currentName . " - Pages", "headerName" => $currentName ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <?php
             
             if ($currentSlug == "index") {
@@ -40,4 +40,4 @@ if ($currentSlug == "index") {
             
             ?>
         </ul>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

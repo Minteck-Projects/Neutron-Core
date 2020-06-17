@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Pages", "headerName" => "Gestionnaire de pages" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Pages", "headerName" => "Gestionnaire de pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         Cliquez sur le nom d'une page pour la modifier, la renommer, ou la supprimer.
         <ul>
             <?php
@@ -52,4 +52,4 @@
             ?>
         </ul>
         <p><center><a href="/cms-special/admin/pages/add" class="button" title="Ajouter une nouvelle page à votre site">Créer une page</a></center></p>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

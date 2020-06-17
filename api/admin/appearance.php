@@ -88,7 +88,7 @@ if (isset($_FILES['icon'])) {
         } else {
             copy($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png", $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png");
         }
-        include_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/components/favicon.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/components/favicon.php";
         unlink($_FILES['icon']['tmp_name']);
     }
 }

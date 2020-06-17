@@ -16,7 +16,7 @@ body {
 #page-elements #page-content-inner, #page-elements #page-content-widgets-desktop, #page-elements #page-content-widgets-mobile {
     background: whitesmoke;
     padding: 15px 25px;
-    border-radius: 30px;
+    border-radius: 8px;
     box-shadow: #80808042 0px 1px 10px;
 }
 
@@ -30,8 +30,8 @@ body {
 
 #page-content-colorbar {
     background: linear-gradient(to bottom, var(--mdc-theme-primary) 0%, var(--mdc-theme-primary) 50%,transparent 50.999%,transparent 100%);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     height: 28px;
     margin-top: -15px;
     margin-left: -25px;
@@ -72,11 +72,18 @@ body {
     transition: opacity 200ms;
 }
 
-#page-elements a:hover {
+#page-footer-content a, #page-footer-links a {
+    color: white;
+    text-decoration: underline;
+    opacity: 1;
+    transition: opacity 200ms;
+}
+
+#page-elements a:hover, #page-footer-content a:hover, #page-footer-links a:hover {
     opacity: .75;
 }
 
-#page-elements a:active {
+#page-elements a:active, #page-footer-content a:active, #page-footer-links a:active {
     opacity: .5;
 }
 
@@ -105,7 +112,7 @@ figure img {
     padding: 25px 50px;
 }
 
-#page-footer-title-settings-button {
+#page-footer-title-top-button, #page-footer-title-settings-button {
     color: white;
 }
 
@@ -116,10 +123,27 @@ figure img {
 
 #page-footer-title {
     display: grid;
-    grid-template-columns: 1fr 48px;
+    grid-template-columns: 1fr 100px;
 }
 
 #page-footer-title-inner {
     display: flex;
     align-items: center;
+    font-size: 22px;
+}
+
+#page-footer-links {
+    font-size: 12px;
+}
+
+#page-footer-title-inner {
+    max-width: 256px;
+    width: 256px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 32px;
 }

@@ -1,4 +1,4 @@
-<?php $loadEditor = false;$pageConfig = [ "domName" => "Apparence", "headerName" => "Apparence" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $loadEditor = false;$pageConfig = [ "domName" => "Apparence", "headerName" => "Apparence" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <span id="appearance-error-box" class="hide"><div id="error"><span id="appearance-error"><?= $lang["admin-appearance"]["error"] ?></span></div></span>
         <div id="appearance-settings"><center>
             <?= $lang["admin-appearance"]["site"] ?> <input onchange="validateName()" onkeyup="validateName()" onkeydown="validateName()" type="text" id="name-field" placeholder="Nom du site" value="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?>"><br><p id="04-name-tip" class="tip-red"><?= $lang["admin-appearance"]["name"][0] ?></p>
@@ -65,7 +65,7 @@
             <a onclick="changePassword()" class="button"><?= $lang["admin-appearance"]["change"] ?></a>
         </center></div>
         <center><div id="password-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></center>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

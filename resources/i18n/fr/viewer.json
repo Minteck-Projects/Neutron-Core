@@ -15,5 +15,7 @@
         "ici ",
         "pour vous déconnecter"
     ],
-    "toc": "Table des matières"
+    "toc": "Table des matières",
+    "bugs": "Signaler un bug",
+    "system": "Informations système"
 }

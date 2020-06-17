@@ -1,7 +1,7 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
-include_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/render.php";
+require$_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/render.php";
 $buffer = ""; // Initialiser un nouveau tampon vide
 
 function buffer(string $value) {

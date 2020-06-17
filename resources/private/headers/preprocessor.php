@@ -5,7 +5,16 @@ $_MDI_PATH = "/resources/lib/material/iconfont.css"; // Path to Material Icons f
 
 // Generate favicon if not yet generated
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/favicon.png")) {
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/components/favicon.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/components/favicon.php";
+}
+
+// Dark/light/dynamic theme + color
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme")) {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme", "auto");
+}
+
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/color")) {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/color", "blue");
 }
 
 // Trim Build Values
@@ -47,7 +56,7 @@ function getName($config) {
 }
 
 // Language Loader
-include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+require$_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache")) { // Cache directory
     mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache");

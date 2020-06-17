@@ -11,7 +11,7 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
         $returnp = $returnp . 'target="_blank" ';
     }
     $returnp = $returnp . 'href="' . $page . '">';
-    $returnp = $returnp . '<i class="material-icons mdc-list-item__graphic" aria-hidden="true">' . $icon . '</i><span class="mdc-list-item__text">' . $name . '</span></a>';
+    $returnp = $returnp . '<i class="material-icons-outlined mdc-list-item__graphic" aria-hidden="true">' . $icon . '</i><span class="mdc-list-item__text">' . $name . '</span></a>';
     return $returnp;
 }
 
@@ -40,11 +40,11 @@ function renderItem(string $page, string $icon, string $name, $refresh = false) 
     <div class="mdc-drawer__content">
         <nav class="mdc-list">
             <a class="mdc-list-item <?php if ($path == "/cms-special/admin/home") { echo("mdc-list-item--activated"); } ?>" href="/cms-special/admin/home" aria-current="page">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+                <i class="material-icons-outlined mdc-list-item__graphic" aria-hidden="true">home</i>
                 <span class="mdc-list-item__text"><?= $lang["admin-drawer-items"]["home"] ?></span>
             </a>
             <a class="mdc-list-item <?php if ($path == "/cms-special/admin/distrib") { echo("mdc-list-item--activated"); } ?>" href="/cms-special/admin/distrib" aria-current="page">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">publish</i>
+                <i class="material-icons-outlined mdc-list-item__graphic" aria-hidden="true">publish</i>
                 <span class="mdc-list-item__text"><?= $lang["admin-drawer-items"]["distrib"] ?></span>
             </a>
 

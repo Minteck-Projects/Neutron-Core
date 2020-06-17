@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Nouvelle photo - Galerie de photos", "headerName" => "Nouvelle photo" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Nouvelle photo - Galerie de photos", "headerName" => "Nouvelle photo" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <div id="hidding">
             <p>Catégorie : <select id="category">
                 <option value="unclassed" selected>Non classé</option>
@@ -17,7 +17,7 @@
             <p>Fichier de la photo : <input type="file" id="file"> <i>Taille maximale : <?= ini_get("upload_max_filesize") ?></i></p>
             <p><center><a class="button" onclick="createCat()">Publier la photo</a></center></p>
         </div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

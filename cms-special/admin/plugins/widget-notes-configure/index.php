@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Configuration de l'extension - Extensions", "headerName" => "Configuration de l'extension" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Configuration de l'extension - Extensions", "headerName" => "Configuration de l'extension" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <p><?= $lang["admin-plugins"]["widgetconf"]->textedit ?></p>
         <div id="data">
         <textarea name="content" id="editor">
@@ -400,7 +400,7 @@
             <p><center><a class="button" onclick="saveChanges()" title="<?= $lang["admin-plugins"]["widgetconf"]->saveph ?>"><?= $lang["admin-plugins"]["widgetconf"]->save ?></a></center></p>
         </div>
         <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

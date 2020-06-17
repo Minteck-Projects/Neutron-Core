@@ -1,4 +1,4 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php"; ?>
 <?php
 
 if (isset($_COOKIE['ADMIN_TOKEN'])) {

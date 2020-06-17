@@ -53,14 +53,14 @@ if (isset($_POST['page'])) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $newslug, file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $oldslug));
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $newslug, file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $oldslug));
             mkdir($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug);
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug . "/index.php", '<?php include_once $_SERVER[\'DOCUMENT_ROOT\'] . "/api/renderer/render.php"; render(\'' . $newslug . '\'); ?>');
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug . "/index.php", '<?php require_once $_SERVER[\'DOCUMENT_ROOT\'] . "/api/renderer/render.php"; render(\'' . $newslug . '\'); ?>');
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug . "/pagename", $newname);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/" . $oldslug . "/index.php");
             unlink($_SERVER['DOCUMENT_ROOT'] . "/" . $oldslug . "/pagename");
             rmdir($_SERVER['DOCUMENT_ROOT'] . "/" . $oldslug);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $oldslug);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $oldslug);
-            include_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
             die("ok");
         } else {
             die("Aucun nouveau nom spécifié");

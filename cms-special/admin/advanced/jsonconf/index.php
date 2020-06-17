@@ -1,10 +1,10 @@
-<?php $pageConfig = [ "domName" => "Préférences de développement - Options avancées", "headerName" => "Préférences de développement" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Préférences de développement - Options avancées", "headerName" => "Préférences de développement" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
     <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-advanced-dev"]["warning"] ?></p><p><?= $lang["admin-advanced-dev"]["remove"][0] ?> <code>/data/webcontent/customSettings.json</code>. <?= $lang["admin-advanced-dev"]["remove"][1] ?></p></td></tr></tbody></table></p>
     <div id="editing">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor$3.php" ?>
     </div>
     <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
     window.onbeforeunload = function (e) {

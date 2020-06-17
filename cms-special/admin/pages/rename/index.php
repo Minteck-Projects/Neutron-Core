@@ -18,7 +18,7 @@ if ($currentSlug == "index") {
 }
 
 ?>
-<?php $pageConfig = [ "domName" => "Renommage de " . $currentName . " - Pages", "headerName" => "Renommage de " . $currentName ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Renommage de " . $currentName . " - Pages", "headerName" => "Renommage de " . $currentName ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <div id="confirm">
             <p>Vous allez renommer la page "<?= $currentName ?>". Tout lien pointant vers l'ancien nom de cette page reverra une page d'erreur...</p>
             <?php
@@ -45,7 +45,7 @@ if ($currentSlug == "index") {
             <p><center><a class="button" onclick="renamePage()" title="Renommer la page">Renommer</a></center></p>
         </div>
         <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

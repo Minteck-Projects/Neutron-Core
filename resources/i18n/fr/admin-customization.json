@@ -1,14 +1,16 @@
 {
-    "disclaimer": [
-        "Les modifications apportées ne s'appliqueront qu'après le",
-        "rechargement de la page",
-        "Si les changements ne s'appliquent pas, essayez de purger le cache",
-        "sur Windows ou Linux, ou",
-        "sur Mac"
-    ],
-    "icons": "Pack d'îcones",
-    "font": "Police de caractères",
-    "color": "Thème de couleurs",
-    "deprecated": "Cette option n'a plus aucun effet sur l'apparence de votre site",
-    "noapply": "Cette option ne s'applique pas à l'administration du site"
+    "color": "Couleur d'ambiance",
+    "theme": "Thème",
+    "dark": "Sombre",
+    "light": "Clair",
+    "auto": "Suivre l'option sur l'ordinateur du visiteur",
+    "colors": [
+        "Bleu",
+        "Vert",
+        "Rouge",
+        "Orange",
+        "Violet",
+        "Marron",
+        "Gris"
+    ]
 }

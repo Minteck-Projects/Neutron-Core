@@ -100,10 +100,24 @@
     #page-footer {
         padding: 15px 25px;
     }
+
+    #page-banner {
+        height: 75px;
+    }
+
+    #page-content-colorbar {
+        margin-top: 0;
+    }
 }
 
 @media (min-width: 860px) {
     .rsp-simplifiedonly {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    #page-footer-title-inner {
         display: none;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-$pageConfig = [ "domName" => "Extensions", "headerName" => "Extensions" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+$pageConfig = [ "domName" => "Extensions", "headerName" => "Extensions" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-plugins"]["newnotice"] ?></p></td></tr></tbody></table></p>
         <?php
 
@@ -29,7 +29,7 @@ $pageConfig = [ "domName" => "Extensions", "headerName" => "Extensions" ]; inclu
         }
 
         ?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
 

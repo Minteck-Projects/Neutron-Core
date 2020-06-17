@@ -8,7 +8,7 @@
 //
 // Refaire la page d'accueil
 
-$pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+$pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
                     <center>
                         <h2><?= $lang["admin-home"]["greeting"] ?></h2>
                         <p>
@@ -55,4 +55,4 @@ $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord
                         <h3><?= $lang["admin-home"]["continue"] ?></h3>
                         <p><?= $lang["admin-home"]["continuemsg"][0] ?><i class="material-icons" style="vertical-align:middle;">menu</i><?= $lang["admin-home"]["continuemsg"][1] ?></p> -->
                     </center>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

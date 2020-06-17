@@ -1,0 +1,36 @@
+:root {
+    --mdc-theme-primary: #acacac;
+    --mdc-theme-secondary: #c9c9c9;
+    --mdc-theme-background: #acacac;
+    --mdc-theme-surface: #acacac;
+    --mdc-theme-on-surface: white;
+    --mdc-theme-on-primary: white;
+    --mdc-theme-on-secondary: black;
+
+    --cms-extra-superdark: #2b2b2b;
+}
+
+/* ----------------------- */
+
+#page-banner {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5) 70%, var(--mdc-theme-background)), var(--mpcms-banner) !important;
+}
+
+#page-elements #page-content-inner, #page-elements #page-content-widgets-desktop, #page-elements #page-content-widgets-mobile {
+    background: #171717 !important;
+    box-shadow: #1a1a1a42 0px 1px 10px !important;
+    color: white !important;
+}
+
+#page-elements a {
+    color: whitesmoke !important;
+}
+
+[data-pushbar-id] {
+    background: #1e1e1e !important;
+    color: white !important;
+}
+
+.mdc-list-item:not(.mdc-list-item--activated), .mdc-list-item:not(.mdc-list-item--activated) .material-icons-outlined {
+    color: white !important;
+}

@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 
 if (isset($_GET['return'])) {
     $callback = $_GET['return'];

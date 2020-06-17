@@ -18,7 +18,7 @@ if ($currentSlug == "index") {
 }
 
 ?>
-<?php $pageConfig = [ "domName" => "Modification de " . $currentName . " - Pages", "headerName" => "Modification de " . $currentName ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Modification de " . $currentName . " - Pages", "headerName" => "Modification de " . $currentName ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
             <div id="editing">Modifier le contenu de cette page :
                 <?php
 
@@ -37,7 +37,7 @@ if ($currentSlug == "index") {
                 ?>
             </div>
     <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
     window.onbeforeunload = function (e) {

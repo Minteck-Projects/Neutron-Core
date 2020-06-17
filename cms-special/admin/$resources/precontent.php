@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+require$_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 // var_dump($_SERVER['REQUEST_URI']);
 
 $pageid = explode("/", $_SERVER['REQUEST_URI'])[3];
@@ -108,7 +108,7 @@ function isJson(string $json) {
     return (json_last_error() == JSON_ERROR_NONE);
 }
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocessor.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocessor.php";
 
 ?>
 
@@ -140,7 +140,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
     <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
     <link rel="preload" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js" as="script">
     <link rel="preload" href="/cms-special/admin/$resources/admin.js" as="script">
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>
 
     <?php
 
@@ -154,7 +154,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
 
     ?>
     <?php
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled")) {
+        if (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme") == "dark") {
             echo('<link rel="stylesheet" href="/resources/themes/colors/dark.css"><script src="/resources/themes/colors/dark.js"></script><link rel="stylesheet" href="/cms-special/admin/$resources/index-dark.css">');
         } else {
             echo('<link rel="stylesheet" href="/cms-special/admin/$resources/index.css">');
@@ -176,7 +176,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
             die("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
     <?php
 
     getData($_SERVER['DOCUMENT_ROOT']);
@@ -201,15 +201,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
 <body id="settings" style="overflow-x:hidden;">
     <?php
 
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documentbody.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documentbody.php";
 
     $path = str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']);
     $name = $pageConfig['headerName'];
 
     ?>
     <div id="admin">
-        <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/header.php"; ?>
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/header.php"; ?>
         <div id="app-grid">
-            <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/drawer.php"; ?>
+            <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/drawer.php"; ?>
             <main class="main-content" id="main-content">
                 <div class="mdc-top-app-bar--fixed-adjust">

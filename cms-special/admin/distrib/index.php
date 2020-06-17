@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Distribution", "headerName" => "Distribution" ]; include_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Distribution", "headerName" => "Distribution" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
 <center><h2 style="font-weight:normal;">
     <?= $lang["admin-distrib"]["intro"] ?><b>
     <?php
