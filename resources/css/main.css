@@ -335,9 +335,10 @@ body {
     background: #2f2f2f;
 }
 
-.pushbar.opened {
+[data-pushbar-id].opened {
     box-shadow: 1px 1px 12px gray;
     z-index: 999999999 !important;
+    margin-top: 20px;
 }
 
 .menubar-link {
@@ -471,4 +472,8 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
 
 .image.image_resized > img {
     width:100%;
+}
+
+.noeffects {
+    filter: none !important;
 }

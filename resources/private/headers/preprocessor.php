@@ -56,7 +56,7 @@ function getName($config) {
 }
 
 // Language Loader
-require$_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache")) { // Cache directory
     mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache");

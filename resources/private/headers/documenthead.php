@@ -28,15 +28,8 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             $customSettings = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"));
             if (isset($customSettings->AfficherBoutonAdministration) && isset($customSettings->AdministrationBarreNavigation) && isset($customSettings->RessourcesPersonnalisées) && isset($customSettings->RessourcesPersonnalisées->CSS) && isset($customSettings->RessourcesPersonnalisées->JS) && isset($customSettings->PagesMasquées)) { // If it's using the old system, delete the file and generate a new one.
                 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json.bak", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json"));
-                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", "{
-     \"customResources\": {
-         \"styles\": \"\",
-        \"script\": \"\"
-    },
-    \"hiddenPages\": [],
-    \"showAdminButton\": true
-}");
-                $continue = false;
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/csettings-base.json"));
+                $continue = true;
             } else {
                 $continue = true;
             }
@@ -55,14 +48,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
             die("<h1>" . $lang["header"]["internalError"][0] . "</h1><p>" . $lang["header"]["internalError"][4] . "</p><p>" . $lang["header"]["internalError"][2] . "<code>/data/webcontent/customSettings.json</code>" . $lang["header"]["internalError"][3] . "</p><hr><i>Minteck Projects CMS " . str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) . " " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/codename") . "</i>");
         }
     } else {
-        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", "{
-    \"customResources\": {
-        \"styles\": \"\",
-        \"script\": \"\"
-    },
-    \"hiddenPages\": [],
-    \"showAdminButton\": true
-}");
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/csettings-base.json"));
     }
 }
 

@@ -11,7 +11,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 ?>
 
 <!DOCTYPE html>
-<html lang="<?= $langsel ?>">
+<html lang="<?= isset($langsel) ? $langsel : "en" ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -6,10 +6,12 @@
             <p><img id="icon-img" src="/resources/image/config_file_replace.svg" onclick="Icon_UploadFile()" class="icon_button"><br><small><?= $lang["admin-appearance"]["icon"] ?></small></p>
             <input type="file" id="banner-file" class="hide">
             <p><img id="icon-img" src="/resources/image/config_file_replace.svg" onclick="Banner_UploadFile()" class="icon_button"><br><small><?= $lang["admin-appearance"]["banner"] ?></small></p>
-            <p><input type="checkbox" id="alwaysmenu" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {echo("checked");} ?>><label for="alwaysmenu"><?= $lang["admin-appearance"]["alwaysmenu"] ?></label></p>
-            <p><?= $lang["admin-appearance"]["pages"][0] ?>
+            <p>
+                <input type="checkbox" id="oldrenderer" <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer")) {echo("checked");$oldr=true;} else {$oldr=false;} ?> onchange="toggleRender();"><label for="oldrenderer"><?= $lang["admin-appearance"]["old"] ?></label>
+            </p>
+            <p id="<?= $oldr ? "" : "onlyold" ?>" class="oldopts"><small id="oo-disclaimer" <?= $oldr ? "style=\"display:none;\"" : "" ?>><?= $lang["admin-appearance"]["oldopts"] ?></small><br><?= $lang["admin-appearance"]["pages"][0] ?>
                 <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar")) { $pimb = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar") + 1 - 1; } else { $pimb = 4; } ?>
-                <select id="showpages">
+                <select id="showpages" <?= !$oldr ? "disabled" : "" ?>>
                     <option value="1"<?= $pimb == 1 ? " selected" : "" ?>>1</option>
                     <option value="2"<?= $pimb == 2 ? " selected" : "" ?>>2</option>
                     <option value="3"<?= $pimb == 3 ? " selected" : "" ?>>3</option>
@@ -21,7 +23,8 @@
                     <option value="9"<?= $pimb == 9 ? " selected" : "" ?>>9</option>
                     <option value="10"<?= $pimb == 10 ? " selected" : "" ?>>10</option>
                 </select>
-            <?= $lang["admin-appearance"]["pages"][1] ?></p><br>
+            <?= $lang["admin-appearance"]["pages"][1] ?><br>
+            <input type="checkbox" id="alwaysmenu" <?= !$oldr ? "disabled" : "" ?> <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {echo("checked");} ?>><label for="alwaysmenu"><?= $lang["admin-appearance"]["alwaysmenu"] ?></label></p><br>
             <a onclick="submitData()" class="button"><?= $lang["admin-appearance"]["save"] ?></a>
         </center></div>
         <center><div id="appearance-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></center>
@@ -33,10 +36,10 @@
                 <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer") ?>
             </div><br>
             <a onclick="updateFooter()" class="button"><?= $lang["admin-appearance"]["publish"] ?></a>
-            <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/balloon/ckeditor.js"></script><script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/balloon/translations/<?= $langsel ?>.js"></script>
+            <script src="/resources/js/ckeditor5/ckeditor.js"></script><script src="/resources/js/ckeditor5/translations/<?= $langsel ?>.js"></script>
             <script>
         let editor;
-        BalloonEditor
+        ClassicEditor
             .create( document.querySelector( '#fedit' ), {
                 language: {
                     ui: '<?= $langsel ?>',
@@ -115,6 +118,20 @@ function Banner_UploadFile() {
     $("#banner-file").trigger('click');
 }
 
+function toggleRender() {
+    if (!document.getElementById('oldrenderer').checked) {
+        document.getElementsByClassName('oldopts')[0].id = "onlyold";
+        $('#oo-disclaimer').show(200);
+        document.getElementById('showpages').disabled = true;
+        document.getElementById('alwaysmenu').disabled = true;
+    } else {
+        document.getElementsByClassName('oldopts')[0].id = "";
+        $('#oo-disclaimer').hide(200);
+        document.getElementById('showpages').disabled = false;
+        document.getElementById('alwaysmenu').disabled = false;
+    }
+}
+
 function submitData() {
     document.getElementById('appearance-loader').classList.remove('hide')
     document.getElementById('appearance-settings').classList.add('hide')
@@ -127,6 +144,7 @@ function submitData() {
     }
     formData.append("sitename", document.getElementById('name-field').value);
     formData.append("alwaysmenu", document.getElementById('alwaysmenu').checked.toString());
+    formData.append("oldrenderer", document.getElementById('oldrenderer').checked.toString());
     formData.append("showpages", document.getElementById('showpages').value);
     document.getElementById('appearance-error-box').classList.add("hide")
     $.ajax({

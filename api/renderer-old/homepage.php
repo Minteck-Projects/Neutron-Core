@@ -1,19 +1,11 @@
 <?php
 
-if (isset($MPCMSRendererPageMarkup)) {
-    $pagename = $MPCMSRendererPageMarkupDN;
-} else {
-    $pagename = $MPCMSRendererPageNameValue;
+if ((!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd"), "<a") === false)) || (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd"), "|") === false)) || (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd"), "|") === false))) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
 }
-$ready = true;
 
-if ($ready) {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar")) {
-        $pimb = (integer)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar");
-    } else {
-        $pimb = 4;
-    }
-}
+?>
+<?php
 
 function getAvgLuminance($filename, $num_samples=30) {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd")) {
@@ -43,18 +35,36 @@ function getAvgLuminance($filename, $num_samples=30) {
     }
 }
 
-function compareASCII($a, $b) {
-    $at = iconv('UTF-8', 'ASCII//TRANSLIT', $a);
-    $bt = iconv('UTF-8', 'ASCII//TRANSLIT', $b);
-    return strcmp($at, $bt);
+?>
+<?php
+
+$json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
+$widgets = $json->list;
+foreach ($widgets as $widget): ?>
+<?php $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/feature.json")); ?>
+<?php
+
+if (isset($data->class) && is_string($data->class)) {
+    require $_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php";
 }
 
 ?>
+<?php endforeach ?>
 <?php ob_start();echo("<!--\n\n" . str_replace('%year%', date('Y'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license")) . "\n\n-->") ?>
 <?php
 
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
-    die("<script>location.href = '/';</script>");
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+    $ready = true;
+} else {
+    $ready = false;
+}
+
+if ($ready) {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar")) {
+        $pimb = (integer)file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagesInMenuBar");
+    } else {
+        $pimb = 4;
+    }
 }
 
 ?>
@@ -81,19 +91,37 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
     <link rel="stylesheet" href="/resources/css/ui.css">
     <title><?php
 
-    if (isset($MPCMSRendererPageMarkup)) {
-        echo($MPCMSRendererPageMarkupDN . " - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+    function asciiComp($a, $b) {
+        $at = iconv('UTF-8', 'ASCII//TRANSLIT', $a);
+        $bt = iconv('UTF-8', 'ASCII//TRANSLIT', $b);
+        return strcmp($at, $bt);
+    }
+
+    if ($ready) {
+        echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
-        echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $pagename . "/pagename") . " - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo("MPCMS");
     }
 
     ?></title>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
+    <?php
+
+    if ($ready) {
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php";
+    }
+
+    ?>
 </head>
 <body>
     <?php
 
-    echo("<script type=\"text/javascript\">\nvar pushbar = new Pushbar({\nblur:true,\noverlay:true,\n});\n</script>");
+    if (!$ready) {
+        die("<script>location.href='/cms-special/setup';</script>");
+    }
+
+    if ($ready) {
+        echo("<script type=\"text/javascript\">\nvar pushbar = new Pushbar({\nblur:true,\noverlay:true,\n});\n</script>");
+    }
 
 
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg")) {
@@ -116,18 +144,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
     <div id="always-on-top">
         <div id="siteadmin"><a class="sab" href="/cms-special/version"><span class="branding-desktop"><?= $lang["viewer"]["powered"] ?> Minteck Projects CMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span><span class="branding-mobile">MPCMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span></a><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg"><?= $lang["viewer"]["manage"] ?></a></div>
     </div>
-        <div id="banner" style='background-image: url("<?= $banner ?>");'>
-        <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php
-
-        if (isset($MPCMSRendererPageMarkup)) {
-            echo($MPCMSRendererPageMarkupDN);
-        } else {
-            echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $pagename . "/pagename"));
-        }
-
-        ?></span>
-        </div>
-        <div id="menubar"><span class="menubar-link menubar-mobile" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text"><?= $lang["viewer"]["menu"] ?></span></span>
+    <div id="banner" style='background-image: url("<?= $banner ?>");'>
+        <img id="banner-logo" src="/resources/upload/siteicon.png"><span id="banner-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?></span>
+    </div>
+    <div id="menubar"><span class="menubar-link menubar-mobile" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text"><?= $lang["viewer"]["menu"] ?></span></span>
         <?php
 
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
@@ -137,11 +157,11 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
             echo('<a href="/" title="/" class="menulink-desktop">' . $lang["viewer"]["home"] . '</a>');
             $count = $count + 1;
 
-            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd")) {
-                echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd"));
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd")) {
+                echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd"));
             } else {
                 $pages = scandir($_SERVER['DOCUMENT_ROOT']);
-                uasort($pages, 'compareASCII');
+                uasort($pages, 'asciiComp');
                 foreach ($pages as $page) {
                     if ($page != ".." && $page != ".") {
                         if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
@@ -156,7 +176,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
                         }
                     }
                 }
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">" . $lang["viewer"]["galery"] . "</a>");$count = $count + 1;}
+                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures") && count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) > 2) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menulink-desktop\">" . $lang["viewer"]["gallery"] . "</a>");$count = $count + 1;}
             }
             if ($count >= 4) {
                 echo("<a onclick=\"pushbar.open('panel-navigation')\" title=\"" . $lang["viewer"]["menutitle"] . "\" class=\"menulink-desktop\">" . $lang["viewer"]["menudesktop"] . "</a>");
@@ -172,7 +192,7 @@ if (!empty($widgets->list)) {
 }
 
 ?></div><script src="/resources/js/sticky.js"></script>
-    <div data-pushbar-id="panel-navigation" class="pushbar from_left">
+    <div data-pushbar-id="panel-navigation" data-pushbar-direction="left">
         <div id="banner-menu" style='background-image: url("<?= $banner ?>");'>
             <img id="banner-menu-logo" src="/resources/upload/siteicon.png"><span id="banner-menu-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php
 
@@ -192,7 +212,7 @@ if (!empty($widgets->list)) {
         <?php
 
         $pages = scandir($_SERVER['DOCUMENT_ROOT']);
-        uasort($pages, 'compareASCII');
+        uasort($pages, 'asciiComp');
         foreach ($pages as $page) {
             if ($page != ".." && $page != ".") {
                 if (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) {
@@ -204,75 +224,73 @@ if (!empty($widgets->list)) {
                 }
             }
         }
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menu-link\">" . $lang["viewer"]["galery"] . "</a>");}
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {echo("<a href=\"/cms-special/galery\" title=\"/cms-special/galery\" class=\"menu-link\">" . $lang["viewer"]["gallery"] . "</a>");}
 
         ?>
 	</div>
-	<div data-pushbar-id="panel-sidebar" id="sidebar" class="pushbar from_right">
-        <img src="/resources/image/close.svg" id="sidebar-close" onclick="pushbar.close()">
+	<div data-pushbar-id="panel-sidebar" id="sidebar" data-pushbar-direction="right">
+        <img src="/resources/image/close.svg" id="sidebar-close" data-pushbar-close>
         <span id="sidebar-title"><?= $lang["viewer"]["widgetspane"] ?></span>
         <span id="sidebar-separator"></span>
         <span id="sidebar-widgets">
-        <?php
+            <?php
 
-        if (isset($_COOKIE['ADMIN_TOKEN'])) {
-            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
-                echo('<p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>' . $lang["viewer"]["logout"][0] . '<a href="/cms-special/admin/logout" style="color:inherit;text-decoration:none;">' . $lang["viewer"]["logout"][1] . '</a>' . $lang["viewer"]["logout"][2] . '</p></td></tr></tbody></table></p>');
+            if (isset($_COOKIE['ADMIN_TOKEN'])) {
+                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+                    echo('<p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>' . $lang["viewer"]["logout"][0] . '<a href="/cms-special/admin/logout" style="color:inherit;text-decoration:none;">' . $lang["viewer"]["logout"][1] . '</a>' . $lang["viewer"]["logout"][2] . '</p></td></tr></tbody></table></p>');
+                }
             }
-        }
 
-        ?>
+            ?>
             <?php
                 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
-                foreach ($config->list as $widget) {
-                    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php")) {
-                        require_once $_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php";
+                foreach ($config->list as $widget): ?>
+                    <?php $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/feature.json")); ?>
+                    <?php
+                    
+                    if (isset($data->class) && is_string($data->class)) {
+                        $class = $data->class;
+                        new $class();
+                    } else {
+                        require $_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/source.php";
                     }
-                }
-            ?>
+                    
+                    ?>
+                    <?php endforeach ?>
         </span>
 	</div>
     <div id="page-placeholder">
         <div id="page-content">
-        <?php
-            if (!isset($MPCMSRendererPageMarkup)) {
-                $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $pagename);
-                preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
-
-                $toc = implode("\n",$results[0]);
-                $toc = preg_replace('#<h2>#','<li class="toc$1" style="margin-left: 0px;">',$toc);
-                $toc = preg_replace('#<\/h2>#','</li>',$toc);
-                $toc = preg_replace('#<h3>#','<li class="toc$1" style="margin-left: 20px;">',$toc);
-                $toc = preg_replace('#<\/h3>#','</li>',$toc);
-                $toc = preg_replace('#<h4>#','<li class="toc$1" style="margin-left: 40px;">',$toc);
-                $toc = preg_replace('#<\/h4>#','</li>',$toc);
-                $toc = preg_replace('#<h5>#','<li class="toc$1" style="margin-left: 60px;">',$toc);
-                $toc = preg_replace('#<\/h5>#','</li>',$toc);
-                $toc = preg_replace('#<h6>#','<li class="toc$1" style="margin-left: 80px;">',$toc);
-                $toc = preg_replace('#<\/h6>#','</li>',$toc);
-
-                $toc = '<div id="toc">
-                <h3>' . $lang["viewer"]["toc"] . '</h3>
-                <ul>
-                '.$toc.'
-                </ul>
-                </div><hr>';
-
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_toc")) {
-                    echo($toc);
-                }
-            }
-
-            ?>
             <?php
 
-            if (isset($MPCMSRendererPageMarkup)) {
-                echo($MPCMSRendererPageMarkup);
-            } else {
-                echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $pagename));
+            $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index");
+            preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
+
+            $toc = implode("\n",$results[0]);
+            $toc = preg_replace('#<h2>#','<li class="toc$1" style="margin-left: 0px;">',$toc);
+            $toc = preg_replace('#<\/h2>#','</li>',$toc);
+            $toc = preg_replace('#<h3>#','<li class="toc$1" style="margin-left: 20px;">',$toc);
+            $toc = preg_replace('#<\/h3>#','</li>',$toc);
+            $toc = preg_replace('#<h4>#','<li class="toc$1" style="margin-left: 40px;">',$toc);
+            $toc = preg_replace('#<\/h4>#','</li>',$toc);
+            $toc = preg_replace('#<h5>#','<li class="toc$1" style="margin-left: 60px;">',$toc);
+            $toc = preg_replace('#<\/h5>#','</li>',$toc);
+            $toc = preg_replace('#<h6>#','<li class="toc$1" style="margin-left: 80px;">',$toc);
+            $toc = preg_replace('#<\/h6>#','</li>',$toc);
+
+            $toc = '<div id="toc">
+            <h3>' . $lang["viewer"]["toc"] . '</h3>
+            <ul>
+            '.$toc.'
+            </ul>
+            </div><hr>';
+
+            if (false) {
+                echo($toc);
             }
 
             ?>
+            <?php echo($html_string); ?>
         </div>
         <div id="page-footer">
         <?php echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer")); ?>

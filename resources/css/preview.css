@@ -4,7 +4,7 @@
     font-family: CMS, Arial, Calibri, Ubuntu, Roboto, Liberation Sans, Helvetica, sans-serif;
 }
 
-img {
+.icon {
     filter: invert(100%);
     top: 5px;
     left: 5px;
@@ -22,14 +22,14 @@ img {
     transition: filter 200ms;
 }
 
-.download {
+.download, .zoom {
     position: fixed;
     bottom: 10px;
     background: rgb(51, 51, 51);
     padding: 5px 10px;
     left: 10px;
     border-radius: 999px;
-    opacity: .5;
+    opacity: .25;
     cursor: pointer;
     transition: opacity 200ms;
     color: initial;
@@ -43,12 +43,108 @@ img {
     background-position-y: 2.5px;
 }
 
-.download:hover {
+.download {
+    left: 90px !important;
+}
+
+.zoomin {
+    background-image: url("/resources/image/gallery-zoom-plus.svg");
+    height: 24px;
+    width: 24px;
+    background-size: 24px;
+    filter: invert(100%);
+    display: inline-block;
+    opacity: .5;
+    transition: opacity 200ms;
+    box-shadow: none !important;
+    background-position: center;
+}
+
+.zoomout {
+    background-image: url("/resources/image/gallery-zoom-minus.svg");
+    height: 24px;
+    width: 24px;
+    background-size: 24px;
+    filter: invert(100%);
+    display: inline-block;
+    opacity: .5;
+    transition: opacity 200ms;
+    box-shadow: none !important;
+    background-position: center;
+}
+
+.image, .container {
+    cursor: move;
+}
+
+.zoom {
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    background: rgba(51, 51, 51, 1);
+    padding-bottom: 0;
+    padding-left: 10px;
+    height: 29px;
+    width: 48px;
+    background-image: none;
+}
+
+.zoom:hover {
+    opacity: 1;
+    box-shadow: 1px 1px 2px rgb(51, 51, 51);
+}
+
+.download:hover, .zoomin:hover, .zoomout:hover {
     opacity: .75;
     box-shadow: 1px 1px 2px rgb(51, 51, 51);
 }
 
-.download:active {
+.download:active, .zoomin:active, .zoomout:active {
     opacity: 1;
     box-shadow: 1px 1px 2px rgb(51, 51, 51);
+}
+
+.image {
+    height: 100%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    cursor: move;
+    pointer-events: none;
+}
+
+.container {
+    height: 100%;
+    text-align: center;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+body, * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.close {
+    position: fixed;
+    top: 0;
+    opacity: 1;
+    transition: opacity 200ms;
+}
+
+.close:hover {
+    position: fixed;
+    top: 0;
+    opacity: .75;
+}
+
+.close:active, .close:focus {
+    opacity: .5;
 }

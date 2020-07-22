@@ -22,6 +22,12 @@ if (isset($_POST['alwaysmenu'])) {
     die("Pas d'AlwaysMenu passé");
 }
 
+if (isset($_POST['oldrenderer'])) {
+    (string)$or = $_POST['oldrenderer'];
+} else {
+    die("Pas d'OldRenderer passé");
+}
+
 if (isset($_POST['showpages'])) {
     (integer)$sp = $_POST['showpages'];
 } else {
@@ -35,6 +41,16 @@ if ($am == "true") {
 } else {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
         unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu");
+    }
+}
+// var_dump($or);die();
+if ($or == "true") {
+    if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer")) {
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer", "");
+    }
+} else {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer")) {
+        unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer");
     }
 }
 

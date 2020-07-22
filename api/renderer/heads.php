@@ -22,6 +22,7 @@
     <link rel="shortcut icon" href="/resources/upload/favicon.png" type="image/png">
     <link rel="stylesheet" href="/resources/css/polymer/responsive.css">
     <link rel="stylesheet" href="/resources/css/polymer/warnings.css">
+    <link rel="stylesheet" href="/resources/css/polymer/gallery.css">
     <link rel="stylesheet" href="/resources/lib/pushbar.js/library.css">
     <script src="/resources/lib/pushbar.js/library.js"></script>
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>

@@ -9,7 +9,7 @@ function buffer(string $value) {
     $buffer = $buffer . $value;
 }
 
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures") && count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) > 2) {
     $categories = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/categories");
     array_push($categories, "unclassed");
     foreach ($categories as $category) {
@@ -33,7 +33,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
                             buffer("<div class=\"photo\">");
                             buffer("<a href=\"/cms-special/galery/preview/?url=" . $ppath . "&return=/cms-special/galery\"><img class=\"photo_image\" src=\"" . $ppath . "\" /></a>");
                             if (isset(explode("|", $praw)[2])) {
-                                buffer("<br><span class=\"photo_label\">" . explode("|", $praw)[2] . "</span>");
+                                buffer("<br><div class=\"photo_label\">" . explode("|", $praw)[2] . "</div>");
                             }
                             buffer("</div>");
                         } else {

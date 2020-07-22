@@ -1,0 +1,37 @@
+#galery_thumbnails {
+    margin: 0% 15%;
+}
+
+.photo_image {
+    filter: blur(5px);
+    width: 40%;
+    max-width: 480px;
+    border-radius: 10px;
+}
+
+.photo_image.loaded {
+    filter: none !important;
+}
+
+.photo a {
+    opacity: 1 !important;
+}
+
+.photo {
+    background: #2d2d2d;
+    display: inline;
+    border-radius: 10px;
+}
+
+.photo a:hover {
+    transition: filter 200ms;
+    filter: none !important;
+}
+
+.photo a:hover img {
+    filter: brightness(125%) !important;
+}
+
+.photo a:active img, .photo a:focus img {
+    filter: brightness(150%) !important;
+}

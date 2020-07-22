@@ -1,0 +1,62 @@
+{
+    "ititle": "Mises à jour",
+    "sections": [
+        null,
+        "Préparation...",
+        "Utilitaire de mises à jour",
+        "Recherche de mises à jour...",
+        "Mises à jour disponibles"
+    ],
+    "welcome": [
+        "Bienvenue dans l'utilitaire de mises à jour de Minteck Projects CMS. Vous pouvez utiliser cet utilitaire pour mettre à jour votre site directement depuis ce dernier.",
+        "Cet utilitaire de mises à jour peut télécharger et installer à la fois les mises à jour de sécurité, et aussi les mises à jour de fonctionnalité.",
+        "Durant l'installation des mises à jour, votre site ne sera plus accessible au public. Une mise à jour intérrompue inopinément peut détruire votre site, alors pensez à toujours utiliser le bouton « Annuler »",
+        "Lorsque vous êtes prêt à mettre à jour votre site, vous pouvez cliquer sur « Commencer »."
+    ],
+    "steps": [
+        "Chargement...",
+        "Erreur",
+        "Bienvenue",
+        "Recherche de mises à jour",
+        "Mises à jour disponibles",
+        "Installation des mises à jour",
+        "Terminé"
+    ],
+    "cancel": [
+        "Arrêter de rechercher"
+    ],
+    "finfo": {
+        "version": "Version installée : ",
+        "server": "Serveur de mise à jour : "
+    },
+    "errors": [
+        "Impossible de rechercher des mises à jour",
+        "Impossible d'installer les mises à jour",
+        "Nous avons essayé d'annuler les modifications. Si vous rencontrez des problèmes, vous pouvez signaler un bogue."
+    ],
+    "uptodate": [
+        "Aucune mise à jour",
+        "Le logiciel de votre site est déjà dans la dernière version existante.",
+        "Quitter"
+    ],
+    "updef": [
+        "Mise à jour de ",
+        "sécurité",
+        "fonctionnalité",
+        " vers Minteck Projects CMS "
+    ],
+    "price": [
+        "Votre serveur téléchargera ",
+        " de mises à jour. Des frais supplémentaires de bande passante peuvent s'appliquer."
+    ],
+    "install": "Installer",
+    "restart": "Réessayer",
+    "warning": "Si vous quittez cette page, l'installation continuera en arrière plan",
+    "done": [
+        "Mises à jour terminée",
+        "Toutes les mises à jour ont été installées sur votre site, vous pouvez maintenant de nouveau l'utiliser.",
+        "Si vous rencontrez des problèmes avec les mises à jour, vous pouvez signaler un bogue et/ou demander à votre administrateur système de restaurer l'ancienne version du logiciel."
+    ],
+    "finish": "Terminer",
+    "installing": "Installation des mises à jour..."
+}

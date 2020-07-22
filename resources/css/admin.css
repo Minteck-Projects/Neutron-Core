@@ -629,3 +629,15 @@ html {
 .clink:active, .clink:focus {
     opacity: .75;
 }
+
+#onlyold {
+    background-color: rgba(255, 166, 0, 0.5);
+    border-radius: 10px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.oldopts {
+    transition: background-color 200ms, border-radius 200ms, padding 200ms;
+    display: inline-block;
+}

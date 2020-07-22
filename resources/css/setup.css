@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url("/resources/image/config.jpg");
+    background-image: url("/resources/image/config.jpg") !important;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: initial;
@@ -60,4 +60,24 @@ h1, h2, h3, h4, h5, h6 {
     width: 256px;
     height: 256px;
     filter: brightness(0%);
+}
+
+.update-cancel {
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    border-bottom-width: 2px;
+    background: white;
+    cursor: pointer;
+    transition: background 200ms, border-color 200ms;
+}
+
+.update-cancel:hover {
+    background: lightgray;
+    border-color: gray;
+}
+
+.update-cancel:active {
+    background: gray;
+    border-color: black;
 }

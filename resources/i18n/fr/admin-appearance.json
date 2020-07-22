@@ -29,5 +29,7 @@
     "pages": [
         "Afficher ",
         " pages dans la barre de menu"
-    ]
+    ],
+    "old": "Utiliser l'ancienne interface des pages",
+    "oldopts": "Ces options ne s'appliquent que si vous utilisez l'ancienne interface :"
 }
