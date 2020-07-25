@@ -1,58 +1,57 @@
 <?php
 
-// _____ ___  ____   ___    
-// |_   _/ _ \|  _ \ / _ \ _ 
-//   | || | | | | | | | | (_)
-//   | || |_| | |_| | |_| |_ 
-//   |_| \___/|____/ \___/(_)
-//
-// Refaire la page d'accueil
-
 $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-                    <center>
-                        <h2><?= $lang["admin-home"]["greeting"] ?></h2>
-                        <p>
-                            <ul>
-                                <li><?= $lang["admin-home"]["visitors"] ?><b><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . date("Y-m-d")) ?><?= $lang["admin-home"]["visitorspost"][0] ?></b><?= $lang["admin-home"]["visitorspost"][1] ?><small>— <a href="/cms-special/admin/stats"><?= $lang["admin-home"]["more"] ?></a></small></li>
-                                <li><?= $lang["admin-home"]["pages"] ?><b><?= count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages")) - 2 ?> <?= $lang["admin-home"]["pagespost"][0] ?></b><?= $lang["admin-home"]["pagespost"][1] ?><small>— <a href="/cms-special/admin/pages"><?= $lang["admin-home"]["more"] ?></a></small></li>
-                            </ul>
-                        </p>
+<center>
+    <a title="<?= $lang["admin-home"]["language"] ?>/Switch Language" href="/cms-special/admin/language" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button" id="language-selector">translate</a>
 
-                        <h3><?= $lang["admin-home"]["pagelisttitle"] ?></h3>
-                        <ul>
-                            <?php
+    <h1><?= $lang["admin-home"]["greeting"] ?></h1>
 
-                            foreach (scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages") as $page) {
-                                if ($page != "." && $page != "..") {
-                                    echo("<li>");
-                                    if ($page == "index") {
-                                        echo($lang["viewer"]["home"] . "<small> : <a target=\"_blank\" href=\"/\">{$lang["admin-home"]["pagelistview"]}</a> - <a href=\"/cms-special/admin/pages/manage/?slug=index\">{$lang["admin-home"]["pagelistmanage"]}</a></small>");
-                                    } else {
-                                        echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "<small> : <a target=\"_blank\" href=\"/" . $page . "\">{$lang["admin-home"]["pagelistview"]}</a> - <a href=\"/cms-special/admin/pages/manage/?slug=" . $page . "\">{$lang["admin-home"]["pagelistmanage"]}</a></small>");
-                                    }
-                                    echo("</li>");
-                                }
-                            }
-
-                            ?>
-                            <p><small><a href="/cms-special/admin/pages"><?= $lang["admin-home"]["more"] ?></a></small></p>
-                        </ul>
-                        <!-- <h3><?= $lang["admin-home"]["pluginlist"] ?></h3>
-                        <ul>
-                        <?php
-
-                            foreach (scandir($_SERVER['DOCUMENT_ROOT'] . "/widgets") as $ext) {
-                                if ($ext != "." && $ext != ".." && $ext != ".htaccess") {
-                                    echo("<li>");
-                                    echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $ext . "/name"));
-                                    echo("</li>");
-                                }
-                            }
-
-                            ?>
-                            <p><small><a href="/cms-special/admin/plugins"><?= $lang["admin-home"]["more"] ?></a></small></p>
-                        </ul>
-                        <h3><?= $lang["admin-home"]["continue"] ?></h3>
-                        <p><?= $lang["admin-home"]["continuemsg"][0] ?><i class="material-icons" style="vertical-align:middle;">menu</i><?= $lang["admin-home"]["continuemsg"][1] ?></p> -->
-                    </center>
+    <div id="home-grid">
+        <div class="home-grid-item">
+            <a title="<?= $lang["admin-home"]["items"][0] ?>" id="home-grid-item-pages" href="/cms-special/admin/pages" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button home-grid-item-button">layers</a>
+            <br>
+            <?= $lang["admin-home"]["items"][0] ?>
+        </div>
+        <div class="home-grid-item">
+            <a title="<?= $lang["admin-home"]["items"][1] ?>" id="home-grid-item-calendar" href="/cms-special/admin/calendar" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button home-grid-item-button">event_note</a><br>
+            <?= $lang["admin-home"]["items"][1] ?>
+        </div>
+        <div class="home-grid-item">
+            <a title="<?= $lang["admin-home"]["items"][2] ?>" id="home-grid-item-gallery" href="/cms-special/admin/gallery" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button home-grid-item-button">photo</a><br>
+            <?= $lang["admin-home"]["items"][2] ?>
+        </div>
+        <div class="home-grid-item">
+            <a title="<?= $lang["admin-home"]["items"][3] ?>" id="home-grid-item-appearance" href="/cms-special/admin/home/appearance" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button home-grid-item-button">brush</a><br>
+            <?= $lang["admin-home"]["items"][3] ?>
+        </div>
+        <div class="home-grid-item">
+            <a title="<?= $lang["admin-home"]["items"][4] ?>" id="home-grid-item-data" href="/cms-special/admin/home/data" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button home-grid-item-button">dns</a><br>
+            <?= $lang["admin-home"]["items"][4] ?>
+        </div>
+        <div class="home-grid-item">
+            <a title="<?= $lang["admin-home"]["items"][5] ?>" id="home-grid-item-housekeeping" href="/cms-special/admin/home/housekeeping" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button home-grid-item-button">cleaning_services</a><br>
+            <?= $lang["admin-home"]["items"][5] ?>
+        </div>
+    </div>
+    
+    <br>
+    
+    <a href="/cms-special/admin/home/all" class="mdc-button mdc-button--outlined">
+        <div class="mdc-button__ripple"></div>
+        <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">settings</i>
+        <span class="mdc-button__label"><?= $lang["admin-home"]["items"][6] ?></span>
+    </a>
+    &nbsp;
+    <a href="/cms-special/admin/logout" class="mdc-button mdc-button--outlined">
+        <div class="mdc-button__ripple"></div>
+        <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">power_settings_new</i>
+        <span class="mdc-button__label"><?= $lang["admin-home"]["items"][8] ?></span>
+    </a>
+    &nbsp;
+    <a href="/?source=admin" target="_blank" class="mdc-button mdc-button--outlined">
+        <div class="mdc-button__ripple"></div>
+        <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">public</i>
+        <span class="mdc-button__label"><?= $lang["admin-home"]["items"][9] ?></span>
+    </a>
+</center>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

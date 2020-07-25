@@ -1,4 +1,12 @@
-// $("a").on("click", function(event){
-//     event.preventDefault();
-//     switchToPage(event.target.href);
-// });
+window.onscroll = () => {
+    // console.log("> Scroll");
+    if (window.scrollY >= 52 && !document.getElementById('portal-background').classList.contains('scrolled')) {
+        // console.log("> ADD");
+        document.getElementById('portal-background').classList.add('scrolled');
+    } else if (window.scrollY < 52 && document.getElementById('portal-background').classList.contains('scrolled')) {
+        // console.log("> REMOVE");
+        document.getElementById('portal-background').classList.remove('scrolled');
+    } else {
+        // console.log("> Nothing");
+    }
+}

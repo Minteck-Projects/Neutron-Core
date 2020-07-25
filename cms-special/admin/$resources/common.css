@@ -58,13 +58,8 @@ span, p, body, div, h1, h2, h3, h4, h5, h6 {
     font-family: "CMS", "Ubuntu", "Roboto", "Google Sans", "Segoe UI", "Noto Sans", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
-#header-desktop {
-    margin-left: 256px;
-}
-
 #main-content {
     padding: 16px;
-    margin-left: 256px;
     margin-top: 64px;
     position: fixed;
     top: 0;
@@ -178,4 +173,257 @@ img[width="128px"] {
 .mdc-drawer__header {
     background: linear-gradient(to bottom, var(--mpc-menu-background-image) 50%, var(--mpc-menu-background)), url('/resources/image/codename.jpg');
     background-size: 100%;
+}
+
+.mdc-top-app-bar__row {
+    width: 100% !important;
+}
+
+#header-desktop {
+    height: 190px;
+    z-index: 2;
+}
+
+#app-grid {
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+    top: 170px;
+}
+
+#main-content {
+    z-index: 5;
+    background: var(--mpc-background);
+    border-radius: 15px;
+    position: initial;
+    margin: 0;
+    min-height: 200px;
+}
+
+#portal-background {
+    position: fixed;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    height: 230px;
+    background-image: linear-gradient(to bottom, var(--mpc-menu-background-image) 50%, var(--mpc-menu-background-image)), url('/resources/image/codename.jpg');
+    background-size: 100%;
+    background-position: center;
+    transition: filter 200ms, background-size 200ms, background-image 200ms;
+    filter: none;
+}
+
+#portal-background.scrolled {
+    background-image: linear-gradient(to bottom, var(--mpc-menu-background-image-more) 50%, var(--mpc-menu-background-image-more)), url('/resources/image/codename.jpg');
+    filter: blur(5px);
+    background-size: 110%;
+}
+
+#header-desktop {
+    background: transparent;
+    color: var(--mpc-text);
+}
+
+.mdc-top-app-bar__section.mdc-top-app-bar__section--align-end .material-icons-outlined.mdc-top-app-bar__navigation-icon.mdc-icon-button {
+    color: var(--mpc-text);
+}
+
+#version-place {
+    position: absolute;
+    top: -20px;
+    font-size: 12px;
+    opacity: .5;
+}
+
+#language-selector {
+    position: absolute;
+    font-size: 18px;
+    opacity: .5;
+    left: 0;
+    top: 0;
+}
+
+#home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.home-grid-item {
+    margin: 20px;
+}
+
+#home-grid-item-pages {
+    color: var(--mpc-home-pages);
+    --mpc-icons: var(--mpc-home-pages);
+}
+
+#home-grid-item-calendar {
+    color: var(--mpc-home-calendar);
+    --mpc-icons: var(--mpc-home-calendar);
+}
+
+#home-grid-item-gallery {
+    color: var(--mpc-home-gallery);
+    --mpc-icons: var(--mpc-home-gallery);
+}
+
+#home-grid-item-appearance {
+    color: var(--mpc-home-appearance);
+    --mpc-icons: var(--mpc-home-appearance);
+}
+
+#home-grid-item-data {
+    color: var(--mpc-home-data);
+    --mpc-icons: var(--mpc-home-data);
+}
+
+#home-grid-item-housekeeping {
+    color: var(--mpc-home-housekeeping);
+    --mpc-icons: var(--mpc-home-housekeeping);
+}
+
+.home-grid-item-button {
+    font-size: 64px;
+    width: 86px;
+    height: 86px;
+}
+
+a:not(.material-icons):not(.material-icons-outlined):not(.button) {
+    color: var(--codename-theme);
+    text-decoration-color: var(--codename-theme);
+}
+
+a:not(.material-icons):not(.material-icons-outlined):not(.button):active, a:not(.material-icons):not(.material-icons-outlined):not(.button):focus {
+    opacity: .75;
+}
+
+.ck.ck-editor__main a {
+    color: inherit !important;
+    text-decoration-color: inherit !important;
+}
+
+.all-item-icon {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.all-item-text {
+    vertical-align: middle;
+}
+
+.all-item-link {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.nd_Field {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    margin: 1em 0;
+    border-radius: 4px;
+    -webkit-transition: border-color .25s;
+    transition: border-color .25s;
+    border: 1px solid var(--codename-theme);
+}
+
+.nd_Field input {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.nd_Field input, .nd_Field select {
+    color: var(--mpc-text);
+}
+
+.nd_Field input[type="password"], .nd_Field input[type="text"] {
+    color: var(--mpc-text);
+}
+
+.nd_Field input, .nd_Field select, .nd_Field textarea {
+    font-weight: 400;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 9px;
+    color: var(--mpc-text);
+    background-color: transparent;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+}
+
+.nd_Field input[type="password"], .nd_Field input[type="text"], .nd_Field textarea {
+    background-color: transparent;
+    color: var(--mpc-text);
+}
+
+.nd_Field input[type="password"]::placeholder, .nd_Field input[type="text"]::placeholder, .nd_Field textarea::placeholder {
+    color: transparent;
+}
+
+.nd_Field input[type="password"], .nd_Field input[type="search"], .nd_Field input[type="text"] {
+    padding: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 0;
+}
+
+.nd_Field_labelAlwaysTopLeft label, .nd_Field input:focus + label, .nd_Field input:not(:placeholder-shown) + label, .nd_Field select + label, .nd_Field textarea:focus + label, .nd_Field textarea:not(:placeholder-shown) + label {
+    background-color: transparent;
+}
+
+.nd_Field_labelAlwaysTopLeft label, .nd_Field input:focus + label, .nd_Field input:not(:placeholder-shown) + label, .nd_Field select + label, .nd_Field textarea:focus + label, .nd_Field textarea:not(:placeholder-shown) + label {
+    -webkit-transition: font-size .25s ease-out 0s,color .25s ease-out 0s,top .25s ease-out 0s,background-color .25s ease-out 0s;
+    transition: font-size .25s ease-out 0s,width .25s ease-out 0s,color .25s ease-out 0s,top .25s ease-out 0s,background-color .25s ease-out 0s;
+    font-size: 14px;
+    top: -14px;
+    padding: 0 2px;
+    background-color: var(--mpc-background);
+    pointer-events: auto;
+}
+
+.nd_Field label {
+    width: 100%;
+    -webkit-transition: font-size .25s ease-out .1s,color .25s ease-out .1s,top .25s ease-out .1s,background-color .25s ease-out .1s;
+    transition: font-size .25s ease-out .1s,color .25s ease-out .1s,top .25s ease-out .1s,background-color .25s ease-out .1s;
+    color: var(--codename-theme);
+    background-color: transparent;
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 7px 8px;
+    padding: 2px;
+    pointer-events: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 20px);
+}
+
+#search {
+    width: 256px;
+}
+
+#searchbox {
+    width: 256px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nd_Field input {
+    border: none !important;
+    font-weight: normal !important;
+}
+
+.search-match {
+    color: var(--codename-theme);
+    text-decoration: underline;
 }

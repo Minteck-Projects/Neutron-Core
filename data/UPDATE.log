@@ -1,0 +1,48 @@
+# Checking for updates...
+curl: https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.93/updates.json
+# Updates to install: 1
+# Updates summary:
+
+The following files will be downloaded:
+    https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.93/update-2.2.93.1-TODO
+
+The following updates will be installed:
+    security::2.2.93.1
+
+After the updates, the software will be at version:
+    2.2.93.1
+
+The following additional operations will be done:
+    
+
+The system is now ready to update.
+
+# Setting up protections...
+# Setting up update-specific htaccess directives
+file: .htaccess.next -> /.htaccess
+# Moving old index.php file
+file: /index.php -> /data/.index.php.orig.temp
+# Generating update-specific index.html file
+cms: Generating localized homepage
+# Flushing administrator tokens
+cms: Closed all sessions
+# Reserving more execution time
+php: Script will run infinitely
+# Update environment is now ready!
+# Creating temporary space...
+files: makedir /data/$UpdateCache
+# Processing update 1 of 1
+# u:1: Downloading files...
+# u:1: 1/1: https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.93/update-2.2.93.1-TODO -> /data/$UpdateCache/0.bin
+# u:1: Applying update...
+# u:1: Applying /data/$UpdateCache/0.bin
+# Updating version number...
+# All updates done, restoring normal environment
+# Removing update-specific htaccess directives
+file: delete /.htaccess
+# Restoring index.php file
+file: delete /index.html
+file: /index.php -> /data/.index.php.orig.temp
+# Deleting update cache...
+# Finished restoring normal environment, please login to website administration to ensure everything is installed correctly.
+# Bye!

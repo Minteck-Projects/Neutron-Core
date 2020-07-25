@@ -1,34 +1,7 @@
 <?php $pageConfig = [ "domName" => "Statistiques", "headerName" => "Statistiques" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
         <h3><?= $lang["admin-stats"]["thisMonth"]?></h3>
-        <div id="visits" class="chart--container"></div>
-        <script>
-      let chartConfig = {
-  type: 'pie',
-  backgroundColor: 'transparent',
-  plot: {
-    tooltip: {
-      text: '%npv%',
-      padding: '5 10',
-      fontSize: '18px'
-    },
-    valueBox: {
-      text: '%t\n%npv%',
-      placement: 'out'
-    },
-    borderWidth: '1px'
-  },
-  plotarea: {
-    margin: '20 0 0 0'
-  },
-  source: {
-    text: "<?= $lang["admin-stats"]["disclaimer"] ?>",
-    fontColor: '#8e99a9',
-    fontFamily: 'Open Sans',
-    textAlign: 'left'
-  },
-  series: [
-<?php
+<table><tbody><?php
 
 $dates = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats");
 foreach ($dates as $date) {
@@ -36,21 +9,13 @@ foreach ($dates as $date) {
         if (startsWith($date, date("Y-m-"))) {
             $newdate = str_replace(date("Y-m-"), "", $date);
             $newdatestr = $newdate . date("/m/Y");
-            echo("{\ntext: '" . $newdatestr . "',\nvalues: [" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . $date) . "],\n},");
+            echo("<tr><td><b>{$newdatestr}{$lang["admin-stats"]["separator"]}</b></td><td>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats/" . $date) . "</td><td> {$lang["admin-stats"]["visits"]}</td></tr>");
         }
     }
 }
 
 ?>
-  ]
-};
-
-zingchart.render({
-  id: 'visits',
-  data: chartConfig
-});
-    </script>
-    <div id="afterchart">
+</tbody></table>
         <h3><?= $lang["admin-stats"]["year"] ?></h3>
         <table>
             <tbody>

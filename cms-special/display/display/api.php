@@ -1,5 +1,14 @@
 <?php
 
+// Token check
+if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) { 
+    } else {
+        die("<script>location.href = '/cms-special/admin'</script></body></html>");
+    }
+} else {
+    die("<script>location.href = '/cms-special/admin'</script></body></html>");
+}
 // Functions definitions
 function isJson($string) {
     json_decode($string);

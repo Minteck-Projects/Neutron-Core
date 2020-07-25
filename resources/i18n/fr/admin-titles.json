@@ -5,8 +5,26 @@
     "fallback": "Page sans titre",
     "fallback-subpages": "Sous-page sans titre",
     "home": {
-        "dom": "Tableau de bord",
-        "header": "Tableau de bord"
+        "dom": "Accueil",
+        "header": "Votre site",
+        "subpages": {
+            "appearance": {
+                "dom": "Apparance",
+                "header": "Options d'apparance"
+            },
+            "data": {
+                "dom": "Données",
+                "header": "Statistiques et autres données"
+            },
+            "housekeeping": {
+                "dom": "Maintenance",
+                "header": "Options de maintenance"
+            },
+            "all": {
+                "dom": "Tout",
+                "header": "Tous les paramètres"
+            }
+        }
     },
     "$error": {
         "dom": "Erreur",
@@ -38,7 +56,7 @@
             }
         }
     },
-    "galery": {
+    "gallery": {
         "dom": "Galerie de photos",
         "header": "Galerie de photos",
         "subpages": {

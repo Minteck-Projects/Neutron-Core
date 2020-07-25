@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_COOKIE['ADMIN_TOKEN'])) {
+if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
         $tokens = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
         foreach ($tokens as $token) {
@@ -11,7 +11,9 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
     }
 }
 if (isset($_GET['mobile'])) {
-    die("<script>location.href = '/cms-special/admin'</script>");
+    header("Location: /cms-special/admin");
+    die();
 } else {
-    die("<script>location.href = '/'</script>");
+    header("Location: /");
+    die();
 }

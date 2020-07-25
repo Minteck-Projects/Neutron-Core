@@ -3,34 +3,39 @@
 if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {
-        die("<script>location.href = '/cms-special/admin/pages';</script>");
+        header("Location: /cms-special/admin/pages");
+        die();
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/pages';</script>");
+    header("Location: /cms-special/admin/pages");
+    die();
 }
 
+?>
+<?php $pageConfig = [ "domName" => "Pages", "headerName" => "Pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php
+
 if ($currentSlug == "index") {
-    $currentName = "Accueil";
-    echo("<script>page = \"Accueil\"</script>");
+    $currentName = "{$lang["admin-pages"]["home"]}";
+    echo("<script>page = \"index\"</script>");
 } else {
     $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
     echo("<script>page = \"{$currentSlug}\"</script>");
 }
 
 ?>
-<?php $pageConfig = [ "domName" => "Suppression de " . $currentName . " - Pages", "headerName" => "Suppression de " . $currentName ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <div id="confirm">
-            <p>Voulez-vous vraiment supprimer la page "<?= $currentName ?>" ? Cette action est irréversible et tout lien menant vers cette page renverra à une page     d'erreur...</p>
+            <p><?= $lang["admin-pages"]["deletec"][0] . $currentName . $lang["admin-pages"]["deletec"][1] ?></p>
             <?php
 
             if ($currentSlug == "index") {
-                die("<i>Vous ne pouvez pas supprimer la page d'accueil de votre site</i></div></body></html>");
+                die("<i>{$lang["admin-pages"]["deletec"][2]}</i></div></body></html>");
             }
 
             ?>
             <ul>
-                <li><a onclick="deletePage()" class="sblink" title="Supprimer la page sélectionnée">Oui</a></li>
-                <li><a onclick="location.href='/cms-special/admin/pages/manage/?slug=<?= $currentSlug ?>'" class="sblink" title="Annuler la suppresion de la page sélectionnée">Non</a></li>
+                <li><a onclick="deletePage()" class="sblink" title="<?= $lang["admin-pages"]["deleteyl"] ?>"><?= $lang["admin-pages"]["deletey"] ?>></a></li>
+                <li><a onclick="location.href='/cms-special/admin/pages/manage/?slug=<?= $currentSlug ?>'" class="sblink" title="<?= $lang["admin-pages"]["deletenl"] ?>"><?= $lang["admin-pages"]["deleten"] ?></a></li>
             </ul>
         </div>
         <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
@@ -49,17 +54,17 @@ function deletePage() {
         url: "/api/admin/delete_page.php",
         success: function (data) {
             if (data == "ok") {
-                location.href = "/cms-special/admin/pages"
+                location.href = "/cms-special/admin/pages";
             } else {
-                alert("Erreur : " + data);
-                document.getElementById('confirm').classList.remove('hide')
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')
+                document.getElementById('confirm').classList.remove('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication");
-            document.getElementById('confirm').classList.remove('hide')
+            alert("<?= $lang["admin-errors"]["connerror"] ?>")
             document.getElementById('loader').classList.add('hide')
+            document.getElementById('confirm').classList.remove('hide')
         },
         data: formData,
         cache: false,

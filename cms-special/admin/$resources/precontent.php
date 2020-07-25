@@ -1,7 +1,6 @@
 <?php
 
-require$_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
-// var_dump($_SERVER['REQUEST_URI']);
+require $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 
 $pageid = explode("/", $_SERVER['REQUEST_URI'])[3];
 if (isset(explode("/", $_SERVER['REQUEST_URI'])[4])) {
@@ -48,7 +47,7 @@ if (isset($lang["admin-titles"][$pageid])) {
 
 $invalid = false;
 
-if (isset($_COOKIE['ADMIN_TOKEN'])) {
+if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
@@ -155,7 +154,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
     ?>
     <?php
         if (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme") == "dark") {
-            echo('<link rel="stylesheet" href="/resources/themes/colors/dark.css"><script src="/resources/themes/colors/dark.js"></script><link rel="stylesheet" href="/cms-special/admin/$resources/index-dark.css">');
+            echo('<link rel="stylesheet" href="/cms-special/admin/$resources/index-dark.css">');
+        } elseif (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme") == "auto") {
+            echo('<link rel="stylesheet" href="/cms-special/admin/$resources/index-auto.css">');
         } else {
             echo('<link rel="stylesheet" href="/cms-special/admin/$resources/index.css">');
         }
@@ -212,4 +213,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
         <div id="app-grid">
             <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/drawer.php"; ?>
             <main class="main-content" id="main-content">
+                <div id="version-place"><?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></div>
                 <div class="mdc-top-app-bar--fixed-adjust">

@@ -11,7 +11,7 @@
         lang: "<?= $langsel ?>",
         wrapper: "#easycss-main",
         verbose: false,
-        theme: "next<?= file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/darktheme-enabled") ? "-dark" : "" ?>",
+        theme: "next-dark",
         themeImportPath: "/api/easycss/themes",
         ctypes: [
             {

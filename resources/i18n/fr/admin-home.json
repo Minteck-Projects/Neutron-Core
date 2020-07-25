@@ -1,24 +1,88 @@
 {
-    "greeting": "Bienvenue sur votre site !",
-    "visitors": "Votre site à reçu ",
-    "visitorspost": [
-        " visiteurs",
-        " aujourd'hui "
+    "greeting": "Bienvenue ! En quoi pouvons-nous vous aider ?",
+    "language": "Changer de langue",
+    "home": "Accueil",
+    "items": [
+        "Pages",
+        "Calendrier",
+        "Galerie",
+        "Apparence",
+        "Données",
+        "Maintenance",
+        "Tous les paramètres",
+        "Précédent",
+        "Déconnexion",
+        "Retourner au site"
     ],
-    "more": "Voir plus...",
-    "pages": "Votre site dispose de ",
-    "pagespost": [
-        " pages(s)",
-        " disponible(s) "
+    "appearance": {
+        "greeting": "Modifiez l'aspect visuel de votre site ...",
+        "items": [
+            "Apparence générale",
+            "Thème",
+            "Construction visuelle",
+            "Langue et région",
+            "Fonctionnalités optionnelles"
+        ]
+    },
+    "data": {
+        "greeting": "Consultez les données collectées par votre site ...",
+        "items": [
+            "Statistiques",
+            "Historique d'activité",
+            "Trace du moteur de rendu"
+        ]
+    },
+    "housekeeping": {
+        "greeting": "Nettoyez votre site afin qu'il conserve son efficacité ...",
+        "items": [
+            "Réinitialisation",
+            "À propos du logiciel",
+            "Mise à jour du logiciel"
+        ]
+    },
+    "search": "Rechercher des paramètres",
+    "find": "Trouver un paramètre...",
+    "all": "Tous les paramètres",
+    "categories": [
+        "Pages",
+        "Galerie de photos",
+        "Calendrier",
+        "Fonctionnalités optionnelles",
+        "Configuration technique",
+        "Données",
+        "Mises à jour et informations",
+        "Apparence visuel et comportement"
     ],
-    "pagelisttitle": "Pages",
-    "pagelistview": "lire",
-    "pagelistmanage": "gérer",
-    "pluginlist": "Extensions",
-    "continue": "Continuer",
-    "continuemsg": [
-        "Pour continuer, choisissez une option dans le menu à gauche (appuyez sur le bouton ",
-        " pour l'afficher) pour accéder à un paramètre."
+    "allitems": [
+        "Gérer toutes les pages",
+        "Créer une nouvelle page",
+        "Gérer les images de la galerie",
+        "Importer une nouvelle photo dans la galerie",
+        "Ajouter une nouvelle catégorie de la galerie",
+        "Consulter la galerie dans l'espace visiteur",
+        "Gérer les événements du calendrier",
+        "Ajouter un nouvel événement dans le calendrier",
+        "Consulter le calendrier dans l'espace visiteur",
+        "Gérer les fonctionnalités optionnelles",
+        "Configurer les informations de contact",
+        "Modifier le contenu des notes",
+        "Toutes les configurations techniques",
+        "Modifier la configuration étendue",
+        "Inspecter la configuration système",
+        "Options de réinitialisation du site",
+        "Consulter les informations de statistiques",
+        "Lire les fichiers journaux des accès au site",
+        "Voir la trace de la pile du moteur de rendu",
+        "Consulter des informations sur la version du logiciel",
+        "Obtenir des informations sur les mises à jour",
+        "Télécharger et installer des mises à jour",
+        "Modifier l'apparence générale du site",
+        "Adapter le thème de couleur et la luminosité du site",
+        "Accéder à la page d'accueil du studio de personnalisation",
+        "Modifier la feuille de styles personnalisées avec le logiciel EasyCSS",
+        "Changer la langue d'affichage de tout le site"
     ],
-    "language": "Changer la langue du site"
+    "nofound": "Aucun résultat",
+    "one": "1 résultat",
+    "multiple": " résultats"
 }

@@ -9,9 +9,14 @@ if (isset($_POST['authkey'])) {
             if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens")) {
                 mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
             }
+            $tokens = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
+            foreach ($tokens as $token) {
+                if ($token == "." || $token == "..") {} else {
+                    unlink($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token);
+                }
+            }
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
             header("Set-Cookie: ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-            // die("<script>location.href = '" . $callback . "';</script>");
             header("Location: " . $callback);
             return;
         } else {
@@ -34,9 +39,14 @@ if (isset($_POST['authkey'])) {
             if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens")) {
                 mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
             }
+            $tokens = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
+            foreach ($tokens as $atoken) {
+                if ($atoken == "." || $atoken == "..") {} else {
+                    unlink($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $atoken);
+                }
+            }
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
             header("Set-Cookie: ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-            // die("<script>location.href = '" . $callback . "';</script>");
             header("Location: " . $callback);
             return;
         } else {
@@ -45,7 +55,7 @@ if (isset($_POST['authkey'])) {
     }
 }
 
-if (isset($_COOKIE['ADMIN_TOKEN'])) {
+if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
         if (isset($_GET['pr'])) {
             if (isset($_GET['pa'])) {
@@ -56,7 +66,6 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
         } else {
             $callback = "/cms-special/admin/home";
         }
-        // die("<script>location.href = '" . $callback . "';</script>");
         header("Location: " . $callback);
     }
 }

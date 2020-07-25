@@ -11,10 +11,18 @@
     --mpc-background: rgb(255, 255, 255);
     --mpc-menu-background: rgb(240, 240, 240);
     --mpc-menu-background-image: rgb(240, 240, 240, .5);
+    --mpc-menu-background-image-more: rgb(240, 240, 240, .75);
     --mpc-text: rgb(0, 0, 0);
     --mpc-menu-selected: var(--mdc-theme-secondary-light);
     --mpc-menu-header: rgb(80, 80, 80);
     --mpc-menu-subtitle: rgb(34, 34, 34);
     --mpc-icons: rgb(78, 78, 78);
     --mpc-separator: rgb(202, 202, 202);
+
+    --mpc-home-pages: rgb(25, 118, 210);
+    --mpc-home-calendar: rgb(56, 142, 60);
+    --mpc-home-gallery: rgb(211, 47, 47);
+    --mpc-home-appearance: rgb(251, 192, 45);
+    --mpc-home-data: rgb(0, 121, 107);
+    --mpc-home-housekeeping: rgb(81, 45, 168);
 }

@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_COOKIE['ADMIN_TOKEN'])) {
+if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
 
     } else {
@@ -23,7 +23,11 @@ if (isset($_COOKIE['ADMIN_TOKEN'])) {
 header("Content-Type: application/json");
 
 function error($errno, $errmsg) {
-    die("{\"error\":\"" . str_replace("\"", "\\\"", $errmsg) . "\",\"updates\":[]}");
+    if (strpos($errmsg, "Not Found") !== false) {
+        die("{\"error\":null,\"updates\":[]}");
+    } else {
+        die("{\"error\":\"" . str_replace("\"", "\\\"", trim($errmsg)) . "\",\"updates\":[]}");
+    }
 }
 
 set_error_handler("error");

@@ -1,0 +1,212 @@
+[
+    {
+        "name": "pages",
+        "id": 0,
+        "items": [
+            {
+                "name": "list",
+                "id": 0,
+                "icon": "list_alt",
+                "page": "pages"
+            },
+            {
+                "name": "create",
+                "id": 1,
+                "icon": "add",
+                "page": "pages/add"
+            }
+        ]
+    },
+    {
+        "name": "gallery",
+        "id": 1,
+        "items": [
+            {
+                "name": "list",
+                "id": 2,
+                "icon": "photo_library",
+                "page": "gallery"
+            },
+            {
+                "name": "add",
+                "id": 3,
+                "icon": "add_photo_alternate",
+                "page": "gallery/publish"
+            },
+            {
+                "name": "category",
+                "id": 4,
+                "icon": "local_offer",
+                "page": "gallery/addcategory"
+            },
+            {
+                "name": "userspace",
+                "id": 5,
+                "icon": "image_search",
+                "page": "../gallery"
+            }
+        ]
+    },
+    {
+        "name": "calendar",
+        "id": 2,
+        "items": [
+            {
+                "name": "all",
+                "id": 6,
+                "icon": "event",
+                "page": "calendar"
+            },
+            {
+                "name": "create",
+                "id": 7,
+                "icon": "event_available",
+                "page": "calendar/add"
+            },
+            {
+                "name": "userspace",
+                "id": 8,
+                "icon": "event_note",
+                "page": "../calendar"
+            }
+        ]
+    },
+    {
+        "name": "plugins",
+        "id": 3,
+        "items": [
+            {
+                "name": "all",
+                "id": 9,
+                "icon": "extension",
+                "page": "plugins"
+            },
+            {
+                "name": "contact",
+                "id": 10,
+                "icon": "contacts",
+                "page": "plugins/widget-contact-configure"
+            },
+            {
+                "name": "notes",
+                "id": 11,
+                "icon": "edit",
+                "page": "plugins/widget-notes-configure"
+            }
+        ]
+    },
+    {
+        "name": "technical",
+        "id": 4,
+        "items": [
+            {
+                "name": "all",
+                "id": 12,
+                "icon": "engineering",
+                "page": "advanced"
+            },
+            {
+                "name": "advanced",
+                "id": 13,
+                "icon": "build_circle",
+                "page": "advanced/json"
+            },
+            {
+                "name": "regedit",
+                "id": 14,
+                "icon": "settings",
+                "page": "advanced/regedit"
+            }
+        ]
+    },
+    {
+        "name": "data",
+        "id": 5,
+        "items": [
+            {
+                "name": "reset",
+                "id": 15,
+                "icon": "delete",
+                "page": "reset"
+            },
+            {
+                "name": "stats",
+                "id": 16,
+                "icon": "pie_chart",
+                "page": "stats"
+            },
+            {
+                "name": "logs",
+                "id": 17,
+                "icon": "subject",
+                "page": "logs"
+            },
+            {
+                "name": "trace",
+                "id": 18,
+                "icon": "device_hub",
+                "page": "renderer"
+            }
+        ]
+    },
+    {
+        "name": "updates",
+        "id": 6,
+        "items": [
+            {
+                "name": "info",
+                "id": 19,
+                "icon": "info",
+                "page": "about"
+            },
+            {
+                "name": "home",
+                "id": 20,
+                "icon": "system_update_alt",
+                "page": "updates"
+            },
+            {
+                "name": "get",
+                "id": 21,
+                "icon": "cloud_download",
+                "page": "ota"
+            }
+        ]
+    },
+    {
+        "name": "appearance",
+        "id": 7,
+        "items": [
+            {
+                "name": "general",
+                "id": 22,
+                "icon": "brush",
+                "page": "appearance"
+            },
+            {
+                "name": "theme",
+                "id": 23,
+                "icon": "palette",
+                "page": "customization"
+            },
+            {
+                "name": "css",
+                "id": 24,
+                "icon": "construction",
+                "page": "css"
+            },
+            {
+                "name": "studio",
+                "id": 25,
+                "icon": "build",
+                "page": "css/studio"
+            },
+            {
+                "name": "language",
+                "id": 26,
+                "icon": "language",
+                "page": "language"
+            }
+        ]
+    }
+]

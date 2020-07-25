@@ -3,39 +3,41 @@
 if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {
-        die("<script>location.href = '/cms-special/admin/pages';</script>");
+        header("Location: /cms-special/admin/pages");
+        die();
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/pages';</script>");
-}
-
-if ($currentSlug == "index") {
-    $currentName = "Accueil";
-    echo("<script>page = \"Accueil\"</script>");
-} else {
-    $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
-    echo("<script>page = \"{$currentSlug}\"</script>");
+    header("Location: /cms-special/admin/pages");
+    die();
 }
 
 ?>
-<?php $pageConfig = [ "domName" => $currentName . " - Pages", "headerName" => $currentName ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php $pageConfig = [ "domName" => "Pages", "headerName" => "Pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <?php
+
+        if ($currentSlug == "index") {
+            $currentName = "{$lang['admin-pages']['home']}";
+            echo("<script>page = \"index\"</script>");
+        } else {
+            $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
+            echo("<script>page = \"{$currentSlug}\"</script>");
+        }
             
             if ($currentSlug == "index") {
-                echo('<p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>Il s\'agit d\'une page fournie avec Minteck Projects CMS, et de la page d\'accueil de votre site. Pour des raisons de logique, vous ne pouvez pas la renommer ni la supprimer.</p><p>Si vous souhaitez la masquer du menu, ajouter <code>"index"</code> à la liste <code>PagesMasquées</code> dans les paramètres avancés de votre site.</p></td></tr></tbody></table></p>');
+                echo("<p><table class=\"message_info\"><tbody><tr><td><img src=\"/resources/image/message_info.svg\" class=\"message_img\"></td><td style=\"width:100%;\"><p>{$lang['admin-pages']['provided'][0]}</p><p>{$lang['admin-pages']['provided'][1]} <code>\"index\"</code> {$lang['admin-pages']['provided'][2]} <code>hiddenPages</code> {$lang['admin-pages']['provided'][3]}</p></td></tr></tbody></table></p>");
             }
             
             ?>
-        Actions disponibles pour cette page :
+        <?= $lang["admin-pages"]["actions"] ?>
         <ul>
-            <li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=<?= $currentSlug ?>" title="Modifier le contenu de la page sélectionnée">Modifier <?php if ($currentSlug == "index") {echo("en utilisant l'éditeur visuel");} ?></a></li>
+            <li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=<?= $currentSlug ?>" title="<?= $lang["admin-pages"]["editl"] ?>"><?= $lang["admin-pages"]["edit"] ?> <?php if ($currentSlug == "index") {echo($lang["admin-pages"]["visual"]);} ?></a></li>
             <?php
             
             if ($currentSlug != "index") {
-                echo('<li><a class="sblink" href="/cms-special/admin/pages/rename/?slug=' . $currentSlug . '" title="Renommer et modifier l\'URL de cette page">Renommer</a></li>');
-                echo('<li><a class="sblink" href="/cms-special/admin/pages/delete/?slug=' . $currentSlug . '" title="Supprimer définitivement la page sélectionnée">Supprimer</a></li>');
+                echo('<li><a class="sblink" href="/cms-special/admin/pages/rename/?slug=' . $currentSlug . '" title="' . $lang["admin-pages"]["renamel"] . '">' . $lang["admin-pages"]["rename"] . '</a></li>');
+                echo('<li><a class="sblink" href="/cms-special/admin/pages/delete/?slug=' . $currentSlug . '" title="' . $lang["admin-pages"]["deletel"] . '">' . $lang["admin-pages"]["delete"] . '</a></li>');
             } else {
-                echo('<li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=' . $currentSlug . '&forcehtml" title="Modifier le contenu de la page sélectionnée">Modifier en utilisant l\'éditeur HTML</a></li>');
+                echo('<li><a class="sblink" href="/cms-special/admin/pages/edit/?slug=' . $currentSlug . '&forcehtml" title="' . $lang["admin-pages"]["htmll"] . '">' . $lang["admin-pages"]["htmle"] . '</a></li>');
             }
             
             ?>

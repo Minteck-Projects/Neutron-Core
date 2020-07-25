@@ -3,24 +3,26 @@
 if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {
-        die("<script>location.href = '/cms-special/admin/pages';</script>");
+        header("Location: /cms-special/admin/pages");
+        die();
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/pages';</script>");
-}
-
-if ($currentSlug == "index") {
-    $currentName = "Accueil";
-    echo("<script>page = \"index\"</script>");
-} else {
-    $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
-    echo("<script>page = \"{$currentSlug}\"</script>");
+    header("Location: /cms-special/admin/pages");
+    die();
 }
 
 ?>
-<?php $pageConfig = [ "domName" => "Modification de " . $currentName . " - Pages", "headerName" => "Modification de " . $currentName ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-            <div id="editing">Modifier le contenu de cette page :
+<?php $pageConfig = [ "domName" => "Pages", "headerName" => "Pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+            <div id="editing"><?= $lang["admin-pages"]["content2"] ?>
                 <?php
+
+                if ($currentSlug == "index") {
+                    $currentName = "{$lang["admin-pages"]["home"]}";
+                    echo("<script>page = \"index\"</script>");
+                } else {
+                    $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
+                    echo("<script>page = \"{$currentSlug}\"</script>");
+                }
 
                 $type = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $currentSlug);
                 if (isset($_GET['forcehtml'])) {
@@ -29,10 +31,14 @@ if ($currentSlug == "index") {
                 if ($type == "0") {
                     require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/VisualEditor.php";
                 }
-                if ($type == "1") {
-                    echo('<p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>L\'éditeur HTML est réservé à des utilisateurs expérimentés souhaitant plus de libérté de personnalisation</p><p>Pour l\'utiliser correctement, vous devez avoir des compétences en développement Web. Sinon, nous vous conseillons plutôt d\'utiliser l\'éditeur visuel</p></td></tr></tbody></table></p>');
-                    require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor.php";
-                }
+                if ($type == "1"):
+                
+                ?>
+                <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-pages"]["htmlw"][0] ?></p><p><?= $lang["admin-pages"]["htmlw"][1] ?></p></td></tr></tbody></table></p>
+                <?php
+
+                require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor.php";
+                endif;
 
                 ?>
             </div>
@@ -45,11 +51,11 @@ if ($currentSlug == "index") {
 
     // For IE and Firefox prior to version 4
     if (e) {
-        e.returnValue = "En quittant cette page, vous perdrez les modifications non enregistrées sur cette page.";
+        e.returnValue = "<?= $lang["admin-pages"]["quitwarn"] ?>";
     }
 
         // For Safari
-        return "En quittant cette page, vous perdrez les modifications non enregistrées sur cette page.";
+        return "<?= $lang["admin-pages"]["quitwarn"] ?>";
     };
 </script>
 
@@ -67,16 +73,16 @@ function updatePage() {
         url: "/api/admin/edit_page.php",
         success: function (data) {
             if (data == "ok") {
-                window.onbeforeunload = undefined;
+                window.onbeforeunload = null;
                 location.href = "/cms-special/admin/pages";
             } else {
-                alert("Erreur : " + data)
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication")
+            alert("<?= $lang["admin-errors"]["connerror"] ?>")
             document.getElementById('loader').classList.add('hide')
             document.getElementById('editing').classList.remove('hide')
         },
@@ -99,17 +105,17 @@ function updatePageNoBack() {
         url: "/api/admin/edit_page.php",
         success: function (data) {
             if (data == "ok") {
-                alert("La page a bien été sauvegardée");
+                alert("<?= $lang["admin-pages"]["saved"] ?>");
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             } else {
-                alert("Erreur : " + data)
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication")
+            alert("<?= $lang["admin-errors"]["connerror"] ?>")
             document.getElementById('loader').classList.add('hide')
             document.getElementById('editing').classList.remove('hide')
         },
@@ -132,17 +138,17 @@ function updatePageHTMLNoBack() {
         url: "/api/admin/edit_page.php",
         success: function (data) {
             if (data == "ok") {
-                alert("La page a bien été sauvegardée");
+                alert("<?= $lang["admin-pages"]["saved"] ?>");
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             } else {
-                alert("Erreur : " + data)
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication")
+            alert("<?= $lang["admin-errors"]["connerror"] ?>")
             document.getElementById('loader').classList.add('hide')
             document.getElementById('editing').classList.remove('hide')
         },
@@ -165,16 +171,15 @@ function updatePageHTML() {
         url: "/api/admin/edit_page.php",
         success: function (data) {
             if (data == "ok") {
-                window.onbeforeunload = undefined;
                 location.href = "/cms-special/admin/pages";
             } else {
-                alert("Erreur : " + data)
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication")
+            alert("<?= $lang["admin-errors"]["connerror"] ?>")
             document.getElementById('loader').classList.add('hide')
             document.getElementById('editing').classList.remove('hide')
         },

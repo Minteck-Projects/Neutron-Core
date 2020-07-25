@@ -1,19 +1,19 @@
 <?php $pageConfig = [ "domName" => "Nouvelle page - Pages", "headerName" => "Nouvelle page" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
             <p>
                 <form name="settings">
-                    <center><input id="name" type="text" placeholder="Nom de la page"></center><br>
+                    <center><input id="name" type="text" placeholder="<?= $lang["admin-pages"]["pagename"] ?>"></center><br>
                     <input type="radio" id="type-visual" value="visual" onchange="switchEditor()" name="type" checked>
-                    <label for="type-visual">Classique</label><br>
+                    <label for="type-visual"><?= $lang["admin-pages"]["classic2"] ?></label><br>
                     <input type="radio" id="type" onchange="switchEditor()" value="html" name="type">
-                    <label for="type-html">HTML <i>(avancé)</i></label>
+                    <label for="type-html"><?= $lang["admin-pages"]["html2"][0] ?> <i><?= $lang["admin-pages"]["html2"][1] ?></i></label>
                 </form>
             </p>
-            <div id="editing">Ajouter du contenu à votre page :<div id="editor-visual">
+            <div id="editing"><?= $lang["admin-pages"]["content"] ?><div id="editor-visual">
                 <?php
                 require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/VisualEditor$2.php";
                 ?></div>
                 <div id="editor-html" class="hide">
-                    <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p>L'éditeur HTML est réservé à des utilisateurs expérimentés souhaitant plus de libérté de personnalisation</p><p>Pour l'utiliser correctement, vous devez avoir des compétences en développement Web. Sinon, nous vous conseillons plutôt d'utiliser l'éditeur visuel</p></td></tr></tbody></table></p>
+                    <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-pages"]["htmlw"][0] ?></p><p><?= $lang["admin-pages"]["htmlw"][1] ?></p></td></tr></tbody></table></p>
                     <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor$2.php" ?>
                 </div>
             </div>
@@ -26,11 +26,11 @@
 
     // For IE and Firefox prior to version 4
     if (e) {
-        e.returnValue = "En quittant cette page, vous perdrez les modifications non enregistrées sur cette page.";
+        e.returnValue = "<?= $lang["admin-pages"]["quitwarn"] ?>";
     }
 
         // For Safari
-        return "En quittant cette page, vous perdrez les modifications non enregistrées sur cette page.";
+        return "<?= $lang["admin-pages"]["quitwarn"] ?>";
     };
 </script>
 
@@ -52,14 +52,14 @@ function createPageVisual() {
             if (data == "ok") {
                 location.href = "/cms-special/admin/pages";
             } else {
-                alert("Erreur : " + data)
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication")
+            alert("<?= $lang["admin-errors"]["connerror"] ?>")
             document.getElementById('loader').classList.add('hide')
             document.getElementById('editing').classList.remove('hide')
         },
@@ -84,19 +84,19 @@ function createPageVisualNoBack() {
         url: "/api/admin/create_page.php",
         success: function (data) {
             if (data == "ok") {
-                alert("La page a bien été sauvegardée");
+                alert("<?= $lang["admin-pages"]["saved"] ?>");
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             } else {
-                alert("Erreur : " + data)
+                alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             }
         },
         error: function (error) {
-            alert("Erreur de communication")
+            alert("<?= $lang["admin-errors"]["connerror"] ?>")
             document.getElementById('loader').classList.add('hide')
             document.getElementById('editing').classList.remove('hide')
         },

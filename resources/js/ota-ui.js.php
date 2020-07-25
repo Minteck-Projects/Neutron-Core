@@ -35,8 +35,13 @@ function checkForUpdates() {
                     console.log("> No error");
 
                     if (updates.updates.length == 0) {
-                        switchPage("04-search", "00-uptodate")
-                        console.log("> Up to date");
+                        setTimeout(() => {
+                            switchPage("04-search", "00-uptodate")
+                            setTimeout(() => {
+                                document.getElementById("04-search").style.display = "none";
+                            }, 200)
+                            console.log("> Up to date");
+                        }, 2000);
                     } else {
                         console.log("> Updates");
                         uphtml = "<ul>";
@@ -68,7 +73,9 @@ function checkForUpdates() {
                         }
                         document.getElementById('updates-ttsize').innerHTML = ttsizestr;
 
-                        switchPage("04-search", "05-updates")
+                        setTimeout(() => {
+                            switchPage("04-search", "05-updates")
+                        }, 2000);
                     }
                 } else {
                     console.log("> PHP Error");
@@ -109,14 +116,18 @@ function installUpdates() {
         success: function (data) {
             if (data == "ok") {
                 console.log("> Updates done");
-                switchPage("06-install", "07-done")
+                setTimeout(() => {
+                    switchPage("06-install", "07-done")
+                }, 3500)
                 document.title = '<?= $lang["ota"]["steps"][6] . " - " . $lang["ota"]["ititle"] ?> - Minteck Projects CMS';
             } else {
                 console.log("> PHP Error");
                 document.getElementById('00-error-title').innerHTML = `<?= $lang["ota"]["errors"][0] ?>`
                 document.getElementById('00-error-message').innerHTML = data + "<p><?= $lang['ota']['errors'][2] ?></p>";
                 document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS`;
-                switchPage("06-install", "00-error")
+                setTimeout(() => {
+                    switchPage("06-install", "00-error")
+                }, 2000)
                 console.error(e);
             }
         },
@@ -124,7 +135,9 @@ function installUpdates() {
             document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
             document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][1] ?>`
             document.getElementById('00-error-message').innerHTML = `<?= $lang["setup"]["errors"][2] ?>`
-            switchPage("06-install", "00-error")
+            setTimeout(() => {
+                switchPage("06-install", "00-error")
+            }, 2000)
             window.onbeforeunload = undefined;
         },
         cache: false,
