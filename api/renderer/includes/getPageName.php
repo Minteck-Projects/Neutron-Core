@@ -1,6 +1,7 @@
 <?php
 
 function getPageName() {
+    rlgps("getPageName() call");
     global $MPCMSRendererPageMarkup;
     global $MPCMSRendererPageMarkupDN;
     global $MPCMSRendererPageNameValue;

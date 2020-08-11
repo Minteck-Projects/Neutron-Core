@@ -12,34 +12,6 @@
         $latestVersionP = str_replace("#", substr(md5($latestVersion . "-#-" . $channel), 0, 2), $latestVersion . "-#-" . $channel);
         $returned = false;
 
-        if (version_compare($currentVersion, $latestVersion) >= 1 || explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[0] == "1") {
-            echo("<div id=\"protect\" class=\"s1\"><b>" . $lang['admin-about']['updates']->beta[0] . "</b><br>" . $lang['admin-about']['updates']->beta[1] . "</div>");
-            $returned = true;
-        }
-
-        if (!$returned) {
-            if (!strpos($currentVersion, 'LTS') !== false) {
-                if (version_compare($currentVersion, $latestVersion) <= -1) {
-                    echo("<div id=\"protect\" class=\"s0\"><b>" . $lang['admin-about']['updates']->newversion[0] . "</b><br>" . $lang['admin-about']['updates']->newversion[1] . "</div>");
-                }
-            } else {
-                if (implode("", explode(".", explode(" ", $latestVersion)[0])) - implode("", explode(".", explode(" ", $currentVersion)[0])) >= 3) {
-                    echo("<div id=\"protect\" class=\"s0\"><b>" . $lang['admin-about']['updates']->ltsend[0] . "</b><br>" . $lang['admin-about']['updates']->ltsend[1] . "</div>");
-                } else {
-                    if (version_compare($currentVersion, $latestVersion) <= -1) {
-                        echo("<div id=\"protect\" class=\"s2\"><b>" . $lang['admin-about']['updates']->ltsnew[0] . "</b><br>" . $lang['admin-about']['updates']->ltsnew[1] . "</div><br>");
-                    } else {
-                        echo("<div id=\"protect\" class=\"s2\"><b>" . $lang['admin-about']['updates']->ltsuptodate[0] . "</b><br>" . $lang['admin-about']['updates']->ltsuptodate[1] . "</div><br>");
-                        $returned = true;
-                    }
-                }
-            }
-        }
-
-        if (version_compare($currentVersion, $latestVersion) == 0 && !$returned) {
-            echo("<div id=\"protect\" class=\"s2\"><b>" . $lang['admin-about']['updates']->uptodate[0] . "</b><br>" . $lang['admin-about']['updates']->uptodate[1] . "</div><br>");
-        }
-
         ?>
     <h3><?= $lang["admin-about"]["info"] ?></h3>
     <ul><li>
@@ -67,6 +39,7 @@
     }
 
     echo("<li>" . $lang['admin-about']['version']->channel . " <b>" . $upchan . "</b>" . "</li>");
+    echo("<li><a href='/cms-special/admin/updates'>" . $lang['admin-about']['version']->updates . "</a></li>");
     echo("<li><a href='/cms-special/admin/distrib'>" . $lang['admin-about']['version']->distrib . "</a></li>");
 
     $size = 0;

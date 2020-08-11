@@ -209,9 +209,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
 
     ?>
     <div id="admin">
+        <?php
+        
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/updates")) {
+            echo("<div id=\"updates-available\">" . $lang["admin-home"]["updates"][0] . " — <a href=\"/cms-special/admin/updates\">" . $lang["admin-home"]["updates"][1] . "</a></div>");
+            $updatable = true;
+        } else {
+            $updatable = false;
+        }
+        
+        ?>
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/header.php"; ?>
         <div id="app-grid">
             <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/drawer.php"; ?>
             <main class="main-content" id="main-content">
-                <div id="version-place"><?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></div>
+                <div id="version-place"><a class="discreet" href="/cms-special/admin/about"><?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></a></div>
                 <div class="mdc-top-app-bar--fixed-adjust">

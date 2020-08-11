@@ -1,4 +1,4 @@
-<div id="footer-container">
+<div id="footer-container"><?php rlgps("Generating footer"); ?>
     <span id="page-footer-colorbar"></span>
     <footer id="page-footer">
         <div id="page-footer-title">

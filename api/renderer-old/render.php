@@ -12,5 +12,6 @@ function render(string $name) {
 function renderSpecial(string $markup, string $displayName = "Page") {
     $MPCMSRendererPageMarkup = $markup;
     $MPCMSRendererPageMarkupDN = $displayName;
+    rlgps("Special page");
     require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer-old/init.php";
 }

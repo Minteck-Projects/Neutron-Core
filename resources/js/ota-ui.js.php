@@ -123,7 +123,7 @@ function installUpdates() {
             } else {
                 console.log("> PHP Error");
                 document.getElementById('00-error-title').innerHTML = `<?= $lang["ota"]["errors"][0] ?>`
-                document.getElementById('00-error-message').innerHTML = data + "<p><?= $lang['ota']['errors'][2] ?></p>";
+                document.getElementById('00-error-message').innerHTML = data + "<br><?= $lang['ota']['errors'][2] ?>";
                 document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS`;
                 setTimeout(() => {
                     switchPage("06-install", "00-error")

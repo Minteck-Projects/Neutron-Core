@@ -1,10 +1,12 @@
+<?php rlgps("Start DOM generation"); ?>
 <!DOCTYPE html>
-<html lang="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/lang"); ?>">
+<html lang="<?= rlgps("Definied language");file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/lang"); ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php
     
+    rlgps("Title generator");
     if (isset($MPCMSRendererPageNameValue) && $MPCMSRendererPageNameValue == "index") {
         echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
@@ -25,7 +27,7 @@
     <link rel="stylesheet" href="/resources/css/polymer/gallery.css">
     <link rel="stylesheet" href="/resources/lib/pushbar.js/library.css">
     <script src="/resources/lib/pushbar.js/library.js"></script>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>
+    <?php rlgps("Call <head> headers");require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>
 </head>
 <body>
 <script>
@@ -34,4 +36,4 @@
         overlay: true
     });
 </script>
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documentbody.php"; ?>
+<?php rlgps("Call <body> headers");require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documentbody.php"; ?>

@@ -1,4 +1,4 @@
-<div id="portal-background"></div>
+<div id="portal-background"<?php if ($updatable) { echo(" class=\"updates\""); } ?>></div>
 <header id="header-desktop" class="mdc-top-app-bar">
     <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">

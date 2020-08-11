@@ -1,6 +1,7 @@
 <?php
-
+rlgps("Homepage");
 if ((!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd"), "<a") === false)) || (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd"), "|") === false)) || (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd"), "|") === false))) {
+    rlgps("Regenerating pages cache");
     require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
 }
 
@@ -8,7 +9,9 @@ if ((!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-o
 <?php
 
 function getAvgLuminance($filename, $num_samples=30) {
+    rlgps("Gathering average luminance from image");
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd")) {
+        rlgps("Already in cache");
         return file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/banner.mtd");
     } else {
         $img = imagecreatefromjpeg($filename);
@@ -37,7 +40,7 @@ function getAvgLuminance($filename, $num_samples=30) {
 
 ?>
 <?php
-
+rlgps("Loading widgets");
 $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
 $widgets = $json->list;
 foreach ($widgets as $widget): ?>
@@ -66,7 +69,7 @@ if ($ready) {
         $pimb = 4;
     }
 }
-
+rlgps("Starting DOM generation");
 ?>
 
 <!DOCTYPE html>
@@ -123,7 +126,7 @@ if ($ready) {
         echo("<script type=\"text/javascript\">\nvar pushbar = new Pushbar({\nblur:true,\noverlay:true,\n});\n</script>");
     }
 
-
+    rlgps("Banner generation");
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg")) {
         $banner = "/resources/upload/banner.jpg";
         if (getAvgLuminance($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg") > 50) {
@@ -139,7 +142,7 @@ if ($ready) {
             $blackBannerText = false;
         }
     }
-
+    rlgps("Branding");
     ?>
     <div id="always-on-top">
         <div id="siteadmin"><a class="sab" href="/cms-special/version"><span class="branding-desktop"><?= $lang["viewer"]["powered"] ?> Minteck Projects CMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span><span class="branding-mobile">MPCMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></span></a><a href="/cms-special/admin" id="siteadmin-button"><img id="siteadmin-img" src="/resources/image/admin.svg"><?= $lang["viewer"]["manage"] ?></a></div>
@@ -149,7 +152,7 @@ if ($ready) {
     </div>
     <div id="menubar"><span class="menubar-link menubar-mobile" id="menubar-link-navigation" onclick="pushbar.open('panel-navigation')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text"><?= $lang["viewer"]["menu"] ?></span></span>
         <?php
-
+        rlgps("Menubar");
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {
             echo('<span class="menubar-link menubar-desktop" id="menubar-link-navigation" onclick="pushbar.open(\'panel-navigation\')"><img src="/resources/image/menu.svg" class="menubar-img"><span class="menubar-link-text">' . $lang["viewer"]["menu"] . '</span></span>');
         } else {
@@ -195,7 +198,7 @@ if (!empty($widgets->list)) {
     <div data-pushbar-id="panel-navigation" data-pushbar-direction="left">
         <div id="banner-menu" style='background-image: url("<?= $banner ?>");'>
             <img id="banner-menu-logo" src="/resources/upload/siteicon.png"><span id="banner-menu-name" <?php if ($blackBannerText) {echo("class=\"banner-black\"");} ?>><?php
-
+            rlgps("Printing banner");
             $sitename = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename");
 
             if (strlen($sitename) < 15) {
@@ -210,7 +213,7 @@ if (!empty($widgets->list)) {
         <br>
         <a href="/" title="/" class="menu-link"><?= $lang["viewer"]["home"] ?></a>
         <?php
-
+        rlgps("Navigation pane");
         $pages = scandir($_SERVER['DOCUMENT_ROOT']);
         uasort($pages, 'asciiComp');
         foreach ($pages as $page) {
@@ -234,7 +237,7 @@ if (!empty($widgets->list)) {
         <span id="sidebar-separator"></span>
         <span id="sidebar-widgets">
             <?php
-
+            rlgps("Checking if admin is still connected");
             if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
                 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
                     echo('<p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>' . $lang["viewer"]["logout"][0] . '<a href="/cms-special/admin/logout" style="color:inherit;text-decoration:none;">' . $lang["viewer"]["logout"][1] . '</a>' . $lang["viewer"]["logout"][2] . '</p></td></tr></tbody></table></p>');
@@ -243,6 +246,7 @@ if (!empty($widgets->list)) {
 
             ?>
             <?php
+            rlgps("Loading widgets");
                 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
                 foreach ($config->list as $widget): ?>
                     <?php $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/widgets/" . $widget . "/feature.json")); ?>
@@ -262,7 +266,7 @@ if (!empty($widgets->list)) {
     <div id="page-placeholder">
         <div id="page-content">
             <?php
-
+            rlgps("Printing page content");
             $html_string = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/index");
             preg_match_all('#<h[1-6]*[^>]*>.*?<\/h[1-6]>#',$html_string,$results);
 

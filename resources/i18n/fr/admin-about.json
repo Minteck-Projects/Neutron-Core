@@ -30,7 +30,8 @@
         "update": ", et la dernière version disponible est la version",
         "beta": ", et la dernière version stable en circulation est la version",
         "channel": "Vous êtes sur le canal de mise à jour",
-        "distrib": "→ Informations sur la distribution"
+        "distrib": "→ Informations sur la distribution",
+        "updates": "→ Gestionnaire de mises à jour"
     },
     "diskspace": [
         "Votre site utilise",

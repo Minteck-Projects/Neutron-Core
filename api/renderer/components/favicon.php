@@ -74,6 +74,7 @@
 
 	}
 
+	rlgps("Generating favicon");
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png")) {
         $path = $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon-uncomp.png";
     } else {

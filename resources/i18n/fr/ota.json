@@ -11,7 +11,8 @@
         "Bienvenue dans l'utilitaire de mises à jour de Minteck Projects CMS. Vous pouvez utiliser cet utilitaire pour mettre à jour votre site directement depuis ce dernier.",
         "Cet utilitaire de mises à jour peut télécharger et installer à la fois les mises à jour de sécurité, et aussi les mises à jour de fonctionnalité.",
         "Durant l'installation des mises à jour, votre site ne sera plus accessible au public. Une mise à jour intérrompue inopinément peut détruire votre site, alors pensez à toujours utiliser le bouton « Annuler »",
-        "Lorsque vous êtes prêt à mettre à jour votre site, vous pouvez cliquer sur « Commencer »."
+        "Lorsque vous êtes prêt à mettre à jour votre site, vous pouvez cliquer sur « Commencer ».",
+        "Avant toute chose, gardez à l'esprit que cet utilitaire de mises à jour est actuellement à un état instable et non testé sur une longue durée. Vous DEVEZ vous attendre à d'importants problèmes de mise à jour. Sur un site de production, nous vous conseillons de ne pas utiliser l'utilitaire de mises à jour jusqu'au retrait de ce message."
     ],
     "steps": [
         "Chargement...",
@@ -58,5 +59,16 @@
         "Si vous rencontrez des problèmes avec les mises à jour, vous pouvez signaler un bogue et/ou demander à votre administrateur système de restaurer l'ancienne version du logiciel."
     ],
     "finish": "Terminer",
-    "installing": "Installation des mises à jour..."
+    "installing": "Installation des mises à jour...",
+    "unstable": "Cet utilitaire de mises à jour est actuellement à un état considéré instable, installez les mises à jour à partir de ce dernier à vos risques et périls.",
+    "bugs1": [
+        "Cet utilitaire de mises à jour est actuellement à un état considéré instable, il est normal de rencontrer des problèmes. Cela nous ferait très plaisir si vous preniez le temps de ",
+        "signaler un bug",
+        " avant de quitter cette page."
+    ],
+    "bugs2": [
+        "Ce n'est pas normal, nous vous conseillons de ",
+        "signaler un bug",
+        " avant de quitter cette page."
+    ]
 }

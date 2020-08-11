@@ -1,16 +1,16 @@
 # Checking for updates...
-curl: https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.93/updates.json
+curl: https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.94/updates.json
 # Updates to install: 1
 # Updates summary:
 
 The following files will be downloaded:
-    https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.93/update-2.2.93.1-TODO
+    https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.94/update-2.2.93.1-TODO
 
 The following updates will be installed:
-    security::2.2.93.1
+    security::2.2.95
 
 After the updates, the software will be at version:
-    2.2.93.1
+    2.2.95
 
 The following additional operations will be done:
     
@@ -33,9 +33,8 @@ php: Script will run infinitely
 files: makedir /data/$UpdateCache
 # Processing update 1 of 1
 # u:1: Downloading files...
-# u:1: 1/1: https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.93/update-2.2.93.1-TODO -> /data/$UpdateCache/0.bin
+# u:1: 1/1: https://gitlab.com/minteck-projects/mpcms/ota-updates-repos/-/raw/master/2.2.94/update-2.2.93.1-TODO -> /data/$UpdateCache/0.bin
 # u:1: Applying update...
-# u:1: Applying /data/$UpdateCache/0.bin
 # Updating version number...
 # All updates done, restoring normal environment
 # Removing update-specific htaccess directives

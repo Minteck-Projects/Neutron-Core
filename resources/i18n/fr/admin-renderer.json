@@ -1,0 +1,4 @@
+{
+    "notrace": "Aucune trace du moteur de rendu n'est disponible",
+    "notice": "Il ne s'agit que de la trace du moteur de rendu côté visiteur, le moteur de rendu des pages d'administration n'est pas tracé."
+}

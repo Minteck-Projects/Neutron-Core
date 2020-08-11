@@ -106,3 +106,39 @@ try { // Failing is not important
     }
 } catch (E_WARNING $err) {
 }
+
+// Check for updates at random intervals
+if (rand(0, 10) == 5) {
+    try {
+        $version = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[0];
+        $json = json_decode(@file_get_contents(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/update") . "/" . $version . "/updates.json"));
+
+        if (isset($json)) {
+            if (json_last_error() != JSON_ERROR_NONE) {
+                $updates = -1;
+            }
+
+            if ($json->version->name != $version) {
+                $updates = -1;
+            }
+        
+            foreach ($json->updates as $update) {
+                if (!isset($updates)) {
+                    $updates = 1;
+                }
+            }
+        
+            if (!isset($updates)) {
+                $updates = 0;
+            }
+        } else {
+            $updates = -1;
+        }
+
+        if ($updates == 1) {
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/updates", "");
+        } else {
+            unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/updates");
+        }
+    } catch (E_WARNING $err) {}
+}

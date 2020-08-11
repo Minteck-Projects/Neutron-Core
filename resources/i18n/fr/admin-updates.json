@@ -1,0 +1,19 @@
+{
+    "status": [
+        "Une erreur est survenue pendant la recherche de mises à jour",
+        "Des mises à jour sont disponibles",
+        "Le logiciel est à jour"
+    ],
+    "install": [
+        "Essayer d'installer (dangereux !)",
+        "Installer manuellement",
+        "Installer maintenant"
+    ],
+    "logs": "Journal d'installation de la dernière mise à jour",
+    "errors": [
+        "Données JSON invalides",
+        "Incohérence de version",
+        "Impossible de récupérer les informations"
+    ],
+    "nologs": "Aucune mise à jour n'a encore été installée"
+}

@@ -1,6 +1,7 @@
 <?php
 
 if ((!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd"), "<a") === false)) || (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd"), "|") === false)) || (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-old.mtd") || (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd") && strpos(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd"), "|") === false))) {
+    rlgps("Regenerating pages cache");
     require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
 }
 
@@ -17,6 +18,7 @@ if ((!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-o
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
             <span class="rsp-desktoponly" id="menuitems">
                 <?php
+                rlgps("Loading pages from cache...");
             
                 $preels = explode("\n", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd"));
                 $els = [];
@@ -28,7 +30,7 @@ if ((!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-o
                 }
 
                 ?>
-                <?php foreach ($els as $el): ?>
+                <?php rlgps("Generating menubar");foreach ($els as $el): ?>
                 <a href="/<?= $el[0] ?>" class="mdc-button rsp-desktoponly">
                     <div class="mdc-button__ripple"></div>
                     <span class="mdc-button__label menubutton"><?= $el[1] ?></span>

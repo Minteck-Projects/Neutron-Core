@@ -213,6 +213,10 @@ img[width="128px"] {
     filter: none;
 }
 
+#portal-background.updates {
+    z-index: 2;
+}
+
 #portal-background.scrolled {
     background-image: linear-gradient(to bottom, var(--mpc-menu-background-image-more) 50%, var(--mpc-menu-background-image-more)), url('/resources/image/codename.jpg');
     filter: blur(5px);
@@ -426,4 +430,25 @@ a:not(.material-icons):not(.material-icons-outlined):not(.button):active, a:not(
 .search-match {
     color: var(--codename-theme);
     text-decoration: underline;
+}
+
+a.discreet, a.discreet:hover, a.discreet:active {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+.updates-status {
+    font-size: 64px;
+}
+
+.separator {
+    border-bottom: none;
+    border-color: rgba(0, 0, 0, .5);
+}
+
+#updates-available {
+    background-color: rgba(211, 211, 0, 0.5);
+    text-align: center;
+    z-index: 999999;
+    position: relative;
 }

@@ -1,5 +1,5 @@
 <?php
-
+rlgps("Loading widgets");
 $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json"));
 $widgets = $json->list;
 foreach ($widgets as $widget): ?>

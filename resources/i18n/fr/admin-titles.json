@@ -98,6 +98,10 @@
         "dom": "Langue et région",
         "header": "Paramètres régionaux du site"
     },
+    "renderer": {
+        "dom": "Moteur de rendu",
+        "header": "Trace du moteur de rendu"
+    },
     "distrib": {
         "dom": "Distribution",
         "header": "Distribution Minteck Projects CMS"
