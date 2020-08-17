@@ -109,7 +109,7 @@
                 "name": "advanced",
                 "id": 13,
                 "icon": "build_circle",
-                "page": "advanced/json"
+                "page": "advanced/jsonconf"
             },
             {
                 "name": "regedit",

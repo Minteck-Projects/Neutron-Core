@@ -44,35 +44,6 @@ foreach ($days as $day) {
 }
 buffer("<li>" . $thisyear . $lang["version"]["year"] . "</li>");
 buffer("</ul>");
-buffer("<p><b>" . $lang["version"]["disclaimer"][0] . "</b>" . $lang["version"]["disclaimer"][2] . "</p><p>" . $lang["version"]["antiddos"][0] . "<b>");
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {
-    buffer($lang["version"]["antiddos"][1]);
-} else {
-    buffer($lang["version"]["antiddos"][2]);
-}
-buffer("</b>" . $lang["version"]["antiddos"][3]);
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_antiDdos")) {
-    buffer($lang["version"]["antiddos"][4]);
-} else {
-    buffer($lang["version"]["antiddos"][5]);
-}
-buffer(".</p>");
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) {
-    if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) {
-        buffer("<p><center><i>" . $lang["version"]["antiddos"][6] . "</i></center></p>");
-    }
-} else {
-    buffer("<ul>");
-    $iplist = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) - 2;
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/ipbList")) {
-        buffer("<li>" . $iplist . $lang["version"]["antiddos"][7] . "<sup><a class=\"hint\" title=\"" . $lang["version"]["antiddos"][8] . "\">[?]</a></sup></li>");
-    }
-    $banlist = count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) - 2;
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/bannedIps")) {
-        buffer("<li>" . $banlist . $lang["version"]["antiddos"][9] . "</li>");
-    }
-    buffer("</ul>");
-}
 
 renderSpecial($buffer, $lang["version"]["title"]);
 
