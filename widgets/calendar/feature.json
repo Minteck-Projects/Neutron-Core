@@ -1,0 +1,12 @@
+{
+    "name": {
+        "en": "Upcoming Events",
+        "fr": "Prochains événements"
+    },
+    "description": {
+        "en": "Shows the upcoming calendar events in a widget",
+        "fr": "Affiche les prochains événements du calendrier dans un widget"
+    },
+    "config": "/cms-special/admin/calendar",
+    "class": "MpcmsFeatureCalendar"
+}

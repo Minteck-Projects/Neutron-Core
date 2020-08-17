@@ -1,0 +1,11 @@
+{
+    "name": {
+        "en": "Welcome Widget",
+        "fr": "Widget de bienvenue"
+    },
+    "description": {
+        "en": "Gives a warm welcome to the webmaster when they fully installed their website",
+        "fr": "Souhaite la bienvenue au webmestre lorsqu'il a correctement installé son site"
+    },
+    "config": null
+}
