@@ -2,7 +2,7 @@
 global $_VERSION;
 
 function rlgps(string $message) {
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/renderer.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/renderer.log"), "\n" . $message);
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/renderer.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/renderer.log") . "\n" . $message);
 }
 
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer")) {
