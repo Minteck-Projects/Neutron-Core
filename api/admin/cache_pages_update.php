@@ -27,7 +27,15 @@ foreach ($pages as $page) {
     }
 }
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {
-    append("@galery|" . $lang["viewer"]["galery"]);
+    append("\n@galery|" . $lang["viewer"]["galery"]);
+}
+
+$parts = explode("\n", $cache);
+$cache = "";
+foreach ($parts as $part) {
+    if (trim($parts) != "") {
+        $cache = $cache . $part;
+    }
 }
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd", $cache);
@@ -43,7 +51,15 @@ foreach ($pages as $page) {
     }
 }
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {
-    append("@galery|" . $lang["viewer"]["galery"]);
+    append("\n@galery|" . $lang["viewer"]["galery"]);
+}
+
+$parts = explode("\n", $cache);
+$cache = "";
+foreach ($parts as $part) {
+    if (trim($parts) != "") {
+        $cache = $cache . $part;
+    }
 }
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd", $cache);
