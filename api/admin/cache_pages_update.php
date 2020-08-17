@@ -6,7 +6,11 @@ $cache = "";
 
 function append(string $text) {
     global $cache;
-    $cache = $cache . $text;
+    if (trim($cache) == "") {
+        $cache = $cache . $text;
+    } else {
+        $cache = $cache . "\n" . $text;
+    }
 }
 
 function compareASCII($a, $b) {
@@ -22,20 +26,12 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
 append("@home|@indexHomeIcon");
 foreach ($pages as $page) {
     if ((($page != ".." && $page != ".") && $index < 6) && (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) && (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) && (!in_array($page, $customSettings->hiddenPages))) {
-        append("\n{$page}|" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename"));
+        append("{$page}|" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename"));
         $index++;
     }
 }
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {
-    append("\n@galery|" . $lang["viewer"]["galery"]);
-}
-
-$parts = explode("\n", $cache);
-$cache = "";
-foreach ($parts as $part) {
-    if (trim($parts) != "") {
-        $cache = $cache . $part;
-    }
+    append("@galery|" . $lang["viewer"]["galery"]);
 }
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd", $cache);
@@ -46,12 +42,12 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
 append("@home|@indexHomeIcon");
 foreach ($pages as $page) {
     if ((($page != ".." && $page != ".")) && (is_dir($_SERVER['DOCUMENT_ROOT'] . "/" . $page)) && (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename")) && (!in_array($page, $customSettings->hiddenPages))) {
-        append("\n{$page}|" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename"));
+        append("{$page}|" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename"));
         $index++;
     }
 }
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {
-    append("\n@galery|" . $lang["viewer"]["galery"]);
+    append("@galery|" . $lang["viewer"]["galery"]);
 }
 
 $parts = explode("\n", $cache);
