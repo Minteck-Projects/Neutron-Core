@@ -9,8 +9,9 @@
     "upass": "Connexion avec le mot de passe d'administration",
     "authph": "Clé d'authentification",
     "nokey": [
-        "Aucune clé d'authentification définie, créez le fichier",
-        "/data/adminkey",
-        "pour en définir une maintenant."
-    ]
+        "La connexion à partir d'une clé d'authentification n'est plus disponible sur l'ancienne version du système de connexion. Veuillez",
+        "accéder au nouveau système",
+        "pour utiliser votre clé d'authentification."
+    ],
+    "redirect": "Vous avez été redirigé vers l'ancienne page de connexion car une erreur s'est produite. Cliquez {ici} pour réessayer."
 }

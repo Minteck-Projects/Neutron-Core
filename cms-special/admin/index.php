@@ -1,139 +1,121 @@
 <?php
 
-$invalid = false;
-
-if (isset($_POST['authkey'])) {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey")) {
-        if (file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey") == $_POST['authkey']) {
-            $token = str_ireplace("/", "-", password_hash(password_hash(rand(0, 999999) + rand(0, 999999) + rand(0, 999999) + rand(0, 999999) + rand(0, 999999), PASSWORD_BCRYPT, ['cost' => 12,]), PASSWORD_BCRYPT, ['cost' => 12,]));
-            if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens")) {
-                mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
-            }
-            $tokens = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
-            foreach ($tokens as $token) {
-                if ($token == "." || $token == "..") {} else {
-                    unlink($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token);
-                }
-            }
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
-            header("Set-Cookie: ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-            header("Location: " . $callback);
-            return;
-        } else {
-            $invalid = true;
-        }
+if (isset($_GET['pr']) || isset($_GET['pa'])) {
+    if (isset($_GET['pr']) && !isset($_GET['pa'])) {
+        header("Location: /cms-special/admin/login/?pr=" . $_GET['pr']);
     }
-} else {
-    if (isset($_POST['password'])) {
-        if (isset($_GET['pr'])) {
-            if (isset($_GET['pa'])) {
-                $callback = $_GET['pr'] . $_GET['pa'];
-            } else {
-                $callback = $_GET['pr'];
-            }
-        } else {
-            $callback = "/cms-special/admin/home";
-        }
-        if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
-            $token = str_ireplace("/", "-", password_hash(password_hash(rand(0, 999999) + rand(0, 999999) + rand(0, 999999) + rand(0, 999999) + rand(0, 999999), PASSWORD_BCRYPT, ['cost' => 12,]), PASSWORD_BCRYPT, ['cost' => 12,]));
-            if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens")) {
-                mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
-            }
-            $tokens = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/tokens");
-            foreach ($tokens as $atoken) {
-                if ($atoken == "." || $atoken == "..") {} else {
-                    unlink($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $atoken);
-                }
-            }
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
-            header("Set-Cookie: ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-            header("Location: " . $callback);
-            return;
-        } else {
-            $invalid = true;
-        }
+    if (!isset($_GET['pr']) && isset($_GET['pa'])) {
+        header("Location: /cms-special/admin/login/?pa=" . $_GET['pa']);
     }
-}
-
-if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
-        if (isset($_GET['pr'])) {
-            if (isset($_GET['pa'])) {
-                $callback = $_GET['pr'] . $_GET['pa'];
-            } else {
-                $callback = $_GET['pr'];
-            }
-        } else {
-            $callback = "/cms-special/admin/home";
-        }
-        header("Location: " . $callback);
+    if (isset($_GET['pr']) && isset($_GET['pa'])) {
+        header("Location: /cms-special/admin/login/?pr=" . $_GET['pr'] . "&pa=" . $_GET['pa']);
     }
-}
-
-?>
-
-<?php ob_start();echo("<!--\n\n" . str_replace('%year%', date('Y'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license")) . "\n\n-->") ?>
-<?php
-
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
-    $ready = true;
-} else {
-    $ready = false;
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/resources/css/admin.css">
-    <link rel="stylesheet" href="/resources/css/fonts-import.css">
-    <link rel="stylesheet" href="/resources/css/ui.css">
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
-    <title><?php
-
-    if ($ready) {
-        echo($lang["login"]["login"] . " - " . $lang["login"]["title"] .  " - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
-    } else {
-        echo("MPCMS");
-    }
-
-    ?></title>
-    <?php
-        if (!$ready) {
-            die("<script>location.href = '/cms-special/setup';</script></head>");
-        }
-    ?>
+    <title>Minteck Projects CMS</title>
+    <link rel="stylesheet" href="/resources/css/ajax.css">
+    <script src="/resources/js/jquery.js"></script>
 </head>
-<body id="login">
-    <div class="centered">
-        <img src="/resources/upload/siteicon.png" style="border-radius:100%;" class="intro-element">
-        <h2 style="margin-bottom:0;"><?= $lang["login"]["title"] ?></h2>
-        <p><?php
-        
-        if (isset($_GET['authkey'])) {
-            echo('<small>' . $lang["login"]["uauth"] . '<br><a href="." class="clink">' . $lang['login']['pass'] . '</a></small>');
-        } else {
-            echo('<small>' . $lang["login"]["upass"] . '<br><a href="./?authkey" class="clink">' . $lang['login']['auth'] . '</a></small>');
-        }
-        
-        ?></p>
-        <?php if ($invalid) {echo('<div id="error">' . $lang["login"]["invalid"] . '</div>');} ?>
-
-        <?php if (!isset($_GET['authkey']) || file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey")): ?>
-            <form action="./<?php if (isset($_GET['pr'])) {echo("?pr=" . $_GET['pr']);if (isset($_GET['pa'])) {echo("&pa=" . urlencode($_GET['pa']));}} ?>" method="post">
-                <input name="password" type="password" placeholder="<?= isset($_GET['authkey']) ? $lang["login"]["authph"] : $lang["login"]["password"] ?>"><br><br>
-                <input type="submit" class="button" href="/" value="<?= $lang["login"]["login"] ?>">
-            </form><br>
-        <?php else: ?>
-            <form action="#" method="post">
-                <input name="authkey" type="password" placeholder="<?= isset($_GET['authkey']) ? $lang["login"]["authph"] : $lang["login"]["password"] ?>" disabled><br><br>
-                <small><?= $lang["login"]["nokey"][0] . " <code>" . $lang["login"]["nokey"][1] . "</code> " . $lang["login"]["nokey"][2] ?></small>
-            </form><br>
-        <?php endif ?>
+<body>
+    <iframe id="content" src="/cms-special/admin/login" frameborder="0"></iframe>
+    <div id="loader">
+        <svg class="spinner" width="48px" height="48px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
     </div>
 </body>
+
+<script>
+    function iframeURLChange(iframe, callback) {
+        var unloadHandler = function () {
+            setTimeout(function () {
+                callback(iframe.contentWindow.location.href);
+            }, 0);
+        };
+
+        function attachUnload() {
+            iframe.contentWindow.removeEventListener("unload", unloadHandler);
+            iframe.contentWindow.addEventListener("unload", unloadHandler);
+        }
+
+        iframe.addEventListener("load", attachUnload);
+        attachUnload();
+    }
+
+    iframeURLChange(document.getElementById("content"), function (newURL) {
+        $("#loader").fadeIn(200);
+    });
+
+    document.getElementById('content').onbeforeunload = () => {
+        $("#loader").fadeIn(200);
+    }
+
+    document.getElementById('content').onload = () => {
+        $("#loader").fadeOut(200);
+
+        setTimeout(() => {
+            $("#loader").fadeOut(200);
+        }, 300)
+
+        els2 = document.getElementById('content').contentWindow.location.href.split("/");
+
+        els2.shift();
+        els2.shift();
+        els2.shift();
+
+        url = "/" + els2.join("/");
+        if (!url.startsWith("/cms-special/admin")) {
+            document.getElementById('content').contentWindow.history.back();
+            window.open(url);
+        }
+
+        els = document.getElementById('content').contentWindow.location.href.split("/");
+
+        els.shift();
+        els.shift();
+        els.shift();
+        els.shift();
+        els.shift();
+                                                
+        oldu = "/" + els.join("/");
+
+        window.history.replaceState("Minteck Projects CMS", "Minteck Projects CMS", "#/" + els.join("/"));
+        console.log("/cms-special/admin/" + els.join("/"));
+
+        document.title = document.getElementById('content').contentWindow.document.title;
+    }
+
+    oldu = null;
+    setInterval(() => {
+        hash = location.hash.substr(1);
+
+        if (hash == "" && hash != oldu) {
+            document.getElementById('content').src = "/cms-special/admin/home";
+            console.log("/cms-special/admin/home");
+            $("#loader").fadeIn(200);
+
+            oldu = hash;
+        } else if (hash != oldu) {
+            if (hash.startsWith("/") && (hash.substr(1, 1) != "/")) {
+                document.getElementById('content').src = "/cms-special/admin" + hash;
+                console.log("/cms-special/admin" + hash);
+                $("#loader").fadeIn(200);
+            } else {
+                document.getElementById('content').src = "/cms-special/admin/home";
+                console.log("/cms-special/admin/home");
+                $("#loader").fadeIn(200);
+            }
+
+            oldu = hash;
+        }
+    }, 200)
+</script>
+
 </html>

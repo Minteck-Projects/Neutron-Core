@@ -27,7 +27,7 @@ foreach ($pages as $page) {
     }
 }
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {
-    append("@galery|" . $lang["viewer"]["galery"]);
+    append("\n@galery|" . $lang["viewer"]["galery"]);
 }
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist.mtd", $cache);
@@ -43,7 +43,7 @@ foreach ($pages as $page) {
     }
 }
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) {
-    append("@galery|" . $lang["viewer"]["galery"]);
+    append("\n@galery|" . $lang["viewer"]["galery"]);
 }
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd", $cache);

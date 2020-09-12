@@ -18,8 +18,8 @@ $nolang = false;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocessor.php";
 
-if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != ".." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "/") {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_MPCMS_ADMIN_TOKEN'])) {
 
     } else {
         die("<script>location.href = '/cms-special/admin/?pr=" . str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']) . "&pa=" . urlencode("?" . explode("?", $_SERVER['REQUEST_URI'])[1]) . "'</script>");
@@ -140,7 +140,7 @@ if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE
     <h2><?= $lang['ota']['done'][0] ?></h2>
         <p><?= $lang['ota']['done'][1] ?></p>
         <p><?= $lang['ota']['done'][2] ?></p>
-        <img src="/resources/image/config_explore.svg" onclick="location.href = '/'" class="icon_button"><br><small><?= $lang['ota']['finish'] ?></small>
+        <img src="/resources/image/config_explore.svg" onclick="location.href = '/cms-special/admin/login'" class="icon_button"><br><small><?= $lang['ota']['finish'] ?></small>
     </div>
     <?= $nolang ? "" : '<script src="/resources/js/ota-ui.js.php?lang=' . $langsel . '"></script>' ?>
 

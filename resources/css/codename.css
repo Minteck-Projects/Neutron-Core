@@ -1,5 +1,5 @@
 :root {
-    --codename-theme: rgb(187, 116, 8);
-    --codename-secondary: rgb(156, 104, 25);
-    --codename-light: rgb(207, 143, 46);
+    --codename-theme: #8b4732;
+    --codename-secondary: #521c0e;
+    --codename-light: #c25c3e;
 }

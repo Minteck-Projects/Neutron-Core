@@ -1,4 +1,4 @@
 <?php
 
-header("Location: /cms-special/plugins");
+header("Location: /cms-special/admin/plugins");
 die();

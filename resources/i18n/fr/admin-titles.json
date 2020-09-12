@@ -190,6 +190,10 @@
         "dom": "Mise à jour et sécurité",
         "header": "Mise à jour et sécurité"
     },
+    "2fa": {
+        "dom": "Authentification à deux facteurs",
+        "header": "Authentification à deux facteurs"
+    },
     "about": {
         "dom": "À propos de Minteck Projects CMS",
         "header": "À propos du logiciel"

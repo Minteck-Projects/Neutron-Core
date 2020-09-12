@@ -84,6 +84,12 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
     }
 }
 
+// Migrate old "adminkey" to new "authkey"
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey")) {
+    copy($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey", $_SERVER['DOCUMENT_ROOT'] . "/data/authkey");
+    unlink($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey");
+}
+
 try { // Failing is not important
     // Statistics directory
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats")) {} else {
@@ -138,7 +144,9 @@ if (rand(0, 10) == 5) {
         if ($updates == 1) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/updates", "");
         } else {
-            unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/updates");
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/updates")) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/updates");
+            }
         }
     } catch (E_WARNING $err) {}
 }

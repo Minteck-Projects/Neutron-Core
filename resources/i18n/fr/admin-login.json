@@ -1,0 +1,12 @@
+{
+    "modes": [
+        "Mot de passe",
+        "Clé privée"
+    ],
+    "password": "Mot de passe",
+    "key": "Clé privée d'authentification",
+    "confirm": "Se connecter",
+    "back": "retourner au site",
+    "report": "signaler un bug",
+    "branding": "fonctionne avec Minteck Projects CMS"
+}

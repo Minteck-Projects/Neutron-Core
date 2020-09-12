@@ -372,6 +372,11 @@ a:not(.material-icons):not(.material-icons-outlined):not(.button):active, a:not(
     color: transparent;
 }
 
+.nd_Field.fallback input[type="password"]::placeholder, .nd_Field.fallback input[type="text"]::placeholder, .nd_Field.fallback textarea::placeholder {
+    color: var(--codename-theme);
+    opacity: 1;
+}
+
 .nd_Field input[type="password"], .nd_Field input[type="search"], .nd_Field input[type="text"] {
     padding: 9px;
     font-size: 14px;

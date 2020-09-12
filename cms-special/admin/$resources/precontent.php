@@ -47,8 +47,8 @@ if (isset($lang["admin-titles"][$pageid])) {
 
 $invalid = false;
 
-if (isset($_COOKIE['ADMIN_TOKEN']) && $_COOKIE['ADMIN_TOKEN'] != "." && $_COOKIE['ADMIN_TOKEN'] != ".." && $_COOKIE['ADMIN_TOKEN'] != "/") {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['ADMIN_TOKEN'])) {
+if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != ".." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "/") {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_MPCMS_ADMIN_TOKEN'])) {
 
     } else {
         die("<script>location.href = '/cms-special/admin/?pr=" . str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']) . "&pa=" . urlencode("?" . explode("?", $_SERVER['REQUEST_URI'])[1]) . "'</script>");
@@ -221,7 +221,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
         ?>
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/header.php"; ?>
         <div id="app-grid">
-            <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/drawer.php"; ?>
             <main class="main-content" id="main-content">
                 <div id="version-place"><a class="discreet" href="/cms-special/admin/about"><?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></a></div>
                 <div class="mdc-top-app-bar--fixed-adjust">
