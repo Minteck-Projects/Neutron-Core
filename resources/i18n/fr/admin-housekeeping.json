@@ -1,0 +1,24 @@
+{
+    "reset": "Réinitialiser le site",
+    "resetph": "Supprimer toutes les données concernant votre site et restaurer MPCMS aux valeurs d'usines",
+    "disclaimer": [
+        "Cette action aura pour effet de supprimer :",
+        "toutes les pages de votre site",
+        "toutes les images des galeries de photo",
+        "les images de l'icône et de la bannière",
+        "les informations du nom de votre site, et le pied de page"
+    ],
+    "confirm": "Entrez le nom de votre site dans le champ suivant pour pouvoir le réinitialiser :",
+    "confirmboxph": "Nom de votre site",
+    "confirmbutton": "Réinitialiser",
+    "select": [
+        "Sélectionnez comment nous devons réinitialiser votre site :",
+        "Cette action est irréversible et les données supprimées ou modifiées le seront irrémédiablement",
+        "Conserver le contenu",
+        "Réinitialise la configuration de votre site et conserve le contenu que vous y avez inséré. Utile si vous rencontrez des problèmes avec votre site ou que vous avez besoin d'espace disque supplémentaire.",
+        "Tout supprimer",
+        "Supprimer toutes les données de votre site et vous redirige vers l'utilitaire de première configuration. Utile si vous souhaitez recréer votre site depuis le début, ou qu'une mise à jour a causé des problèmes.",
+        "La réinitialisation de votre site est en cours...",
+        "Ne quittez pas cette page"
+    ]
+}

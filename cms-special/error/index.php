@@ -1,13 +1,18 @@
 <?php ob_start();echo("<!--\n\n" . str_replace('%year%', date('Y'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/resources/private/license")) . "\n\n-->") ?>
 <?php
 
+function rlgps() {}
+
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     $ready = true;
 } else {
     $ready = false;
+    header("Location: /cms-special/setup");
+    die();
 }
 
 if ($ready) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/lang/processor.php";
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
         if (isset($_GET['id'])) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - INTERFACE/HTTP-ERROR - " . $_GET['id'] . "\n\n");
@@ -37,9 +42,9 @@ if ($ready) {
     <title><?php
     
     if ($ready) {
-        echo("Erreur - " . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
+        echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
-        echo("Erreur - MPCMS");
+        echo("Minteck Projects CMS");
     }
 
     ?></title>
@@ -47,27 +52,19 @@ if ($ready) {
 </head>
 <body mpcms-error-body>
     <div class="centered discover">
-        <h2>Une erreur s'est produite</h2>
-        <p>Nous sommes désolés, mais une erreur s'est produite lors du chargement de la page.</p>
-        <p>Si vous avez cliqué sur un lien, celui-ci n'est peut-être plus valide, ou alors un autre type d'erreur s'est produit.</p>
+        <h2><?= $lang["error"]["title"] ?></h2>
+        <p><?= $lang["error"]["message"][0] ?></p>
+        <p><?= $lang["error"]["message"][1] ?></p>
         <p><b><?php
         
         if (isset($_GET['id'])) {
-            if (isset($_GET['description'])) {
-                echo("Erreur " . $_GET['id'] . " : " . $_GET['description']);
-            } else {
-                echo("Erreur " . $_GET['id']);
-            }
+            echo($lang["error"]["code"] . " " . $_GET['id']);
         } else {
-            if (isset($_GET['description'])) {
-                echo($_GET['description']);
-            } else {
-                echo("Aucune information sur l'erreur n'a été renvoyée");
-            }
+            echo($lang["error"]["other"]);
         }
 
         ?></b></p>
-        <a class="button" href="/">Accueil du site</a>
+        <a class="button" href="/"><?= $lang["error"]["direction"] ?></a>
     </div>
 </body>
 </html>

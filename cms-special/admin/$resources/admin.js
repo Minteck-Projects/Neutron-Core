@@ -10,3 +10,7 @@ window.onscroll = () => {
         // console.log("> Nothing");
     }
 }
+
+window.onbeforeunload = () => {
+    window.parent.$("#loader").fadeIn(200);
+}

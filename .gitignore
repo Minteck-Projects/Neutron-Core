@@ -1,4 +1,6 @@
 data/webcontent/*
+data/webcontent-tmp/*
+data/webcontent-tmp
 data/tokens/*
 resources/upload/*
 widgets/care-theme/*

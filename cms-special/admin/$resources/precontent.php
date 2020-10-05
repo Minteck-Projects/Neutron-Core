@@ -126,7 +126,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
     <link rel="stylesheet" href="/resources/css/ui.css">
     <link rel="stylesheet" href="/resources/css/codename.css">
     <script src="/cms-special/admin/$resources/admin.js"></script>
-
     <link rel="preload" href="/resources/css/fonts-import.css" as="style">
     <link rel="preload" href="/resources/css/alerts.css" as="style">
     <link rel="preload" href="/resources/css/admin.css" as="style">
@@ -177,7 +176,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
             die("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>
     <?php
 
     getData($_SERVER['DOCUMENT_ROOT']);

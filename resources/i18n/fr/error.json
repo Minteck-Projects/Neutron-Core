@@ -1,0 +1,10 @@
+{
+    "title": "Une erreur s'est produite",
+    "message": [
+        "Nous sommes désolés, mais une erreur s'est produite lors du chargement de la page.",
+        "Si vous avez cliqué sur un lien, celui-ci n'est peut-être plus valide, ou alors un autre type d'erreur s'est produit."
+    ],
+    "direction": "Accueil du site",
+    "code": "Erreur",
+    "other": "Erreur interne"
+}

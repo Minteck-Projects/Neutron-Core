@@ -38,7 +38,7 @@ function resetKeep() {
         url: "/api/admin/reset.php",
         success: function (data) {
             if (data == "ok") {
-                location.href = "/cms-special/admin/resetted";
+                window.parent.location.href = "/cms-special/admin/resetted";
             } else {
                 alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data + "\n\n<?= $lang["admin-errors"]["housekeeping"][0] ?>")
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})
@@ -67,7 +67,7 @@ function resetClear() {
         url: "/api/admin/reset.php",
         success: function (data) {
             if (data == "ok") {
-                location.href = "/cms-special/admin/resetted";
+                window.parent.location.href = "/cms-special/admin/resetted";
             } else {
                 alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data + "\n\n<?= $lang["admin-errors"]["housekeeping"][0] ?>")
                 Array.from(document.getElementsByTagName('input')).forEach((el) => {el.disabled = false})

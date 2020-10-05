@@ -1,19 +1,26 @@
 <?php
 
+// Check if website is ready
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+    $ready = true;
+} else {
+    $ready = false;
+}
+
 $_MD_INCLUDES = "/resources/lib/material"; // Path to Material Design files, can be changed if files are bundled with the code
 $_MDI_PATH = "/resources/lib/material/iconfont.css"; // Path to Material Icons font, can be changed if files are bundled with the code
 
 // Generate favicon if not yet generated
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/favicon.png")) {
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/favicon.png") && $ready) {
     require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/components/favicon.php";
 }
 
 // Dark/light/dynamic theme + color
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme")) {
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme") && $ready) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/theme", "auto");
 }
 
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/color")) {
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/color") && $ready) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/color", "blue");
 }
 
@@ -58,7 +65,7 @@ function getName($config) {
 // Language Loader
 require $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache")) { // Cache directory
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache") && $ready) { // Cache directory
     mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache");
 }
 
@@ -74,12 +81,12 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/styles.json")) {
 }
 
 // Connections Log
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") && $ready) {
     if (strpos($_SERVER['HTTP_USER_AGENT'], "MinteckProjectsAutoUptime") !== false) {} else { // Don't log for Auto-Uptime bot
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - INTERFACE/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
     }
 } else {
-    if (strpos($_SERVER['HTTP_USER_AGENT'], "MinteckProjectsAutoUptime") !== false) {} else { // Don't log for Auto-Uptime bot
+    if (strpos($_SERVER['HTTP_USER_AGENT'], "MinteckProjectsAutoUptime") !== false || !$ready) {} else { // Don't log for Auto-Uptime bot
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - INTERFACE/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
     }
 }

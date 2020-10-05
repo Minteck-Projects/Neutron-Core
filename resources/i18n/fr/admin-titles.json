@@ -186,6 +186,10 @@
             }
         }
     },
+    "reset": {
+        "dom": "Réinitialisation",
+        "header": "Réinitialisez votre site"
+    },
     "updates": {
         "dom": "Mise à jour et sécurité",
         "header": "Mise à jour et sécurité"
