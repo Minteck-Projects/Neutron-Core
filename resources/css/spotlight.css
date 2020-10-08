@@ -1,0 +1,239 @@
+/* Spotlight theming */
+:root {
+    --spotlight-glass: rgba(0, 0, 0, 0.75);
+    --spotlight-shadow: rgba(0, 0, 0, .75);
+    --spotlight-background: var(--mpc-menu-background, #ffffff);
+    --spotlight-text: var(--mdc-theme-on-primary, #000000);
+    --spotlight-border: var(--mdc-theme-primary, gray);
+    --spotlight-hover: var(--mpc-slse-hover1, rgba(0, 0, 0, 0.1));
+    --spotlight-superhover: var(--mpc-slse-hover1, rgba(0, 0, 0, 0.25));
+
+    --spotlight-pages-text: rgb(25, 118, 210);
+    --spotlight-pages-background-heavy: rgba(25, 118, 210, .25);
+    --spotlight-pages-background-light: rgba(25, 118, 210, .1);
+    --spotlight-gallery-text: rgb(211, 47, 47);
+    --spotlight-gallery-background-heavy: rgba(211, 47, 47, .25);
+    --spotlight-gallery-background-light: rgba(211, 47, 47, .1);
+    --spotlight-calendar-text: rgb(56, 142, 60);
+    --spotlight-calendar-background-heavy: rgba(56, 142, 60, .25);
+    --spotlight-calendar-background-light: rgba(56, 142, 60, .1);
+    --spotlight-plugins-text: rgb(251, 127, 45);
+    --spotlight-plugins-background-heavy: rgba(251, 127, 45, .25);
+    --spotlight-plugins-background-light: rgba(251, 127, 45, .1);
+    --spotlight-technical-text: rgb(81, 45, 168);
+    --spotlight-technical-background-heavy: rgba(81, 45, 168, .25);
+    --spotlight-technical-background-light: rgba(81, 45, 168, .1);
+    --spotlight-data-text: rgb(0, 121, 107);
+    --spotlight-data-background-heavy: rgba(0, 121, 107, .25);
+    --spotlight-data-background-light: rgba(0, 121, 107, .1);
+    --spotlight-updates-text: rgb(0, 121, 81);
+    --spotlight-updates-background-heavy: rgba(0, 121, 81, .25);
+    --spotlight-updates-background-light: rgba(0, 121, 81, .1);
+    --spotlight-apparence-text: rgb(251, 192, 45);
+    --spotlight-apparence-background-heavy: rgba(251, 192, 45, .25);
+    --spotlight-apparence-background-light: rgba(251, 192, 45, .1);
+}
+
+.spotlight * {
+    box-sizing: border-box;
+}
+
+.spotlight {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    z-index: 99999999999999999999999999;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--spotlight-glass);
+    display: flex;
+    justify-content: center;
+    color: var(--spotlight-text);
+}
+
+.spotlight.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.spotlight-bar {
+    width: 50%;
+    top: 0;
+    position: fixed;
+    background: var(--spotlight-background);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    padding: 10px;
+    box-shadow: 1px 2px 5px var(--spotlight-glass);
+}
+
+.spotlight-bar input {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    background: none;
+}
+
+.spotlight-suggestions {
+    border-top: 1px solid var(--spotlight-border);
+    position: absolute;
+    top: 100%;
+    background: var(--spotlight-background);
+    left: 0;
+    right: 0;
+    margin: -5px 0 0 0;
+    padding: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.spotlight-suggestions li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.spotlight-suggestions a {
+    display: block;
+    text-decoration: none;
+    padding: 10px 25px;
+    color: inherit;
+    border-radius: 5px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.spotlight-suggestions li.active a:hover, .spotlight-suggestions li a:hover {
+    background-color: var(--spotlight-superhover);
+}
+
+.spotlight-suggestions li.active a {
+    background-color: var(--spotlight-hover);
+}
+
+.spotlight-suggestions mark {
+    opacity: .3;
+    background: none;
+    color: inherit;
+}
+
+.spotlight-icon {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.spotlight-suggestions span {
+    vertical-align: middle;
+}
+
+.spotlight-elements {
+    display: none;
+}
+
+.spotlight-link__pages:hover, li.active .spotlight-link__pages {
+    color: var(--spotlight-pages-text);
+}
+
+.spotlight-link__gallery:hover, li.active .spotlight-link__gallery {
+    color: var(--spotlight-gallery-text);
+}
+
+.spotlight-link__calendar:hover, li.active .spotlight-link__calendar {
+    color: var(--spotlight-calendar-text);
+}
+
+.spotlight-link__plugins:hover, li.active .spotlight-link__plugins {
+    color: var(--spotlight-plugins-text);
+}
+
+.spotlight-link__technical:hover, li.active .spotlight-link__technical {
+    color: var(--spotlight-technical-text);
+}
+
+.spotlight-link__data:hover, li.active .spotlight-link__data {
+    color: var(--spotlight-data-text);
+}
+
+.spotlight-link__updates:hover, li.active .spotlight-link__updates {
+    color: var(--spotlight-updates-text);
+}
+
+.spotlight-link__apparence:hover, li.active .spotlight-link__apparence {
+    color: var(--spotlight-apparence-text);
+}
+
+li a.spotlight-link__pages:hover {
+    background-color: var(--spotlight-pages-background-heavy) !important;
+}
+
+li.active a.spotlight-link__pages {
+    background-color: var(--spotlight-pages-background-light);
+}
+
+li a.spotlight-link__gallery:hover {
+    background-color: var(--spotlight-gallery-background-heavy) !important;
+}
+
+li.active a.spotlight-link__gallery {
+    background-color: var(--spotlight-gallery-background-light);
+}
+
+li a.spotlight-link__calendar:hover {
+    background-color: var(--spotlight-calendar-background-heavy) !important;
+}
+
+li.active a.spotlight-link__calendar {
+    background-color: var(--spotlight-calendar-background-light);
+}
+
+li a.spotlight-link__plugins:hover {
+    background-color: var(--spotlight-plugins-background-heavy) !important;
+}
+
+li.active a.spotlight-link__plugins {
+    background-color: var(--spotlight-plugins-background-light);
+}
+
+li a.spotlight-link__technical:hover {
+    background-color: var(--spotlight-technical-background-heavy) !important;
+}
+
+li.active a.spotlight-link__technical {
+    background-color: var(--spotlight-technical-background-light);
+}
+
+li a.spotlight-link__data:hover {
+    background-color: var(--spotlight-data-background-heavy) !important;
+}
+
+li.active a.spotlight-link__data {
+    background-color: var(--spotlight-data-background-light);
+}
+
+li a.spotlight-link__updates:hover {
+    background-color: var(--spotlight-updates-background-heavy) !important;
+}
+
+li.active a.spotlight-link__updates {
+    background-color: var(--spotlight-updates-background-light);
+}
+
+li a.spotlight-link__apparence:hover {
+    background-color: var(--spotlight-apparence-background-heavy) !important;
+}
+
+li.active a.spotlight-link__apparence {
+    background-color: var(--spotlight-apparence-background-light);
+}
+
+.spotlight-input {
+    color: var(--spotlight-text);
+}
+
+.spotlight-link {
+    cursor: pointer;
+}

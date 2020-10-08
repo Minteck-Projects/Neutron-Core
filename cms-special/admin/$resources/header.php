@@ -6,7 +6,7 @@
             <span class="mdc-top-app-bar__title"><?php if (isset($name)) { echo($name); } else { echo($lang["login"]["title"]); } ?></span>
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-            <a title="<?= $lang["admin-home"]["search"] ?>" href="/cms-special/admin/home/all/#search" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button">search</a>
+            <a title="<?= $lang["admin-home"]["search"] ?>" onclick="document.getElementsByTagName('spotlight-bar')[0].show()" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button">search</a>
         </section>
     </div>
 </header>

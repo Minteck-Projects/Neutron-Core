@@ -122,6 +122,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
     <link href="<?= $_MD_INCLUDES ?>/material-components-web.min.css" rel="stylesheet">
     <script src="<?= $_MD_INCLUDES ?>/material-components-web.min.js"></script>
     <link rel="stylesheet" href="<?= $_MDI_PATH ?>">
+    <link rel="stylesheet" href="/resources/css/spotlight.css">
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
     <link rel="stylesheet" href="/resources/css/codename.css">
@@ -198,6 +199,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
     ?>
 </head>
 <body id="settings" style="overflow-x:hidden;">
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/spotlight.php"; ?>
     <?php
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documentbody.php";

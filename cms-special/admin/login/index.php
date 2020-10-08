@@ -155,6 +155,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
 </body>
 
 <script>
+    function alert(message) {
+        alert_full(message);
+    }
+
     function enableAuthKey() {
         useAuthKey = true;
         document.getElementById('loginwith-authkey').classList.remove('mdc-button--outlined');
@@ -165,7 +169,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
         document.getElementById('login-authkey').style.display = "";
         document.getElementById('password-box').value = "";
         document.getElementById('authkey-box').value = "";
-        ieizaioea()
         document.getElementById('authkey-box').focus();
     }
 

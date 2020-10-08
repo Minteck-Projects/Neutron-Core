@@ -25,4 +25,7 @@
     --mpc-home-appearance: rgb(251, 192, 45);
     --mpc-home-data: rgb(0, 121, 107);
     --mpc-home-housekeeping: rgb(81, 45, 168);
+
+    --mpc-slse-hover1: rgba(0, 0, 0, 0.25);
+    --mpc-slse-hover2: rgba(0, 0, 0, 0.1);
 }

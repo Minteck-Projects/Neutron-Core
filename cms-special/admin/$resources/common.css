@@ -292,12 +292,12 @@ img[width="128px"] {
     height: 86px;
 }
 
-a:not(.material-icons):not(.material-icons-outlined):not(.button) {
+a:not(.material-icons):not(.material-icons-outlined):not(.button):not(.spotlight-link) {
     color: var(--codename-theme);
     text-decoration-color: var(--codename-theme);
 }
 
-a:not(.material-icons):not(.material-icons-outlined):not(.button):active, a:not(.material-icons):not(.material-icons-outlined):not(.button):focus {
+a:not(.material-icons):not(.material-icons-outlined):not(.button):active, a:not(.material-icons):not(.material-icons-outlined):not(.button):focus:not(.spotlight-link) {
     opacity: .75;
 }
 

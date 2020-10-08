@@ -57,7 +57,7 @@
     display: none;
 }
 
-input[type="text"]:not(.easycss-input-value), input[type="password"] {
+input[type="text"]:not(.easycss-input-value):not(.spotlight-input), input[type="password"] {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -67,7 +67,7 @@ input[type="text"]:not(.easycss-input-value), input[type="password"] {
     text-align: center;
 }
 
-input[type="text"]:hover:not(.easycss-input-value), input[type="password"]:hover {
+input[type="text"]:hover:not(.easycss-input-value):not(.spotlight-input), input[type="password"]:hover {
     border-color: rgb(75, 75, 75);
 }
 
