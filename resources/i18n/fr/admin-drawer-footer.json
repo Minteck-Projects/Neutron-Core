@@ -1,8 +1,8 @@
 {
-    "powered": "propulsé par Minteck Projects CMS",
+    "powered": "propulsé par FNS Neutron",
     "license": [
-        "Minteck Projects CMS est distribué sous licence ",
+        "FNS Neutron est distribué sous licence ",
         " ou version ultérieure. Tout travail dérivé doit aussi être distribué sous cette licence."
     ],
-    "experimental": "Cette version de Minteck Projects CMS est expérimentale et peut s'avérer instable."
+    "experimental": "Cette version de FNS Neutron est expérimentale et peut s'avérer instable."
 }

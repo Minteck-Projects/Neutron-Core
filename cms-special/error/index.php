@@ -44,13 +44,13 @@ if ($ready) {
     if ($ready) {
         echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename"));
     } else {
-        echo("Minteck Projects CMS");
+        echo("FNS Neutron");
     }
 
     ?></title>
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php" ?>
 </head>
-<body mpcms-error-body>
+<body neutron-error-body>
     <div class="centered discover">
         <h2><?= $lang["error"]["title"] ?></h2>
         <p><?= $lang["error"]["message"][0] ?></p>

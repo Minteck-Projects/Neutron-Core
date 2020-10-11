@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/resources/css/admin.css">
     <link rel="stylesheet" href="/resources/css/fonts-import.css">
     <link rel="stylesheet" href="/resources/css/ui.css">
-    <title>Minteck Projects CMS</title>
+    <title>FNS Neutron</title>
 </head>
 <body>
     <div id="settings" class="centered">

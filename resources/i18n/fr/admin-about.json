@@ -2,7 +2,7 @@
     "updates": {
         "beta": [
             "Votre site est potentiellement vulnérable",
-            "Vous utilisez une préversion de Minteck Projects CMS"
+            "Vous utilisez une préversion de FNS Neutron"
         ],
         "ltsend": [
             "Votre site n'est pas protégé",
@@ -14,19 +14,19 @@
         ],
         "ltsuptodate": [
             "Votre site est protégé",
-            "Minteck projects CMS est à jour, vous exécutez une version disposant du support à long terme"
+            "Neutron est à jour, vous exécutez une version disposant du support à long terme"
         ],
         "uptodate": [
             "Votre site est protégé",
-            "Minteck Projects CMS est à jour"
+            "Neutron est à jour"
         ],
         "newversion": [
             "Votre site n'est pas protégé",
-            "Une mise à jour pour Minteck Projects CMS est disponible"
+            "Une mise à jour pour Neutron est disponible"
         ]
     },
     "version": {
-        "prefix": "Votre serveur exécute Minteck Projects CMS version",
+        "prefix": "Votre serveur exécute FNS Neutron version",
         "update": ", et la dernière version disponible est la version",
         "beta": ", et la dernière version stable en circulation est la version",
         "channel": "Vous êtes sur le canal de mise à jour",
@@ -41,7 +41,7 @@
     "disk": "Espace disque",
     "changes": "Changements",
     "current": "Version actuelle",
-    "nolog": "Aucune information concernant cette version de Minteck Projects CMS",
+    "nolog": "Aucune information concernant cette version de FNS Neutron",
     "stable": "Dernière version stable",
     "beta": "Version stable en circulation",
     "categories": {

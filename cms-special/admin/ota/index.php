@@ -18,8 +18,8 @@ $nolang = false;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocessor.php";
 
-if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != ".." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "/") {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_MPCMS_ADMIN_TOKEN'])) {
+if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != ".." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "/") {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 
     } else {
         die("<script>location.href = '/cms-special/admin/?pr=" . str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']) . "&pa=" . urlencode("?" . explode("?", $_SERVER['REQUEST_URI'])[1]) . "'</script>");
@@ -55,9 +55,9 @@ if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "
         }
     } else {
         if (!isset($lang)) {
-            echo("Minteck Projects CMS");
+            echo("FNS Neutron");
         } else {
-            echo($lang["ota"]["ititle"] . " - Minteck Projects CMS");
+            echo($lang["ota"]["ititle"] . " - FNS Neutron");
         }
     }
 
@@ -112,7 +112,7 @@ if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "
         <p><?= $lang['ota']['welcome'][1] ?></p>
         <p><?= $lang['ota']['welcome'][2] ?></p>
         <p><?= $lang['ota']['welcome'][3] ?></p>
-        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["ota"]["steps"][3] . " - " . $lang["ota"]["ititle"] ?> - Minteck Projects CMS';switchPage('03-welcome', '04-search');checkForUpdates();" class="icon_button"><br><small><?= $lang['setup']['links'][4] ?></small>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["ota"]["steps"][3] . " - " . $lang["ota"]["ititle"] ?> - FNS Neutron';switchPage('03-welcome', '04-search');checkForUpdates();" class="icon_button"><br><small><?= $lang['setup']['links'][4] ?></small>
     </div>
     <div class="centered box hide" id="04-search">
         <h2><?= $lang['ota']['sections'][3] ?></h2>
@@ -130,7 +130,7 @@ if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "
         <?php if ($unstableUpdater): ?>
         <small style="color:red;font-weight:bold;"><?= $lang['ota']['unstable'] ?></small><br>
         <?php endif ?>
-        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["ota"]["steps"][5] . " - " . $lang["ota"]["ititle"] ?> - Minteck Projects CMS';switchPage('05-updates', '06-install');installUpdates()" class="icon_button"><br><small><?= $lang['ota']['install'] ?></small>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["ota"]["steps"][5] . " - " . $lang["ota"]["ititle"] ?> - FNS Neutron';switchPage('05-updates', '06-install');installUpdates()" class="icon_button"><br><small><?= $lang['ota']['install'] ?></small>
     </div>
     <div class="centered box hide" id="06-install">
         <h2><?= $lang['ota']['installing'] ?></h2>

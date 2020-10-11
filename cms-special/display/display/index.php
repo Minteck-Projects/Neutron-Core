@@ -14,8 +14,8 @@
 <body id="ui">
     <?php
     
-    if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != ".." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "/") {
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_MPCMS_ADMIN_TOKEN'])) {
+    if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != ".." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "/") {
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
     
         } else {
             die("<script>location.href = '/cms-special/admin'</script></body></html>");
@@ -40,7 +40,7 @@
     </div>
     <div class="fullbox hide" id="welcome">
         <div class="fbheader">Associez cet affichage connecté à votre smartphone</div>
-        <p>Utilisez l'application Android MPCMS Display pour contrôler à distance cet affichage connecté, et entrez-y ce texte dans le champ "Adresse du serveur" :</p>
+        <p>Utilisez l'application Android Neutron Display pour contrôler à distance cet affichage connecté, et entrez-y ce texte dans le champ "Adresse du serveur" :</p>
         <h3><center><?= $_SERVER['HTTP_HOST'] ?></center></h3>
         <p>Si votre site Web est protégé par un mot de passe, entrez vos identifiants dans les champs correspondants. Si il n'est pas protégé par un mot de passe, laissez les vide.</p>
     </div>

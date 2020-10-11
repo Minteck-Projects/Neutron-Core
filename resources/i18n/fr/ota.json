@@ -8,7 +8,7 @@
         "Mises à jour disponibles"
     ],
     "welcome": [
-        "Bienvenue dans l'utilitaire de mises à jour de Minteck Projects CMS. Vous pouvez utiliser cet utilitaire pour mettre à jour votre site directement depuis ce dernier.",
+        "Bienvenue dans l'utilitaire de mises à jour de FNS Neutron. Vous pouvez utiliser cet utilitaire pour mettre à jour votre site directement depuis ce dernier.",
         "Cet utilitaire de mises à jour peut télécharger et installer à la fois les mises à jour de sécurité, et aussi les mises à jour de fonctionnalité.",
         "Durant l'installation des mises à jour, votre site ne sera plus accessible au public. Une mise à jour intérrompue inopinément peut détruire votre site, alors pensez à toujours utiliser le bouton « Annuler »",
         "Lorsque vous êtes prêt à mettre à jour votre site, vous pouvez cliquer sur « Commencer ».",
@@ -44,7 +44,7 @@
         "Mise à jour de ",
         "sécurité",
         "fonctionnalité",
-        " vers Minteck Projects CMS "
+        " vers FNS Neutron "
     ],
     "price": [
         "Votre serveur téléchargera ",

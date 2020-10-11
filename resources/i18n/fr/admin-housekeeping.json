@@ -1,6 +1,6 @@
 {
     "reset": "Réinitialiser le site",
-    "resetph": "Supprimer toutes les données concernant votre site et restaurer MPCMS aux valeurs d'usines",
+    "resetph": "Supprimer toutes les données concernant votre site et restaurer Neutron aux valeurs d'usines",
     "disclaimer": [
         "Cette action aura pour effet de supprimer :",
         "toutes les pages de votre site",

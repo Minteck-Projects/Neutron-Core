@@ -104,7 +104,7 @@
     },
     "distrib": {
         "dom": "Distribution",
-        "header": "Distribution Minteck Projects CMS"
+        "header": "Distribution FNS Neutron"
     },
     "store": {
         "dom": "CMS Store",
@@ -199,7 +199,7 @@
         "header": "Authentification à deux facteurs"
     },
     "about": {
-        "dom": "À propos de Minteck Projects CMS",
+        "dom": "À propos de Neutron",
         "header": "À propos du logiciel"
     },
     "appearance": {

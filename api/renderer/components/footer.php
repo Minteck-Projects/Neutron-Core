@@ -12,7 +12,7 @@
             <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer") ?>
         </div>
         <div id="page-footer-links">
-            <a href="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/public") ?>" target="_blank">Minteck Projects CMS <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></a> · <a href="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/bugs") ?>" target="_blank"><?= $lang["viewer"]["bugs"] ?></a> · <a href="/cms-special/version"><?= $lang["viewer"]["system"] ?></a>
+            <a href="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/public") ?>" target="_blank">FNS Neutron <?= str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")) ?></a> · <a href="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/bugs") ?>" target="_blank"><?= $lang["viewer"]["bugs"] ?></a> · <a href="/cms-special/version"><?= $lang["viewer"]["system"] ?></a>
         </div>
     </footer>
 </div>

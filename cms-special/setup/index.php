@@ -29,9 +29,9 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         }
     } else {
         if (!isset($lang)) {
-            echo("Minteck Projects CMS");
+            echo("FNS Neutron");
         } else {
-            echo($lang["setup"]["ititle"] . " - Minteck Projects CMS");
+            echo($lang["setup"]["ititle"] . " - FNS Neutron");
         }
     }
 
@@ -66,7 +66,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <img src="/resources/image/config_restart.svg" onclick="reloadPage()" class="icon_button"><br><small><?= $lang['setup']['defaulterr'][2] ?></small>
     </div>
     <div class="centered box<?= $nolang ? "" : " hide" ?>" id="00-language">
-        <h2>Minteck Projects CMS</h2>
+        <h2>FNS Neutron</h2>
         <p>
         <select id="00-language-select">
             <?php
@@ -100,7 +100,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <p><?= $lang['setup']['welcome'][0] ?></p>
         <p><?= $lang['setup']['welcome'][1] ?></p>
         <p><?= $lang['setup']['welcome'][2] ?></p>
-        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][7] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';switchPage('03-welcome', '04-name');" class="icon_button"><br><small><?= $lang['setup']['links'][4] ?></small>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][7] . " - " . $lang["setup"]["ititle"] ?> - FNS Neutron';switchPage('03-welcome', '04-name');" class="icon_button"><br><small><?= $lang['setup']['links'][4] ?></small>
     </div>
     <div class="centered box hide" id="04-name">
         <h2><?= $lang['setup']['sections'][3] ?></h2>
@@ -114,13 +114,13 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
         <p><?= $lang['setup']['logo'][0] ?></p>
         <p><?= $lang['setup']['logo'][1] ?></p>
         <input id="05-icon-file" type="file" onchange="Icon_Validate()" style="display:none;width:0;height:0;left:0;top:0;"><img id="05-icon-img" src="/resources/image/config_file_import.svg" onclick="Icon_UploadFile()" class="icon_button"><br><small><?= $lang['setup']['logo'][2] ?></small><br><br>
-        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][8] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';switchPage('05-icon', '06-terms');" class="icon_button"><br><small><?= $lang['setup']['links'][3] ?></small>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][8] . " - " . $lang["setup"]["ititle"] ?> - FNS Neutron';switchPage('05-icon', '06-terms');" class="icon_button"><br><small><?= $lang['setup']['links'][3] ?></small>
     </div>
     <div class="centered box hide" id="06-terms">
         <h2><?= $lang['setup']['sections'][5] ?></h2>
         <p><?= $lang['setup']['license'] ?></p>
         <iframe class="termsbox" src="/resources/lib/license.html" style="width:100%;"></iframe><br><br>
-        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][9] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';switchPage('06-terms', '07-finish');" class="icon_button"><br><small><?= $lang['setup']['links'][2] ?></small>
+        <img src="/resources/image/config_next.svg" onclick="document.title = '<?= $lang["setup"]["steps"][9] . " - " . $lang["setup"]["ititle"] ?> - FNS Neutron';switchPage('06-terms', '07-finish');" class="icon_button"><br><small><?= $lang['setup']['links'][2] ?></small>
     </div>
     <div class="centered box hide" id="07-finish">
         <h2><?= $lang['setup']['sections'][6] ?></h2>

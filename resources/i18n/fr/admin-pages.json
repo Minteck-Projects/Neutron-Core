@@ -8,7 +8,7 @@
     "alore": "Ajouter une nouvelle page à votre site",
     "create": "Créer une page",
     "provided": [
-        "Il s'agit d'une page fournie avec Minteck Projects CMS, et de la page d'accueil de votre site. Pour des raisons de logique, vous ne pouvez pas la renommer ni la supprimer.",
+        "Il s'agit d'une page fournie avec Neutron, et de la page d'accueil de votre site. Pour des raisons de logique, vous ne pouvez pas la renommer ni la supprimer.",
         "Si vous souhaitez la masquer du menu, ajoutez",
         "à la liste",
         "dans les paramètres avancés de votre site."

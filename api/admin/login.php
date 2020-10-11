@@ -15,7 +15,7 @@ if (isset($_POST['password'])) {
                     }
                 }
                 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
-                header("Set-Cookie: _MPCMS_ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
+                header("Set-Cookie: _FNS_NEUTRON_ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
                 die("ok");
                 return;
             } else {
@@ -37,7 +37,7 @@ if (isset($_POST['password'])) {
                 }
             }
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
-            header("Set-Cookie: _MPCMS_ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
+            header("Set-Cookie: _FNS_NEUTRON_ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
             die("ok");
             return;
         } else {

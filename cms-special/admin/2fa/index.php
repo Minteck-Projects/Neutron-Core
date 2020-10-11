@@ -8,7 +8,7 @@
         <p><?= $lang["admin-2fa"]["intro"][0] ?></p>
         <p><?= $lang["admin-2fa"]["intro"][1] ?></p>
         <p><?= $lang["admin-2fa"]["scan"] ?></p>
-        <img src="<?php echo $tfa->getQRCodeImageAsDataUri('Minteck Projects CMS', $secret); ?>">
+        <img src="<?php echo $tfa->getQRCodeImageAsDataUri('FNS Neutron', $secret); ?>">
         <p><?= $lang["admin-2fa"]["code"] ?></p>
         <code><?php echo substr($secret, 0, 4) . " " . substr($secret, 4, 4) . " " . substr($secret, 8, 4) . " " . substr($secret, 12, 4); ?></code><br>
         <p><?= $lang["admin-2fa"]["finish"] ?></p>

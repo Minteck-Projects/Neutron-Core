@@ -16,7 +16,7 @@ Sachez que les contributions sont soumises à des règles, vous êtes priés de 
 
 ### Dépendances libres
 
-Le logiciel **Minteck Projects CMS** se doit d'être un logiciel libre, il doit aussi fonctionner à partir de code source entièrement libre.
+Le logiciel **FNS Neutron** se doit d'être un logiciel libre, il doit aussi fonctionner à partir de code source entièrement libre.
 
 De ce fait, si vous ajoutez d'autres dépendances ou des fragements de codes, ceux-ci devront aussi être distribués sous licence libre.
 

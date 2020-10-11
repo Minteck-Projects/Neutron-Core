@@ -1,12 +1,12 @@
 {
     "intro": "Vous utilisez la distribution ",
-    "change": "Pour changer de distribution, accédez au [[site officiel de Minteck Projects CMS]] si vous souhaitez télécharger une variante officielle, ou au site de votre distribution pour une variante de tierce partie.",
+    "change": "Pour changer de distribution, accédez au [[site officiel de FNS Neutron]] si vous souhaitez télécharger une variante officielle, ou au site de votre distribution pour une variante de tierce partie.",
     "defaultDistros": {
-        "generic": "Minteck Projects CMS Générique",
-        "mprj": "Minteck Projects CMS pour Minteck Projects",
-        "start": "Minteck Projects CMS pour pays en développement",
-        "chinese": "Minteck Projects CMS pour la Chine",
-        "korea": "Minteck Projects CMS pour la Corée",
-        "bleedingedge": "Minteck Projects CMS à la pointe de saignement"
+        "generic": "Neutron Générique",
+        "mprj": "Neutron pour Minteck Projects",
+        "start": "Neutron pour pays en développement",
+        "chinese": "Neutron pour la Chine",
+        "korea": "Neutron pour la Corée",
+        "bleedingedge": "Neutron à la pointe de saignement"
     }
 }

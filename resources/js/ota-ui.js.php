@@ -1,13 +1,13 @@
 /*<?php header("Content-Type: application/javascript");require_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php"; ?>*/
 setTimeout(() => {
-    document.title = '<?= $lang["ota"]["steps"][0] . " - " . $lang["ota"]["ititle"] ?> - Minteck Projects CMS';
+    document.title = '<?= $lang["ota"]["steps"][0] . " - " . $lang["ota"]["ititle"] ?> - FNS Neutron';
     setTimeout(() => {
         switchPage("02-loader", "03-welcome")
-        document.title = '<?= $lang["ota"]["steps"][2] . " - " . $lang["ota"]["ititle"] ?> - Minteck Projects CMS';
+        document.title = '<?= $lang["ota"]["steps"][2] . " - " . $lang["ota"]["ititle"] ?> - FNS Neutron';
     }, 1000)
 }, 1000)
 
-document.title = '<?= $lang["ota"]["steps"][0] . " - " . $lang["ota"]["ititle"] ?> - Minteck Projects CMS';
+document.title = '<?= $lang["ota"]["steps"][0] . " - " . $lang["ota"]["ititle"] ?> - FNS Neutron';
 
 function switchPage(from, to) {
     $("#" + from).fadeOut(200);
@@ -84,7 +84,7 @@ function checkForUpdates() {
                     console.log("> PHP Error");
                     document.getElementById('00-error-title').innerHTML = `<?= $lang["ota"]["errors"][0] ?>`
                     document.getElementById('00-error-message').innerHTML = updates.error;
-                    document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS`;
+                    document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - `;
                     switchPage("04-search", "00-error")
                     window.onbeforeunload = undefined;
                 }
@@ -92,13 +92,13 @@ function checkForUpdates() {
                 console.log("> JS Error");
                 document.getElementById('00-error-title').innerHTML = `<?= $lang["ota"]["errors"][0] ?>`
                 document.getElementById('00-error-message').innerHTML = e.message
-                document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS`;
+                document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - `;
                 switchPage("04-search", "00-error")
                 console.error(e);
             }
         },
         error: function () {
-            document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+            document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - ';
             document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][1] ?>`
             document.getElementById('00-error-message').innerHTML = `<?= $lang["setup"]["errors"][2] ?>`
             switchPage("04-search", "00-error")
@@ -122,12 +122,12 @@ function installUpdates() {
                 setTimeout(() => {
                     switchPage("06-install", "07-done")
                 }, 3500)
-                document.title = '<?= $lang["ota"]["steps"][6] . " - " . $lang["ota"]["ititle"] ?> - Minteck Projects CMS';
+                document.title = '<?= $lang["ota"]["steps"][6] . " - " . $lang["ota"]["ititle"] ?> - ';
             } else {
                 console.log("> PHP Error");
                 document.getElementById('00-error-title').innerHTML = `<?= $lang["ota"]["errors"][0] ?>`
                 document.getElementById('00-error-message').innerHTML = data + "<br><?= $lang['ota']['errors'][2] ?>";
-                document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS`;
+                document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - `;
                 setTimeout(() => {
                     switchPage("06-install", "00-error")
                 }, 2000)
@@ -135,7 +135,7 @@ function installUpdates() {
             }
         },
         error: function () {
-            document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+            document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - ';
             document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][1] ?>`
             document.getElementById('00-error-message').innerHTML = `<?= $lang["setup"]["errors"][2] ?>`
             setTimeout(() => {

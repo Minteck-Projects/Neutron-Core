@@ -19,7 +19,7 @@ if (isset($_GET['pr']) || isset($_GET['pa'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minteck Projects CMS</title>
+    <title>FNS Neutron</title>
     <link rel="stylesheet" href="/resources/css/ajax.css">
     <script src="/resources/js/jquery.js"></script>
 </head>
@@ -86,7 +86,7 @@ if (isset($_GET['pr']) || isset($_GET['pa'])) {
                                                 
         oldu = "/" + els.join("/");
 
-        window.history.replaceState("Minteck Projects CMS", "Minteck Projects CMS", "#/" + els.join("/"));
+        window.history.replaceState("FNS Neutron", "FNS Neutron", "#/" + els.join("/"));
         console.log("/cms-special/admin/" + els.join("/"));
 
         document.title = document.getElementById('content').contentWindow.document.title;

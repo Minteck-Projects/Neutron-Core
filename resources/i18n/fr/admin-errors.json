@@ -7,7 +7,7 @@
     ],
     "common": {
         "title": "Une erreur s'est produite",
-        "message": "Oups, Minteck Projects CMS n'a pas fonctionné comme prévu...",
+        "message": "Oups, Neutron n'a pas fonctionné comme prévu...",
         "report": "Signaler un bogue",
         "home": "Accueil de l'administration"
     }

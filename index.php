@@ -2,7 +2,7 @@
 
 /*
 
-Minteck Projects CMS Homepage
+FNS Neutron Homepage
 
 If you see this text on your browser, PHP is not installed or
 enabled on your server. Download it at https://php.net or

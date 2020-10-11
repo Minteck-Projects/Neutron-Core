@@ -2,8 +2,8 @@
 
 // die("API pas prêt");
 
-if (isset($_COOKIE['_MPCMS_ADMIN_TOKEN']) && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != ".." && $_COOKIE['_MPCMS_ADMIN_TOKEN'] != "/") {
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_MPCMS_ADMIN_TOKEN'])) {
+if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != ".." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "/") {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 
     } else {
         die("Jeton d'authentification invalide");
@@ -95,7 +95,7 @@ if (isset($_FILES['file'])) {
     }
     if ($_FILES['file']['error'] == 0) {
         if (/*!*//* <-- Fonction de test, décommentez le "!" pour forcer l'affichage de ce message */file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $uuid)) {
-            echo("Vous êtes tombé sur une erreur très rare, bravo à vous !\n\nPrenez rapidement ce message en capture d'écran et transmettez le aux développeurs de Minteck Projects CMS.\n\nVous pouvez leur donner cette adresse de galerie MPCMS comme preuve :\nmpcms-gallery://" . $uuid . "@");
+            echo("Vous êtes tombé sur une erreur très rare, bravo à vous !\n\nPrenez rapidement ce message en capture d'écran et transmettez le aux développeurs de Neutron.\n\nVous pouvez leur donner cette adresse de galerie Neutron comme preuve :\nmpcms-gallery://" . $uuid . "@");
             if (isset($_SERVER['HTTP_HOST'])) {
                 echo($_SERVER['HTTP_HOST']);
             } else {
@@ -105,7 +105,7 @@ if (isset($_FILES['file'])) {
                     echo("unknown");
                 }
             }
-            echo("\n\nVotre site doit être publiquement accessible et vous ne devez pas avoir modifié MPCMS pour que votre trouvaille soit référencée.");
+            echo("\n\nVotre site doit être publiquement accessible et vous ne devez pas avoir modifié Neutron pour que votre trouvaille soit référencée.");
             exit;
         }
         imagejpeg(imagecreatefromstring(file_get_contents($_FILES['file']['tmp_name'])), $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/" . $uuid . ".jpg");

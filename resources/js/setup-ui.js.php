@@ -1,7 +1,7 @@
 /*<?php header("Content-Type: application/javascript");require_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/setup.php"; ?>*/
 setTimeout(() => {
     switchPage("01-loader", "02-check")
-    document.title = '<?= $lang["setup"]["steps"][0] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+    document.title = '<?= $lang["setup"]["steps"][0] . " - " . $lang["setup"]["ititle"] ?> - ';
     $.ajax({
         url: "/api/setup/check.php",
         dataType: 'html',
@@ -15,11 +15,11 @@ setTimeout(() => {
                     document.getElementById('00-error-title').innerHTML = "Environnement incorrect"
                     document.getElementById('00-error-message').innerHTML = data
                     switchPage("02-check", "00-error")
-                    document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+                    document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - ';
                     window.onbeforeunload = undefined;
                 } else {
                     switchPage("02-check", "03-welcome")
-                    document.title = '<?= $lang["setup"]["steps"][2] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+                    document.title = '<?= $lang["setup"]["steps"][2] . " - " . $lang["setup"]["ititle"] ?> - ';
                 }
             }, 1000)
         }
@@ -68,7 +68,7 @@ function Name_ChangeIfOk() {
     name = document.getElementById('04-name-field').value
     if (name.trim() == "" || name.includes("<") || name.includes(">") || name.includes("#") || name.includes("@") || name.includes("}") || name.includes("{") || name.includes("|") || name.length > 75) {return;}
     switchPage("04-name", "05-icon")
-    document.title = '<?= $lang["setup"]["steps"][3] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+    document.title = '<?= $lang["setup"]["steps"][3] . " - " . $lang["setup"]["ititle"] ?> - ';
 }
 
 function Icon_UploadFile() {
@@ -99,7 +99,7 @@ document.getElementById('05-icon-file').value = ""
 setInterval(Icon_Validate, 100)
 
 function upload() {
-    document.title = '<?= $lang["setup"]["steps"][4] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+    document.title = '<?= $lang["setup"]["steps"][4] . " - " . $lang["setup"]["ititle"] ?> - ';
     switchPage("07-finish", "08-checking")
     setTimeout(() => {
         switchPage("08-checking", "09-uploading")
@@ -122,7 +122,7 @@ function upload() {
                             switchPage("10-summing", "11-performance")
                             setTimeout(() => {
                                 switchPage("11-performance", "12-done")
-                                document.title = '<?= $lang["setup"]["steps"][5] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+                                document.title = '<?= $lang["setup"]["steps"][5] . " - " . $lang["setup"]["ititle"] ?> - ';
                                 window.onbeforeunload = undefined;
                             }, 3000)
                         }, 2000)
@@ -130,13 +130,13 @@ function upload() {
                 } else {
                     document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][0] ?>`
                     document.getElementById('00-error-message').innerHTML = data
-                    document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS`;
+                    document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - `;
                     switchPage("09-uploading", "00-error")
                     window.onbeforeunload = undefined;
                 }
             },
             error: function (error) {
-                document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+                document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - ';
                 document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][1] ?>`
                 document.getElementById('00-error-message').innerHTML = `<?= $lang["setup"]["errors"][2] ?>`
                 switchPage("02-check", "00-error")
@@ -150,7 +150,7 @@ function upload() {
     }, 1000)
 }
 
-document.title = '<?= $lang["setup"]["steps"][6] . " - " . $lang["setup"]["ititle"] ?> - Minteck Projects CMS';
+document.title = '<?= $lang["setup"]["steps"][6] . " - " . $lang["setup"]["ititle"] ?> - ';
 
 function switchPage(from, to) {
     $("#" + from).fadeOut(200);
