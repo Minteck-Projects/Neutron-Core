@@ -50,6 +50,9 @@ function checkForUpdates() {
                             if (update.type == "security") {
                                 uphtml = uphtml + "<li><?= $lang['ota']['updef'][0] ?><?= $lang['ota']['updef'][1] ?><?= $lang['ota']['updef'][3] ?>" + update.target + "</li>";
                             }
+                            if (update.type == "feature") {
+                                uphtml = uphtml + "<li><?= $lang['ota']['updef'][0] ?><?= $lang['ota']['updef'][2] ?><?= $lang['ota']['updef'][3] ?>" + update.target + "</li>";
+                            }
                             ttsize = ttsize + update.size
                         })
                         uphtml = uphtml + "<ul>";

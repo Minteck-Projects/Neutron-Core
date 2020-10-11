@@ -36,7 +36,7 @@ $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord
     
     <br>
     
-    <a href="/cms-special/admin/home/all" class="mdc-button mdc-button--outlined">
+    <a onclick="document.getElementsByTagName('spotlight-bar')[0].show()" class="mdc-button mdc-button--outlined">
         <div class="mdc-button__ripple"></div>
         <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">settings</i>
         <span class="mdc-button__label"><?= $lang["admin-home"]["items"][6] ?></span>

@@ -237,3 +237,8 @@ li.active a.spotlight-link__apparence {
 .spotlight-link {
     cursor: pointer;
 }
+
+#admin.spotlight-blur {
+    filter: blur(10px);
+    pointer-events: none;
+}

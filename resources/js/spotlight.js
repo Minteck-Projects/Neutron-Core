@@ -73,6 +73,11 @@ class Spotlight extends HTMLElement {
     show () {
         this.input.disabled = false;
         this.classList.add('active');
+        try {
+            document.getElementById('admin').classList.add('spotlight-blur');
+        } catch (e) {
+            console.error(e);
+        }
         this.input.value = "";
         this.input.focus();
         this.inputHandler();
@@ -80,6 +85,11 @@ class Spotlight extends HTMLElement {
 
     hide () {
         this.classList.remove('active');
+        try {
+            document.getElementById('admin').classList.remove('spotlight-blur');
+        } catch (e) {
+            console.error(e);
+        }
         this.input.disabled = true;
     }
 
