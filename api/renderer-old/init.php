@@ -78,7 +78,7 @@ if (isset($data->class) && is_string($data->class)) {
 <?php
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {} else {
-    die("<script>location.href = '/';</script>");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/';</script>");
 }
 
 ?>

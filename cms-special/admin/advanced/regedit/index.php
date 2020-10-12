@@ -5,10 +5,10 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/advanced/regedit&pa='</script>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/advanced/regedit&pa='</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/advanced/regedit&pa='</script>");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin/?pr=/cms-special/admin/advanced/regedit&pa='</script>");
 }
 
 ?>

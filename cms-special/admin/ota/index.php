@@ -22,10 +22,10 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin/?pr=" . str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']) . "&pa=" . urlencode("?" . explode("?", $_SERVER['REQUEST_URI'])[1]) . "'</script>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin/?pr=" . str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']) . "&pa=" . urlencode("?" . explode("?", $_SERVER['REQUEST_URI'])[1]) . "'</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin/?pr=" . str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']) . "&pa=" . urlencode("?" . explode("?", $_SERVER['REQUEST_URI'])[1]) . "'</script>");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin/?pr=" . str_replace("/index.php", "", $_SERVER['SCRIPT_NAME']) . "&pa=" . urlencode("?" . explode("?", $_SERVER['REQUEST_URI'])[1]) . "'</script>");
 }
 
 ?>
@@ -42,7 +42,7 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
 
     <?php
         if (!$ready) {
-            die("<script>location.href = '/cms-special/setup';</script></head>");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
     <title><?php

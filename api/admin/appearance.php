@@ -4,34 +4,34 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 if (isset($_POST['sitename'])) {
     if (trim($_POST['sitename']) == "") {
-        die("Le nom du site ne peut pas être vide");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le nom du site ne peut pas être vide");
     }
     if (strpos($_POST['sitename'], '<') !== false || strpos($_POST['sitename'], '>') !== false || strpos($_POST['sitename'], '{') !== false || strpos($_POST['sitename'], '}') !== false || strpos($_POST['sitename'], '@') !== false || strpos($_POST['sitename'], '#') !== false || strpos($_POST['sitename'], '|') !== false) {
-        die("Le nom du site contient des caractères invalides");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le nom du site contient des caractères invalides");
     }
     if (strlen($_POST['sitename']) > 75) {
-        die("Le nom du site est trop long");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le nom du site est trop long");
     }
 } else {
-    die("Aucun nom n'a été reçu");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun nom n'a été reçu");
 }
 
 if (isset($_POST['alwaysmenu'])) {
     (string)$am = $_POST['alwaysmenu'];
 } else {
-    die("Pas d'AlwaysMenu passé");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Pas d'AlwaysMenu passé");
 }
 
 if (isset($_POST['oldrenderer'])) {
     (string)$or = $_POST['oldrenderer'];
 } else {
-    die("Pas d'OldRenderer passé");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Pas d'OldRenderer passé");
 }
 
 if (isset($_POST['showpages'])) {
     (integer)$sp = $_POST['showpages'];
 } else {
-    die("Pas de ShowPages passé");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Pas de ShowPages passé");
 }
 
 if ($am == "true") {
@@ -43,7 +43,7 @@ if ($am == "true") {
         unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu");
     }
 }
-// var_dump($or);die();
+// var_dump($or);require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
 if ($or == "true") {
     if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer")) {
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/oldRenderer", "");
@@ -74,28 +74,28 @@ if (isset($_FILES['icon'])) {
         } else {
             $maxsizestr = $maxsize . " octets";
         }
-        die("La taille du fichier d'îcone dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille du fichier d'îcone dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
     }
     if ($_FILES['icon']['error'] == 2) {
-        die("La taille maximale du fichier de formulaire à été dépassée");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille maximale du fichier de formulaire à été dépassée");
     }
     if ($_FILES['icon']['error'] == 3) {
-        die("Le fichier d'îcone est incomplet (n'a pas été transmis entièrement)");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier d'îcone est incomplet (n'a pas été transmis entièrement)");
     }
     if ($_FILES['icon']['error'] == 4) {
-        die("Le fichier d'îcone est renseigné au serveur, mais il n'a pas été transmis");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier d'îcone est renseigné au serveur, mais il n'a pas été transmis");
     }
     if ($_FILES['icon']['error'] == 6) {
-        die("Aucun dossier temporaire présent sur le serveur");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun dossier temporaire présent sur le serveur");
     }
     if ($_FILES['icon']['error'] == 7) {
-        die("Impossible d'écrire sur le disque");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Impossible d'écrire sur le disque");
     }
     if ($_FILES['icon']['error'] == 8) {
-        die("Un autre programme à interrompu la transmission du fichier");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Un autre programme à interrompu la transmission du fichier");
     }
     if ($_FILES['icon']['type'] != "image/png" && $_FILES['icon']['type'] != "image/jpeg" && $_FILES['icon']['type'] != "image/gif") {
-        die("Le type de fichier du fichier îcone n'est pas supporté");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le type de fichier du fichier îcone n'est pas supporté");
     }
     if ($_FILES['icon']['error'] == 0) {
         imagepng(imagecreatefromstring(file_get_contents($_FILES['icon']['tmp_name'])), $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png");
@@ -121,28 +121,28 @@ if (isset($_FILES['banner'])) {
         } else {
             $maxsizestr = $maxsize . " octets";
         }
-        die("La taille du fichier de bannière dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille du fichier de bannière dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
     }
     if ($_FILES['banner']['error'] == 2) {
-        die("La taille maximale du fichier de formulaire à été dépassée");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille maximale du fichier de formulaire à été dépassée");
     }
     if ($_FILES['banner']['error'] == 3) {
-        die("Le fichier de bannière est incomplet (n'a pas été transmis entièrement)");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier de bannière est incomplet (n'a pas été transmis entièrement)");
     }
     if ($_FILES['banner']['error'] == 4) {
-        die("Le fichier de bannière est renseigné au serveur, mais il n'a pas été transmis");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier de bannière est renseigné au serveur, mais il n'a pas été transmis");
     }
     if ($_FILES['banner']['error'] == 6) {
-        die("Aucun dossier temporaire présent sur le serveur");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun dossier temporaire présent sur le serveur");
     }
     if ($_FILES['banner']['error'] == 7) {
-        die("Impossible d'écrire sur le disque");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Impossible d'écrire sur le disque");
     }
     if ($_FILES['banner']['error'] == 8) {
-        die("Un autre programme à interrompu la transmission du fichier");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Un autre programme à interrompu la transmission du fichier");
     }
     if ($_FILES['banner']['type'] != "image/png" && $_FILES['banner']['type'] != "image/jpeg" && $_FILES['banner']['type'] != "image/gif") {
-        die("Le type de fichier du fichier de bannière n'est pas supporté");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le type de fichier du fichier de bannière n'est pas supporté");
     }
     if ($_FILES['banner']['error'] == 0) {
         imagejpeg(imagecreatefromstring(file_get_contents($_FILES['banner']['tmp_name'])), $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/banner.jpg");

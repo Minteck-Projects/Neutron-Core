@@ -11,4 +11,4 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
     }
 }
 header("Location: /cms-special/admin/login");
-die();
+require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();

@@ -16,15 +16,15 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
             if (true) {
                 if (isJson($_POST['content'])) {
                     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/customSettings.json", $_POST['content']);
-                    die("ok");
+                    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
                 } else {
-                    die("La syntaxe du fichier est incorrecte. Vérifiez les erreurs de l'éditeur de code et corrigez les, ou actualisez la page pour annuler les modifications apportées.");
+                    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La syntaxe du fichier est incorrecte. Vérifiez les erreurs de l'éditeur de code et corrigez les, ou actualisez la page pour annuler les modifications apportées.");
                 }
             } else {
-                die("Aucune page sélectionnée");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucune page sélectionnée");
             }
         } else {
-            die("Aucune information reçue par le serveur");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucune information reçue par le serveur");
         }
     } else {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {

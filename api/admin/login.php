@@ -16,13 +16,13 @@ if (isset($_POST['password'])) {
                 }
                 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
                 header("Set-Cookie: _FNS_NEUTRON_ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-                die("ok");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
                 return;
             } else {
-                die("Clé privée incorrecte");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Clé privée incorrecte");
             }
         } else {
-            die("Pas de clé privée");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Pas de clé privée");
         }
     } else { // Use regular password
         if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
@@ -38,12 +38,12 @@ if (isset($_POST['password'])) {
             }
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $token, "");
             header("Set-Cookie: _FNS_NEUTRON_ADMIN_TOKEN={$token}; Path=/; Http-Only; SameSite=Strict");
-            die("ok");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
             return;
         } else {
-            die("Mot de passe incorrect");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Mot de passe incorrect");
         }
     }
 } else {
-    die("Pas de mot de passe spécifié");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Pas de mot de passe spécifié");
 }

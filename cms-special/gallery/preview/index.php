@@ -21,18 +21,18 @@ if (isset($_GET['return'])) {
 
     if (isset($_GET['url'])) {
         if (strpos($_GET['url'], '..') !== false) {
-            die($lang["gallery"]["preview"]->invalid);
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit($lang["gallery"]["preview"]->invalid);
         } else {
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $_GET['url'])) {
                 $ext1 = explode(".", $_GET['url']);
                 $ext2 = end($ext1);
                 $ext = strtoupper($ext2);
             } else {
-                die($lang["gallery"]["preview"]->notfound);
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit($lang["gallery"]["preview"]->notfound);
             }
         }
     } else {
-        die($lang["gallery"]["preview"]->none);
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit($lang["gallery"]["preview"]->none);
     }
 
 ?>

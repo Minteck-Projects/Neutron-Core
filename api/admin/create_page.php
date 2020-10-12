@@ -1,12 +1,12 @@
 <?php
 
-// die("API pas prêt");
+// require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("API pas prêt");
 
 if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != ".." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "/") {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 
     } else {
-        die("Jeton d'authentification invalide");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Jeton d'authentification invalide");
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
         } else {
@@ -14,7 +14,7 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
         }
     }
 } else {
-    die("Jeton d'authentification invalide");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Jeton d'authentification invalide");
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
     } else {
@@ -29,15 +29,15 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
 }
 
 if (isset($_POST['type'])) {} else {
-    die("Aucun type de page défini");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun type de page défini");
 }
 
 if (isset($_POST['title'])) {} else {
-    die("Aucun titre défini");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun titre défini");
 }
 
 if (isset($_POST['content'])) {} else {
-    die("Aucun contenu n'a été spécifié");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun contenu n'a été spécifié");
 }
 
 $title = $_POST['title'];
@@ -60,23 +60,23 @@ if ($prefixed) {
 }
 
 if (trim($title) == "") {
-    die("Le titre ne peut pas être vide");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le titre ne peut pas être vide");
 }
 
 if ($slug == "api" || $slug == "cms-special" || $slug == "galery" || $slug == "cms-unrelated" || $slug == "vendor" || $slug == "data" || $slug == "resources" || $slug == "widgets" || $slug == "-htaccess" || $slug == "index" || $slug == "index-php") {
-    die("Vous ne pouvez pas utiliser un nom réservé en interne par le logiciel");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Vous ne pouvez pas utiliser un nom réservé en interne par le logiciel");
 }
 
 if (strlen($slug) > 70) {
-    die("Le nom de la page est trop long");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le nom de la page est trop long");
 }
 
 if ($type != "0" && $type != "1") {
-    die("Le type de page est inconnu");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le type de page est inconnu");
 }
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $slug)) {
-    die("Une page du même nom existe déjà");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Une page du même nom existe déjà");
 }
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $slug, $content);
@@ -85,4 +85,4 @@ mkdir($_SERVER['DOCUMENT_ROOT'] . "/" . $slug);
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $slug . "/index.php", '<?php require_once $_SERVER[\'DOCUMENT_ROOT\'] . "/api/renderer/render.php"; render(\'' . $slug . '\'); ?>');
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $slug . "/pagename", $title);
 require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
-die("ok");
+require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");

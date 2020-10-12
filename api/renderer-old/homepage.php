@@ -119,7 +119,7 @@ rlgps("Starting DOM generation");
     <?php
 
     if (!$ready) {
-        die("<script>location.href='/cms-special/setup';</script>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href='/cms-special/setup';</script>");
     }
 
     if ($ready) {

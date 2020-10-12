@@ -8,7 +8,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 } else {
     $ready = false;
     header("Location: /cms-special/setup");
-    die();
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
 }
 
 if ($ready) {

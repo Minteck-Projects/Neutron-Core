@@ -1,12 +1,12 @@
 <?php
 
-// die("API pas prêt");
+// require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("API pas prêt");
 
 if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != ".." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "/") {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 
     } else {
-        die("Jeton d'authentification invalide");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Jeton d'authentification invalide");
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
         } else {
@@ -14,7 +14,7 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
         }
     }
 } else {
-    die("Jeton d'authentification invalide");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Jeton d'authentification invalide");
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log") . date("d/m/Y H:i:s") . " - APIDENY/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
     } else {
@@ -51,11 +51,11 @@ if (isset($_POST['category'])) {
 
     } else {
         if ($_POST['category'] != "unclassed") {
-            die("Catégorie innexistante");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Catégorie innexistante");
         }
     }
 } else {
-    die("Pas de catégorie");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Pas de catégorie");
 }
 
 if (isset($_FILES['file'])) {
@@ -70,28 +70,28 @@ if (isset($_FILES['file'])) {
         } else {
             $maxsizestr = $maxsize . " octets";
         }
-        die("La taille du fichier de la photo dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille du fichier de la photo dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
     }
     if ($_FILES['file']['error'] == 2) {
-        die("La taille maximale du fichier de formulaire à été dépassée");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille maximale du fichier de formulaire à été dépassée");
     }
     if ($_FILES['file']['error'] == 3) {
-        die("La photo est incomplète (n'a pas été transmise entièrement)");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La photo est incomplète (n'a pas été transmise entièrement)");
     }
     if ($_FILES['file']['error'] == 4) {
-        die("La photo est renseignée au serveur, mais elle n'a pas été transmise");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La photo est renseignée au serveur, mais elle n'a pas été transmise");
     }
     if ($_FILES['file']['error'] == 6) {
-        die("Aucun dossier temporaire présent sur le serveur");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun dossier temporaire présent sur le serveur");
     }
     if ($_FILES['file']['error'] == 7) {
-        die("Impossible d'écrire sur le disque");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Impossible d'écrire sur le disque");
     }
     if ($_FILES['file']['error'] == 8) {
-        die("Un autre programme à interrompu la transmission du fichier");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Un autre programme à interrompu la transmission du fichier");
     }
     if ($_FILES['file']['type'] != "image/png" && $_FILES['file']['type'] != "image/jpeg" && $_FILES['file']['type'] != "image/gif") {
-        die("Le type de fichier de la photo n'est pas supporté. Merci d'utiliser une image PNG, JPEG, ou GIF, et non une image du type " . strtoupper(str_ireplace("image/", "", $_FILES['file']['type'])) . ".");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le type de fichier de la photo n'est pas supporté. Merci d'utiliser une image PNG, JPEG, ou GIF, et non une image du type " . strtoupper(str_ireplace("image/", "", $_FILES['file']['type'])) . ".");
     }
     if ($_FILES['file']['error'] == 0) {
         if (/*!*//* <-- Fonction de test, décommentez le "!" pour forcer l'affichage de ce message */file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures/" . $uuid)) {
@@ -116,6 +116,6 @@ if (isset($_FILES['file'])) {
         } else {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/picdb.json", "{\"" . $_POST['category'] . "\":[\"" . $uuid . "\"]}");
         }
-        die("ok");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
     }
 }

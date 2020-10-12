@@ -5,21 +5,21 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload")) {
 }
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
-    die("La configuration du site Web à déjà été effectuée, vous devez le réinitialiser pour relancer la configurer");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La configuration du site Web à déjà été effectuée, vous devez le réinitialiser pour relancer la configurer");
 }
 
 if (isset($_POST['sitename'])) {
     if (trim($_POST['sitename']) == "") {
-        die("Le nom du site ne peut pas être vide");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le nom du site ne peut pas être vide");
     }
     if (strpos($_POST['sitename'], '<') !== false || strpos($_POST['sitename'], '>') !== false || strpos($_POST['sitename'], '{') !== false || strpos($_POST['sitename'], '}') !== false || strpos($_POST['sitename'], '@') !== false || strpos($_POST['sitename'], '#') !== false || strpos($_POST['sitename'], '|') !== false) {
-        die("Le nom du site contient des caractères invalides");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le nom du site contient des caractères invalides");
     }
     if (strlen($_POST['sitename']) > 75) {
-        die("Le nom du site est trop long");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le nom du site est trop long");
     }
 } else {
-    die("Aucun nom n'a été spécifié pour le site");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun nom n'a été spécifié pour le site");
 }
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n/" . $_POST['language'])) {
@@ -40,28 +40,28 @@ if (isset($_FILES['file'])) {
         } else {
             $maxsizestr = $maxsize . " octets";
         }
-        die("La taille du fichier d'îcone dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille du fichier d'îcone dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
     }
     if ($_FILES['file']['error'] == 2) {
-        die("La taille maximale du fichier de formulaire à été dépassée");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille maximale du fichier de formulaire à été dépassée");
     }
     if ($_FILES['file']['error'] == 3) {
-        die("Le fichier d'îcone est incomplet (n'a pas été transmis entièrement)");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier d'îcone est incomplet (n'a pas été transmis entièrement)");
     }
     if ($_FILES['file']['error'] == 4) {
-        die("Le fichier est renseigné au serveur, mais il n'a pas été transmis");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier est renseigné au serveur, mais il n'a pas été transmis");
     }
     if ($_FILES['file']['error'] == 6) {
-        die("Aucun dossier temporaire présent sur le serveur");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun dossier temporaire présent sur le serveur");
     }
     if ($_FILES['file']['error'] == 7) {
-        die("Impossible d'écrire sur le disque");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Impossible d'écrire sur le disque");
     }
     if ($_FILES['file']['error'] == 8) {
-        die("Un autre programme à interrompu la transmission du fichier");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Un autre programme à interrompu la transmission du fichier");
     }
     if ($_FILES['file']['type'] != "image/png" && $_FILES['file']['type'] != "image/jpeg" && $_FILES['file']['type'] != "image/gif") {
-        die("Ce type de fichier n'est pas supporté");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Ce type de fichier n'est pas supporté");
     }
     if ($_FILES['file']['error'] == 0) {
         imagepng(imagecreatefromstring(file_get_contents($_FILES['file']['tmp_name'])), $_SERVER['DOCUMENT_ROOT'] . "/resources/upload/siteicon.png");
@@ -101,4 +101,4 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log", date("d/m/Y H:i:s") . " - SETUP/" . $_SERVER['REQUEST_METHOD'] . " - " . $_SERVER['REQUEST_URI'] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n\n");
 }
 
-die("ok");
+require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");

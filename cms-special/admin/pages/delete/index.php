@@ -4,11 +4,11 @@ if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {
         header("Location: /cms-special/admin/pages");
-        die();
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
     }
 } else {
     header("Location: /cms-special/admin/pages");
-    die();
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
 }
 
 ?>
@@ -29,7 +29,7 @@ if ($currentSlug == "index") {
             <?php
 
             if ($currentSlug == "index") {
-                die("<i>{$lang["admin-pages"]["deletec"][2]}</i></div></body></html>");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<i>{$lang["admin-pages"]["deletec"][2]}</i></div></body></html>");
             }
 
             ?>

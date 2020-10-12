@@ -14,5 +14,5 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/main.php"; render('index');
 } else {
     header("Location: /cms-special/setup");
-    die();
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
 }

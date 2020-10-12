@@ -4,10 +4,10 @@
 if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != ".." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "/") {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) { 
     } else {
-        die("<script>location.href = '/cms-special/admin'</script></body></html>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin'</script></body></html>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin'</script></body></html>");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin'</script></body></html>");
 }
 // Functions definitions
 function isJson($string) {
@@ -30,20 +30,20 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
     if (isset($_GET['command'])) {
         $command = $_GET['command'];
     } else {
-        die("APIRejection: No command was received by the server");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: No command was received by the server");
     }
 
     if (isset($_GET['key'])) {
         if ($_GET['key'] == file_get_contents("./api/session_key")) {
         } else {
-            die("APIRejection: Invalid credentials (&key=) where provided");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Invalid credentials (&key=) where provided");
         }
     } else {
         if ($command == "pushStatus") {
             file_put_contents("./api/status_timestamp", "&key?");
-            die("ok");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
         } else if ($command != "confirmKey") {
-            die("APIRejection: No token (&key=) was given");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: No token (&key=) was given");
         }
     }
 
@@ -53,39 +53,39 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
             if (isJson($dataraw)) {
                 $data = json_decode($dataraw);
             } else {
-                die("APIRejection: Syntax error on received data. Data isn't valid JSON\n\nReceived Data:\n" . $dataraw);
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Syntax error on received data. Data isn't valid JSON\n\nReceived Data:\n" . $dataraw);
             }
         }
     } else {
-        die("APIRejection: No data was received by the server");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: No data was received by the server");
     }
 
     if ($command == "getStatus") {
         if ($config->disable_timestamp_checking) {
-            die("ok");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
         } else {
             // var_dump(file_get_contents("./api/status_timestamp"));
             if (file_get_contents("./api/status_timestamp") == date('YmdHi') . substr(date('s'), 0, 1)) {
-                die("ok");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
             } else if (file_get_contents("./api/status_timestamp") == "&key?") {
-                die("key");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("key");
             } else {
-                die("offline");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("offline");
             }
         }
     }
 
     if ($command == "getScrollMessage") {
-        die(file_get_contents("./api/scroll_message"));
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit(file_get_contents("./api/scroll_message"));
     }
 
     if ($command == "getBackground") {
-        die(file_get_contents("./api/background_url"));
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit(file_get_contents("./api/background_url"));
     }
 
     if ($command == "pushStatus") {
         file_put_contents("./api/status_timestamp", date('YmdHi') . substr(date('s'), 0, 1));
-        die("ok");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
     }
 
     if ($command == "updateSnowMode") {
@@ -93,16 +93,16 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
             if (is_bool($data->value)) {
                 if ($data->value) {
                     file_put_contents("./api/snow_mode", "true");
-                    die("ok");
+                    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
                 } else {
                     file_put_contents("./api/snow_mode", "false");
-                    die("ok");
+                    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
                 }
             } else {
-                die("APIRejection: Expected key /value/ to be boolean, but wasn't that");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Expected key /value/ to be boolean, but wasn't that");
             }
         } else {
-            die("APIRejection: Missing key /value/ on data JSON");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Missing key /value/ on data JSON");
         }
     }
 
@@ -110,12 +110,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
         if (isset($data->value)) {
             if (is_string($data->value)) {
                 file_put_contents("./api/background_url", $data->value);
-                die("ok");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
             } else {
-                die("APIRejection: Expected key /value/ to be string, but wasn't that");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Expected key /value/ to be string, but wasn't that");
             }
         } else {
-            die("APIRejection: Missing key /value/ on data JSON");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Missing key /value/ on data JSON");
         }
     }
 
@@ -123,12 +123,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
         if (isset($data->value)) {
             if (is_string($data->value)) {
                 file_put_contents("./api/scroll_message", $data->value);
-                die("ok");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
             } else {
-                die("APIRejection: Expected key /value/ to be string, but wasn't that");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Expected key /value/ to be string, but wasn't that");
             }
         } else {
-            die("APIRejection: Missing key /value/ on data JSON");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Missing key /value/ on data JSON");
         }
     }
 
@@ -136,15 +136,15 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
         if (isset($data->value)) {
             if (is_string($data->value)) {
                 if ($data->value == file_get_contents("./api/session_key")) {
-                    die("ok");
+                    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
                 } else {
-                    die("no");
+                    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("no");
                 }
             } else {
-                die("APIRejection: Expected key /value/ to be string, but wasn't that");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Expected key /value/ to be string, but wasn't that");
             }
         } else {
-            die("APIRejection: Missing key /value/ on data JSON");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Missing key /value/ on data JSON");
         }
     }
 
@@ -152,12 +152,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
         if (isset($data->value)) {
             if (is_string($data->value)) {
                 file_put_contents("./api/message_title", $data->value);
-                die("ok");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
             } else {
-                die("APIRejection: Expected key /value/ to be string, but wasn't that");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Expected key /value/ to be string, but wasn't that");
             }
         } else {
-            die("APIRejection: Missing key /value/ on data JSON");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Missing key /value/ on data JSON");
         }
     }
 
@@ -165,30 +165,30 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")
         if (isset($data->value)) {
             if (is_string($data->value)) {
                 file_put_contents("./api/message_text", $data->value);
-                die("ok");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
             } else {
-                die("APIRejection: Expected key /value/ to be string, but wasn't that");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Expected key /value/ to be string, but wasn't that");
             }
         } else {
-            die("APIRejection: Missing key /value/ on data JSON");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Missing key /value/ on data JSON");
         }
     }
 
     if ($command == "getMessageTitle") {
-        die(file_get_contents("./api/message_title"));
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit(file_get_contents("./api/message_title"));
     }
 
     if ($command == "getMessageText") {
-        die(file_get_contents("./api/message_text"));
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit(file_get_contents("./api/message_text"));
     }
 
     if ($command == "getSnowMode") {
-        die(file_get_contents("./api/snow_mode"));
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit(file_get_contents("./api/snow_mode"));
     }
     
-    die("APIRejection: Unknown Command");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Unknown Command");
 
 } else {
     header("HTTP/1.1 403 Forbidden");
-    die("APIRejection: Non-GET and non-POST request method was received by the server");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("APIRejection: Non-GET and non-POST request method was received by the server");
 }

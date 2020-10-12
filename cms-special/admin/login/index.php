@@ -75,7 +75,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/preprocesso
     ?></title>
     <?php
         if (!$ready) {
-            die("<script>location.href = '/cms-special/setup';</script></head>");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/headers/documenthead.php"; ?>

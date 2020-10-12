@@ -3,7 +3,7 @@
 $invalid = false;
 
 if (isset($_POST['authkey'])) {
-    die("UNSUPPORTED");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("UNSUPPORTED");
 } else {
     if (isset($_POST['password'])) {
         if (isset($_GET['pr'])) {
@@ -85,7 +85,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     ?></title>
     <?php
         if (!$ready) {
-            die("<script>location.href = '/cms-special/setup';</script></head>");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
 </head>

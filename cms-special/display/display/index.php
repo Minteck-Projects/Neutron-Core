@@ -18,10 +18,10 @@
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
     
         } else {
-            die("<script>location.href = '/cms-special/admin'</script></body></html>");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin'</script></body></html>");
         }
     } else {
-        die("<script>location.href = '/cms-special/admin'</script></body></html>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin'</script></body></html>");
     }
     
     ?>

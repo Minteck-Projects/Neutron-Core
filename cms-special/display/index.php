@@ -6,15 +6,15 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/tokens/" . $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'])) {
 
     } else {
-        die("<script>location.href = '/cms-special/admin'</script>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin'</script>");
     }
 } else {
-    die("<script>location.href = '/cms-special/admin'</script>");
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin'</script>");
 }
 
 if (isset($_POST['password'])) {
     if (password_verify($_POST['password'], file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/password"))) {
-        die("<script>location.href = '/cms-special/admin/home';</script>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/admin/home';</script>");
         return;
     } else {
         $invalid = true;
@@ -54,7 +54,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     ?></title>
     <?php
         if (!$ready) {
-            die("<script>location.href = '/cms-special/setup';</script></head>");
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/cms-special/setup';</script></head>");
         }
     ?>
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/header.php"; ?>

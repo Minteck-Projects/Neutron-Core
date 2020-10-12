@@ -4,11 +4,11 @@ if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {
         header("Location: /cms-special/admin/pages");
-        die();
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
     }
 } else {
     header("Location: /cms-special/admin/pages");
-    die();
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
 }
 
 ?>
