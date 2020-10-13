@@ -1,5 +1,9 @@
 <?php
 
+if (!function_exists("rlgps")) {
+    function rlgps(string $message) {}
+}
+
 // Check if website is ready
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
     $ready = true;

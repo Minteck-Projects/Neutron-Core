@@ -26,7 +26,7 @@ ob_start();
 phpinfo();
 $data = ob_get_contents();
 ob_clean();
-if (strpos($data, '<tr><td class="e">GD Support </td><td class="v">enabled </td></tr>') !== false) {} else {
+if (strpos($data, '<tr><td class="e">GD Support </td><td class="v">enabled </td></tr>') !== false || strpos($data, 'GD Support => enabled') !== false) {} else {
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La librairie GD2 n'est pas installée ou activée sur ce serveur");
 }
 
