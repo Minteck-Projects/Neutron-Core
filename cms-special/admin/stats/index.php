@@ -1,5 +1,118 @@
 <?php $pageConfig = [ "domName" => "Statistiques", "headerName" => "Statistiques" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats")) { echo("<h2>" . $lang["admin-stats"]["new"] . "</h2><p>" . $lang["admin-stats"]["notice"] . "</p>"); } ?>
+<?php
+
+function gystat($year, $month, $showYear = false) {
+    global $lang;
+
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . $year . "/" . $month)) {
+
+        $files = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . $year . "/" . $month);
+        $cmonth = 0;
+        foreach ($files as $file) {
+            if ($file != "." && $file != "..") {
+                $count = count(explode("\n", trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . $year . "/" . $month . "/" . $file))));
+                if ($count > 0) {
+                    $cmonth = $cmonth + $count;
+                }
+            }
+        }
+
+        if ($cmonth > 0) {
+            if ($cmonth > 1) {
+                if ($showYear) {
+                    echo("<tr><td><b>{$lang["admin-stats"]["months"][$month - 1]} {$year}{$lang["admin-stats"]["separator"]}</b></td><td> {$cmonth}</td><td> {$lang["admin-stats"]["visits2"]}</td></tr>");
+                } else {
+                    echo("<tr><td><b>{$lang["admin-stats"]["months"][$month - 1]}{$lang["admin-stats"]["separator"]}</b></td><td> {$cmonth}</td><td> {$lang["admin-stats"]["visits2"]}</td></tr>");
+                }
+            } else {
+                if ($showYear) {
+                    echo("<tr><td><b>{$lang["admin-stats"]["months"][$month - 1]} {$year}{$lang["admin-stats"]["separator"]}</b></td><td> {$cmonth}</td><td> {$lang["admin-stats"]["visit1"]}</td></tr>");
+                } else {
+                    echo("<tr><td><b>{$lang["admin-stats"]["months"][$month - 1]}{$lang["admin-stats"]["separator"]}</b></td><td> {$cmonth}</td><td> {$lang["admin-stats"]["visit1"]}</td></tr>");
+                }
+            }
+        }
+    }
+}
+
+?>
+<h3><?= $lang["admin-stats"]["thisMonth"]?></h3>
+<table>
+    <tbody>
+        <?php
+        
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m'))) {
+            $mtxt = $lang["admin-stats"]["monthslc"][date('m') - 1];
+
+            $files = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m'));
+            foreach ($files as $file) {
+                if ($file != "." && $file != "..") {
+                    $count = count(explode("\n", trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . $file))));
+                    if ($count > 0) {
+                        $day = (int)trim($file);
+                        if ($count > 1) {
+                            echo("<tr><td><b>{$day} {$mtxt}{$lang["admin-stats"]["separator"]}</b></td><td> {$count}</td><td> {$lang["admin-stats"]["visits2"]}</td></tr>");
+                        } else {
+                            echo("<tr><td><b>{$day} {$mtxt}{$lang["admin-stats"]["separator"]}</b></td><td> {$count}</td><td> {$lang["admin-stats"]["visit1"]}</td></tr>");
+                        }
+                    }
+                }
+            }
+        }
+
+        ?>
+    </tbody>
+</table>
+
+<h3><?= $lang["admin-stats"]["year"]?></h3>
+<table>
+    <tbody>
+        <?php
+        
+        gystat(date('Y'), "1", false);
+        gystat(date('Y'), "2", false);
+        gystat(date('Y'), "3", false);
+        gystat(date('Y'), "4", false);
+        gystat(date('Y'), "5", false);
+        gystat(date('Y'), "6", false);
+        gystat(date('Y'), "7", false);
+        gystat(date('Y'), "8", false);
+        gystat(date('Y'), "9", false);
+        gystat(date('Y'), "10", false);
+        gystat(date('Y'), "11", false);
+        gystat(date('Y'), "12", false);
+
+        ?>
+    </tbody>
+</table>
+
+<h3><?= $lang["admin-stats"]["last2"]?><?= date('Y') - 1 ?></h3>
+<table>
+    <tbody>
+        <?php
+        
+        gystat(date('Y') - 1, "1", true);
+        gystat(date('Y') - 1, "2", true);
+        gystat(date('Y') - 1, "3", true);
+        gystat(date('Y') - 1, "4", true);
+        gystat(date('Y') - 1, "5", true);
+        gystat(date('Y') - 1, "6", true);
+        gystat(date('Y') - 1, "7", true);
+        gystat(date('Y') - 1, "8", true);
+        gystat(date('Y') - 1, "9", true);
+        gystat(date('Y') - 1, "10", true);
+        gystat(date('Y') - 1, "11", true);
+        gystat(date('Y') - 1, "12", true);
+
+        ?>
+    </tbody>
+</table>
+
+<?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats")): ?> 
+<hr style="border-top:none;">
+<h2><?= $lang["admin-stats"]["old"] ?></h2>
+<p><?= $lang["admin-stats"]["notice"] ?></p>
         <h3><?= $lang["admin-stats"]["thisMonth"]?></h3>
 <table><tbody><?php
 
@@ -162,5 +275,5 @@ foreach ($dates as $date) {
                 ?>
             </tbody>
         </table>
-    </div>
+        <?php endif; ?>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>

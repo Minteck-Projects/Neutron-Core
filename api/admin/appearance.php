@@ -173,6 +173,7 @@ if (isset($_FILES['banner'])) {
 $sitename = str_replace('>', '&gt;', $_POST['sitename']);
 $sitename = str_replace('<', '&lt;', $sitename);
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename", $sitename);
+require $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_content_reset.php";
 echo("ok");
 } else {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/system.log")) {

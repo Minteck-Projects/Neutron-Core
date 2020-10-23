@@ -7,5 +7,9 @@
         "en": "Gives a warm welcome to the webmaster when they fully installed their website",
         "fr": "Souhaite la bienvenue au webmestre lorsqu'il a correctement installé son site"
     },
-    "config": null
+
+    "config": null,
+    "class": null,
+
+    "cache": true
 }

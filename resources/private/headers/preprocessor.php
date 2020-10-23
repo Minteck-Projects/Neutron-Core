@@ -101,7 +101,8 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey")) {
     unlink($_SERVER['DOCUMENT_ROOT'] . "/data/adminkey");
 }
 
-try { // Failing is not important
+/* Old statistics system, not used anymore */
+/*try { // Failing is not important
     // Statistics directory
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/stats")) {} else {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
@@ -122,6 +123,44 @@ try { // Failing is not important
         }
     }
 } catch (E_WARNING $err) {
+}*/
+
+// New statistics system
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats")) {} else {
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
+        mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats");
+    }
+}
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/")) {
+    if (isset($_SERVER['REMOTE_ADDR']) && file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats")) {
+        $hash = password_hash($_SERVER['REMOTE_ADDR'], PASSWORD_DEFAULT, [ "salt" => "net.minteckprojects.fns.neutron.stats" ]); // Storing IP addresses is illegal in EU, so just a hashed IP addresses
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y'))) {} else {
+            mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y'));
+        }
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m'))) {} else {
+            mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m'));
+        }
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'))) {
+            $file = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'));
+            $lines = explode("\n", $file);
+
+            $already = false;
+            foreach ($lines as $line) {
+                if (trim($line) == "" || trim($line) == "\n") {} else {
+                    if (trim($line) == trim($hash)) {
+                        $already = true;
+                    }
+                }
+            }
+
+            if (!$already) {
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'), $hash . "\n");    
+            }
+        } else {
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'), $hash . "\n");
+        }
+    }
 }
 
 // Check for updates at random intervals

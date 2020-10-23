@@ -6,11 +6,25 @@ function render(string $page) {
     if ($page == "index") {
         $MPCMSRendererPageNameValue = "index";
         rlgps("Processing website homepage");
-        require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/homepage.php";
+        if (!cacheCheck("index")) {
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/homepage.php";
+
+            $content = ob_get_contents();
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/page-index", $content);
+        } else {
+            rlgps("Received page from cache");
+        }
     } else {
         $MPCMSRendererPageNameValue = $page;
         rlgps("Processing /{$page}");
-        require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/pages.php";
+        if (!cacheCheck($page)) {
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/pages.php";
+
+            $content = ob_get_contents();
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/page-" . $page, $content);
+        } else {
+            rlgps("Received page from cache");
+        }
     }
 }
 

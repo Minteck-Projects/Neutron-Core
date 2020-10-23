@@ -57,4 +57,5 @@ $settings->list = $array;
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widgets.json", json_encode($settings, JSON_PRETTY_PRINT));
 
+require $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_content_reset.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");

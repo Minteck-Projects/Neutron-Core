@@ -145,6 +145,7 @@ if (isJson($jsonraw)) {
     $json->events[$pos]->datestr = $daystr . " " . $monthstr . " " . $year;
     $newjsonraw = json_encode($json, JSON_PRETTY_PRINT);
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json", $newjsonraw);
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_content_reset.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
 } else {
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Impossible d'initialiser la base de données");

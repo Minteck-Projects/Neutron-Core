@@ -7,6 +7,10 @@
         "le ",
         ", une fonctionnalité de Neutron permettant d'y intégrer des extensions provenant d'éditeurs tiers qui peuvent être téléchargées depuis Internet"
     ],
+    "renderer": [
+        " avec le moteur de rendu ",
+        " version "
+    ],
     "freesoftware": [
         "Ce logiciel est un logiciel libre ; vous pouvez le redistribuer et/ou le modifier sous les termes de la ",
         "licence publique générale GNU comme publiée par la Free Software Foundation",

@@ -3,6 +3,7 @@
     "disclaimer": "Certaines informations peuvent être inexactes",
     "year": "Visites totales cette année",
     "last": "Visites totales l'année dernière",
+    "last2": "Visites totales en ",
     "months": [
         "Janvier",
         "Février",
@@ -17,6 +18,25 @@
         "Novembre",
         "Décembre"
     ],
+    "monthslc": [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre"
+    ],
     "separator": " :",
-    "visits": "visite(s)"
+    "visits": "visite(s)",
+    "visit1": "visiteur",
+    "visits2": "visiteurs",
+    "new": "Nouveau système de statistiques",
+    "old": "Ancien système de statistiques",
+    "notice": "Ce site était anciennement sous FNS Neutron 3.0.93 ou précédent. À partir de FNS Neutron 4.0.0, le système de statistiques a été réécrit de façon à ne compter qu'une seule fois une personne même si elle visite plusieurs pages du site. Nous vous conseillons donc de ne pas tenir compte des anciennes statistiques, elles ne sont affichées qu'à titre d'information."
 }

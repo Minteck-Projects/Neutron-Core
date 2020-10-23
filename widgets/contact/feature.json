@@ -7,5 +7,9 @@
         "en": "Shows contact info in the widget bar",
         "fr": "Affiche des informations de contact dans la barre des widgets"
     },
-    "config": "/cms-special/admin/plugins/widget-contact-configure"
+    
+    "config": "/cms-special/admin/plugins/widget-contact-configure",
+    "class": null,
+
+    "cache": true
 }

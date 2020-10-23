@@ -4,12 +4,12 @@ window.onerror = function(msg, url, line, col, error) {
     }
     if (typeof line != "undefined") {
         if (typeof col != "undefined") {
-            linecol = "à la ligne " + line + " et au caractère " + col
+            linecol = "at line " + line + " and column " + col
         } else {
-            linecol = "à la ligne " + line
+            linecol = "at line " + line
         }
     }
-    alert_full("Nous sommes désolés, mais une erreur s'est produite lors de l'exécution du code sur cette page :\n" + msg + "\n\nL'erreur provient du fichier " + url + "\n" + linecol + "\n\nNous vous conseillons de publier un rapport de bogue sur le site de  et inclure les informations ci-dessus.");
+    alert_full("Sorry, a runtime error ocurred on this page:\n" + msg + "\n\nThe error is from " + url + "\n" + linecol + "\n\nWe suggest that you submit a bug report on FNS Neutron's website and include above information.");
 };
 
 // New Ajax Lazy Loader

@@ -54,6 +54,7 @@ if (isJson($jsonraw)) {
         }
     }
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/caldb.json", json_encode($json, JSON_PRETTY_PRINT));
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_content_reset.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
 } else {
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("CalDb1: ParseError: Unable to open database, JSON parse failed. Data might be corrupted");

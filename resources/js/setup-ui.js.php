@@ -104,8 +104,8 @@ function upload() {
     setTimeout(() => {
         switchPage("08-checking", "09-uploading")
         var formData = new FormData();
-        if (document.getElementById('05-icon-file').value.trim() != "") {
-            formData.append("file", document.getElementById('05-icon-file').files[0], document.getElementById('05-icon-file').files[0].name);
+        if (typeof $('#05-icon-file')[0].files[0] != "undefined") {
+            formData.append("file", $('#05-icon-file')[0].files[0]);
         }
         formData.append("upload_file", true);
         formData.append("sitename", document.getElementById('04-name-field').value);
@@ -131,7 +131,11 @@ function upload() {
                     document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][0] ?>`
                     document.getElementById('00-error-message').innerHTML = data
                     document.title = `<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - `;
-                    switchPage("09-uploading", "00-error")
+                    setTimeout(() => {
+                        switchPage("09-check", "00-error")
+                        $("#09-uploading").fadeOut(200);
+                        $("#09-uploading")[0].style.display = "none";
+                    }, 1000)
                     window.onbeforeunload = undefined;
                 }
             },
@@ -139,7 +143,11 @@ function upload() {
                 document.title = '<?= $lang["setup"]["steps"][1] . " - " . $lang["setup"]["ititle"] ?> - ';
                 document.getElementById('00-error-title').innerHTML = `<?= $lang["setup"]["errors"][1] ?>`
                 document.getElementById('00-error-message').innerHTML = `<?= $lang["setup"]["errors"][2] ?>`
-                switchPage("02-check", "00-error")
+                setTimeout(() => {
+                    switchPage("09-check", "00-error")
+                    $("#09-uploading").fadeOut(200);
+                    $("#09-uploading")[0].style.display = "none";
+                }, 1000)
                 window.onbeforeunload = undefined;
             },
             data: formData,
@@ -157,4 +165,8 @@ function switchPage(from, to) {
     setTimeout(() => {
         $("#" + to).fadeIn(200);
     }, 200)
+}
+
+function reloadPage() {
+    location.reload();
 }

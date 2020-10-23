@@ -63,4 +63,5 @@ if (strpos($people, '|') !== false || strpos($phone, '|') !== false || strpos($a
 }
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widget-contact-data", $phone . "|" . $email . "|" . $address . "|" . $people);
+require $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_content_reset.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");

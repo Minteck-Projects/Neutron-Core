@@ -40,13 +40,13 @@ if (isset($_FILES['file'])) {
         } else {
             $maxsizestr = $maxsize . " octets";
         }
-        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille du fichier d'îcone dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille du fichier d'icône dépasse la taille maximale imposée par le serveur ({$maxsizestr})");
     }
     if ($_FILES['file']['error'] == 2) {
         require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("La taille maximale du fichier de formulaire à été dépassée");
     }
     if ($_FILES['file']['error'] == 3) {
-        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier d'îcone est incomplet (n'a pas été transmis entièrement)");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier d'icône est incomplet (n'a pas été transmis entièrement)");
     }
     if ($_FILES['file']['error'] == 4) {
         require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Le fichier est renseigné au serveur, mais il n'a pas été transmis");

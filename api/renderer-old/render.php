@@ -1,11 +1,21 @@
 <?php
 
 function render(string $name) {
-    if ($name == "index") {
-        require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer-old/homepage.php";
+    if (!cacheCheck($name)) {
+        if ($name == "index") {
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer-old/homepage.php";
+
+            $content = ob_get_contents();
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/page-index", $content);
+        } else {
+            $MPCMSRendererPageNameValue = $name;
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer-old/init.php";
+
+            $content = ob_get_contents();
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/page-" . $name, $content);
+        }   
     } else {
-        $MPCMSRendererPageNameValue = $name;
-        require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer-old/init.php";
+        rlgps("Received page from cache");
     }
 }
 

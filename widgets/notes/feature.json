@@ -7,5 +7,9 @@
         "en": "Shows the text you want in a widget",
         "fr": "Affiche le texte que vous voulez dans un widget"
     },
-    "config": "/cms-special/admin/plugins/widget-notes-configure"
+
+    "config": "/cms-special/admin/plugins/widget-notes-configure",
+    "class": null,
+
+    "cache": true
 }

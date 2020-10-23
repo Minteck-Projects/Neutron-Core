@@ -61,6 +61,7 @@ if (isset($_POST['page'])) {
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $oldslug);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $oldslug);
             require_once $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_pages_update.php";
+            require $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_content_reset.php";
             require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
         } else {
             require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Aucun nouveau nom spécifié");

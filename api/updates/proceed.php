@@ -12,7 +12,7 @@ function error($errno, $errmsg) {
 
 function smartCopy($source, $dest, $options=array('folderPermission'=>0755,'filePermission'=>0755)) {
     $result=false;
-    
+
     if (is_file($source)) {
         if ($dest[strlen($dest)-1]=='/') {
             if (!file_exists($dest)) {
@@ -24,7 +24,7 @@ function smartCopy($source, $dest, $options=array('folderPermission'=>0755,'file
         }
         $result=copy($source, $__dest);
         chmod($__dest,$options['filePermission']);
-       
+
     } elseif(is_dir($source)) {
         if ($dest[strlen($dest)-1]=='/') {
             if ($source[strlen($source)-1]=='/') {
@@ -61,43 +61,43 @@ function smartCopy($source, $dest, $options=array('folderPermission'=>0755,'file
             }
         }
         closedir($dirHandle);
-       
+
     } else {
         $result=false;
     }
     return $result;
 }
 
-function rrmdir($dir) { 
-    if (is_dir($dir)) { 
-      $objects = scandir($dir); 
+function rrmdir($dir) {
+    if (is_dir($dir)) {
+      $objects = scandir($dir);
         foreach ($objects as $object) {
-            if ($object != "." && $object != "..") { 
+            if ($object != "." && $object != "..") {
                 if (is_dir($dir."/".$object)) {
                     rrmdir($dir."/".$object);
                 } else {
-                    unlink($dir."/".$object); 
+                    unlink($dir."/".$object);
                 }
-            } 
+            }
         }
-        rmdir($dir); 
-    } 
+        rmdir($dir);
+    }
 }
 
-function rcopy($dir) { 
-    if (is_dir($dir)) { 
-      $objects = scandir($dir); 
+function rcopy($dir) {
+    if (is_dir($dir)) {
+      $objects = scandir($dir);
         foreach ($objects as $object) {
-            if ($object != "." && $object != "..") { 
+            if ($object != "." && $object != "..") {
                 if (is_dir($dir."/".$object)) {
                     rrmdir($dir."/".$object);
                 } else {
-                    unlink($dir."/".$object); 
+                    unlink($dir."/".$object);
                 }
-            } 
+            }
         }
-        rmdir($dir); 
-    } 
+        rmdir($dir);
+    }
 }
 
 if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != ".." && $_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN'] != "/") {
@@ -279,7 +279,7 @@ foreach ($updates as $update) {
         $phar->extractTo($_SERVER['DOCUMENT_ROOT'] . "/data/\$UpdateCache/update");
         if (count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/\$UpdateCache/update")) == 3) {
             append("# Archive only contains one subroot directory, upgrading from it");
-            $uproot = $_SERVER['DOCUMENT_ROOT'] . "/data/\$UpdateCache/update/" . count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/\$UpdateCache/update"))[2];
+            $uproot = $_SERVER['DOCUMENT_ROOT'] . "/data/\$UpdateCache/update/" . scandir($_SERVER['DOCUMENT_ROOT'] . "/data/\$UpdateCache/update")[2];
         } else {
             $uproot = $_SERVER['DOCUMENT_ROOT'] . "/data/\$UpdateCache/update";
         }

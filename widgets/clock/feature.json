@@ -7,5 +7,9 @@
         "en": "Shows the current time in a widget",
         "fr": "Affiche un widget contenant l'heure"
     },
-    "config": null
+
+    "config": null,
+    "class": null,
+
+    "cache": true
 }

@@ -28,6 +28,7 @@ if (isset($_COOKIE['_FNS_NEUTRON_ADMIN_TOKEN']) && $_COOKIE['_FNS_NEUTRON_ADMIN_
 
 if (isset($_POST['content'])) {
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/widget-notes-data", $_POST['content']);
+    require $_SERVER['DOCUMENT_ROOT'] . "/api/admin/cache_content_reset.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("ok");
 } else {
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("Pas de contenu passé comme paramètre");

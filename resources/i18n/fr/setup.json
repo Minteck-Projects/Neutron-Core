@@ -68,7 +68,7 @@
     ],
     "license": "Vous devez accepter le suivant contrat de licence avant de commencer à utiliser Neutron :",
     "logo": [
-        "Importez un logo pour votre site",
+        "Importez un logo pour votre site, nous vous conseillons d'utiliser une image carrée (ratio 1:1) afin d'éviter que le logo soit étiré.",
         "Vous pouvez ne pas importer de logo, ce qui affichera le logo par défaut",
         "Importer un fichier"
     ],
