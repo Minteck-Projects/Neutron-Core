@@ -51,10 +51,6 @@ class Spotlight extends HTMLElement {
         this.input.addEventListener('keydown', this.inputShortcutHandler);
     }
 
-    disconnectedCallback () {
-        window.removeEventListener("keydown");
-    }
-
     shortcutHandler (e) {
         if (e.key === "k" && e.ctrlKey === true) {
             e.preventDefault();

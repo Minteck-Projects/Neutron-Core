@@ -1,6 +1,6 @@
-<div id="widget-space"><center>
+<div id="widget-space" style="text-align: center;">
     Vous êtes la <h2 style="margin:0;"><?php
-    
+
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'))) {
         $file = trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date("Y") . "/" . date("m") . "/" . date('d')));
         $count = count(explode("\n", $file));
@@ -16,6 +16,6 @@
     } else {
         echo("(erreur)");
     }
-    
+
     ?></h2> personne à visiter ce site aujourd'hui
-</center></div>
+</div>

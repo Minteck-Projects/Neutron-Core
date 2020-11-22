@@ -1,8 +1,8 @@
 <?php $pageConfig = [ "domName" => "Réinitialisation - Maintenance", "headerName" => "Réinitialisation" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <div id="page-confirm">
-            <center><p><?= $lang["admin-housekeeping"]["disclaimer"][0] ?><ul><li><?= $lang["admin-housekeeping"]["disclaimer"][1] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][2] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][3] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][4] ?></li></ul></p>
-            <p><b><?= $lang["admin-housekeeping"]["confirm"] ?></b></p><input id="confirm" onkeyup="validate()" onkeydown="validate()" onchange="validate()" type="text" placeholder="<?= $lang["admin-housekeeping"]["confirmboxph"] ?>"></center>
-            <p><center><a onclick="confirmPass()" id="reset-confirm" class="hide button-dangerous"><?= $lang["admin-housekeeping"]["confirmbutton"] ?></a></center></p>
+            <div style="text-align: center;"><p><?= $lang["admin-housekeeping"]["disclaimer"][0] ?><ul><li><?= $lang["admin-housekeeping"]["disclaimer"][1] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][2] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][3] ?></li><li><?= $lang["admin-housekeeping"]["disclaimer"][4] ?></li></ul></p>
+            <p><b><?= $lang["admin-housekeeping"]["confirm"] ?></b></p><input id="confirm" onkeyup="validate()" onkeydown="validate()" onchange="validate()" type="text" placeholder="<?= $lang["admin-housekeeping"]["confirmboxph"] ?>"></div>
+            <p><div style="text-align: center;"><a onclick="confirmPass()" id="reset-confirm" class="hide button-dangerous"><?= $lang["admin-housekeeping"]["confirmbutton"] ?></a></div></p>
         </div>
         <div id="page-select" class="hide">
             <?= $lang["admin-housekeeping"]["select"][0] ?>
@@ -20,7 +20,7 @@
     <div class="hide" id="resetbox-placeholder">
         <div id="resetbox" class="centered">
             <p><?= $lang["admin-housekeeping"]["select"][6] ?></p>
-            <div id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
+            <div id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader"></div>
             <p><small><?= $lang["admin-housekeeping"]["select"][7] ?><br><span id="reset-message">-</span></small></p>
         </div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

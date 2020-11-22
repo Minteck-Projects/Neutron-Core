@@ -3,7 +3,7 @@
 $db = json_decode(file_get_contents("./db.json"));
 
 $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-<center>
+<div style="text-align: center;">
     <a href="/cms-special/admin/home" class="mdc-button mdc-button--outlined">
         <div class="mdc-button__ripple"></div>
         <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">arrow_back</i>
@@ -36,7 +36,7 @@ autocomplete="off">
         </ul>
         <?php endforeach ?>
     </div>
-</center>
+</div>
 <script>
 
 function results(query) {

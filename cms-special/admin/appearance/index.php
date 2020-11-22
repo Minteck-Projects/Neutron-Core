@@ -1,7 +1,8 @@
 <?php $loadEditor = false;$pageConfig = [ "domName" => "Apparence", "headerName" => "Apparence" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
         <span id="appearance-error-box" class="hide"><div id="error"><span id="appearance-error"><?= $lang["admin-appearance"]["error"] ?></span></div></span>
-        <div id="appearance-settings"><center>
-            <?= $lang["admin-appearance"]["site"] ?> <input onchange="validateName()" onkeyup="validateName()" onkeydown="validateName()" type="text" id="name-field" placeholder="Nom du site" value="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?>"><br><p id="04-name-tip" class="tip-red"><?= $lang["admin-appearance"]["name"][0] ?></p>
+        <div id="appearance-settings" style="text-align: center;">
+            <?= $lang["admin-appearance"]["site"] ?> <input onchange="validateName()" onkeyup="validateName()" onkeydown="validateName()" type="text" id="name-field" placeholder="Nom du site" value="<?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/sitename") ?>"><br>
+            <p id="04-name-tip" class="tip-red"><?= $lang["admin-appearance"]["name"][0] ?></p>
             <input type="file" id="icon-file" class="hide">
             <p><img id="icon-img" src="/resources/image/config_file_replace.svg" onclick="Icon_UploadFile()" class="icon_button"><br><small><?= $lang["admin-appearance"]["icon"] ?></small></p>
             <input type="file" id="banner-file" class="hide">
@@ -24,14 +25,15 @@
                     <option value="10"<?= $pimb == 10 ? " selected" : "" ?>>10</option>
                 </select>
             <?= $lang["admin-appearance"]["pages"][1] ?><br>
-            <input type="checkbox" id="alwaysmenu" <?= !$oldr ? "disabled" : "" ?> <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {echo("checked");} ?>><label for="alwaysmenu"><?= $lang["admin-appearance"]["alwaysmenu"] ?></label></p><br>
+            <input type="checkbox" id="alwaysmenu" <?= !$oldr ? "disabled" : "" ?> <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/alwaysmenu")) {echo("checked");} ?>><label for="alwaysmenu"><?= $lang["admin-appearance"]["alwaysmenu"] ?></label></p>
+            <br>
             <a onclick="submitData()" class="button"><?= $lang["admin-appearance"]["save"] ?></a>
-        </center></div>
-        <center><div id="appearance-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></center>
+        </div>
+        <div style="text-align: center;"><div id="appearance-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></div>
         <h2><?= $lang["admin-appearance"]["footer"] ?></h2>
         <span id="footer-error-box" class="hide"><div id="error"><span id="footer-error"><?= $lang["admin-appearance"]["error"] ?></span></div></span>
-        <div id="footer-settings"><center>
-        <center><?= $lang["admin-appearance"]["fdesc"] ?></center>
+        <div id="footer-settings"><div style="text-align: center;">
+        <div style="text-align: center;"><?= $lang["admin-appearance"]["fdesc"] ?></div>
             <div name="content" id="fedit">
                 <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/footer") ?>
             </div><br>
@@ -55,19 +57,19 @@
             .catch( error => {
                 console.error( error );
             } );
-    </script></center>
+    </script></div>
     <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-appearance"]["fdisc"][0] ?></p><p><?= $lang["admin-appearance"]["fdisc"][1] ?></p></td></tr></tbody></table></p>
         </div>
-        <center><div id="footer-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></center>
+        <div style="text-align: center;"><div id="footer-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></div>
         <h2><?= $lang["admin-appearance"]["password"] ?></h2>
         <span id="password-error-box" class="hide"><div id="error"><span id="password-error"><?= $lang["admin-appearance"]["error"] ?></span></div></span>
-        <div id="password-settings"><center>
+        <div id="password-settings" style="text-align: center;">
             <p><?= $lang["admin-appearance"]["oldpass"] ?> <input type="password" id="old-password" placeholder="<?= $lang["admin-appearance"]["secure"] ?>"></p>
             <p><?= $lang["admin-appearance"]["newpass"] ?> <input type="password" id="new-password" placeholder="<?= $lang["admin-appearance"]["secure"] ?>"></p>
             <p><?= $lang["admin-appearance"]["passrep"] ?> <input type="password" id="repeat-password" placeholder="<?= $lang["admin-appearance"]["secure"] ?>"></p>
             <a onclick="changePassword()" class="button"><?= $lang["admin-appearance"]["change"] ?></a>
-        </center></div>
-        <center><div id="password-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></center>
+        </div>
+        <div style="text-align: center;"><div id="password-loader" class="hide"><img src="/resources/image/loader.svg" class="loader"></div></div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>

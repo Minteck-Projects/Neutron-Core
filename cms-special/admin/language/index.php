@@ -1,5 +1,5 @@
 <?php $pageConfig = [ "domName" => "Langue et région", "headerName" => "Langue et région" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-<center><select id="langselect">
+<div style="text-align: center;"><select id="langselect">
     <?php
 
     $langs = scandir($_SERVER['DOCUMENT_ROOT'] . "/resources/i18n");
@@ -16,7 +16,7 @@
     ?>
 </select>
 </p>
-<input id="langselect-confirm" type="button" value="OK" onclick="changeLanguage()"></center>
+<input id="langselect-confirm" type="button" value="OK" onclick="changeLanguage()"></div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>

@@ -45,9 +45,10 @@ if ($currentSlug == "index") {
                     </tr>
                 </tbody>
             </table>
-            <p><center><a class="button" onclick="renamePage()" title="<?= $lang["admin-pages"]["renamel2"] ?>"><?= $lang["admin-pages"]["rename2"] ?></a></center></p>
+            <p><div style="text-align: center;"><a class="button" onclick="renamePage()" title="<?= $lang["admin-pages"]["renamel2"] ?>"><?= $lang["admin-pages"]["rename2"] ?></a></div></p>
         </div>
-        <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
+        <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader">
+        </div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>

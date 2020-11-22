@@ -692,3 +692,22 @@ html {
     align-items: center;
     justify-content: center;
 }
+
+.mdc-card--selected {
+    border-color: var(--mdc-theme-primary);
+    opacity: .75;
+}
+
+.mdc-card--selected .mdc-card__primary-action {
+    cursor: default;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: fixed !important;
+}

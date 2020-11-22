@@ -2,7 +2,7 @@
         <div id="hidding">
             <input type="text" id="catname" placeholder="Nom de la catégorie">
             <p><i>Si une catégorie du même nom existe déjà, rien ne se passera</i></p>
-            <p><center><a class="button" onclick="createCat()">Créer la catégorie</a></center></p>
+            <p><div style="text-align: center;"><a class="button" onclick="createCat()">Créer la catégorie</a></div></p>
         </div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 

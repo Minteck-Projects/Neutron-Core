@@ -1,5 +1,5 @@
 <div id="widget-space">
-    <center><h3 id="widget-clock-time">00:00:00</h3><span id="widget-clock-date">lundi 1er janvier 2000</span></center>
+    <div style="text-align: center;"><h3 id="widget-clock-time">00:00:00</h3><span id="widget-clock-date">lundi 1er janvier 2000</span></div>
 </div>
 <script>
 

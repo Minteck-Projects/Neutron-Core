@@ -1,3 +1,4 @@
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/debug.php";debugDump(); ?>
 </div>
             </main>
         </div>

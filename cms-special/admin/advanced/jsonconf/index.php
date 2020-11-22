@@ -3,7 +3,7 @@
     <div id="editing">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor$3.php" ?>
     </div>
-    <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
+    <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader"></div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>

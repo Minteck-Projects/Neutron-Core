@@ -1,6 +1,6 @@
 <textarea name="content" id="editor">
             </textarea><br>
-            <center><p><a onclick="createPageVisual()" class="button"><?= $lang["editor"]["publish"] ?></a></p></center>
+            <div style="text-align: center;"><p><a onclick="createPageVisual()" class="button"><?= $lang["editor"]["publish"] ?></a></p></div>
             <script>
         let colors = [{
         color: 'hsl(0, 0%, 0%)',

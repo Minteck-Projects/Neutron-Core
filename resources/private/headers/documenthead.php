@@ -1,5 +1,8 @@
 <?php
 
+global $_FNSN_DUMP_STARTDATE;
+$_FNSN_DUMP_STARTDATE = new DateTime("now");
+
 // Preloader, if enabled
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/semantic_resourcesPreload")) {
     echo('<link rel="preload" href="/resources/themes/colors/dark.js" as="script">');

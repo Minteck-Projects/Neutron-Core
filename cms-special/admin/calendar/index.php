@@ -35,11 +35,11 @@
                     }
                 }
             } else {
-                echo("<center style=\"color:red;\"><b><u>Important :</u> La base de données du calendrier semble corrompue. Si vous n'avez pas effectué d'actions particulières récemment, cela peut venir de corruption du disque ou d'une intrusion dans votre serveur. <u>Contactez votre administrateur réseau</u></b></center>");
+                echo("<div style=\"color:red; text-align: center;\"><b><u>Important :</u> La base de données du calendrier semble corrompue. Si vous n'avez pas effectué d'actions particulières récemment, cela peut venir de corruption du disque ou d'une intrusion dans votre serveur. <u>Contactez votre administrateur réseau</u></b></div>");
                 $corrupted = true;
             }
         } else {
-            echo("<center>Aucun événement dans le calendrier pour le moment</center>");
+            echo("<div style=\"text-align: center;\">Aucun événement dans le calendrier pour le moment</div>");
         }
 
         ?>

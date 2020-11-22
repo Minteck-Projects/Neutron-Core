@@ -88,7 +88,7 @@ function buffer(string $value) {
             }
         }
         if ($shown == "0") {
-            buffer("</ul><center><i>" . $lang["calendar"]["future"] . "</i></center>");
+            buffer("</ul><div style=\"text-align: center;\"><i>" . $lang["calendar"]["future"] . "</i></div>");
         }
         buffer("<h2>" . $lang["calendar"]["pasth"] . "</h2>");
         $pos = 1;
@@ -147,7 +147,7 @@ function buffer(string $value) {
             }
         }
         if ($shown == "0") {
-            buffer("</ul><center><i>" . $lang["calendar"]["past"] . "</i></center>");
+            buffer("</ul><div style=\"text-align: center;\"><i>" . $lang["calendar"]["past"] . "</i></div>");
         }
     } else {
         buffer("<b>" . $lang["calendar"]["corrupted"] . "</b>");

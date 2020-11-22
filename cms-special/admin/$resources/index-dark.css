@@ -4,7 +4,7 @@
     --mdc-theme-primary: var(--codename-theme);
     --mdc-theme-secondary: var(--codename-secondary);
     --mdc-theme-secondary-light: var(--codename-light);
-    --mdc-theme-on-primary: white;
+    --mdc-theme-on-primary: #ffffff;
     --mdc-theme-on-secondary: white;
     --mdc-theme-surface: rgb(44, 44, 44);
     --mdc-theme-on-surface: whitesmoke;

@@ -4,6 +4,7 @@
     "dark": "Sombre",
     "light": "Clair",
     "auto": "Suivre l'option sur l'ordinateur du visiteur",
+    "auto2": "Automatique",
     "colors": [
         "Bleu",
         "Vert",
@@ -12,5 +13,19 @@
         "Violet",
         "Marron",
         "Gris"
+    ],
+    "colors2": [
+        "Eau",
+        "Feuille",
+        "Tomate",
+        "Orange",
+        "Pourpre",
+        "Boue",
+        "Fumée"
+    ],
+    "descriptions": [
+        "Utiliser l'option de l'ordinateur du visiteur, si supporté par le navigateur",
+        "Laissez l'obscurité ressortir et apaiser les yeux des visiteurs",
+        "Préférez voir la lumière du jour et garder une apparence professionnelle"
     ]
 }

@@ -1,7 +1,7 @@
 <?php $pageConfig = [ "domName" => "Nouvelle page - Pages", "headerName" => "Nouvelle page" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
             <p>
                 <form name="settings">
-                    <center><input id="name" type="text" placeholder="<?= $lang["admin-pages"]["pagename"] ?>"></center><br>
+                    <div style="text-align: center;"><input id="name" type="text" placeholder="<?= $lang["admin-pages"]["pagename"] ?>"></div><br>
                     <input type="radio" id="type-visual" value="visual" onchange="switchEditor()" name="type" checked>
                     <label for="type-visual"><?= $lang["admin-pages"]["classic2"] ?></label><br>
                     <input type="radio" id="type" onchange="switchEditor()" value="html" name="type">
@@ -17,7 +17,7 @@
                     <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor$2.php" ?>
                 </div>
             </div>
-    <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
+    <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader"></div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>

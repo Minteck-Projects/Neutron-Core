@@ -20,7 +20,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures") 
             } else {
                 buffer("<h2>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/categories/" . $category) . "</h2>");
             }
-            buffer("<center><div id=\"galery_thumbnails\"><center>");
+            buffer(" style=\"text-align: center;\">");
             $photos = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures");
             foreach ($photos as $photo) {
                 if ($photo == "." || $photo == "..") {} else {
@@ -45,13 +45,13 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures") 
                 }
             }
             if (!$shown) {
-                buffer("<p><center><i>" . $lang["gallery"]["nothing"] . "</i></center></p>");
+                buffer("<p><div style=\"text-align: center;\"><i>" . $lang["gallery"]["nothing"] . "</i></div></p>");
             }
             buffer("</center></div></center>");
         }
     }
 } else {
-    buffer("<center><i>" . $lang["gallery"]["disabled"][0] . "<b>" . $lang["gallery"]["disabled"][1] . "</b>" . $lang["gallery"]["disabled"][2] . "</i></center>");
+    buffer("<div style=\"text-align: center;\"><i>" . $lang["gallery"]["disabled"][0] . "<b>" . $lang["gallery"]["disabled"][1] . "</b>" . $lang["gallery"]["disabled"][2] . "</i></div>");
 }
 buffer("<script>window.onload = () => {setTimeout(() => {Array.from(document.getElementsByClassName('photo_image')).forEach((el) => {el.classList.add('loaded')});}, 1000)}</script>");
 

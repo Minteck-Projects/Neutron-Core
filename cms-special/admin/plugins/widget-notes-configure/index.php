@@ -397,9 +397,10 @@
                 console.error( error );
             } );
     </script>
-            <p><center><a class="button" onclick="saveChanges()" title="<?= $lang["admin-plugins"]["widgetconf"]->saveph ?>"><?= $lang["admin-plugins"]["widgetconf"]->save ?></a></center></p>
+            <p><div style="text-align: center;"><a class="button" onclick="saveChanges()" title="<?= $lang["admin-plugins"]["widgetconf"]->saveph ?>"><?= $lang["admin-plugins"]["widgetconf"]->save ?></a></div></p>
         </div>
-        <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
+        <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader">
+        </div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>

@@ -1,5 +1,5 @@
 <?php $pageConfig = [ "domName" => "Personnalisation en cours - Styles personnalisés", "headerName" => "Concentrez-vous sur la personnalisation de votre site" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-    <center><p><a onclick="publishCss()" class="button"><?= $lang["admin-css-studio"]["publish"] ?></a></p></center>
+    <div style="text-align: center;"><p><a onclick="publishCss()" class="button"><?= $lang["admin-css-studio"]["publish"] ?></a></p></div>
     <div id="easycss-main"></div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 

@@ -1,5 +1,5 @@
 <?php $pageConfig = [ "domName" => "Distribution", "headerName" => "Distribution" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-<center><h2 style="font-weight:normal;">
+<div style="text-align: center;"><h2 style="font-weight:normal;">
     <?= $lang["admin-distrib"]["intro"] ?><b>
     <?php
     
@@ -15,4 +15,4 @@
     <p>
         <?= str_replace("]]", "</a>", str_replace("[[", "<a target=\"_blank\" href=\"" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/public") . "\">", $lang["admin-distrib"]["change"])) ?>
     </p>
-</center>
+</div>

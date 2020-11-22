@@ -52,5 +52,5 @@
 
             ?>
         </ul>
-        <p><center><a href="/cms-special/admin/pages/add" class="button" title="<?= $lang["admin-pages"]["alore"] ?>"><?= $lang["admin-pages"]["create"] ?></a></center></p>
+        <p><div style="text-align: center;"><a href="/cms-special/admin/pages/add" class="button" title="<?= $lang["admin-pages"]["alore"] ?>"><?= $lang["admin-pages"]["create"] ?></a></div></p>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

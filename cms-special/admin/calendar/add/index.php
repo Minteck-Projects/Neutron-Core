@@ -75,7 +75,7 @@
                 <input onchange="validateUrl()" onkeyup="validateUrl()" onkeydown="validateUrl()" type="text" placeholder="Lien externe" id="link"><img id="link_check" src="/resources/image/storeloader.svg" style="vertical-align:middle;" class="hide" width="24px" height="24px"><a class="hide" id="link_invalid" title="L'adresse du site Internet est invalide"><img src="/resources/image/close.svg" style="vertical-align:middle;" class="invert" width="24px" height="24px"></a>
             </ul>
             <p><table class="message_info"><tbody><tr><td><img src="/resources/image/message_info.svg" class="message_img"></td><td style="width:100%;"><p>La description de l'événement s'affichera entièrement sur le widget "Prochains événements", nous vous conseillons donc de ne pas écrire une description trop longue</p></td></tr></tbody></table></p>
-            <center><p><a class="button" onclick="createCmsEvent()">Ajouter l'événement</a></p></center><br>
+            <div style="text-align: center;"><p><a class="button" onclick="createCmsEvent()">Ajouter l'événement</a></p></div><br>
         </div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 

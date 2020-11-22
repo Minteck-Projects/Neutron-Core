@@ -54,6 +54,7 @@ function cacheCheck(string $page) {
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/page-" . $page)) { // yes
             header("X-FNS-NeutronCache: yes");
             echo(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/page-" . $page)); // So let's output it
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/debug.php";debugDump(); // And debug if needed
             return true;
         } else { // no
             header("X-FNS-NeutronCache: no");

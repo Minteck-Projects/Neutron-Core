@@ -55,7 +55,7 @@ class MpcmsFeatureCalendar {
                 }
             }
             if ($shown == "0") {
-                echo("</ul><center><i>Aucun événement à venir</i></center>");
+                echo("</ul><div style=\"text-align: center;\"><i>Aucun événement à venir</i></div>");
             }
         } else {
             echo("<b>Base de données du calendrier corrompue</b>");

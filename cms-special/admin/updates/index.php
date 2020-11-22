@@ -1,5 +1,5 @@
 <?php $pageConfig = [ "domName" => "Options avancées", "headerName" => "Options avancées" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-<center>
+<div style="text-align: center;">
 <?php
 
 $version = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[0];
@@ -57,7 +57,7 @@ if ($updates == -1): ?>
         <span class="mdc-button__label"><?= $lang["admin-updates"]["install"][2] ?></span>
     </a>
 <?php endif; ?>
-</center>
+</div>
 <hr class="separator">
 <h2><?= $lang["admin-updates"]["logs"] ?></h2>
 <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/UPDATE.log")): ?>

@@ -6,8 +6,8 @@
     --mdc-theme-secondary-light: var(--codename-light);
     --mdc-theme-on-primary: white;
     --mdc-theme-on-secondary: white;
-    --mdc-theme-surface: rgb(44, 44, 44);
-    --mdc-theme-on-surface: whitesmoke;
+    --mdc-theme-surface: rgb(238, 238, 238);
+    --mdc-theme-on-surface: #000000;
     --mpc-background: rgb(255, 255, 255);
     --mpc-menu-background: rgb(240, 240, 240);
     --mpc-menu-background-image: rgb(240, 240, 240, .5);

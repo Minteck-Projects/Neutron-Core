@@ -17,7 +17,7 @@
     function loadAce() {}
 </script>
 <script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/html");}, 100)</script>
-<center><p><a onclick="createPageHTML()" class="button"><?= $lang["editor"]["publish"] ?></a></p></center>
+<div style="text-align: center;"><p><a onclick="createPageHTML()" class="button"><?= $lang["editor"]["publish"] ?></a></p></div>
 <script>
     window.onbeforeunload = function (e) {
     e = e || window.event;

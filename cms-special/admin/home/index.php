@@ -1,7 +1,7 @@
 <?php
 
 $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-<center>
+<div style="text-align: center;">
     <a title="<?= $lang["admin-home"]["language"] ?>/Switch Language" href="/cms-special/admin/language" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button" id="language-selector">translate</a>
 
     <h1><?= $lang["admin-home"]["greeting"] ?></h1>
@@ -53,5 +53,5 @@ $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord
         <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">public</i>
         <span class="mdc-button__label"><?= $lang["admin-home"]["items"][9] ?></span>
     </a>
-</center>
+</div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
