@@ -29,6 +29,10 @@
         "prefix": "Votre serveur exécute FNS Neutron version",
         "update": ", et la dernière version disponible est la version",
         "beta": ", et la dernière version stable en circulation est la version",
+        "prerel": [
+            " (préversion de ",
+            ") "
+        ],
         "channel": "Vous êtes sur le canal de mise à jour",
         "distrib": "→ Informations sur la distribution",
         "updates": "→ Gestionnaire de mises à jour"
@@ -44,6 +48,7 @@
     "nolog": "Aucune information concernant cette version de FNS Neutron",
     "stable": "Dernière version stable",
     "beta": "Version stable en circulation",
+    "exp": "Version de destination",
     "categories": {
         "system": "Fichiers système",
         "config": "Contenu et configuration",

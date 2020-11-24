@@ -4,8 +4,10 @@
         $currentVersionP = str_replace("#", substr(md5(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version")), 0, 2), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"));
         $channel = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[2];
         $currentVersion = explode("-", file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/version"))[0];
+        $experimental = false;
         $currentVersionS = $currentVersion;
         if (explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[0] == "1") {
+            $experimental = true;
             $currentVersion = explode('|', trim(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/experimental")))[1];
         }
         $latestVersion = trim(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/latest_version"));
@@ -23,7 +25,11 @@
         if (version_compare($currentVersion, $latestVersion) <= -1) {
             echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->update . " <b>" . $latestVersionP . "</b>");
         } else {
-            echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->beta . " <b>" . $latestVersionP . "</b>");
+            if ($experimental) {
+                echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . "<i>" . $lang["admin-about"]["version"]->prerel[0] . $currentVersion . $lang["admin-about"]["version"]->prerel[1] . "</i>" . $lang['admin-about']['version']->beta . " <b>" . $latestVersionP . "</b>");
+            } else {
+                echo("" . $lang['admin-about']['version']->prefix . " <b>" . $currentVersionP . "</b>" . $lang['admin-about']['version']->beta . " <b>" . $latestVersionP . "</b>");
+            }
         }
     }
     echo("</li>");
@@ -128,7 +134,11 @@
         }
     </style>
     <h3><?= $lang["admin-about"]["changes"] ?></h3>
-    <h4><?= $lang["admin-about"]["current"] ?> (<?= $currentVersionS ?>)</h4>
+    <?php if ($experimental): ?>
+        <h4><?= $lang["admin-about"]["exp"] ?> (<?= $currentVersion ?>)</h4>
+    <?php else: ?>
+        <h4><?= $lang["admin-about"]["current"] ?> (<?= $currentVersionS ?>)</h4>
+    <?php endif; ?>
     <?php
 
     if (!startsWith(file_get_contents("https://gitlab.com/minteck-projects/mpcms/changelog/raw/master/changelog/" . str_replace(" ", "%20", $currentVersion),false,stream_context_create(['http' => ['ignore_errors' => true,],])), "<!DOCTYPE")) {
