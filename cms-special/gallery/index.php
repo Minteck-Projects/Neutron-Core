@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/render.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/engine-cyclic/render.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 $buffer = ""; // Initialiser un nouveau tampon vide
 

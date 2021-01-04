@@ -31,11 +31,12 @@ if ((!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-o
 
                 ?>
                 <?php rlgps("Generating menubar");foreach ($els as $el): ?>
+                <?php if (trim($el[1]) != ""): ?>
                 <a href="/<?= $el[0] ?>" class="mdc-button rsp-desktoponly">
                     <div class="mdc-button__ripple"></div>
                     <span class="mdc-button__label menubutton"><?= $el[1] ?></span>
                 </a>
-                <?php endforeach ?>
+                <?php endif;endforeach; ?>
                 <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures") && count(scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/pictures")) > 2): ?>
                 <a href="/cms-special/gallery" class="mdc-button rsp-desktoponly">
                     <div class="mdc-button__ripple"></div>

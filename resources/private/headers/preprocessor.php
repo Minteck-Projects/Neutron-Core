@@ -16,7 +16,7 @@ $_MDI_PATH = "/resources/lib/material/iconfont.css"; // Path to Material Icons f
 
 // Generate favicon if not yet generated
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/resources/upload/favicon.png") && $ready) {
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/components/favicon.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/api/engine-cyclic/components/favicon.php";
 }
 
 // Dark/light/dynamic theme + color

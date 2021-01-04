@@ -53,7 +53,7 @@ if (isset($_POST['page'])) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $newslug, file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $oldslug));
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $newslug, file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $oldslug));
             mkdir($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug);
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug . "/index.php", '<?php require_once $_SERVER[\'DOCUMENT_ROOT\'] . "/api/renderer/render.php"; render(\'' . $newslug . '\'); ?>');
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug . "/index.php", '<?php require_once $_SERVER[\'DOCUMENT_ROOT\'] . "/api/engine-cyclic/render.php"; render(\'' . $newslug . '\'); ?>');
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $newslug . "/pagename", $newname);
             unlink($_SERVER['DOCUMENT_ROOT'] . "/" . $oldslug . "/index.php");
             unlink($_SERVER['DOCUMENT_ROOT'] . "/" . $oldslug . "/pagename");

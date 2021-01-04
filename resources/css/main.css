@@ -477,3 +477,9 @@ a:not([class]):not([id]):active, a[class=""][id=""]:active {
 .noeffects {
     filter: none !important;
 }
+
+figure.image.image_resized {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}

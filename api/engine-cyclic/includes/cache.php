@@ -58,11 +58,11 @@ function cacheCheck(string $page) {
             return true;
         } else { // no
             header("X-FNS-NeutronCache: no");
-            return false; // Let the renderer render the page
+            return false; // Let the engine-cyclic render the page
         }
     } else { // yes
         header("X-FNS-NeutronCache: no");
-        return false; // Let the renderer render the page
+        return false; // Let the engine-cyclic render the page
     }
 
     return false;

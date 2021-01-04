@@ -5,7 +5,7 @@ function dbtest($string) {
     return (json_last_error() == JSON_ERROR_NONE);
 }
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/api/renderer/render.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/api/engine-cyclic/render.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/api/lang/processor.php";
 $buffer = ""; // Initialiser un nouveau tampon vide
 

@@ -49,7 +49,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/galery/enabled")) 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/cache/pagelist-full.mtd", $cache);
 
 /* --------------------------- */
-// Retro compatibility with the old renderer
+// Retro compatibility with the old engine-cyclic
 $cache = "";
 
 $pages = scandir($_SERVER['DOCUMENT_ROOT']);
