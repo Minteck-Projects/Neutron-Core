@@ -33,19 +33,20 @@ if ($currentSlug == "index") {
             }
 
             ?>
-            <table>
-                <tbody>
-                    <tr>
-                        <td><?= $lang["admin-pages"]["oname"] ?> </td>
-                        <td><input id="oldname" type="text" placeholder="<?= $lang["admin-pages"]["onamep"] ?>" value="<?= $currentName ?>" disabled></td>
-                    </tr>
-                    <tr>
-                        <td><?= $lang["admin-pages"]["nname"] ?> </td>
-                        <td><input id="newname" type="text" placeholder="<?= $lang["admin-pages"]["nnamep"] ?>" value="<?= $currentName ?>"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p><div style="text-align: center;"><a class="button" onclick="renamePage()" title="<?= $lang["admin-pages"]["renamel2"] ?>"><?= $lang["admin-pages"]["rename2"] ?></a></div></p>
+            <div class="nd_Field nd_Field_input nd_Field__centered nd_Field__disabled" id="onamebox">
+                <input id="oldname" name="oldname" type="text" placeholder="<?= $lang["admin-pages"]["oname"] ?>" spellcheck="false" disabled autocomplete="off" value="<?= $currentName ?>">
+                <label for="name"><?= $lang["admin-pages"]["oname"] ?></label>
+            </div><div class="nd_Field nd_Field_input nd_Field__centered" id="nnamebox">
+                <input id="newname" name="newname" type="text" placeholder="<?= $lang["admin-pages"]["nname"] ?>" spellcheck="false" autocomplete="off" value="<?= $currentName ?>">
+                <label for="name"><?= $lang["admin-pages"]["nname"] ?></label>
+            </div>
+            <p><div style="text-align: center;">
+                <a title="<?= $lang["admin-pages"]["renamel2"] ?>" onclick="renamePage();" class="mdc-button mdc-button--raised">
+                    <div class="mdc-button__ripple"></div>
+                    <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">edit</i>
+                    <span class="mdc-button__label"><?= $lang["admin-pages"]["rename2"] ?></span>
+                </a>
+            </div></p>
         </div>
         <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader">
         </div>

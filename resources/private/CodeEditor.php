@@ -17,7 +17,18 @@
     function loadAce() {}
 </script>
 <script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/html");}, 100)</script>
-<div style="text-align: center;"><p><a onclick="updatePageHTML()" class="button"><?= $lang["editor"]["publish"] ?></a> <small><a onclick="updatePageHTMLNoBack()" class="sblink"><?= $lang["editor"]["publishnoback"] ?></a></small></p></div>
+<div style="text-align: center;">
+    <a onclick="updatePageHTML();" class="mdc-button mdc-button--raised">
+        <div class="mdc-button__ripple"></div>
+        <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">publish</i>
+        <span class="mdc-button__label"><?= $lang["editor"]["publish"] ?></span>
+    </a>
+    <a onclick="updatePageHTMLNoBack();" class="mdc-button mdc-button--outlined">
+        <div class="mdc-button__ripple"></div>
+        <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">save</i>
+        <span class="mdc-button__label"><?= $lang["editor"]["publishnoback"] ?></span>
+    </a>
+</div>
 <script>
     window.onbeforeunload = function (e) {
     e = e || window.event;

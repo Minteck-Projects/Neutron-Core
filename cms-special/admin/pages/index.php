@@ -1,7 +1,6 @@
 <?php $pageConfig = [ "domName" => "Pages", "headerName" => "Gestionnaire de pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
 
-        <?= $lang["admin-pages"]["description"] ?>
-        <ul>
+        <div class="admin-pages-list">
             <?php
             
             $pages = scandir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/");
@@ -9,12 +8,6 @@
             foreach ($pages as $page) {
                 if ($page != "." && $page != "..") {
                     $type = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pagetypes/" . $page);
-                        if ($type == "0") {
-                            $typestr = $lang["admin-pages"]["classic"];
-                        }
-                        if ($type == "1") {
-                            $typestr = $lang["admin-pages"]["html"];
-                        }
                         $size = filesize($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $page);
                         if ($size > 1024) {
                             if ($size > 1048576) {
@@ -27,30 +20,46 @@
                         }
                         $sizetotal = $sizetotal + $size;
                         $sizestr = str_replace(".", ",", $sizestr);
-                    if ($page == "index") {
-                        echo("<li><a href='/cms-special/admin/pages/manage/?slug={$page}' class='sblink' title='{$lang['admin-pages']['lore']}'>{$lang['admin-pages']['home']}</a> ({$page}), {$typestr}, {$sizestr}</li>");
-                    } else {
-                        echo("<li><a href='/cms-special/admin/pages/manage/?slug={$page}' class='sblink' title='{$lang['admin-pages']['lore']}'>" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") . "</a> ({$page}), {$typestr}, {$sizestr}</li>");
-                    }
+                    if ($page == "index"): ?>
+<!--                        echo("<li><a href='/cms-special/admin/pages/manage/?slug={$page}' class='sblink' title='{$lang['admin-pages']['lore']}'>{$lang['admin-pages']['home']}</a> ({$page}), {$typestr}, {$sizestr}</li>");-->
+                        <div class="mdc-card mdc-card--outlined" style="width:256px;margin:10px;display:inline-block;">
+                            <div class="mdc-card-wrapper__text-section" style="padding-left:5px;padding-right:5px;">
+                                <h2 style="margin-bottom:5px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" class="mdc-typography mdc-typography--headline6"><?= $lang["admin-pages"]["home"] ?></h2>
+                                <h3 style="margin-top:5px;" class="mdc-typography mdc-typography--subtitle2"><?php $text = strip_tags(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $page));if (strlen($text)>100){echo(substr($text,0,100) . " …");}else{echo($text);} ?></h3>
+                            </div><br><br>
+                            <div class="mdc-card__actions mdc-card__actions-pages-list">
+                                <a href="/cms-special/admin/pages/edit/?slug=<?= $page ?>" title="<?= $lang["admin-pages"]["editl"] ?>" class="mdc-button mdc-card__action mdc-card__action--button">
+                                    <div class="mdc-button__ripple"></div>
+                                    <span class="mdc-button__label"><?= $lang["admin-pages"]["edit"] ?></span>
+                                </a>
+                                <a href="/cms-special/admin/pages/edit/?slug=<?= $page ?>&forcehtml" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon mdi-icbtn-card" title="<?= $lang["admin-pages"]["editcode"] ?>">code</a>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <div class="mdc-card mdc-card--outlined" style="width:256px;margin:10px;display:inline-block;">
+                            <div class="mdc-card-wrapper__text-section" style="padding-left:5px;padding-right:5px;">
+                                <h2 style="margin-bottom:5px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" class="mdc-typography mdc-typography--headline6"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $page . "/pagename") ?></h2>
+                                <h3 style="margin-top:5px;" class="mdc-typography mdc-typography--subtitle2"><?php $text = strip_tags(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $page));if (strlen($text)>100){echo(substr($text,0,100) . " …");}else{echo($text);} ?></h3>
+                            </div><br><br>
+                            <div class="mdc-card__actions mdc-card__actions-pages-list">
+                                <a href="/cms-special/admin/pages/edit/?slug=<?= $page ?>" title="<?= $lang["admin-pages"]["editl"] ?>" class="mdc-button mdc-card__action mdc-card__action--button">
+                                    <div class="mdc-button__ripple"></div>
+                                    <span class="mdc-button__label"><?= $lang["admin-pages"]["edit"] ?></span>
+                                </a>
+                                <a href="/cms-special/admin/pages/rename/?slug=<?= $page ?>" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon mdi-icbtn-card" title="<?= $lang["admin-pages"]["renamel"] ?>">create</a>
+                                <a href="/cms-special/admin/pages/delete/?slug=<?= $page ?>" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon mdi-icbtn-card" title="<?= $lang["admin-pages"]["deletel"] ?>">delete</a>
+                            </div>
+                        </div>
+                    <?php endif;
                 }
             }
-            if ($sizetotal > 1024) {
-                if ($sizetotal > 1048576) {
-                    if ($sizetotal > 1073741824) {
-                        $sizestr = round($sizetotal / 1073741824, 2) . " {$lang['sizes']['gibibytes']} ({$lang['sizes']['gib']})";
-                    } else {
-                        $sizestr = round($sizetotal / 1048576, 2) . " {$lang['sizes']['mebibytes']} ({$lang['sizes']['mib']})";
-                    }
-                } else {
-                    $sizestr = round($sizetotal / 1024, 2) . " {$lang['sizes']['kibibytes']} ({$lang['sizes']['kib']})";
-                }
-            } else {
-                $sizestr = $size . " {$lang['sizes']['bytes']}";
-            }
-            $sizestr = str_replace(".", ",", $sizestr);
-            echo("<p><b>{$lang['admin-pages']['summary']} {$sizestr}</b></p>");
-
             ?>
-        </ul>
-        <p><div style="text-align: center;"><a href="/cms-special/admin/pages/add" class="button" title="<?= $lang["admin-pages"]["alore"] ?>"><?= $lang["admin-pages"]["create"] ?></a></div></p>
+        </div>
+        <p><div style="text-align: center;">
+                <a title="<?= $lang["admin-pages"]["alore"] ?>" href="/cms-special/admin/pages/add" class="mdc-button mdc-button--outlined">
+                    <div class="mdc-button__ripple"></div>
+                    <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">add</i>
+                    <span class="mdc-button__label"><?= $lang["admin-pages"]["create"] ?></span>
+                </a>
+        </div></p>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

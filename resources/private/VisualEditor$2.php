@@ -1,6 +1,12 @@
 <textarea name="content" id="editor">
             </textarea><br>
-            <div style="text-align: center;"><p><a onclick="createPageVisual()" class="button"><?= $lang["editor"]["publish"] ?></a></p></div>
+<div style="text-align: center;">
+    <a onclick="createPageVisual();" class="mdc-button mdc-button--raised">
+        <div class="mdc-button__ripple"></div>
+        <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">publish</i>
+        <span class="mdc-button__label"><?= $lang["editor"]["publish"] ?></span>
+    </a>
+</div>
             <script>
         let colors = [{
         color: 'hsl(0, 0%, 0%)',

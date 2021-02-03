@@ -231,6 +231,7 @@ li.active a.spotlight-link__apparence {
 }
 
 .spotlight-input {
+    outline: none;
     color: var(--spotlight-text);
 }
 

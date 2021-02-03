@@ -17,7 +17,13 @@
     function loadAce() {}
 </script>
 <script>setInterval(() => {ace.edit("editor").session.setMode("ace/mode/json");}, 100)</script>
-<div style="text-align: center;"><p><a onclick="pushSettings()" class="button"><?= $lang["editor"]["save"] ?></a></p></div>
+<div style="text-align: center;">
+    <a onclick="pushSettings();" class="mdc-button mdc-button--raised">
+        <div class="mdc-button__ripple"></div>
+        <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">save</i>
+        <span class="mdc-button__label"><?= $lang["editor"]["save"] ?></span>
+    </a>
+</div>
 <script>
     window.onbeforeunload = function (e) {
     e = e || window.event;

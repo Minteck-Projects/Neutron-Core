@@ -1,7 +1,18 @@
 <textarea name="content" id="editor">
                 <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug) ?>
             </textarea><br>
-            <div style="text-align: center;"><p><a onclick="updatePage()" class="button"><?= $lang["editor"]["publish"] ?></a> <small><a onclick="updatePageNoBack()" class="sblink"><?= $lang["editor"]["publishnoback"] ?></a></small></p></div>
+            <div style="text-align: center;">
+                <a onclick="updatePage();" class="mdc-button mdc-button--raised">
+                    <div class="mdc-button__ripple"></div>
+                    <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">publish</i>
+                    <span class="mdc-button__label"><?= $lang["editor"]["publish"] ?></span>
+                </a>
+                <a onclick="updatePageNoBack();" class="mdc-button mdc-button--outlined">
+                    <div class="mdc-button__ripple"></div>
+                    <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">save</i>
+                    <span class="mdc-button__label"><?= $lang["editor"]["publishnoback"] ?></span>
+                </a>
+            </div>
             <script>
         let colors = [{
         color: 'hsl(0, 0%, 0%)',

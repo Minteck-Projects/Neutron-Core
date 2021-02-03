@@ -457,3 +457,67 @@ a.discreet, a.discreet:hover, a.discreet:active {
     z-index: 999999;
     position: relative;
 }
+
+.admin-pages-list {
+    display: grid;
+    grid-template-columns: 256px 256px 256px 256px 256px;
+    grid-column-gap: 20px;
+}
+
+@media (max-width: 1424px) {
+    .admin-pages-list {
+        grid-template-columns: 256px 256px 256px 256px;
+    }
+}
+
+@media (max-width: 968px) {
+    .admin-pages-list {
+        grid-template-columns: 256px 256px 256px;
+    }
+}
+
+@media (max-width: 712px) {
+    .admin-pages-list {
+        grid-template-columns: 256px 256px;
+    }
+}
+
+@media (max-width: 556px) {
+    .admin-pages-list {
+        grid-template-columns: 256px;
+    }
+}
+
+.mdc-card__actions-pages-list {
+    position: absolute;
+    bottom: 0;
+}
+
+.mdc-button--raised {
+    color: var(--mdc-theme-on-primary) !important;
+}
+
+.nd_Field, .nd_Field * {
+    outline: none;
+}
+
+.nd_Field input {
+    padding-top: 10px !important;
+}
+
+.nd_Field {
+    width: 256px;
+}
+
+.nd_Field label {
+    text-align: center;
+}
+
+.nd_Field__centered {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.nd_Field__disabled {
+    opacity: .5;
+}

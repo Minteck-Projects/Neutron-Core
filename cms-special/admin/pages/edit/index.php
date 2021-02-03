@@ -13,7 +13,7 @@ if (isset($_GET['slug'])) {
 
 ?>
 <?php $pageConfig = [ "domName" => "Pages", "headerName" => "Pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-            <div id="editing"><?= $lang["admin-pages"]["content2"] ?>
+            <div id="editing">
                 <?php
 
                 if ($currentSlug == "index") {

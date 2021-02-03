@@ -25,18 +25,28 @@ if ($currentSlug == "index") {
 
 ?>
         <div id="confirm">
-            <p><?= $lang["admin-pages"]["deletec"][0] . $currentName . $lang["admin-pages"]["deletec"][1] ?></p>
-            <?php
+            <div style="text-align:center;">
+                <p><?= $lang["admin-pages"]["deletec"][0] . $currentName . $lang["admin-pages"]["deletec"][1] ?></p>
+                <?php
 
-            if ($currentSlug == "index") {
-                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<i>{$lang["admin-pages"]["deletec"][2]}</i></div></body></html>");
-            }
+                if ($currentSlug == "index") {
+                    require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<i>{$lang["admin-pages"]["deletec"][2]}</i></div></body></html>");
+                }
 
-            ?>
-            <ul>
-                <li><a onclick="deletePage()" class="sblink" title="<?= $lang["admin-pages"]["deleteyl"] ?>"><?= $lang["admin-pages"]["deletey"] ?>></a></li>
-                <li><a onclick="location.href='/cms-special/admin/pages/manage/?slug=<?= $currentSlug ?>'" class="sblink" title="<?= $lang["admin-pages"]["deletenl"] ?>"><?= $lang["admin-pages"]["deleten"] ?></a></li>
-            </ul>
+                ?>
+                <!--<ul>
+                    <li><a onclick="deletePage()" class="sblink" title="<?= $lang["admin-pages"]["deleteyl"] ?>"><?= $lang["admin-pages"]["deletey"] ?></a></li>
+                    <li><a onclick="location.href='/cms-special/admin/pages/manage/?slug=<?= $currentSlug ?>'" class="sblink" title="<?= $lang["admin-pages"]["deletenl"] ?>"><?= $lang["admin-pages"]["deleten"] ?></a></li>
+                </ul>-->
+                <a title="<?= $lang["admin-pages"]["deletenl"] ?>" onclick="location.href='/cms-special/admin/pages';" class="mdc-button mdc-button--raised">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label"><?= $lang["admin-pages"]["deleten"] ?></span>
+                </a>
+                <a title="<?= $lang["admin-pages"]["deleteyl"] ?>" onclick="deletePage();" class="mdc-button mdc-button--outlined">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label"><?= $lang["admin-pages"]["deletey"] ?></span>
+                </a>
+            </div>
         </div>
         <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader">
         </div>
