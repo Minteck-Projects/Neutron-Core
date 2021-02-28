@@ -1,1 +1,0 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/api/engine-cyclic/render.php"; render('activation'); ?>

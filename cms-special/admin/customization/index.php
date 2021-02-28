@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Personnalisation", "headerName" => "Personnalisation" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/flag_redesign")){header("Location: /cms-special/admin/customization.old");require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();};$pageConfig = [ "domName" => "Personnalisation", "headerName" => "Personnalisation" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
 <div class="hidden">
         <h3><?= $lang["admin-customization"]["theme"] ?></h3>
         <select id="theme" onchange="updateTheme()">

@@ -1,4 +1,4 @@
-<?php $pageConfig = [ "domName" => "Pages", "headerName" => "Gestionnaire de pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
+<?php if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/flag_redesign")){header("Location: /cms-special/admin/pages.old");require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();};$pageConfig = [ "domName" => "Pages", "headerName" => "Gestionnaire de pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
 
         <div class="admin-pages-list">
             <?php

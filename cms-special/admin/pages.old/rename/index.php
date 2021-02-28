@@ -1,13 +1,13 @@
 <?php
-if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/flag_redesign")){header("Location: /cms-special/admin/pages.old");require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();};
+
 if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {
-        header("Location: /cms-special/admin/pages");
+        header("Location: /cms-special/admin/pages.old");
         require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
     }
 } else {
-    header("Location: /cms-special/admin/pages");
+    header("Location: /cms-special/admin/pages.old");
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
 }
 
@@ -16,7 +16,7 @@ if (isset($_GET['slug'])) {
 <?php
 
 if ($currentSlug == "index") {
-    $currentName = "{$lang["admin-pages"]["home"]}";
+    $currentName = "{$lang["admin-pages-old"]["home"]}";
     echo("<script>page = \"index\"</script>");
 } else {
     $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
@@ -25,31 +25,29 @@ if ($currentSlug == "index") {
 
 ?>
         <div id="confirm">
-            <p><?= $lang["admin-pages"]["renamew"][0] . $currentName . $lang["admin-pages"]["renamew"][1] ?></p>
+            <p><?= $lang["admin-pages-old"]["renamew"][0] . $currentName . $lang["admin-pages-old"]["renamew"][1] ?></p>
             <?php
 
             if ($currentSlug == "index") {
-                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<i>{$lang["admin-pages"]["renamew"][2]}</i></div></body></html>");
+                require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<i>{$lang["admin-pages-old"]["renamew"][2]}</i></div></body></html>");
             }
 
             ?>
-            <div class="nd_Field nd_Field_input nd_Field__centered nd_Field__disabled" id="onamebox">
-                <input id="oldname" name="oldname" type="text" placeholder="<?= $lang["admin-pages"]["oname"] ?>" spellcheck="false" disabled autocomplete="off" value="<?= $currentName ?>">
-                <label for="name"><?= $lang["admin-pages"]["oname"] ?></label>
-            </div><div class="nd_Field nd_Field_input nd_Field__centered" id="nnamebox">
-                <input id="newname" name="newname" type="text" placeholder="<?= $lang["admin-pages"]["nname"] ?>" spellcheck="false" autocomplete="off" value="<?= $currentName ?>">
-                <label for="name"><?= $lang["admin-pages"]["nname"] ?></label>
-            </div>
-            <p><div style="text-align: center;">
-                <a title="<?= $lang["admin-pages"]["renamel2"] ?>" onclick="renamePage();" class="mdc-button mdc-button--raised">
-                    <div class="mdc-button__ripple"></div>
-                    <i class="material-icons-outlined mdc-button__icon" aria-hidden="true">edit</i>
-                    <span class="mdc-button__label"><?= $lang["admin-pages"]["rename2"] ?></span>
-                </a>
-            </div></p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><?= $lang["admin-pages-old"]["oname"] ?> </td>
+                        <td><input id="oldname" type="text" placeholder="<?= $lang["admin-pages-old"]["onamep"] ?>" value="<?= $currentName ?>" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><?= $lang["admin-pages-old"]["nname"] ?> </td>
+                        <td><input id="newname" type="text" placeholder="<?= $lang["admin-pages-old"]["nnamep"] ?>" value="<?= $currentName ?>"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><center><a class="button" onclick="renamePage()" title="<?= $lang["admin-pages-old"]["renamel2"] ?>"><?= $lang["admin-pages-old"]["rename2"] ?></a></center></p>
         </div>
-        <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader">
-        </div>
+        <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
@@ -66,7 +64,7 @@ function renamePage() {
         url: "/api/admin/rename_page.php",
         success: function (data) {
             if (data == "ok") {
-                location.href = "/cms-special/admin/pages";
+                location.href = "/cms-special/admin/pages.old";
             } else {
                 alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')

@@ -56,6 +56,32 @@
             }
         }
     },
+    "pages.old": {
+        "dom": "Pages",
+        "header": "Pages du site",
+        "subpages": {
+            "manage": {
+                "dom": "Gérer la page",
+                "header": "Options de la page"
+            },
+            "edit": {
+                "dom": "Modifier la page",
+                "header": "Modification de la page"
+            },
+            "delete": {
+                "dom": "Supprimer la page",
+                "header": "Suppression de la page"
+            },
+            "rename": {
+                "dom": "Renommer la page",
+                "header": "Renommage de la page"
+            },
+            "add": {
+                "dom": "Nouvelle page",
+                "header": "Créer une page"
+            }
+        }
+    },
     "gallery": {
         "dom": "Galerie de photos",
         "header": "Galerie de photos",
@@ -101,6 +127,10 @@
     "renderer": {
         "dom": "Moteur de rendu",
         "header": "Trace du moteur de rendu"
+    },
+    "flags": {
+        "dom": "Drapeaux",
+        "header": "Drapeaux de fonctionnalités"
     },
     "distrib": {
         "dom": "Distribution",
@@ -207,6 +237,10 @@
         "header": "Apparence de votre site"
     },
     "customization": {
+        "dom": "Personnalisation",
+        "header": "Identité visuelle de votre site"
+    },
+    "customization.old": {
         "dom": "Personnalisation",
         "header": "Identité visuelle de votre site"
     },

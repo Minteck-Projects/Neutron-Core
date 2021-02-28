@@ -5,7 +5,7 @@ function debugDump() {
     $_FNSN_DUMP_STOPDATE = new DateTime("now");
     $_FNSN_DUMP_DSTARTDATE = new DateTime("now");
 
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/systemTrace")): ?>
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/flag_boundaries")): ?>
 
 <style>
 
@@ -41,41 +41,42 @@ input, textarea {
     outline: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#neutron-dump {
-    background: white;
-    outline: none;
-    border-collapse: collapse;
-    color: black;
-    font-family: sans-serif !important;
-}
-
-#neutron-dump td, #neutron-dump tr, #neutron-dump tbody {
-    border: 1px solid black;
-    font-family: sans-serif !important;
-}
-
-#neutron-dump * {
-    font-family: sans-serif !important;
-    outline: none !important;
-}
-
-#neutron-dump-title {
-    background: red;
-    color: white;
-    font-size: 24px;
-}
-
-#neutron-dump-logo {
-    background-color: blue;
-}
-
-#neutron-dump-category {
-    background-color: lightgray;
-    font-weight: bold;
-}
-
 </style>
+<?php endif;if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/flag_trace")): ?>
+    <style>
+        #neutron-dump {
+            background: white;
+            outline: none;
+            border-collapse: collapse;
+            color: black;
+            font-family: sans-serif !important;
+        }
 
+        #neutron-dump td, #neutron-dump tr, #neutron-dump tbody {
+            border: 1px solid black;
+            font-family: sans-serif !important;
+        }
+
+        #neutron-dump * {
+            font-family: sans-serif !important;
+            outline: none !important;
+        }
+
+        #neutron-dump-title {
+            background: red;
+            color: white;
+            font-size: 24px;
+        }
+
+        #neutron-dump-logo {
+            background-color: blue;
+        }
+
+        #neutron-dump-category {
+            background-color: lightgray;
+            font-weight: bold;
+        }
+    </style>
 <table id="neutron-dump">
     <tbody>
         <tr>

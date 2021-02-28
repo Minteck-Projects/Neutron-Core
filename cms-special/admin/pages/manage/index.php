@@ -1,5 +1,5 @@
 <?php
-
+if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/flag_redesign")){header("Location: /cms-special/admin/pages.old");require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();};
 if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {

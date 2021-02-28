@@ -1,0 +1,16 @@
+{
+    "color": "Couleur d'ambiance",
+    "theme": "Thème",
+    "dark": "Sombre",
+    "light": "Clair",
+    "auto": "Suivre l'option sur l'ordinateur du visiteur",
+    "colors": [
+        "Bleu",
+        "Vert",
+        "Rouge",
+        "Orange",
+        "Violet",
+        "Marron",
+        "Gris"
+    ]
+}

@@ -1,23 +1,23 @@
 <?php
-if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/flag_redesign")){header("Location: /cms-special/admin/pages.old");require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();};
+
 if (isset($_GET['slug'])) {
     $currentSlug = $_GET['slug'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/pages/" . $currentSlug)) {} else {
-        header("Location: /cms-special/admin/pages");
+        header("Location: /cms-special/admin/pages.old");
         require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
     }
 } else {
-    header("Location: /cms-special/admin/pages");
+    header("Location: /cms-special/admin/pages.old");
     require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit();
 }
 
 ?>
 <?php $pageConfig = [ "domName" => "Pages", "headerName" => "Pages" ]; require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/precontent.php"; ?>
-            <div id="editing">
+            <div id="editing"><?= $lang["admin-pages-old"]["content2"] ?>
                 <?php
 
                 if ($currentSlug == "index") {
-                    $currentName = "{$lang["admin-pages"]["home"]}";
+                    $currentName = "{$lang["admin-pages-old"]["home"]}";
                     echo("<script>page = \"index\"</script>");
                 } else {
                     $currentName = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/" . $currentSlug . "/pagename");
@@ -34,7 +34,7 @@ if (isset($_GET['slug'])) {
                 if ($type == "1"):
                 
                 ?>
-                <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-pages"]["htmlw"][0] ?></p><p><?= $lang["admin-pages"]["htmlw"][1] ?></p></td></tr></tbody></table></p>
+                <p><table class="message_warning"><tbody><tr><td><img src="/resources/image/message_warning.svg" class="message_img"></td><td style="width:100%;"><p><?= $lang["admin-pages-old"]["htmlw"][0] ?></p><p><?= $lang["admin-pages-old"]["htmlw"][1] ?></p></td></tr></tbody></table></p>
                 <?php
 
                 require_once $_SERVER['DOCUMENT_ROOT'] . "/resources/private/CodeEditor.php";
@@ -42,7 +42,7 @@ if (isset($_GET['slug'])) {
 
                 ?>
             </div>
-    <div class="hide" id="loader" style="text-align: center;"><img src="/resources/image/loader.svg" class="loader"></div>
+    <div class="hide" id="loader"><center><img src="/resources/image/loader.svg" class="loader"></center></div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>
 
 <script>
@@ -51,11 +51,11 @@ if (isset($_GET['slug'])) {
 
     // For IE and Firefox prior to version 4
     if (e) {
-        e.returnValue = "<?= $lang["admin-pages"]["quitwarn"] ?>";
+        e.returnValue = "<?= $lang["admin-pages-old"]["quitwarn"] ?>";
     }
 
         // For Safari
-        return "<?= $lang["admin-pages"]["quitwarn"] ?>";
+        return "<?= $lang["admin-pages-old"]["quitwarn"] ?>";
     };
 </script>
 
@@ -74,7 +74,7 @@ function updatePage() {
         success: function (data) {
             if (data == "ok") {
                 window.onbeforeunload = null;
-                location.href = "/cms-special/admin/pages";
+                location.href = "/cms-special/admin/pages.old";
             } else {
                 alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')
@@ -105,7 +105,7 @@ function updatePageNoBack() {
         url: "/api/admin/edit_page.php",
         success: function (data) {
             if (data == "ok") {
-                alert("<?= $lang["admin-pages"]["saved"] ?>");
+                alert("<?= $lang["admin-pages-old"]["saved"] ?>");
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             } else {
@@ -138,7 +138,7 @@ function updatePageHTMLNoBack() {
         url: "/api/admin/edit_page.php",
         success: function (data) {
             if (data == "ok") {
-                alert("<?= $lang["admin-pages"]["saved"] ?>");
+                alert("<?= $lang["admin-pages-old"]["saved"] ?>");
                 document.getElementById('loader').classList.add('hide')
                 document.getElementById('editing').classList.remove('hide')
             } else {
@@ -171,7 +171,7 @@ function updatePageHTML() {
         url: "/api/admin/edit_page.php",
         success: function (data) {
             if (data == "ok") {
-                location.href = "/cms-special/admin/pages";
+                location.href = "/cms-special/admin/pages.old";
             } else {
                 alert("<?= $lang["admin-errors"]["errorprefix"] ?>" + data)
                 document.getElementById('loader').classList.add('hide')

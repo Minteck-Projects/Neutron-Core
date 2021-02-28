@@ -36,6 +36,11 @@ $pageConfig = [ "domName" => "Tableau de bord", "headerName" => "Tableau de bord
             <br>
             <?= $lang["admin-home"]["appearance"]->items[4] ?>
         </div>
+        <div class="home-grid-item">
+            <a title="<?= $lang["admin-home"]["appearance"]->items[5] ?>" id="home-grid-item-appearance" href="/cms-special/admin/flags" class="material-icons-outlined mdc-top-app-bar__navigation-icon mdc-icon-button home-grid-item-button">flag</a>
+            <br>
+            <?= $lang["admin-home"]["appearance"]->items[5] ?>
+        </div>
     </div>
 </div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/cms-special/admin/\$resources/postcontent.php"; ?>

@@ -1,0 +1,60 @@
+{
+    "description": "Cliquez sur le nom d'une page pour la modifier, la renommer, ou la supprimer.",
+    "classic": "page classique",
+    "html": "page HTML",
+    "lore": "Modifier/renommer/supprimer cette page",
+    "home": "Accueil",
+    "summary": "Espace disque total utilisé par les pages de votre site : ",
+    "alore": "Ajouter une nouvelle page à votre site",
+    "create": "Créer une page",
+    "provided": [
+        "Il s'agit d'une page fournie avec Neutron, et de la page d'accueil de votre site. Pour des raisons de logique, vous ne pouvez pas la renommer ni la supprimer.",
+        "Si vous souhaitez la masquer du menu, ajoutez",
+        "à la liste",
+        "dans les paramètres avancés de votre site."
+    ],
+    "actions": "Actions disponibles pour cette page :",
+    "editl": "Modifier le contenu de la page sélectionnée",
+    "edit": "Modifier",
+    "visual": "en utilisant l'éditeur visuel",
+    "renamel": "Renommer et modifier l'URL de cette page",
+    "rename": "Renommer",
+    "deletel": "Supprimer définitivement la page sélectionnée",
+    "delete": "Supprimer",
+    "htmll": "Modifier le contenu de la page sélectionnée en utilisant l'éditeur de code HTML",
+    "htmle": "Modifier en utilisant l'éditeur HTML (avancé)",
+    "pagename": "Nom de la page",
+    "classic2": "Classique",
+    "html2": [
+        "HTML",
+        "(avancé)"
+    ],
+    "content": "Ajoutez du contenu à votre page :",
+    "content2": "Modifiez le contenu de cette page :",
+    "htmlw": [
+        "L'éditeur HTML est réservé aux utilisateurs expérimentés souhaitant plus de liberté de personnalisation par rapport à l'éditeur visuel.",
+        "Pour l'utiliser correctement, vous devez avez des compétences en développement Web. Sinon, nous vous conseillons plutôt d'utiliser l'éditeur visuel."
+    ],
+    "quitwarn": "En quittant cette page, vous perdrez les modifications non enregistrées.",
+    "saved": "La page a bien été sauvegardée",
+    "deletec": [
+        "Voulez-vous vraiment supprimer la page « ",
+        " » ? Cette action est irréversible et peut entraîner des effets indésirables.",
+        "Vous ne pouvez pas supprimer la page d'accueil de votre site"
+    ],
+    "deleteyl": "Supprimer la page sélectionnée",
+    "deletey": "Oui",
+    "deletenl": "Annuler la suppression de la page sélectionnée",
+    "deleten": "Non",
+    "renamew": [
+        "Vous allez renommer la page « ",
+        " », cela peut entraîner des effets indésirables.",
+        "Vous ne pouvez pas renommer la page d'accueil de votre site"
+    ],
+    "oname": "Ancien nom :",
+    "onamep": "# Erreur #",
+    "nname": "Nouveau nom :",
+    "nnamep": "Ne peut pas être vide",
+    "renamel2": "Renommer la page",
+    "rename2": "Renommer"
+}

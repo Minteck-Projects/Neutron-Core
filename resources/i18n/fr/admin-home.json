@@ -25,7 +25,8 @@
             "Thème",
             "Construction visuelle",
             "Langue et région",
-            "Fonctionnalités optionnelles"
+            "Fonctionnalités optionnelles",
+            "Drapeaux de fonctionnalité"
         ]
     },
     "data": {
@@ -84,7 +85,8 @@
         "Adapter le thème de couleur et la luminosité du site",
         "Accéder à la page d'accueil du studio de personnalisation",
         "Modifier la feuille de styles personnalisées avec le logiciel EasyCSS",
-        "Changer la langue d'affichage de tout le site"
+        "Changer la langue d'affichage de tout le site",
+        "Modifier les drapeaux de fonctionnalité (Features Flags)"
     ],
     "nofound": "Aucun résultat",
     "one": "1 résultat",
