@@ -42,7 +42,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent")) {
 
     if ($ready) {
         // If the website is ready, render the headers and stop here
-        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/';</script></body></html>");
+        require $_SERVER['DOCUMENT_ROOT'] . "/api/electrode/quit.php";quit("<script>location.href = '/index.php';</script></body></html>");
     }
 
     ?>
