@@ -156,7 +156,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/")) {
             }
 
             if (!$already) {
-                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d') . $hash . "\n");    
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'), file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d')) . $hash . "\n");    
             }
         } else {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y') . "/" . date('m') . "/" . date('d'), $hash . "\n");
