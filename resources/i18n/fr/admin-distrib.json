@@ -7,6 +7,10 @@
         "start": "Neutron pour pays en développement",
         "chinese": "Neutron pour la Chine",
         "korea": "Neutron pour la Corée",
-        "bleedingedge": "Neutron à la pointe de saignement"
+        "bleedingedge": "Neutron à la pointe de saignement",
+        "electrode": "Neutron sur Electrode",
+        "stable": "Neutron Stable",
+        "testing": "Neutron Expérimental",
+        "unstable": "Neutron Instable"
     }
 }
