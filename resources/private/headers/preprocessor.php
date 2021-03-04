@@ -134,7 +134,8 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats")) {} els
 
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/")) {
     if (isset($_SERVER['REMOTE_ADDR']) && file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats")) {
-        $hash = @password_hash($_SERVER['REMOTE_ADDR'], PASSWORD_DEFAULT, [ "salt" => "net.minteckprojects.fns.neutron.stats" ]); // Storing IP addresses is illegal in EU, so just a hashed IP addresses
+        //$hash = @password_hash($_SERVER['REMOTE_ADDR'], PASSWORD_DEFAULT, [ "salt" => "net.minteckprojects.fns.neutron.stats" ]); // Storing IP addresses is illegal in EU, so just a hashed IP addresses
+        $hash = md5($_SERVER['REMOTE_ADDR']); // Changed to MD5 sum instead of encrypted IP because salt not supported anymore
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y'))) {} else {
             mkdir($_SERVER['DOCUMENT_ROOT'] . "/data/webcontent/newstats/" . date('Y'));
         }
